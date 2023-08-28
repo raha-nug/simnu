@@ -695,11 +695,13 @@
 
     <section id="tranding">
       <div class="row">
-        <div class="col-lg-12">
-          <div class="ud-section-title mx-auto text-center">
-            <span>Our Gallery</span>
-            <h2>Meet The Team</h2>
-            <p>Para pengurus dan kegiatan yang dilakukan oleh PWNU Jabar</p>
+        <div class="container">
+          <div class="col-lg-12">
+            <div class="ud-section-title mx-auto text-center">
+              <span>Our Gallery</span>
+              <h2>Meet The Team</h2>
+              <p>Para pengurus dan kegiatan yang dilakukan oleh PWNU Jabar</p>
+            </div>
           </div>
         </div>
       </div>
