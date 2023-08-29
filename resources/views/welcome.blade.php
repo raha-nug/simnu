@@ -41,65 +41,27 @@
               <div class="navbar-collapse">
                 <ul id="nav" class="navbar-nav mx-auto">
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#home">Home</a>
+                    <a class="ud-menu-scroll" href="#home">Beranda</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#about">About</a>
+                    <a class="ud-menu-scroll" href="#about">Tentang</a>
                   </li>
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#features">
-                      Our Excellence
+                      Keunggulan
                     </a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#tranding">Gallery</a>
+                    <a class="ud-menu-scroll" href="#tranding">Galeri</a>
                   </li>
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#faq">FAQ</a>
                   </li>
                   <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#contact">Contact</a>
+                    <a class="ud-menu-scroll" href="#contact">Kontak</a>
                   </li>
-                  <!-- <li class="nav-item nav-item-has-children">
-                    <a href="javascript:void(0)">Pages</a>
-                    <ul class="ud-submenu">
-                      <li class="ud-submenu-item">
-                        <a href="about.html" class="ud-submenu-link">
-                          About Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="pricing.html" class="ud-submenu-link">
-                          Pricing Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="contact.html" class="ud-submenu-link">
-                          Contact Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="blog.html" class="ud-submenu-link">
-                          Blog Grid Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="blog-details.html" class="ud-submenu-link">
-                          Blog Details Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="login.html" class="ud-submenu-link">
-                          Sign In Page
-                        </a>
-                      </li>
-                      <li class="ud-submenu-item">
-                        <a href="404.html" class="ud-submenu-link">404 Page</a>
-                      </li>
-                    </ul>
-                  </li> -->
                 </ul>
               </div>
 
@@ -121,7 +83,7 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
-              <h1 class="ud-hero-title">Berpikir maju untuk NU maju</h1>
+              <h1 class="ud-hero-title">Berpikir Strategis untuk Kemajuan NU</h1>
               <p class="ud-hero-desc">
                 Aplikasi ini memuat data pengurus PWNU, PCNU, MWC, Ranting dan
                 Anak Ranting, Lembaga dan Badan Otonom yang berada di bawah
@@ -130,11 +92,11 @@
               <ul class="ud-hero-buttons">
                 <li>
                   <a
-                    href="#"
+                    href="/login"
                     rel="nofollow noopener"
-                    target="_blank"
+                    
                     class="ud-main-btn ud-white-btn">
-                    Get Started
+                    Mulai
                   </a>
                 </li>
               </ul>
@@ -164,7 +126,7 @@
         <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
           <div class="ud-about-content-wrapper">
             <div class="ud-about-content">
-              <span class="tag">About Us</span>
+              <span class="tag">Tentang Kami</span>
               <h2>PWNU Yang Terdepan Dalam Segi Management Data</h2>
               <p>
                 Manajemen data yang baik adalah pondasi penting dalam mengelola
@@ -196,8 +158,8 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="ud-section-title">
-              <span>Our Excellence</span>
-              <h2>The Excellence of PWNU Jabar</h2>
+              <span>Keunggulan</span>
+              <h2>Keunggulan PWNU Jabar</h2>
               <p>Terdapat banyak keunggulan dalam data PWNU Jabar</p>
             </div>
           </div>
@@ -278,428 +240,14 @@
     </section>
     <!-- ====== Features End ====== -->
 
-    <!-- ====== Pricing Start ====== -->
-    <!-- <section id="pricing" class="ud-pricing">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-section-title mx-auto text-center">
-              <span>Pricing</span>
-              <h2>Our Pricing Plans</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row g-0 align-items-center justify-content-center">
-          <div class="col-lg-4 col-md-6 col-sm-10">
-            <div
-              class="ud-single-pricing first-item wow fadeInUp"
-              data-wow-delay=".15s">
-              <div class="ud-pricing-header">
-                <h3>STARTING FROM</h3>
-                <h4>$ 19.99/mo</h4>
-              </div>
-              <div class="ud-pricing-body">
-                <ul>
-                  <li>5 User</li>
-                  <li>All UI components</li>
-                  <li>Lifetime access</li>
-                  <li>Free updates</li>
-                  <li>Use on 1 (one) project</li>
-                  <li>4 Months support</li>
-                </ul>
-              </div>
-              <div class="ud-pricing-footer">
-                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
-                  Purchase Now
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-10">
-            <div class="ud-single-pricing wow fadeInUp" data-wow-delay=".1s">
-              <span class="ud-popular-tag">POPULAR</span>
-              <div class="ud-pricing-header">
-                <h3>STARTING FROM</h3>
-                <h4>$ 30.99/mo</h4>
-              </div>
-              <div class="ud-pricing-body">
-                <ul>
-                  <li>5 User</li>
-                  <li>All UI components</li>
-                  <li>Lifetime access</li>
-                  <li>Free updates</li>
-                  <li>Use on 1 (one) project</li>
-                  <li>4 Months support</li>
-                </ul>
-              </div>
-              <div class="ud-pricing-footer">
-                <a href="javascript:void(0)" class="ud-main-btn ud-white-btn">
-                  Purchase Now
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 col-sm-10">
-            <div
-              class="ud-single-pricing last-item wow fadeInUp"
-              data-wow-delay=".15s">
-              <div class="ud-pricing-header">
-                <h3>STARTING FROM</h3>
-                <h4>$ 70.99/mo</h4>
-              </div>
-              <div class="ud-pricing-body">
-                <ul>
-                  <li>5 User</li>
-                  <li>All UI components</li>
-                  <li>Lifetime access</li>
-                  <li>Free updates</li>
-                  <li>Use on 1 (one) project</li>
-                  <li>4 Months support</li>
-                </ul>
-              </div>
-              <div class="ud-pricing-footer">
-                <a href="javascript:void(0)" class="ud-main-btn ud-border-btn">
-                  Purchase Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- ====== Pricing End ====== -->
-
-    <!-- ====== Testimonials Start ====== -->
-    <!-- <section id="testimonials" class="ud-testimonials">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-section-title mx-auto text-center">
-              <span>Testimonials</span>
-              <h2>What our Customers Says</h2>
-              <p>
-                There are many variations of passages of Lorem Ipsum available
-                but the majority have suffered alteration in some form.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div
-              class="ud-single-testimonial wow fadeInUp"
-              data-wow-delay=".1s">
-              <div class="ud-testimonial-ratings">
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-              </div>
-              <div class="ud-testimonial-content">
-                <p>
-                  “Our members are so impressed. It's intuitive. It's clean.
-                  It's distraction free. If you're building a community.
-                </p>
-              </div>
-              <div class="ud-testimonial-info">
-                <div class="ud-testimonial-image">
-                  <img
-                    src="assets/img/testimonials/author-01.png"
-                    alt="author" />
-                </div>
-                <div class="ud-testimonial-meta">
-                  <h4>Sabo Masties</h4>
-                  <p>Founder @UIdeck</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div
-              class="ud-single-testimonial wow fadeInUp"
-              data-wow-delay=".15s">
-              <div class="ud-testimonial-ratings">
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-              </div>
-              <div class="ud-testimonial-content">
-                <p>
-                  “Our members are so impressed. It's intuitive. It's clean.
-                  It's distraction free. If you're building a community.
-                </p>
-              </div>
-              <div class="ud-testimonial-info">
-                <div class="ud-testimonial-image">
-                  <img
-                    src="assets/img/testimonials/author-02.png"
-                    alt="author" />
-                </div>
-                <div class="ud-testimonial-meta">
-                  <h4>Margin Gesmu</h4>
-                  <p>Founder @Lineicons</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div
-              class="ud-single-testimonial wow fadeInUp"
-              data-wow-delay=".2s">
-              <div class="ud-testimonial-ratings">
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-                <i class="lni lni-star-filled"></i>
-              </div>
-              <div class="ud-testimonial-content">
-                <p>
-                  “Our members are so impressed. It's intuitive. It's clean.
-                  It's distraction free. If you're building a community.
-                </p>
-              </div>
-              <div class="ud-testimonial-info">
-                <div class="ud-testimonial-image">
-                  <img
-                    src="assets/img/testimonials/author-03.png"
-                    alt="author" />
-                </div>
-                <div class="ud-testimonial-meta">
-                  <h4>William Smith</h4>
-                  <p>Founder @GrayGrids</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-brands wow fadeInUp" data-wow-delay=".2s">
-              <div class="ud-title">
-                <h6>Trusted and Used by</h6>
-              </div>
-              <div class="ud-brands-logo">
-                <div class="ud-single-logo">
-                  <img src="assets/img/brands/ayroui.svg" alt="ayroui" />
-                </div>
-                <div class="ud-single-logo">
-                  <img src="assets/img/brands/uideck.svg" alt="uideck" />
-                </div>
-                <div class="ud-single-logo">
-                  <img
-                    src="assets/img/brands/graygrids.svg"
-                    alt="graygrids" />
-                </div>
-                <div class="ud-single-logo">
-                  <img
-                    src="assets/img/brands/lineicons.svg"
-                    alt="lineicons" />
-                </div>
-                <div class="ud-single-logo">
-                  <img
-                    src="assets/img/brands/ecommerce-html.svg"
-                    alt="ecommerce-html" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- ====== Testimonials End ====== -->
-
-    <!-- ====== Team Start ====== -->
-    <!-- <section id="team" class="ud-team">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-section-title mx-auto text-center">
-              <span>Our Gallery</span>
-              <h2>Meet The Team</h2>
-              <p>Para pengurus dan kegiatan yang dilakukan oleh PWNU Jabar</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xl-3 col-lg-3 col-sm-6">
-            <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
-              <div class="ud-team-image-wrapper">
-                <div class="ud-team-image">
-                  <img src="assets/img/team/team-01.png" alt="team" />
-                </div>
-
-                <img
-                  src="assets/img/team/dotted-shape.svg"
-                  alt="shape"
-                  class="shape shape-1" />
-                <img
-                  src="assets/img/team/shape-2.svg"
-                  alt="shape"
-                  class="shape shape-2" />
-              </div>
-              <div class="ud-team-info">
-                <h5>Adveen Desuza</h5>
-                <h6>UI Designer</h6>
-              </div>
-              <ul class="ud-team-socials">
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-facebook-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-twitter-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-instagram-filled"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-3 col-sm-6">
-            <div class="ud-single-team wow fadeInUp" data-wow-delay=".15s">
-              <div class="ud-team-image-wrapper">
-                <div class="ud-team-image">
-                  <img src="assets/img/team/team-02.png" alt="team" />
-                </div>
-
-                <img
-                  src="assets/img/team/dotted-shape.svg"
-                  alt="shape"
-                  class="shape shape-1" />
-                <img
-                  src="assets/img/team/shape-2.svg"
-                  alt="shape"
-                  class="shape shape-2" />
-              </div>
-              <div class="ud-team-info">
-                <h5>Jezmin uniya</h5>
-                <h6>Product Designer</h6>
-              </div>
-              <ul class="ud-team-socials">
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-facebook-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-twitter-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-instagram-filled"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-3 col-sm-6">
-            <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
-              <div class="ud-team-image-wrapper">
-                <div class="ud-team-image">
-                  <img src="assets/img/team/team-03.png" alt="team" />
-                </div>
-
-                <img
-                  src="assets/img/team/dotted-shape.svg"
-                  alt="shape"
-                  class="shape shape-1" />
-                <img
-                  src="assets/img/team/shape-2.svg"
-                  alt="shape"
-                  class="shape shape-2" />
-              </div>
-              <div class="ud-team-info">
-                <h5>Andrieo Gloree</h5>
-                <h6>App Developer</h6>
-              </div>
-              <ul class="ud-team-socials">
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-facebook-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-twitter-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-instagram-filled"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-xl-3 col-lg-3 col-sm-6">
-            <div class="ud-single-team wow fadeInUp" data-wow-delay=".25s">
-              <div class="ud-team-image-wrapper">
-                <div class="ud-team-image">
-                  <img src="assets/img/team/team-04.png" alt="team" />
-                </div>
-
-                <img
-                  src="assets/img/team/dotted-shape.svg"
-                  alt="shape"
-                  class="shape shape-1" />
-                <img
-                  src="assets/img/team/shape-2.svg"
-                  alt="shape"
-                  class="shape shape-2" />
-              </div>
-              <div class="ud-team-info">
-                <h5>Jackie Sanders</h5>
-                <h6>Content Writer</h6>
-              </div>
-              <ul class="ud-team-socials">
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-facebook-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-twitter-filled"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/MusharofChy">
-                    <i class="lni lni-instagram-filled"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- ====== Team End ====== -->
 
     <section id="tranding">
       <div class="row">
         <div class="container">
           <div class="col-lg-12">
             <div class="ud-section-title mx-auto text-center">
-              <span>Our Gallery</span>
-              <h2>Meet The Team</h2>
+              <span>Galeri</span>
+              <h2>Bertemu dengan Tim</h2>
               <p>Para pengurus dan kegiatan yang dilakukan oleh PWNU Jabar</p>
             </div>
           </div>
@@ -713,22 +261,6 @@
               <div class="tranding-slide-img">
                 <img src="assets/img/swiper/1.JPG" alt="Tranding" />
               </div>
-              <!-- <div class="tranding-slide-content">
-                <h1 class="food-price">$20</h1>
-                <div class="tranding-slide-content-bottom">
-                  <h2 class="food-name">Special Pizza</h2>
-                  <h3 class="food-rating">
-                    <span>4.5</span>
-                    <div class="rating">
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                      <ion-icon name="star"></ion-icon>
-                    </div>
-                  </h3>
-                </div>
-              </div> -->
             </div>
             <!-- Slide-end -->
             <!-- Slide-start -->
@@ -805,7 +337,7 @@
           <div class="col-lg-12">
             <div class="ud-section-title text-center mx-auto">
               <span>FAQ</span>
-              <h2>Any Questions? Answered</h2>
+              <h2>Ada Pertanyaan?</h2>
               <p>Beberapa pertanyaan yang sering diajukan</p>
             </div>
           </div>
@@ -909,11 +441,11 @@
           <div class="col-xl-8 col-lg-7">
             <div class="ud-contact-content-wrapper">
               <div class="ud-contact-title">
-                <span>CONTACT US</span>
+                <span>Kontak</span>
                 <h2>
-                  Let’s talk about
+                  Ayo bicara bersama
                   <br />
-                  Love to hear from you!
+                  
                 </h2>
               </div>
               <div class="ud-contact-info-wrapper">
@@ -922,7 +454,7 @@
                     <i class="lni lni-map-marker"></i>
                   </div>
                   <div class="ud-info-meta">
-                    <h5>Our Location</h5>
+                    <h5>Lokasi Kantor</h5>
                     <p>
                       Jl. Terusan Galunggung No. 9 Kel. Lingkar Selatan Kec.
                       Lengkong Kota Bandung 40263
@@ -934,7 +466,7 @@
                     <i class="lni lni-envelope"></i>
                   </div>
                   <div class="ud-info-meta">
-                    <h5>How Can We Help?</h5>
+                    <h5>Kontak</h5>
                     <p>admin@nujabar.or.id</p>
                   </div>
                 </div>
@@ -945,39 +477,39 @@
             <div
               class="ud-contact-form-wrapper wow fadeInUp"
               data-wow-delay=".2s">
-              <h3 class="ud-contact-form-title">Send us a Message</h3>
+              <h3 class="ud-contact-form-title">Kirim Pesan</h3>
               <form class="ud-contact-form">
                 <div class="ud-form-group">
-                  <label for="fullName">Full Name*</label>
+                  <label for="fullName">Nama Lengkap*</label>
                   <input
                     type="text"
                     name="fullName"
-                    placeholder="Adam Gelius" />
+                    placeholder="" />
                 </div>
                 <div class="ud-form-group">
                   <label for="email">Email*</label>
                   <input
                     type="email"
                     name="email"
-                    placeholder="example@yourmail.com" />
+                    placeholder="" />
                 </div>
                 <div class="ud-form-group">
-                  <label for="phone">Phone*</label>
+                  <label for="phone">No Telepon*</label>
                   <input
                     type="text"
                     name="phone"
-                    placeholder="+885 1254 5211 552" />
+                    placeholder="" />
                 </div>
                 <div class="ud-form-group">
-                  <label for="message">Message*</label>
+                  <label for="message">Pesan*</label>
                   <textarea
                     name="message"
                     rows="1"
-                    placeholder="type your message here"></textarea>
+                    placeholder=""></textarea>
                 </div>
                 <div class="ud-form-group mb-0">
                   <button type="submit" class="ud-main-btn">
-                    Send Message
+                    Kirim Pesan
                   </button>
                 </div>
               </form>
