@@ -84,7 +84,7 @@
               href="#"
               data-bs-toggle="dropdown">
               <img
-                src="assets/img/profile-img.jpg"
+                src="assets/img/profile-image.png"
                 alt="Profile"
                 class="rounded-circle" />
               <span class="d-none d-md-block dropdown-toggle ps-2">
