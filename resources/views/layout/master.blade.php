@@ -9,8 +9,7 @@
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="assets/img/logo.svg" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="../assets/img/logo.svg" rel="icon" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect" />
@@ -23,18 +22,18 @@
 
     <!-- Vendor CSS Files -->
     <link
-      href="assets/css/bootstrap/bootstrap.min.css"
+      href="../assets/css/bootstrap/bootstrap.min.css"
       rel="stylesheet" />
     <link
-      href="assets/css/bootstrap/bootstrap-icons.css"
+      href="../assets/css/bootstrap/bootstrap-icons.css"
       rel="stylesheet" />
     <link
-      href="assets/css/data-tables.css"
+      href="../assets/css/data-tables.css"
       rel="stylesheet" />
    
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
 
   </head>
 
@@ -43,7 +42,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/logo.svg" alt="" />
+          <img src="../assets/img/logo.svg" alt="" />
           <span class="d-none d-lg-block">
             SISTEM INFORMASI MANAJEMEN NU JABAR
           </span>
@@ -84,7 +83,7 @@
               href="#"
               data-bs-toggle="dropdown">
               <img
-                src="assets/img/profile-image.png"
+                src="../assets/img/profile-image.png"
                 alt="Profile"
                 class="rounded-circle" />
               <span class="d-none d-md-block dropdown-toggle ps-2">
@@ -135,19 +134,69 @@
     <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/admin">
-            <i class="bi bi-grid"></i>
+          <a class="nav-link {{ Request::is('admin/dashboard') ? 'active':'' }}" href="/admin/dashboard">
+            <i class="bi bi-grid-1x2-fill"></i>
             <span>Dashboard</span>
           </a>
         </li>
-        <!-- End Dashboard Nav -->
         <li class="nav-item">
-          <a class="nav-link" href="/admin/pwnu">
-            <i class="bi bi-map"></i>
+          <a class="nav-link {{ Request::is('admin/pwnu') ? 'active':'' }}" href="/admin/pwnu">
+            <i class="bi bi-globe2"></i>
             <span>PWNU</span>
           </a>
         </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/pcnu') ? 'active':'' }}" href="/admin/pcnu">
+            <i class="bi bi-globe2"></i>
+            <span>PCNU</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/mwcnu') ? 'active':'' }}" href="/admin/mwcnu">
+            <i class="bi bi-gem"></i>
+            <span>MWC NU</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/ranting') ? 'active':'' }}" href="/admin/ranting">
+            <i class="bi bi-gem"></i>
+            <span>Ranting</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/anak-ranting') ? 'active':'' }}" href="/admin/anak-ranting">
+            <i class="bi bi-gem"></i>
+            <span>Anak Ranting</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/lembaga') ? 'active':'' }}" href="/admin/lembaga">
+            <i class="bi bi-building"></i>
+            <span>Lembaga</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/banom') ? 'active':'' }}" href="/admin/banom">
+            <i class="bi bi-pie-chart-fill"></i>
+            <span>Banom</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/sadesha') ? 'active':'' }}" href="/admin/sadesha">
+            <i class="bi bi-pie-chart-fill"></i>
+            <span>Sadesha</span>
+          </a>
+        </li>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link {{ Request::is('admin/nu-award') ? 'active':'' }}" href="/admin/nu-award">
+            <i class="bi bi-pie-chart-fill"></i>
+            <span>NU Award</span>
+          </a>
+        </li>
+
         <!-- End Dashboard Nav -->
+        
 
    
       </ul>
@@ -156,11 +205,11 @@
 
     <main id="main" class="main">
       <div class="pagetitle">
-        <h1>@yield('breadcrumb')</h1>
+        <h1>@yield('title')</h1>
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-            <li class="breadcrumb-item active">@yield('breadcrumb')</li>
+            <li class="breadcrumb-item active">@yield('title')</li>
           </ol>
         </nav>
       </div>
@@ -190,10 +239,10 @@
     </a>
 
     <!-- Vendor JS Files -->  
-    <script src="assets/js/bootstrap/bootstrap.bundle.min.js"></script> 
-    <script src="assets/js/simple-datatables.js"></script>
+    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script> 
+    <script src="../assets/js/simple-datatables.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>
