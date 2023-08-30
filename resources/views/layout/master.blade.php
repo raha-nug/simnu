@@ -51,32 +51,8 @@
       </div>
       <!-- End Logo -->
 
-      <!-- <div class="search-bar">
-        <form
-          class="search-form d-flex align-items-center"
-          method="POST"
-          action="#">
-          <input
-            type="text"
-            name="query"
-            placeholder="Search"
-            title="Enter search keyword" />
-          <button type="submit" title="Search">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-      </div> -->
-      <!-- End Search Bar -->
-
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
-          <!-- <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle" href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li> -->
-          <!-- End Search Icon-->
-
           <li class="nav-item dropdown pe-3">
             <a
               class="nav-link nav-profile d-flex align-items-center pe-0"
@@ -141,7 +117,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Request::is('admin/pwnu') ? 'active':'' }}" href="/admin/pwnu">
-            <i class="bi bi-globe2"></i>
+            <i class="bi bi-menu-button-wide"></i>
             <span>PWNU</span>
           </a>
         </li>
@@ -153,7 +129,7 @@
         </li>
          <li class="nav-item">
           <a class="nav-link {{ Request::is('admin/mwcnu') ? 'active':'' }}" href="/admin/mwcnu">
-            <i class="bi bi-gem"></i>
+            <i class="bi bi-globe2"></i>
             <span>MWC NU</span>
           </a>
         </li>
@@ -177,7 +153,7 @@
         </li>
          <li class="nav-item">
           <a class="nav-link {{ Request::is('admin/banom') ? 'active':'' }}" href="/admin/banom">
-            <i class="bi bi-pie-chart-fill"></i>
+            <i class="bi bi-building"></i>
             <span>Banom</span>
           </a>
         </li>

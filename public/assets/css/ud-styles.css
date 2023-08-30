@@ -514,7 +514,7 @@ p {
 }
 
 .sticky .navbar-btn .ud-white-btn:hover {
-   background-color: #1b5c48;
+    background-color: #1b5c48;
 }
 
 /* ===== Hero CSS ===== */
@@ -2665,3 +2665,15 @@ p {
     }
 }
 /*# sourceMappingURL=ud-styles.css.map */
+
+/* CUSTOM */
+
+.nav-brand-text {
+    font-weight: 600;
+    color: #f5f5f5;
+}
+
+.nav-brand-text-2 {
+    font-weight: 600;
+    color: #23785d;
+}

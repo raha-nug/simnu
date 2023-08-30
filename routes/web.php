@@ -30,6 +30,7 @@ Route::get('/admin/pwnu', function () {
         'title'=> 'PWNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
+        'name'=>'PWNU Jawa Barat'
     ]);
 });
 Route::get('/admin/pcnu', function () {

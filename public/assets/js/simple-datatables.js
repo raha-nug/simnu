@@ -5493,7 +5493,7 @@
                                     labels: {
                                         placeholder: "Search...",
                                         searchTitle: "Search within table",
-                                        perPage: "entries per page",
+                                        perPage: "",
                                         noRows: "No entries found",
                                         noResults:
                                             "No results match your search query",

@@ -6,7 +6,8 @@
     const ud_header = document.querySelector(".ud-header");
     const sticky = ud_header.offsetTop;
     const logo = document.querySelector(".navbar-brand img");
-
+    const nav_text = document.querySelector(".nav-brand-text");
+    
     if (window.scrollY > sticky) {
       ud_header.classList.add("sticky");
     } else {
@@ -16,8 +17,12 @@
     // === logo change
     if (ud_header.classList.contains("sticky")) {
       logo.src = "assets/img/logo/logo-2.svg";
+      nav_text.classList.add("nav-brand-text-2");
     } else {
       logo.src = "assets/img/logo/logo.svg";
+      nav_text.classList.remove("nav-brand-text-2");
+      nav_text.classList.add("nav-brand-text");
+
     }
 
     // show or hide the back-top-top button
