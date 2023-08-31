@@ -24,7 +24,7 @@
           <dt class="text-lg-end text-sm-start">Alamat : </dt>
         </div>
         <div class="col-lg-9">
-          <dd>Ini text Hallo</dd>
+          <dd>Jl. Terusan Galunggung No. 9 Kel. Lingkar Selatan Kec. Lengkong Kota Bandung 40263</dd>
         </div>
       </div>
       <div class="row">
@@ -32,7 +32,7 @@
           <dt class="text-lg-end text-sm-start">Telepon :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Ini text Hallo</dd>
+          <dd>0227315915</dd>
         </div>
       </div>
       <div class="row">
@@ -40,7 +40,7 @@
           <dt class="text-lg-end text-sm-start">Email :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Ini text Hallo</dd>
+          <dd>admin@nujabar.or.id</dd>
         </div>
       </div>
       <div class="row">
@@ -48,7 +48,7 @@
           <dt class="text-lg-end text-sm-start">Website :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Ini text Hallo</dd>
+          <dd>JAWA BARAT</dd>
         </div>
       </div>
     </div>
@@ -114,43 +114,10 @@
         </li>
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
-        <div
-          class="tab-pane fade show active"
-          id="bordered-justified-pengurus"
-          role="tabpanel"
-          aria-labelledby="pengurus-tab">
-          Sunt est soluta temporibus accusantium neque nam maiores cumque
-          temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt
-          iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi
-          sed ea saepe at unde.
-        </div>
-        <div
-          class="tab-pane fade"
-          id="bordered-justified-kepengurusan"
-          role="tabpanel"
-          aria-labelledby="kepengurusan-tab">
-          Nesciunt totam et. Consequuntur magnam aliquid eos nulla dolor iure
-          eos quia. Accusantium distinctio omnis et atque fugiat. Itaque
-          doloremque aliquid sint quasi quia distinctio similique. Voluptate
-          nihil recusandae mollitia dolores. Ut laboriosam voluptatum dicta.
-        </div>
-        <div
-          class="tab-pane fade"
-          id="bordered-justified-lembaga"
-          role="tabpanel"
-          aria-labelledby="lembaga-tab">
-          Saepe animi et soluta ad odit soluta sunt. Nihil quos omnis animi
-          debitis cumque. Accusantium quibusdam perspiciatis qui qui omnis
-          magnam. Officiis accusamus impedit molestias nostrum veniam. Qui amet
-          ipsum iure. Dignissimos fuga tempore dolor.
-        </div>
-        <div
-          class="tab-pane fade"
-          id="bordered-justified-banom"
-          role="tabpanel"
-          aria-labelledby="banom-tab">
-          empore dolor.
-        </div>
+        @include('components.pengurusList')
+        @include('components.kepengurusanList')
+        @include('components.lembagaList')
+        @include('components.banomList')
       </div>
       <!-- End Bordered Tabs Justified -->
     </div>
