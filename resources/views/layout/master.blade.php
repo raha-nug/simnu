@@ -180,15 +180,7 @@
     <!-- End Sidebar-->
 
     <main id="main" class="main">
-      <div class="pagetitle">
-        <h1>@yield('title')</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-            <li class="breadcrumb-item active">@yield('title')</li>
-          </ol>
-        </nav>
-      </div>
+      @yield('pagetitle')
       <!-- End Page Title -->
 
       <section class="section ">

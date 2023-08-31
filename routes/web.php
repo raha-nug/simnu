@@ -89,3 +89,26 @@ Route::get('/admin/nu-award', function () {
         'from'=>'Jawa Barat', 
     ]);
 });
+
+
+Route::get('/admin/add-sk-pwnu', function () {
+    return view('pages.add.add-sk-pwnu',[
+        'title'=> 'Tambah SK PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/add-lembaga-pwnu', function () {
+    return view('pages.add.add-lembaga-pwnu',[
+        'title'=> 'Tambah Lembaga PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/add-banom-pwnu', function () {
+    return view('pages.add.add-banom-pwnu',[
+        'title'=> 'Tambah Banom PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
