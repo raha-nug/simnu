@@ -316,12 +316,6 @@
           </div>
 
           <div class="tranding-slider-control">
-            <button class="swiper-button-prev slider-arrow">
-              <ion-icon name="arrow-back-outline"></ion-icon>
-            </button>
-            <button class="swiper-button-next slider-arrow">
-              <ion-icon name="arrow-forward-outline"></ion-icon>
-            </button>
             <div class="swiper-pagination"></div>
           </div>
         </div>

@@ -1776,7 +1776,7 @@ progress {
     --bs-table-active-color: var(--bs-body-color);
     --bs-table-active-bg: rgba(0, 0, 0, 0.1);
     --bs-table-hover-color: var(--bs-body-color);
-    --bs-table-hover-bg:  rgba(27, 134, 112, 0.10);
+    --bs-table-hover-bg:  rgba(27, 102, 134, 0.1);
     width: 100%;
     margin-bottom: 1rem;
     vertical-align: top;
@@ -2973,7 +2973,7 @@ fieldset:disabled .btn {
 .btn-primary {
     --bs-btn-color: #fff;
     --bs-btn-bg: #187865;
-    --bs-btn-border-color: #125d4e;
+    --bs-btn-border-color: #187865;
     --bs-btn-hover-color: #fff;
     --bs-btn-hover-bg: rgb(19, 97, 82);
     --bs-btn-hover-border-color: rgb(19, 97, 82);

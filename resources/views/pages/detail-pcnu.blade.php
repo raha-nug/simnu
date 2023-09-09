@@ -1,18 +1,27 @@
-@extends('layout.master') @section('pagetitle')
+@extends('layout.master')
+
+
+@section('title',$title)
+@section('username',$username)
+@section('from',$from)
+
+@section('pagetitle')
 <div class="pagetitle">
   <h1>{{ $title }}</h1>
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+      <li class="breadcrumb-item"><a href="/admin/pcnu">PCNU</a></li>
       <li class="breadcrumb-item active">{{ $title }}</li>
     </ol>
   </nav>
 </div>
-@endsection @section('content')
+@endsection
 
+@section('content')
 <div class="container">
   <div class="card">
-    <div class="card-header">PWNU Jawa Barat</div>
+    <div class="card-header">Detail PCNU</div>
     <div class="card-body">
       <h5 class="card-title">Informasi Umum</h5>
       <div class="row">
@@ -20,7 +29,7 @@
           <dt class="text-lg-end text-sm-start">Nama :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>PWNU Jawa Barat</dd>
+          <dd>PCNU Kota Tasikmalaya</dd>
         </div>
       </div>
       <div class="row">
@@ -29,8 +38,7 @@
         </div>
         <div class="col-lg-9">
           <dd>
-            Jl. Terusan Galunggung No. 9 Kel. Lingkar Selatan Kec. Lengkong Kota
-            Bandung 40263
+            Jl. DR. Sukarjo No. 47, Kota Tasikmalaya 46112
           </dd>
         </div>
       </div>
@@ -39,7 +47,7 @@
           <dt class="text-lg-end text-sm-start">Telepon :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>0227315915</dd>
+          <dd>0265326805</dd>
         </div>
       </div>
       <div class="row">
@@ -47,7 +55,7 @@
           <dt class="text-lg-end text-sm-start">Email :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>admin@nujabar.or.id</dd>
+          <dd>pcnukotatsk@gmail.com</dd>
         </div>
       </div>
       <div class="row">
@@ -55,9 +63,34 @@
           <dt class="text-lg-end text-sm-start">Website :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>https://jabar.nu.or.id</dd>
+          <dd>https://nu-kotatasikmalaya.id/</dd>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Kota/Kab :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>Kota Tasikmalaya</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Latitude :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>-7.323617768813682</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Longitude :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>108.22126124815536</dd>
+        </div>
+      </div>
+
     </div>
   </div>
   <div class="card">
@@ -117,6 +150,19 @@
             aria-controls="banom"
             aria-selected="false">
             Banom
+          </button>
+        </li>
+        <li class="nav-item flex-fill" role="presentation">
+          <button
+            class="nav-link w-100"
+            id="banom-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#bordered-justified-mwc"
+            type="button"
+            role="tab"
+            aria-controls="banom"
+            aria-selected="false">
+            MWC
           </button>
         </li>
       </ul>
@@ -215,6 +261,81 @@
         </div>
         <div
           class="tab-pane fade mt-3"
+          id="bordered-justified-lembaga"
+          role="tabpanel"
+          aria-labelledby="lembaga-tab">
+          <div class="d-flex justify-content-end me-3 btn-sm">
+            <a class="btn btn-primary" href="/admin/add-lembaga">
+              <i class="bi bi-plus me-1"></i>
+              Tambah
+            </a>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-borderless table-hover datatable">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nama Lembaga</th>
+                  <th scope="col">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Lembaga Dakwah NU (LDNU) Jawa Barat</td>
+                  <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Lembaga Pendidikan Ma’arif NU Jawa Barat</td>
+                 <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade mt-3"
           id="bordered-justified-banom"
           role="tabpanel"
           aria-labelledby="banom-tab">
@@ -288,13 +409,14 @@
             </table>
           </div>
         </div>
+        
         <div
           class="tab-pane fade mt-3"
-          id="bordered-justified-lembaga"
+          id="bordered-justified-mwc"
           role="tabpanel"
-          aria-labelledby="lembaga-tab">
+          aria-labelledby="mwc-tab">
           <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-lembaga">
+            <a class="btn btn-primary" href="/admin/add-mwc">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -304,15 +426,19 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Nama Lembaga</th>
+                  <th scope="col">Nama MWC</th>
+                  <th scope="col">Telepon</th>
+                  <th scope="col">Email</th>
                   <th scope="col">Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>Lembaga Dakwah NU (LDNU) Jawa Barat</td>
-                  <td>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
+                 <td>
                     
                     <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                       <i class="bi bi-three-dots-vertical"></i>
@@ -336,7 +462,9 @@
                 </tr>
                 <tr>
                   <th scope="row">2</th>
-                  <td>Lembaga Pendidikan Ma’arif NU Jawa Barat</td>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
                  <td>
                     
                     <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
@@ -359,6 +487,169 @@
                   
                   </td>
                 </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
+                 <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
+                 <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
+                 <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
+                 <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
+                 <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>MWC NU Kawalu</td>
+                  <td>0800000009</td>
+                  <td>mwcnukawalu@gmail.com</td>
+                 <td>
+                    
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                      <li><a class="dropdown-item" href="#">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit
+                        </a>
+                      </li>
+                      <li><a class="dropdown-item text-danger" href="#">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                      </li>
+                    </ul>
+                  
+                  </td>
+                </tr>
+                
               </tbody>
             </table>
           </div>

@@ -184,7 +184,6 @@
       <!-- End Page Title -->
 
       <section class="section ">
-        <div class="row">
           @yield('content')
       </section>
     </main>

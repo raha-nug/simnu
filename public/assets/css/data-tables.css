@@ -34,6 +34,7 @@
 
 .datatable-input {
     padding: 6px 12px;
+    width: 12rem;
 }
 .datatable-input:focus,
 .datatable-selector:focus {

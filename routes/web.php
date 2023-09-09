@@ -93,23 +93,79 @@ Route::get('/admin/nu-award', function () {
 });
 
 
-Route::get('/admin/add-sk-pwnu', function () {
-    return view('pages.add.add-sk-pwnu',[
+Route::get('/admin/add-sk', function () {
+    return view('pages.add.add-sk',[
         'title'=> 'Tambah SK PWNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
 });
-Route::get('/admin/add-lembaga-pwnu', function () {
-    return view('pages.add.add-lembaga-pwnu',[
+Route::get('/admin/add-lembaga', function () {
+    return view('pages.add.add-lembaga',[
         'title'=> 'Tambah Lembaga PWNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
 });
-Route::get('/admin/add-banom-pwnu', function () {
-    return view('pages.add.add-banom-pwnu',[
+Route::get('/admin/add-banom', function () {
+    return view('pages.add.add-banom',[
         'title'=> 'Tambah Banom PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/add-pcnu', function () {
+    return view('pages.add.add-pcnu',[
+        'title'=> 'Tambah PCNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-pcnu', function () {
+    return view('pages.detail-pcnu',[
+        'title'=> 'Detail PCNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/add-mwc', function () {
+    return view('pages.add.add-mwc',[
+        'title'=> 'Detail PCNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-mwc', function () {
+    return view('pages.detail-mwc',[
+        'title'=> 'Detail MWC NU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-ranting', function () {
+    return view('pages.detail-ranting',[
+        'title'=> 'Detail Ranting NU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/add-ranting', function () {
+    return view('pages.add.add-ranting',[
+        'title'=> 'Tambah Ranting',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/add-anak-ranting', function () {
+    return view('pages.add.add-anak-ranting',[
+        'title'=> 'Tambah Anak Ranting',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-anak-ranting', function () {
+    return view('pages.detail-anak-ranting',[
+        'title'=> 'Detail Anak Ranting',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);

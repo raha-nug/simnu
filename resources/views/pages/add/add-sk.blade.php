@@ -17,7 +17,7 @@
 @section('content')
 <x-form method="POST" action="/admin/pwnu">
   <x-slot:title>
-    Tambah SK PWNU
+    Tambah SK
   </x-slot:title>
    <div class="col-md-12">
     <label for="no-sk" class="form-label">Nomer SK</label>

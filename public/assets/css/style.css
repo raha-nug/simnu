@@ -18,6 +18,11 @@ body {
     background: #f6f9ff;
     color: #444444;
 }
+.body{
+    background-image: url(../img/hero/bg-hero.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 a {
     color: #187865;
@@ -655,7 +660,7 @@ h6 {
 }
 
 .sidebar-nav {
-    padding: 0;
+    padding: .7em;
     margin: 0;
     list-style: none;
 }
