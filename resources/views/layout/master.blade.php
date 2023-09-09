@@ -44,7 +44,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <img src="../assets/img/logo.svg" alt="" />
           <span class="d-none d-lg-block">
-            SISTEM INFORMASI MANAJEMEN NU JABAR
+            SIM NU
           </span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>

@@ -15,25 +15,17 @@
 @endsection
 
 @section('content')
-<div class="container">
-
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Tambah Lembaga</h5>
-            <form class="row g-3">
-                <div class="col-md-12">
-                  <label for="no-sk" class="form-label">Nama Lembaga</label>
-                  <select class="form-select" id="validationCustom04" required>
-                    <option selected disabled value="">--pilih lembaga--</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="text-end">
-                  <button type="submit" class="btn btn-primary"><i class="bi bi-check-circle me-2"></i>Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
+<x-form method="POST" action="/admin/pwnu">
+  <x-slot:title>
+    Tambah Lembaga PWNU
+  </x-slot:title>
+  <div class="col-md-12">
+  <label for="no-sk" class="form-label">Nama Lembaga</label>
+  <select class="form-select" id="validationCustom04" required>
+    <option selected disabled value="">--pilih lembaga--</option>
+    <option>...</option>
+  </select>
 </div>
+</x-form>
 
 @endsection

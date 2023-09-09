@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     background: #f6f9ff;
     color: #444444;
 }
@@ -370,8 +370,8 @@ h6 {
 }
 
 .logo span {
-    margin-left: 1rem;
-    font-size: 15px;
+    margin-left: .5rem;
+    font-size: 18px;
     font-weight: 600;
     color: #187865;
     font-family: "Inter", sans-serif;

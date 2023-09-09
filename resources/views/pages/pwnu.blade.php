@@ -127,7 +127,7 @@
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
         <div
-          class="tab-pane fade show active"
+          class="tab-pane fade show active mt-5"
           id="bordered-justified-pengurus"
           role="tabpanel"
           aria-labelledby="pengurus-tab">
@@ -183,7 +183,7 @@
           </div>
         </div>
         <div
-          class="tab-pane fade"
+          class="tab-pane fade mt-5"
           id="bordered-justified-kepengurusan"
           role="tabpanel"
           aria-labelledby="kepengurusan-tab">
@@ -219,7 +219,7 @@
           </div>
         </div>
         <div
-          class="tab-pane fade"
+          class="tab-pane fade mt-5"
           id="bordered-justified-banom"
           role="tabpanel"
           aria-labelledby="banom-tab">
@@ -272,7 +272,7 @@
           
         </div>
         <div
-          class="tab-pane fade"
+          class="tab-pane fade mt-5"
           id="bordered-justified-lembaga"
           role="tabpanel"
           aria-labelledby="lembaga-tab">
