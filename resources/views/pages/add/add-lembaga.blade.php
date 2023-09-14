@@ -7,7 +7,6 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-      <li class="breadcrumb-item"><a href="/admin">PWNU</a></li>
       <li class="breadcrumb-item active">{{ $title }}</li>
     </ol>
   </nav>
@@ -19,13 +18,15 @@
   <x-slot:title>
     Tambah Lembaga
   </x-slot:title>
-  <div class="col-md-12">
-  <label for="no-sk" class="form-label">Nama Lembaga</label>
-  <select class="form-select" id="validationCustom04" required>
-    <option selected disabled value="">--pilih lembaga--</option>
-    <option>...</option>
-  </select>
-</div>
+  <div class="row">
+    <div class="col-md-12">
+      <label for="no-sk" class="form-label">Nama Lembaga</label>
+      <select class="form-select" id="validationCustom04" required>
+        <option selected disabled value="">--pilih lembaga--</option>
+        <option>...</option>
+      </select>
+    </div>
+  </div>
 </x-form>
 
 @endsection

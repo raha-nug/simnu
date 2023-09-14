@@ -133,7 +133,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Pengurus</th>
-                  <th scope="col">Jabaran</th>
+                  <th scope="col">Jabatan</th>
                   <th scope="col">Periode</th>
                 </tr>
               </thead>
@@ -201,7 +201,7 @@
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td><a href="#">112/A.II.04/11/2016</a></td>
+                  <td><a href="detail-sk">112/A.II.04/11/2016</a></td>
                   <td>04 Nov 2016 - 04 Nov 2021</td>
                 </tr>
                 <tr>

@@ -95,21 +95,21 @@ Route::get('/admin/nu-award', function () {
 
 Route::get('/admin/add-sk', function () {
     return view('pages.add.add-sk',[
-        'title'=> 'Tambah SK PWNU',
+        'title'=> 'Tambah SK',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
 });
 Route::get('/admin/add-lembaga', function () {
     return view('pages.add.add-lembaga',[
-        'title'=> 'Tambah Lembaga PWNU',
+        'title'=> 'Tambah Lembaga',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
 });
 Route::get('/admin/add-banom', function () {
     return view('pages.add.add-banom',[
-        'title'=> 'Tambah Banom PWNU',
+        'title'=> 'Tambah Banom',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
@@ -166,6 +166,20 @@ Route::get('/admin/add-anak-ranting', function () {
 Route::get('/admin/detail-anak-ranting', function () {
     return view('pages.detail-anak-ranting',[
         'title'=> 'Detail Anak Ranting',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-sk', function () {
+    return view('pages.detail-sk',[
+        'title'=> 'Detail SK',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-lembaga', function () {
+    return view('pages.detail-lembaga',[
+        'title'=> 'Detail Lembaga',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);

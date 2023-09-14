@@ -179,7 +179,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Pengurus</th>
-                  <th scope="col">Jabaran</th>
+                  <th scope="col">Jabatan</th>
                   <th scope="col">Periode</th>
                 </tr>
               </thead>
