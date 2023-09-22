@@ -348,7 +348,6 @@ h6 {
 .nav-tabs-bordered .nav-link:hover,
 .nav-tabs-bordered .nav-link:focus {
     color: #187865;
-    background-color: #1c8d77 ;
 }
 
 .nav-tabs-bordered .nav-link.active {
@@ -780,6 +779,7 @@ h6 {
 .sidebar-nav .nav-content a:hover {
     background-color: #1c8d77;
     border-radius: 4px;
+    color: #f6f9ff;
 }
 
 .sidebar-nav .nav-content a.active {

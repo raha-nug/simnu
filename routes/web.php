@@ -184,3 +184,10 @@ Route::get('/admin/detail-lembaga', function () {
         'from'=>'Jawa Barat', 
     ]);
 });
+Route::get('/admin/add-sadesha', function () {
+    return view('pages.add.add-sadesha',[
+        'title'=> 'Tambah Hafidz',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
