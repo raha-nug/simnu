@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banom', function (Blueprint $table) {
-            $table->uuid('id');
+        Schema::create('surat_keputusan', function (Blueprint $table) {
+            $table->uuid('sk_id')->primary();
             $table->unsignedBigInteger('id_pwnu');
             $table->unsignedBigInteger('id_pcnu');
             $table->unsignedBigInteger('id_mwcnu');
-            $table->string('nama', 255);
-            $table->string('alamat', 500);
-            $table->string('telp', 16);
-            $table->string('provinsi', 16);
-            $table->string('kota', 16);
-            $table->string('kecamatan', 16);
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_berakhir');
+            $table->string('file_sk',255);
             $table->timestamps();
 
             $table->foreign('id_pwnu')->references('id')->on('pwnu')->onDelete('cascade');
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banom');
+        Schema::dropIfExists('surat_keputusan');
     }
 };

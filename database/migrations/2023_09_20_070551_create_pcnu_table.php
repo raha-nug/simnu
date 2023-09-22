@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pcnu', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_pwnu');
+            $table->unsignedBigInteger('id_pwnu');
             $table->string('nama', 255);
             $table->string('alamat', 500);
             $table->string('telp', 16);

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ranting', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->integer('id_mwcnu');
+            $table->uuid('id')->primary();
+            $table->unsignedBigInteger('id_mwcnu');
             $table->string('nama', 255);
             $table->string('alamat', 500);
             $table->string('telp', 16);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('kecamatan', 16);
             $table->string('desa', 16);
             $table->timestamps();
-            
+
             $table->foreign('id_mwcnu')->references('id')->on('mwcnu')->onDelete('cascade');
         });
     }
