@@ -16,7 +16,7 @@ class MWCNU extends Model
     use HasFactory;
     protected $table = "mwcnu";
     protected $guarded = 'id';
-    protected $fillbale = [
+    protected $fillable = [
         'id_pcnu',
         'nama',
         'alamat',

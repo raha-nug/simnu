@@ -14,7 +14,7 @@ class PWNU extends Model
     use HasFactory;
     protected $table = "pwnu";
     protected $guarded = 'id';
-    protected $fillbale = [
+    protected $fillable = [
         'nama',
         'alamat',
         'telp',

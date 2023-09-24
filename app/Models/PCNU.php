@@ -16,7 +16,7 @@ class PCNU extends Model
     use HasFactory;
     protected $table = "pcnu";
     protected $guarded = 'id';
-    protected $fillbale = [
+    protected $fillable = [
         'id_pwnu',
         'nama',
         'alamat',
