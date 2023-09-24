@@ -83,7 +83,7 @@
                   class="dropdown-item d-flex align-items-center"
                   href="/login">
                   <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
+                  <span>Logout</span>
                 </a>
               </li>
             </ul>
@@ -101,7 +101,7 @@
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/dashboard') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*dashboard*') ? 'active':'' }}"
             href="/admin/dashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
@@ -110,7 +110,7 @@
         <li class="nav-heading">Districts</li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/pwnu') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*pwnu*') ? 'active':'' }}"
             href="/admin/pwnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
@@ -141,7 +141,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/pcnu') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
             href="/admin/pcnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
@@ -174,7 +174,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/mwcnu') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*mwcnu*') ? 'active':'' }}"
             href="/admin/mwcnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
@@ -216,7 +216,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/anak-ranting') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*anak-ranting*') ? 'active':'' }}"
             href="/admin/anak-ranting">
             <div class="icon-nav">
               <?xml version="1.0" ?>
@@ -236,7 +236,7 @@
         <li class="nav-heading">Datas</li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/pengurus') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*pengurus*') ? 'active':'' }}"
             href="/admin/pengurus">
             <i class="bi bi-person-fill"></i>
             <span>Data Pengurus</span>
@@ -313,6 +313,15 @@
             </li>
           </ul>
         </li>
+        <li class="nav-heading">Others</li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/login">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+          </a>
+        </li>
 
         <!-- End Dashboard Nav -->
       </ul>
@@ -331,7 +340,7 @@
     <footer id="footer" class="footer">
       <div class="copyright">
         &copy; Copyright
-        <strong><span>2023</span></strong>
+        <strong><span>SIMNU 2023</span></strong>
         . All Rights Reserved
       </div>
     </footer>
@@ -349,5 +358,10 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
+    <script>
+      $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+    </script>
   </body>
 </html>

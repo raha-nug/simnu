@@ -11,7 +11,6 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-      <li class="breadcrumb-item"><a href="/admin/mwc">Ranting</a></li>
       <li class="breadcrumb-item active">{{ $title }}</li>
     </ol>
   </nav>
@@ -29,11 +28,11 @@
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
         
 
-        <li><a class="dropdown-item" href="edit-ranting"><i class="bi bi-pencil-square"></i>Edit</a></li>
+        <li><a class="dropdown-item" href="edit-banom"><i class="bi bi-pencil-square"></i>Edit</a></li>
         
       </ul>
     </div>
-    <div class="card-header">Detail Ranting NU</div>
+    <div class="card-header">Detail Banom</div>
     <div class="card-body">
       <h5 class="card-title">Informasi Umum</h5>
       <div class="row">
@@ -41,67 +40,20 @@
           <dt class="text-lg-end text-sm-start">Nama :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Ranting Sukaharja</dd>
+          <dd>Ikatan Pelajar Putra NU (IPNU) Jawa Barat</dd>
         </div>
       </div>
       <div class="row">
         <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Alamat :</dt>
+          <dt class="text-lg-end text-sm-start">NU Kota/Kab :</dt>
         </div>
         <div class="col-lg-9">
           <dd>
-            Ds Sukaharja Kec. Sariwangi
+            -
           </dd>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Telepon :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>082337300566</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Email :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>rantingsariwangi@gmail.com</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">MWC NU :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd><a href="">MWC Sariwangi</a></dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Kecamatan :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>Sariwangi</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Latitude :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>-7.323617768813682</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Longitude :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>108.22126124815536</dd>
-        </div>
-      </div>
+
 
     </div>
   </div>
@@ -138,19 +90,6 @@
             SK Kepengurusan
           </button>
         </li>
-        <li class="nav-item flex-fill" role="presentation">
-          <button
-            class="nav-link w-100"
-            id="anak-ranting-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#bordered-justified-anak-ranting"
-            type="button"
-            role="tab"
-            aria-controls="anak-ranting"
-            aria-selected="false">
-            Anak Ranting
-          </button>
-        </li>
         
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
@@ -163,7 +102,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
+                  <th scope="col">#</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Pengurus</th>
                   <th scope="col">Jabatan</th>
@@ -226,7 +165,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
+                  <th scope="col">#</th>
                   <th scope="col">No Surat</th>
                   <th scope="col">Masa Jabatan</th>
                 </tr>
@@ -241,81 +180,6 @@
                   <th scope="row">2</th>
                   <td><a href="">790/A.II.04/11/2021</a></td>
                   <td>24 Nov 2021 - 24 Nov 2026</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade mt-3"
-          id="bordered-justified-anak-ranting"
-          role="tabpanel"
-          aria-labelledby="anak-ranting-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-sk">
-              <i class="bi bi-plus me-1"></i>
-              Tambah
-            </a>
-          </div>
-
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">Nama Anak Ranting</th>
-                  <th scope="col">Telepon</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><a href="#">Wates</a></td>
-                  <td>08111111234</td>
-                  <td>wates@email.com</td>
-                  <td>
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td><a href="#">Wates</a></td>
-                  <td>08111111234</td>
-                  <td>wates@email.com</td>
-                  <td>
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  </td>
                 </tr>
               </tbody>
             </table>

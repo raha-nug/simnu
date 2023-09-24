@@ -128,7 +128,7 @@
           <div class="ud-about-content-wrapper">
             <div class="ud-about-content">
               <span class="tag">Tentang Kami</span>
-              <h2>PWNU Yang Terdepan Dalam Segi Management Data</h2>
+              <h2>PWNU Yang Terdepan Dalam Segi Manajemen Data</h2>
               <p>
                 Manajemen data yang baik adalah pondasi penting dalam mengelola
                 informasi anggota, pengurus, dan lembaga dengan efektif dan

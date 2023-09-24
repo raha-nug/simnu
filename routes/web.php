@@ -63,30 +63,30 @@ Route::get('/admin/anak-ranting', function () {
         'from'=>'Jawa Barat', 
     ]);
 });
-Route::get('/admin/lembaga', function () {
-    return view('pages.lembaga',[
-        'title'=> 'Lembaga',
+Route::get('/admin/edit-pwnu', function () {
+    return view('pages..edit.edit-pwnu',[
+        'title'=> 'Edit PWNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
 });
-Route::get('/admin/banom', function () {
-    return view('pages.banom',[
-        'title'=> 'Banom',
+Route::get('/admin/detail-banom', function () {
+    return view('pages.detail-banom',[
+        'title'=> 'detail-banom',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
 });
-Route::get('/admin/sadesha', function () {
-    return view('pages.sadesha',[
-        'title'=> 'Sadesha',
+Route::get('/admin/add-pengurus', function () {
+    return view('pages.add.add-pengurus',[
+        'title'=> 'Tambah Pengurus',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
 });
-Route::get('/admin/nu-award', function () {
-    return view('pages.nuaward',[
-        'title'=> 'NU Award',
+Route::get('/admin/pengurus', function () {
+    return view('pages.pengurus',[
+        'title'=> 'Pengurus',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
@@ -184,9 +184,9 @@ Route::get('/admin/detail-lembaga', function () {
         'from'=>'Jawa Barat', 
     ]);
 });
-Route::get('/admin/add-sadesha', function () {
-    return view('pages.add.add-sadesha',[
-        'title'=> 'Tambah Hafidz',
+Route::get('/admin/detail-pengurus', function () {
+    return view('pages.detail-pengurus',[
+        'title'=> 'Detail Pengurus',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);

@@ -4,6 +4,7 @@
 @section('title',$title)
 @section('username',$username)
 @section('from',$from)
+
 @section('pagetitle')
 <div class="pagetitle">
   <h1>{{ $title }}</h1>
@@ -20,11 +21,11 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                Daftar Lembaga
+                Daftar Pengurus
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-end me-3 mt-3 btn-sm">
-                    <a class="btn btn-primary" href="/admin/add-lembaga">
+                    <a class="btn btn-primary" href="/admin/add-pcnu">
                     <i class="bi bi-plus me-1"></i>
                     Tambah
                     </a>
@@ -34,13 +35,18 @@
                     <thead>
                         <tr>
                         <th scope="col">Nama</th>
-                        
+                        <th scope="col">Telepon</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Alamat</th>
                         <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-lembaga">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
+                            <th scope="row"><a href="/admin/detail-pengurus">KH. Hasan Nuri Hidayatullah</a></th>
+                            <td>081111111</td>
+                            <td>contoh@email.com</td>
+                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
                             <td>
                                 <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
@@ -62,7 +68,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
+                            <th scope="row"><a href="/admin/detail-pengurus">H. Asep Saepudin Abdillah</a></th>
+                            <td>081111111</td>
+                            <td>contoh@email.com</td>
+                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
                             <td>
                                 <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
@@ -84,7 +93,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
+                            <th scope="row"><a href="/admin/detail-pengurus">H. Ahmad Husen Jali, S.Ag</a></th>
+                            <td>081111111</td>
+                            <td>contoh@email.com</td>
+                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
                             <td>
                                 <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
@@ -106,205 +118,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="/admin/detail-pcnu">Lembaga Amil Zakat Infak dan Sodaqoh NU Jawa Barat</a></th>
+                            <th scope="row"><a href="/admin/detail-pengurus">H. Ahmad Dasuki</a></th>
+                            <td>081111111</td>
+                            <td>contoh@email.com</td>
+                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
                             <td>
                                 <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
@@ -326,6 +143,81 @@
                             </td>
                         </tr>
                         
+                        <tr>
+                            <th scope="row"><a href="/admin/detail-pengurus">Drs. H. Daddy Syarif, MM.</a></th>
+                            <td>081111111</td>
+                            <td>contoh@email.com</td>
+                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
+                            <td>
+                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <ul
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                                <li><a class="dropdown-item" href="#">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Edit
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="#">
+                                    <i class="bi bi-trash"></i>
+                                    Hapus
+                                    </a>
+                                </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><a href="/admin/detail-pengurus">KH. M. Nuh Addawami</a></th>
+                            <td>081111111</td>
+                            <td>contoh@email.com</td>
+                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
+                            <td>
+                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <ul
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                                <li><a class="dropdown-item" href="#">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Edit
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="#">
+                                    <i class="bi bi-trash"></i>
+                                    Hapus
+                                    </a>
+                                </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><a href="/admin/detail-pengurus">KH. M. Usamah Manshur</a></th>
+                            <td>081111111</td>
+                            <td>contoh@email.com</td>
+                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
+                            <td>
+                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <ul
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                                <li><a class="dropdown-item" href="#">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Edit
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="#">
+                                    <i class="bi bi-trash"></i>
+                                    Hapus
+                                    </a>
+                                </li>
+                                </ul>
+                            </td>
+                        </tr>
 
                     </tbody>
                     </table>
