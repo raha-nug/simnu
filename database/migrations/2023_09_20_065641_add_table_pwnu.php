@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('alamat', 500);
             $table->string('telp', 16);
             $table->string('email', 255);
-            $table->string('website', 255);
-            $table->string('lat', 255);
-            $table->string('long', 255);
+            $table->string('website', 255)->nullable();
+            $table->string('lat', 255)->nullable();
+            $table->string('long', 255)->nullable();
             $table->string('provinsi', 16);
             $table->timestamps();
         });
