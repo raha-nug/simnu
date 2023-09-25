@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PwnuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,10 @@ Route::get('/', function () {
 });
 Route::get('/login', function () {
     return view('login');
+});
+
+Route::prefix('pwnu')->group(function () {
+    Route::get('/', [PwnuController::class, 'index'])->name('pwnu');
 });
 
 Route::get('/admin/dashboard', function () {

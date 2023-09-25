@@ -110,8 +110,8 @@
         <li class="nav-heading">Districts</li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/pwnu') ? 'active':'' }}"
-            href="/admin/pwnu">
+            class="nav-link {{ Request::is('pwnu') ? 'active':'' }}"
+            href="{{ route('pwnu') }}">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
@@ -331,7 +331,7 @@
     <footer id="footer" class="footer">
       <div class="copyright">
         &copy; Copyright
-        <strong><span>2023</span></strong>
+        <strong><span>{{ date('d-m-Y') }}</span></strong>
         . All Rights Reserved
       </div>
     </footer>
@@ -349,5 +349,7 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    @yield('js-page')
   </body>
 </html>
