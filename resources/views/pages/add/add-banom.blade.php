@@ -19,13 +19,17 @@
   <x-slot:title>
     Tambah Banom
   </x-slot:title>
-  <div class="row">
-
-    <div class="col-md-12 mt-2">
+  <div class="col-md-12 mt-2">
       <label for="nama-banom" class="form-label">Nama Banom</label>
-      <select class="form-select" id="nama-banom" required>
+      <select class="select2 form-select" name="state">
+      
         <option selected disabled value="">--pilih banom master--</option>
-        <option>...</option>
+        <option>Muslimat</option>
+        <option>Fatayat</option>
+        <option>GP Ansor</option>
+        <option>PMII</option>
+        <option>Ikatan Pelajar NU (IPNU)</option>
+        <option>Ikatan Pelajar Putri NU (IPPNU)</option>
       </select>
     </div>
     <div class="col-md-12 mt-2">
@@ -35,7 +39,6 @@
         <option>...</option>
       </select>
     </div>
-  </div>
 </x-form>
 
 @endsection

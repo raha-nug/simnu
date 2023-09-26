@@ -20,6 +20,7 @@
 @section('content')
     <div class="container">
         <div class="card">
+            
             <div class="card-header">
                 Daftar PCNU
             </div>
@@ -58,12 +59,12 @@
                                 <ul
                                 class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" href="#" >
                                     <i class="bi bi-pencil-square"></i>
                                     Edit
                                     </a>
                                 </li>
-                                <li><a class="dropdown-item text-danger" href="#">
+                                <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
                                     <i class="bi bi-trash"></i>
                                     Hapus
                                     </a>
@@ -264,7 +265,25 @@
                     </tbody>
                     </table>
                 </div>
+                <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Pemberitahuan!</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Konfirmasi hapus data?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tidak</button>
+                      <button type="button" class="btn btn-danger"><i class="bi bi-trash me-2"></i>Hapus</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+            
         </div>
     </div>
 @endsection

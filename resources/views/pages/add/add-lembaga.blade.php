@@ -18,7 +18,6 @@
   <x-slot:title>
     Tambah Lembaga
   </x-slot:title>
-  <div class="row">
     <div class="col-md-12">
       <label for="no-sk" class="form-label">Nama Lembaga</label>
       <select class="form-select" id="validationCustom04" required>
@@ -26,7 +25,6 @@
         <option>...</option>
       </select>
     </div>
-  </div>
 </x-form>
 
 @endsection

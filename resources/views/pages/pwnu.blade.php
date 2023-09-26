@@ -17,6 +17,18 @@
 
 <div class="container">
   <div class="card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown">
+        <i class="bi bi-three-dots"></i>
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        
+
+        <li><a class="dropdown-item" href="edit-pwnu"><i class="bi bi-pencil-square"></i>Edit</a></li>
+        
+      </ul>
+    </div>
     <div class="card-header">PWNU Jawa Barat</div>
     <div class="card-body">
       <h5 class="card-title">Informasi Umum</h5>
@@ -62,6 +74,14 @@
           <dd>{{ $pw_detail->website ?? 'https://jabar.nu.or.id' }}</dd>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Provinsi :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>Jawa Barat</dd>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card">
@@ -95,7 +115,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Pengurus</th>
                   <th scope="col">Jabatan</th>
@@ -154,7 +174,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">No Surat</th>
                   <th scope="col">Masa Jabatan</th>
                 </tr>
@@ -185,7 +205,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">Nama Banom</th>
                   <th scope="col">Aksi</th>
                 </tr>
@@ -193,9 +213,8 @@
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>Ikatan Pelajar Putri NU (IPPNU) Jawa Barat</td>
-                  <td>
-
+                  <td><a href="detail-banom">Ikatan Pelajar Putri NU (IPPNU) Jawa Barat</a></td>
+                 <td>
                     <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                       <i class="bi bi-three-dots-vertical"></i>
                     </a>
@@ -217,7 +236,7 @@
                 </tr>
                 <tr>
                   <th scope="row">2</th>
-                  <td>Ikatan Pelajar Putri NU (IPPNU) Jawa Barat</td>
+                  <td><a href="detail-banom">Ikatan Pelajar Putri NU (IPPNU) Jawa Barat</a></td>
                   <td>
 
                     <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
@@ -254,7 +273,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">Nama Lembaga</th>
                   <th scope="col">Aksi</th>
                 </tr>

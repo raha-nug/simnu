@@ -12,6 +12,9 @@
 :root {
     scroll-behavior: smooth;
 }
+::-webkit-scrollbar{
+    display: none;
+}
 
 body {
     font-family: "Inter", sans-serif;
@@ -626,6 +629,7 @@ h6 {
 }
 
 .sidebar::-webkit-scrollbar {
+    display: block;
     width: 5px;
     height: 8px;
     background-color: #fff;
@@ -1279,4 +1283,14 @@ h6 {
 ::selection {
     color: #f6f6fe;
     background: rgb(60, 171, 136);
+}
+
+
+
+.detail-pengurus img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 5px;
 }

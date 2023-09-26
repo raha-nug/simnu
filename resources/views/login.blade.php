@@ -47,7 +47,7 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Login</h5>
-                <form action="/admin/dashboard">
+                <form action="/admin/dashboard" id="submit">
                   <div class="row gap-3">
                     <div class="col-lg-12">
                       <label for="email" class="form-label">Email</label>
@@ -79,7 +79,7 @@
                       </div>
                     </div>
                     <div class="text-end">
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" id="btnSubmit" class="btn btn-primary">
                         Masuk
                         <i class="bi bi-arrow-right ms-2"></i>
                       </button>
