@@ -12,8 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengurus', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id');
+            $table->uuid('id_sk');
+            $table->string('nik', 16);
+            $table->string('nama', 125);
+            $table->uuid('jabatan');
+            $table->dateTime('mulai_jabatan');
+            $table->dateTime('akhir_jabatan');
             $table->timestamps();
+
+            $table->foreign('id_sk')->references('id')->on('surat_keputusan')->onDelete('cascade');
+            $table->index('nik');
         });
     }
 

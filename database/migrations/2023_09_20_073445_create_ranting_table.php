@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ranting', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_mwcnu');
+            $table->integer('id_mwcnu');
             $table->string('nama', 255);
             $table->string('alamat', 500);
             $table->string('telp', 16);

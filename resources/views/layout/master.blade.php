@@ -113,8 +113,8 @@
         <li class="nav-heading">Districts</li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('*pwnu*') ? 'active':'' }}"
-            href="/admin/pwnu">
+            class="nav-link {{ Request::is('pwnu') ? 'active':'' }}"
+            href="{{ route('pwnu') }}">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
@@ -337,7 +337,7 @@
     <footer id="footer" class="footer">
       <div class="copyright">
         &copy; Copyright
-        <strong><span>SIMNU 2023</span></strong>
+        <strong><span>{{ date('d-m-Y') }}</span></strong>
         . All Rights Reserved
       </div>
     </footer>
@@ -355,6 +355,5 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
-    
   </body>
 </html>

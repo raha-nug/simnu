@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('pcnu', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pwnu');
+            $table->integer('id_pwnu');
             $table->string('nama', 255);
             $table->string('alamat', 500);
             $table->string('telp', 16);
-            $table->string('email', 255);
-            $table->string('website', 255);
-            $table->string('lat', 255);
-            $table->string('long', 255);
+            $table->string('email', 255)->nullable();
+            $table->string('website', 255)->nullable();
+            $table->string('lat', 255)->nullable();
+            $table->string('long', 255)->nullable();
             $table->string('provinsi', 16);
             $table->string('kota', 16);
             $table->timestamps();

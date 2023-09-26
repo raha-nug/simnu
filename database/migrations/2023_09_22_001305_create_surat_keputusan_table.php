@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('surat_keputusan', function (Blueprint $table) {
             $table->uuid('sk_id')->primary();
-            $table->unsignedBigInteger('id_pwnu');
-            $table->unsignedBigInteger('id_pcnu');
-            $table->unsignedBigInteger('id_mwcnu');
+            $table->integer('id_pwnu');
+            $table->integer('id_pcnu');
+            $table->integer('id_mwcnu');
+            $table->string('no_dokumen',255);
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
             $table->string('file_sk',255);
