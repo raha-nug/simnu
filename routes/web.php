@@ -191,3 +191,24 @@ Route::get('/admin/detail-pengurus', function () {
         'from'=>'Jawa Barat', 
     ]);
 });
+Route::get('/admin/add-user-group', function () {
+    return view('pages.add.add-user-group',[
+        'title'=> 'Tambah User Group',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/user-group', function () {
+    return view('pages.user-group',[
+        'title'=> 'User Group',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-user-group', function () {
+    return view('pages.detail-user-group',[
+        'title'=> 'Detail User Group',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});

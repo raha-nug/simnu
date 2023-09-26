@@ -27,6 +27,9 @@
 
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet" />
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
 
   <body>
@@ -258,55 +261,49 @@
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav">
             <li>
-              <a href="charts-chartjs.html">
+              <a href="user">
                 <i class="bi bi-circle"></i>
                 <span>User</span>
               </a>
             </li>
             <li>
-              <a href="charts-apexcharts.html">
+              <a href="user-group">
                 <i class="bi bi-circle"></i>
                 <span>User Group</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="members">
                 <i class="bi bi-circle"></i>
                 <span>Member</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
-                <i class="bi bi-circle"></i>
-                <span>Pengurus</span>
-              </a>
-            </li>
-            <li>
-              <a href="charts-echarts.html">
+              <a href="jenis-pengurus">
                 <i class="bi bi-circle"></i>
                 <span>Jenis Pengurus</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="jabatan">
                 <i class="bi bi-circle"></i>
                 <span>Jabatan</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="banom-basis">
                 <i class="bi bi-circle"></i>
                 <span>Banom Basis</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="master-lembaga">
                 <i class="bi bi-circle"></i>
                 <span>Master Lembaga</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="master-banom">
                 <i class="bi bi-circle"></i>
                 <span>Master Banom</span>
               </a>
@@ -358,10 +355,6 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
-    <script>
-      $(document).ready(function() {
-    $('.js-example-basic-single').select2();
-});
-    </script>
+    
   </body>
 </html>

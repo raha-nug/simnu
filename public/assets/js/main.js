@@ -147,6 +147,4 @@
         Loading...`;
         btnSubmit.toggleAttribute("disabled");
     });
-
-    $(".select2").select2();
 })();
