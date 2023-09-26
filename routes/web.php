@@ -198,6 +198,13 @@ Route::get('/admin/add-user-group', function () {
         'from'=>'Jawa Barat', 
     ]);
 });
+Route::get('/admin/add-user', function () {
+    return view('pages.add.add-user',[
+        'title'=> 'Tambah User',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
 Route::get('/admin/user-group', function () {
     return view('pages.user-group',[
         'title'=> 'User Group',
@@ -205,9 +212,23 @@ Route::get('/admin/user-group', function () {
         'from'=>'Jawa Barat', 
     ]);
 });
+Route::get('/admin/user', function () {
+    return view('pages.user',[
+        'title'=> 'User',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
 Route::get('/admin/detail-user-group', function () {
     return view('pages.detail-user-group',[
         'title'=> 'Detail User Group',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('/admin/detail-user', function () {
+    return view('pages.detail-user',[
+        'title'=> 'Detail User',
         'username'=>'John Doe',
         'from'=>'Jawa Barat', 
     ]);
