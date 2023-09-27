@@ -27,6 +27,9 @@
 
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet" />
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
 
   <body>
@@ -83,7 +86,7 @@
                   class="dropdown-item d-flex align-items-center"
                   href="/login">
                   <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
+                  <span>Logout</span>
                 </a>
               </li>
             </ul>
@@ -101,7 +104,7 @@
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/dashboard') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*dashboard*') ? 'active':'' }}"
             href="/admin/dashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
@@ -141,7 +144,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/pcnu') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
             href="/admin/pcnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
@@ -174,7 +177,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/mwcnu') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*mwcnu*') ? 'active':'' }}"
             href="/admin/mwcnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
@@ -216,7 +219,7 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/anak-ranting') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*anak-ranting*') ? 'active':'' }}"
             href="/admin/anak-ranting">
             <div class="icon-nav">
               <?xml version="1.0" ?>
@@ -236,7 +239,7 @@
         <li class="nav-heading">Datas</li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('admin/pengurus') ? 'active':'' }}"
+            class="nav-link {{ Request::is('*pengurus*') ? 'active':'' }}"
             href="/admin/pengurus">
             <i class="bi bi-person-fill"></i>
             <span>Data Pengurus</span>
@@ -258,60 +261,63 @@
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav">
             <li>
-              <a href="charts-chartjs.html">
+              <a href="user">
                 <i class="bi bi-circle"></i>
                 <span>User</span>
               </a>
             </li>
             <li>
-              <a href="charts-apexcharts.html">
+              <a href="user-group">
                 <i class="bi bi-circle"></i>
                 <span>User Group</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="members">
                 <i class="bi bi-circle"></i>
                 <span>Member</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
-                <i class="bi bi-circle"></i>
-                <span>Pengurus</span>
-              </a>
-            </li>
-            <li>
-              <a href="charts-echarts.html">
+              <a href="jenis-pengurus">
                 <i class="bi bi-circle"></i>
                 <span>Jenis Pengurus</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="jabatan">
                 <i class="bi bi-circle"></i>
                 <span>Jabatan</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="banom-basis">
                 <i class="bi bi-circle"></i>
                 <span>Banom Basis</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="master-lembaga">
                 <i class="bi bi-circle"></i>
                 <span>Master Lembaga</span>
               </a>
             </li>
             <li>
-              <a href="charts-echarts.html">
+              <a href="master-banom">
                 <i class="bi bi-circle"></i>
                 <span>Master Banom</span>
               </a>
             </li>
           </ul>
+        </li>
+        <li class="nav-heading">Others</li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/login">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+          </a>
         </li>
 
         <!-- End Dashboard Nav -->
@@ -349,7 +355,5 @@
 
     <!-- Template Main JS File -->
     <script src="../assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    @yield('js-page')
   </body>
 </html>

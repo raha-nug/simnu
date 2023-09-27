@@ -19,8 +19,7 @@
   <x-slot:title>
     Tambah Ranting
   </x-slot:title>
-  <div class="row">
-     <div class="col-md-12 mt-2">
+  <div class="col-md-12 mt-2">
     <label for="no-sk" class="form-label">Nama</label>
     <input type="text" class="form-control" id="no-sk" required disabled>
   </div>
@@ -57,7 +56,6 @@
   <div class="col-md-6 mt-2">
     <label for="longitude" class="form-label">Longitude</label>
     <input type="text" class="form-control" id="longitude" required>
-  </div>
   </div>
 </x-form>
 

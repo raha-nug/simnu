@@ -21,6 +21,18 @@
 @section('content')
 <div class="container">
   <div class="card">
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown">
+        <i class="bi bi-three-dots"></i>
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        
+
+        <li><a class="dropdown-item" href="edit-pcnu"><i class="bi bi-pencil-square"></i>Edit</a></li>
+        
+      </ul>
+    </div>
     <div class="card-header">Detail PCNU</div>
     <div class="card-body">
       <h5 class="card-title">Informasi Umum</h5>
@@ -176,7 +188,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Pengurus</th>
                   <th scope="col">Jabatan</th>
@@ -239,7 +251,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">No Surat</th>
                   <th scope="col">Masa Jabatan</th>
                 </tr>
@@ -274,7 +286,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">Nama Lembaga</th>
                   <th scope="col">Aksi</th>
                 </tr>
@@ -349,7 +361,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">Nama Banom</th>
                   <th scope="col">Aksi</th>
                 </tr>
@@ -425,7 +437,7 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">No</th>
                   <th scope="col">Nama MWC</th>
                   <th scope="col">Telepon</th>
                   <th scope="col">Email</th>

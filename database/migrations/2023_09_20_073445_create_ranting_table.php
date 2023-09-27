@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('id_mwcnu');
             $table->string('nama', 255);
             $table->string('alamat', 500);
-            $table->string('telp', 16);
+            $table->string('telp', 16)->nullable();
             $table->string('provinsi', 16);
             $table->string('kota', 16);
             $table->string('kecamatan', 16);

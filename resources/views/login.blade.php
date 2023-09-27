@@ -83,7 +83,7 @@
                       </div>
                     </div>
                     <div class="text-end">
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" id="btnSubmit" class="btn btn-primary">
                         Masuk
                         <i class="bi bi-arrow-right ms-2"></i>
                       </button>

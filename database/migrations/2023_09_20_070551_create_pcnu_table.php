@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('id_pwnu');
             $table->string('nama', 255);
             $table->string('alamat', 500);
-            $table->string('telp', 16);
+            $table->string('telp', 16)->nullable();
             $table->string('email', 255)->nullable();
             $table->string('website', 255)->nullable();
             $table->string('lat', 255)->nullable();

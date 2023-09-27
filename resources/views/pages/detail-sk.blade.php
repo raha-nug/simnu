@@ -73,7 +73,7 @@
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>KH. Asep Burhanudin</td>
+                  <td><a href="detail-pengurus">KH. Asep Burhanudin</a></td>
                   <td>Mustasyar</td>
                   <td>-</td>
                   <td>2016-05-25</td>
