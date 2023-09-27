@@ -29,6 +29,7 @@
   </head>
   <body
     class="body d-flex justify-content-center align-items-center min-vh-100">
+    @include('sweetalert::alert')
     <main class="min-vw-100">
       <div class="container">
         <div class="row">
@@ -47,12 +48,14 @@
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Login</h5>
-                <form action="/admin/dashboard">
+                <form method="POST" action="{{route('login')}}">
+                    @csrf
                   <div class="row gap-3">
                     <div class="col-lg-12">
                       <label for="email" class="form-label">Email</label>
                       <input
                         type="email"
+                        name="email"
                         class="form-control"
                         id="email"
                         required />
@@ -61,6 +64,7 @@
                       <label for="password" class="form-label">Password</label>
                       <input
                         type="password"
+                        name="passowrd"
                         class="form-control"
                         id="password"
                         required />
