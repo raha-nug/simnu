@@ -146,6 +146,19 @@
             SK Kepengurusan
           </button>
         </li>
+        <li class="nav-item flex-fill" role="presentation">
+          <button
+            class="nav-link w-100"
+            id="ranting-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#bordered-justified-ranting"
+            type="button"
+            role="tab"
+            aria-controls="ranting"
+            aria-selected="false">
+            Ranting
+          </button>
+        </li>
         
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
@@ -210,8 +223,9 @@
           id="bordered-justified-kepengurusan"
           role="tabpanel"
           aria-labelledby="kepengurusan-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-sk">
+          <div class="d-flex justify-content-end align-items-center  me-3">
+            
+            <a class="btn btn-primary" href="add-sk">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -238,6 +252,89 @@
                   <td>24 Nov 2021 - 24 Nov 2026</td>
                 </tr>
               </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade mt-3"
+          id="bordered-justified-ranting"
+          role="tabpanel"
+          aria-labelledby="ranting-tab">
+          <div class="d-flex justify-content-end align-items-center  me-3">
+            
+            <a class="btn btn-primary" href="add-ranting">
+              <i class="bi bi-plus me-1"></i>
+              Tambah
+            </a>
+          </div>
+          <div class="table-responsive ">
+            <table class="table table-borderless table-hover datatable">
+            <thead>
+                <tr>
+                <th scope="col">Nama</th>
+                <th scope="col">Telepon</th>
+                <th scope="col">Email</th>
+                <th scope="col">Jumlah Anak Ranting</th>
+                <th scope="col">Kelengkapan Dokumen</th>
+                <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><a href="detail-ranting">Ranting Cipakat</a></th>
+                    <td>08000001</td>
+                    <td>cipakat@gmail.com</td>
+                    <td>11</td>
+                    <td><span class="badge bg-primary"><i class="bi bi-check-circle me-1"></i> Lengkap</span></td>
+                    <td>
+                        <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-three-dots-vertical"></i>
+                        </a>
+                        <ul
+                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                        <li><a class="dropdown-item" href="#" >
+                            <i class="bi bi-pencil-square"></i>
+                            Edit
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
+                            <i class="bi bi-trash"></i>
+                            Hapus
+                            </a>
+                        </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="detail-ranting">Ranting Cintaraja</a></th>
+                    <td>080000002</td>  
+                    <td>cintaraja@gmail.com</td>
+                    <td>12</td>
+                    <td><span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap
+                    </span></td>
+                    <td>
+                        <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-three-dots-vertical"></i>
+                        </a>
+                        <ul
+                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                        <li><a class="dropdown-item" href="#" >
+                            <i class="bi bi-pencil-square"></i>
+                            Edit
+                            </a>
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
+                            <i class="bi bi-trash"></i>
+                            Hapus
+                            </a>
+                        </li>
+                        </ul>
+                    </td>
+                </tr>
+
+            </tbody>
             </table>
           </div>
         </div>

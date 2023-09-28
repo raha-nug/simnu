@@ -11,7 +11,7 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-      <li class="breadcrumb-item"><a href="/admin/pcnu">PCNU</a></li>
+      <li class="breadcrumb-item"><a href="pcnu">PCNU</a></li>
       <li class="breadcrumb-item active">{{ $title }}</li>
     </ol>
   </nav>
@@ -240,8 +240,8 @@
           id="bordered-justified-kepengurusan"
           role="tabpanel"
           aria-labelledby="kepengurusan-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-sk">
+          <div class="d-flex justify-content-end align-items-center  me-3">
+            <a class="btn btn-primary" href="add-sk">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -259,7 +259,7 @@
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td><a href="#">112/A.II.04/11/2016</a></td>
+                  <td><a href="detail-sk">112/A.II.04/11/2016</a></td>
                   <td>04 Nov 2016 - 04 Nov 2021</td>
                 </tr>
                 <tr>
@@ -276,8 +276,8 @@
           id="bordered-justified-lembaga"
           role="tabpanel"
           aria-labelledby="lembaga-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-lembaga">
+          <div class="d-flex justify-content-end align-items-center  me-3">
+            <a class="btn btn-primary" href="add-lembaga">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -351,8 +351,8 @@
           id="bordered-justified-banom"
           role="tabpanel"
           aria-labelledby="banom-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-banom">
+          <div class="d-flex justify-content-end align-items-center  me-3">
+            <a class="btn btn-primary" href="add-banom">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -427,8 +427,8 @@
           id="bordered-justified-mwc"
           role="tabpanel"
           aria-labelledby="mwc-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-mwc">
+          <div class="d-flex justify-content-end align-items-center  me-3">
+            <a class="btn btn-primary" href="add-mwc">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -437,19 +437,22 @@
             <table class="table table-borderless table-hover datatable">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
                   <th scope="col">Nama MWC</th>
                   <th scope="col">Telepon</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Jumlah Ranting</th>
+                  <th scope="col">Kelengkapan Dokumen</th>
                   <th scope="col">Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>MWC NU Kawalu</td>
+                  <td><a href="detail-mwc">MWC NU Kawalu</a></td>
                   <td>0800000009</td>
                   <td>mwcnukawalu@gmail.com</td>
+                  <td>23</td>
+                  <td><span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap
+                            </span></td>
                  <td>
                     
                     <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
@@ -473,172 +476,12 @@
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">2</th>
-                  <td>MWC NU Kawalu</td>
+                  <td><a href="detail-mwc">MWC NU Singaparna</a></td>
                   <td>0800000009</td>
-                  <td>mwcnukawalu@gmail.com</td>
-                 <td>
-                    
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>MWC NU Kawalu</td>
-                  <td>0800000009</td>
-                  <td>mwcnukawalu@gmail.com</td>
-                 <td>
-                    
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>MWC NU Kawalu</td>
-                  <td>0800000009</td>
-                  <td>mwcnukawalu@gmail.com</td>
-                 <td>
-                    
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>MWC NU Kawalu</td>
-                  <td>0800000009</td>
-                  <td>mwcnukawalu@gmail.com</td>
-                 <td>
-                    
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">6</th>
-                  <td>MWC NU Kawalu</td>
-                  <td>0800000009</td>
-                  <td>mwcnukawalu@gmail.com</td>
-                 <td>
-                    
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>MWC NU Kawalu</td>
-                  <td>0800000009</td>
-                  <td>mwcnukawalu@gmail.com</td>
-                 <td>
-                    
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                        <i class="bi bi-trash"></i>
-                        Hapus
-                        </a>
-                      </li>
-                    </ul>
-                  
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>MWC NU Kawalu</td>
-                  <td>0800000009</td>
-                  <td>mwcnukawalu@gmail.com</td>
+                  <td>singaparna@gmail.com</td>
+                  <td>21</td>
+                  <td><span class="badge bg-primary"><i class="bi bi-check-circle me-1"></i>Lengkap
+                            </span></td>
                  <td>
                     
                     <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">

@@ -24,11 +24,30 @@
                 Daftar Pengurus
             </div>
             <div class="card-body">
-                <div class="d-flex justify-content-end me-3 mt-3 btn-sm">
-                    <a class="btn btn-primary" href="/admin/add-pcnu">
-                    <i class="bi bi-plus me-1"></i>
-                    Tambah
-                    </a>
+                <div class="d-flex justify-content-end align-items-center me-3 mt-3">
+                  <a class="btn btn-outline-primary me-2" href="" data-bs-toggle="dropdown">
+                    <i class="bi bi-funnel-fill"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow py-5 px-3">
+                    <li class="mb-3">
+                      <label for="status" class="form-label">Kelengkapan Dokumen</label>
+                      <select class="form-select" id="status" required>
+                        <option>Lengkap</option>
+                        <option>Belum Lengkap</option>
+                    </select>
+                    </li>
+                    <li class="">
+                      <button class="btn btn-primary">Filter</button>
+                    </li>
+                  </ul>
+                  <a class="btn btn-outline-primary me-2" href="">
+                    <i class="bi bi-file-earmark-arrow-down-fill"></i>
+                    Export
+                  </a>
+                  <a class="btn btn-primary" href="add-pcnu">
+                  <i class="bi bi-plus me-1"></i>
+                  Tambah
+                  </a>
                 </div>
                 <div class="table-responsive ">
                     <table class="table table-borderless table-hover datatable">
@@ -43,7 +62,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pengurus">KH. Hasan Nuri Hidayatullah</a></th>
+                            <th scope="row"><a href="detail-pengurus">KH. Hasan Nuri Hidayatullah</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -68,7 +87,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pengurus">H. Asep Saepudin Abdillah</a></th>
+                            <th scope="row"><a href="detail-pengurus">H. Asep Saepudin Abdillah</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -93,7 +112,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pengurus">H. Ahmad Husen Jali, S.Ag</a></th>
+                            <th scope="row"><a href="detail-pengurus">H. Ahmad Husen Jali, S.Ag</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -118,7 +137,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pengurus">H. Ahmad Dasuki</a></th>
+                            <th scope="row"><a href="detail-pengurus">H. Ahmad Dasuki</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -144,7 +163,7 @@
                         </tr>
                         
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pengurus">Drs. H. Daddy Syarif, MM.</a></th>
+                            <th scope="row"><a href="detail-pengurus">Drs. H. Daddy Syarif, MM.</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -169,7 +188,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pengurus">KH. M. Nuh Addawami</a></th>
+                            <th scope="row"><a href="detail-pengurus">KH. M. Nuh Addawami</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -194,7 +213,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><a href="/admin/detail-pengurus">KH. M. Usamah Manshur</a></th>
+                            <th scope="row"><a href="detail-pengurus">KH. M. Usamah Manshur</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>

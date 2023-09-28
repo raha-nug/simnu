@@ -28,7 +28,7 @@
             <option selected disabled value="">--pilih role--</option>
             <option>PWNU</option>
             <option>PCNU</option>
-            <option>MWCNU</option>
+            <option>MWC</option>
         </select>
    </div>
    <div class="col-md-12">
