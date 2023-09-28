@@ -15,41 +15,47 @@
 @endsection
 
 @section('content')
-<x-form method="POST" action="/admin/pwnu">
+<x-form :$action :$method >
+  @csrf
   <x-slot:title>
     Tambah PCNU
   </x-slot:title>
   <div class="col-md-12 mt-2">
     <label for="no-sk" class="form-label">Nama</label>
-    <input type="text" class="form-control" id="no-sk" required disabled>
+    <input type="text" class="form-control" id="nama" name="nama" required readonly>
   </div>
   <div class="col-md-12 mt-2">
     <label for="tgl-mulai" class="form-label">Alamat</label>
-    <input type="text" class="form-control" id="tgl-mulai" required>
+    <input type="text" class="form-control" name="alamat" required>
   </div>
   <div class="col-md-6 mt-2">
     <label for="telepon" class="form-label">Telepon</label>
-    <input type="text" class="form-control" id="telepon" required>
+    <input type="text" class="form-control" name="telp" >
   </div>
   <div class="col-md-6 mt-2">
     <label for="website" class="form-label">Website</label>
-    <input type="text" class="form-control" id="website" required>
+    <input type="text" class="form-control" name="website" >
   </div>
   <div class="col-md-12 mt-2">
-    <label for="kabkot" class="form-label">Kota/Kab</label>
-      <select class="form-select" id="kabkot" required>
-        <option selected disabled value="">--pilih kota / kabupaten--</option>
-        <option>...</option>
+    <label for="kota" class="form-label">Kota/Kab</label>
+      <select class="form-select" id="kabkot" name="kota" required>
+        <option></option>
+        @foreach($kab_kota as $item)
+          <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+        @endforeach
       </select>
   </div>
   <div class="col-md-6 mt-2">
     <label for="latitude" class="form-label">Latitude</label>
-    <input type="text" class="form-control" id="latitude" required>
+    <input type="text" class="form-control" name="lat" >
   </div>
   <div class="col-md-6 mt-2">
     <label for="longitude" class="form-label">Longitude</label>
-    <input type="text" class="form-control" id="longitude" required>
+    <input type="text" class="form-control" name="long" >
   </div>
 </x-form>
 
+@endsection
+@section('js-page')
+<script src="../assets/sources/js/pcnu.js"></script>
 @endsection

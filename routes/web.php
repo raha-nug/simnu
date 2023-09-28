@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\PwnuController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +20,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login', [LoginController::class, 'Login'])->name('login');
+Route::get('/wilayah', [Controller::class, 'getSingleAddress']);
 
 Route::prefix('pwnu')->group(function () {
     Route::get('/', [PwnuController::class, 'index'])->name('pwnu');
+});
+
+
+Route::prefix('pcnu')->group(function () {
+    Route::get('/', [PcnuController::class, 'index'])->name('pcnu');
+    Route::get('/get', [PcnuController::class, 'getPcnu'])->name('pcnu-get');
+    Route::get('/add', [PcnuController::class, 'addPcnu'])->name('pcnu-add');
+    Route::get('/detail', [PcnuController::class, 'getDetail'])->name('pcnu-detail');
+    Route::post('/process', [PcnuController::class, 'process'])->name('pcnu-process');
+    Route::post('/delete', [PcnuController::class, 'process'])->name('pcnu-delete');
 });
 
 Route::get('/admin/dashboard', function () {

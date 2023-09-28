@@ -19,22 +19,27 @@ class WilayahModel extends Model
         $data = $this->query();
         switch (strlen($kode)) {
             case 2:
-                $data->where('LEFT(kode,2)', $kode);
+                $data->whereRaw(sprintf("LEFT(kode,2) = '%s' AND LENGTH(kode) = 5", $kode));
                 break;
             case 5:
-                $data->where('LEFT(kode,5)', $kode);
+                $data->whereRaw(sprintf("LEFT(kode,5) = '%s' AND LENGTH(kode) = 8", $kode));
                 break;
             case 8:
-                $data->where('LEFT(kode,8)', $kode);
+                $data->whereRaw(sprintf("LEFT(kode,8) = '%s' AND LENGTH(kode) = 13", $kode));
                 break;
             case 13:
                 $data->where('kode', $kode);
                 break;
-            
+
             default:
                 break;
         }
 
         return $data->get();
+    }
+
+    public function getSingleAddress(string $kode)
+    {
+        return $this->query()->where('kode', $kode)->first();
     }
 }

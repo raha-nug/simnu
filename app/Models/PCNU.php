@@ -29,6 +29,19 @@ class PCNU extends Model
         'kota'
     ];
 
+    public static function getData($paginate)
+    {
+        $query = self::query()
+            ->select(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
+            ->selectRaw('COUNT(mwcnu.id) as jumlah_mwc')
+            ->leftJoin('mwcnu', 'pcnu.id', '=', 'mwcnu.id_pcnu')
+            ->groupBy('pcnu.id')
+            ->paginate($paginate);
+        // ->get();
+
+        return $query;
+    }
+
     public function pwnu(): BelongsTo
     {
         return $this->belongsTo(PWNU::class);
