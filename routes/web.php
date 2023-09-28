@@ -36,14 +36,14 @@ Route::prefix('pcnu')->group(function () {
     Route::post('/delete', [PcnuController::class, 'process'])->name('pcnu-delete');
 });
 
-Route::get('/admin/dashboard', function () {
+Route::get('dashboard', function () {
     return view('pages.dashboard',[
         'title'=> 'Dashboard',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/pwnu', function () {
+Route::get('pwnu', function () {
     return view('pages.pwnu',[
         'title'=> 'PWNU',
         'username'=>'John Doe',
@@ -51,56 +51,56 @@ Route::get('/admin/pwnu', function () {
         'name'=>'PWNU Jawa Barat'
     ]);
 });
-Route::get('/admin/pcnu', function () {
+Route::get('pcnu', function () {
     return view('pages.pcnu',[
         'title'=> 'PCNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/mwcnu', function () {
+Route::get('mwcnu', function () {
     return view('pages.mwcnu',[
         'title'=> 'MWCNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/ranting', function () {
+Route::get('ranting', function () {
     return view('pages.ranting',[
         'title'=> 'Ranting',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/anak-ranting', function () {
+Route::get('anak-ranting', function () {
     return view('pages.anakranting',[
         'title'=> 'Anak Ranting',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/edit-pwnu', function () {
+Route::get('edit-pwnu', function () {
     return view('pages..edit.edit-pwnu',[
         'title'=> 'Edit PWNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-banom', function () {
+Route::get('detail-banom', function () {
     return view('pages.detail-banom',[
         'title'=> 'detail-banom',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-pengurus', function () {
+Route::get('add-pengurus', function () {
     return view('pages.add.add-pengurus',[
-        'title'=> 'Tambah Pengurus',
+        'title'=> 'Edit Pengurus',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/pengurus', function () {
+Route::get('pengurus', function () {
     return view('pages.pengurus',[
         'title'=> 'Pengurus',
         'username'=>'John Doe',
@@ -109,140 +109,147 @@ Route::get('/admin/pengurus', function () {
 });
 
 
-Route::get('/admin/add-sk', function () {
+Route::get('add-sk', function () {
     return view('pages.add.add-sk',[
         'title'=> 'Tambah SK',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-lembaga', function () {
+Route::get('add-lembaga', function () {
     return view('pages.add.add-lembaga',[
         'title'=> 'Tambah Lembaga',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-banom', function () {
+Route::get('add-banom', function () {
     return view('pages.add.add-banom',[
         'title'=> 'Tambah Banom',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-pcnu', function () {
+Route::get('add-pcnu', function () {
     return view('pages.add.add-pcnu',[
         'title'=> 'Tambah PCNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-pcnu', function () {
+Route::get('detail-pcnu', function () {
     return view('pages.detail-pcnu',[
         'title'=> 'Detail PCNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-mwc', function () {
+Route::get('add-mwc', function () {
     return view('pages.add.add-mwc',[
         'title'=> 'Detail PCNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-mwc', function () {
+Route::get('detail-mwc', function () {
     return view('pages.detail-mwc',[
         'title'=> 'Detail MWC NU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-ranting', function () {
+Route::get('detail-ranting', function () {
     return view('pages.detail-ranting',[
         'title'=> 'Detail Ranting NU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-ranting', function () {
+Route::get('add-ranting', function () {
     return view('pages.add.add-ranting',[
         'title'=> 'Tambah Ranting',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-anak-ranting', function () {
+Route::get('add-anak-ranting', function () {
     return view('pages.add.add-anak-ranting',[
         'title'=> 'Tambah Anak Ranting',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-anak-ranting', function () {
+Route::get('detail-anak-ranting', function () {
     return view('pages.detail-anak-ranting',[
         'title'=> 'Detail Anak Ranting',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-sk', function () {
+Route::get('detail-sk', function () {
     return view('pages.detail-sk',[
         'title'=> 'Detail SK',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-lembaga', function () {
+Route::get('detail-lembaga', function () {
     return view('pages.detail-lembaga',[
         'title'=> 'Detail Lembaga',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-pengurus', function () {
+Route::get('detail-pengurus', function () {
     return view('pages.detail-pengurus',[
         'title'=> 'Detail Pengurus',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-user-group', function () {
+Route::get('add-user-group', function () {
     return view('pages.add.add-user-group',[
         'title'=> 'Tambah User Group',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/add-user', function () {
+Route::get('add-user', function () {
     return view('pages.add.add-user',[
         'title'=> 'Tambah User',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/user-group', function () {
+Route::get('user-group', function () {
     return view('pages.user-group',[
         'title'=> 'User Group',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/user', function () {
+Route::get('user', function () {
     return view('pages.user',[
         'title'=> 'User',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-user-group', function () {
+Route::get('detail-user-group', function () {
     return view('pages.detail-user-group',[
         'title'=> 'Detail User Group',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('/admin/detail-user', function () {
+Route::get('detail-user', function () {
+    return view('pages.detail-user',[
+        'title'=> 'Detail User',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat', 
+    ]);
+});
+Route::get('detail-user', function () {
     return view('pages.detail-user',[
         'title'=> 'Detail User',
         'username'=>'John Doe',
