@@ -20,7 +20,7 @@ class PcnuController extends Controller
             'name' => 'PCNU Jawa Barat',
             'dataTable' => $pcnu_list
         ];
-
+        
         return view('pages.pcnu', $data);
     }
 

@@ -51,13 +51,7 @@ Route::get('pwnu', function () {
         'name'=>'PWNU Jawa Barat'
     ]);
 });
-Route::get('pcnu', function () {
-    return view('pages.pcnu',[
-        'title'=> 'PCNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
-});
+
 Route::get('mwcnu', function () {
     return view('pages.mwcnu',[
         'title'=> 'MWCNU',
