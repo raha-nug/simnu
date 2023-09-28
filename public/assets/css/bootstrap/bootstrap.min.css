@@ -4711,7 +4711,7 @@ fieldset:disabled .btn {
     --bs-badge-padding-y: 0.35em;
     --bs-badge-font-size: 0.75em;
     --bs-badge-font-weight: 700;
-    --bs-badge-color: #fff;
+    --bs-badge-color: #ececec;
     --bs-badge-border-radius: var(--bs-border-radius);
     display: inline-block;
     padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
@@ -8573,10 +8573,7 @@ fieldset:disabled .btn {
 }
 .bg-primary {
     --bs-bg-opacity: 1;
-    background-color: rgba(
-        var(--bs-primary-rgb),
-        var(--bs-bg-opacity)
-    ) !important;
+    background-color: #187865 !important;
 }
 .bg-secondary {
     --bs-bg-opacity: 1;
@@ -8598,6 +8595,7 @@ fieldset:disabled .btn {
 }
 .bg-warning {
     --bs-bg-opacity: 1;
+    color: #444444;
     background-color: rgba(
         var(--bs-warning-rgb),
         var(--bs-bg-opacity)

@@ -105,7 +105,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*dashboard*') ? 'active':'' }}"
-            href="/admin/dashboard">
+            href="dashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
@@ -114,7 +114,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('pwnu') ? 'active':'' }}"
-            href="{{ route('pwnu') }}">
+            href="">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
@@ -145,7 +145,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
-            href="/admin/pcnu">
+            href="pcnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
@@ -175,10 +175,10 @@
             <span>PCNU</span>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*mwcnu*') ? 'active':'' }}"
-            href="/admin/mwcnu">
+            href="mwcnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
@@ -197,7 +197,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('admin/ranting') ? 'active':'' }}"
-            href="/admin/ranting">
+            href="ranting">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
@@ -220,7 +220,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*anak-ranting*') ? 'active':'' }}"
-            href="/admin/anak-ranting">
+            href="anak-ranting">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
@@ -235,12 +235,20 @@
             </div>
             <span>Anak Ranting</span>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-heading">Datas</li>
         <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('*pengurus*') ? 'active':'' }}"
-            href="/admin/pengurus">
+            class="nav-link {{ Request::is('cari-data*') ? 'active':'' }}"
+            href="pengurus">
+            <i class="bi bi-search"></i>
+            <span>Cari Data</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {{ Request::is('pengurus*') ? 'active':'' }}"
+            href="pengurus">
             <i class="bi bi-person-fill"></i>
             <span>Data Pengurus</span>
           </a>

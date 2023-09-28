@@ -23,11 +23,12 @@
         <input type="text" class="form-control" id="namaUG" required>
    </div>
    <div class="col-md-6">
-        <label for="status" class="form-label">Admin Super</label>
+        <label for="status" class="form-label">Role</label>
         <select class="form-select" id="status" required>
-            <option selected disabled value="">--pilih status--</option>
-            <option>YES</option>
-            <option>NO</option>
+            <option selected disabled value="">--pilih role--</option>
+            <option>PWNU</option>
+            <option>PCNU</option>
+            <option>MWCNU</option>
         </select>
    </div>
    <div class="col-md-12">
