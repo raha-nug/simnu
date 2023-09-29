@@ -6,6 +6,7 @@
 @section('from',$from)
 
 @section('content')
+    @include('sweetalert::alert')
         <div class="col-lg-12">
           <div class="row">
 
@@ -43,7 +44,7 @@
                         </svg>
                       </div>
                     </div>
-                    <div class="d-flex gap-4">     
+                    <div class="d-flex gap-4">
                         <div>
                           <h6>27</h6>
                           <span class="text-muted small pt-2 ps-1">PCNU</span>
@@ -94,7 +95,7 @@
                         </svg>
                       </div>
                     </div>
-                    <div class="d-flex gap-4">     
+                    <div class="d-flex gap-4">
                         <div>
                           <h6>2152</h6>
                           <span class="text-muted small pt-2 ps-1">Ranting</span>
@@ -119,7 +120,7 @@
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-building"></i>
                     </div>
-                    <div class="d-flex gap-4">     
+                    <div class="d-flex gap-4">
                         <div>
                           <h6>48848</h6>
                           <span class="text-muted small pt-2 ps-1">Banom</span>
@@ -148,7 +149,7 @@
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
                     </div>
-                    <div class="d-flex gap-4">     
+                    <div class="d-flex gap-4">
                         <div>
                           <h6>2047</h6>
                           <span class="text-muted small pt-2 ps-1">PCNU</span>
@@ -173,7 +174,7 @@
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
                     </div>
-                    <div class="d-flex gap-4">     
+                    <div class="d-flex gap-4">
                         <div>
                           <h6>16004</h6>
                           <span class="text-muted small pt-2 ps-1">Ranting</span>
@@ -198,7 +199,7 @@
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
                     </div>
-                    <div class="d-flex gap-4">     
+                    <div class="d-flex gap-4">
                         <div>
                           <h6>3029</h6>
                           <span class="text-muted small pt-2 ps-1">Banom</span>
@@ -217,5 +218,5 @@
           </div>
 
         </div>
-    
+
 @endsection

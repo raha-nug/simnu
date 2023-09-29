@@ -33,7 +33,7 @@ class LoginController extends Controller
             session()->start();
             session()->put('logged','yes',true);
             session()->put('id_users',$users->id);
-
+        Alert::success('Login Berhasil');
         return redirect()->route('dashboard');
     }
 

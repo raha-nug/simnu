@@ -277,7 +277,7 @@
               </a>
             </li>
             <li>
-              <a href="user-group">
+              <a href="{{route('add-user-group')}}">
                 <i class="bi bi-circle"></i>
                 <span>User Group</span>
               </a>

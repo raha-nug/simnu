@@ -6,6 +6,7 @@ use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserGroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,12 @@ Route::prefix('pcnu')->group(function () {
     Route::get('/detail', [PcnuController::class, 'getDetail'])->name('pcnu-detail');
     Route::post('/process', [PcnuController::class, 'process'])->name('pcnu-process');
     Route::post('/delete', [PcnuController::class, 'process'])->name('pcnu-delete');
+});
+
+Route::prefix('user-group')->group(function () {
+    Route::get('/', [UserGroupController::class, 'index'])->name('user-group');
+    Route::get('/add', [UserGroupController::class, 'addUserGroup'])->name('add-user-group');
+    Route::post('/process', [UserGroupController::class, 'process'])->name('process-user-group');
 });
 
 Route::get('pwnu', function () {
@@ -196,13 +203,7 @@ Route::get('detail-pengurus', function () {
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('add-user-group', function () {
-    return view('pages.add.add-user-group',[
-        'title'=> 'Tambah User Group',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
-});
+
 Route::get('add-user', function () {
     return view('pages.add.add-user',[
         'title'=> 'Tambah User',
@@ -210,13 +211,7 @@ Route::get('add-user', function () {
         'from'=>'Jawa Barat',
     ]);
 });
-Route::get('user-group', function () {
-    return view('pages.user-group',[
-        'title'=> 'User Group',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
-});
+
 Route::get('user', function () {
     return view('pages.user',[
         'title'=> 'User',

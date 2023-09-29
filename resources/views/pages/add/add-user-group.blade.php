@@ -14,23 +14,33 @@
 @endsection
 
 @section('content')
-<x-form method="POST" action="/admin/pwnu">
+<x-form :$method :$action>
+    @csrf
   <x-slot:title>
     Tambah User Group
   </x-slot:title>
     <div class="col-md-6">
         <label for="namaUG" class="form-label">Nama User Group</label>
-        <input type="text" class="form-control" id="namaUG" required>
+        <input type="text" class="form-control" id="namaUG" name="nama-group" required>
    </div>
    <div class="col-md-6">
         <label for="status" class="form-label">Role</label>
-        <select class="form-select" id="status" required>
+        <select class="form-select" id="status" name="role" required>
             <option selected disabled value="">--pilih role--</option>
-            <option>PWNU</option>
-            <option>PCNU</option>
-            <option>MWC</option>
+            <option value="PWNU">PWNU</option>
+            <option value="PCNU">PCNU</option>
+            <option value="MWCNU">MWC</option>
         </select>
    </div>
+   <div class="col-md-12">
+    <label for="kota" class="form-label">Kota/Kab</label>
+      <select class="form-select" id="kabkot" name="kota" required>
+        <option></option>
+        @foreach($kab_kota as $item)
+          <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+        @endforeach
+      </select>
+  </div>
    <div class="col-md-12">
         <label for="ket" class="form-label">Keterangan User Group</label>
         <textarea name="ket" class="form-control" id="ket"  style="height: 100px"></textarea>
@@ -218,7 +228,7 @@
                 </label>
               </div>
             </div>
-    
+
             <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="jenisPengurus" type="checkbox" id="gridCheck21">
@@ -274,7 +284,7 @@
                 </label>
               </div>
             </div>
-    
+
             <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="jabatan" type="checkbox" id="gridCheck27">
@@ -329,7 +339,7 @@
                 </label>
               </div>
             </div>
-    
+
             <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="pwnu" type="checkbox" id="gridCheck33">
@@ -385,7 +395,7 @@
                 </label>
               </div>
             </div>
-    
+
             <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="pcnu" type="checkbox" id="gridCheck39">
@@ -914,8 +924,8 @@
               </div>
             </div>
           </div>
-        
-        
+
+
 
         </div>
     </div>
@@ -971,19 +981,22 @@
         $('input[name="sk"]').prop('checked', $(this).prop('checked'));
 });
 </script>
+@endsection
 
+@section('js-page')
+<script src="../assets/sources/js/pcnu.js"></script>
 @endsection
 
 
-{{-- $('#select-all').click(function(event) {   
+{{-- $('#select-all').click(function(event) {
     if(this.checked) {
         // Iterate each checkbox
         $(':checkbox').each(function() {
-            this.checked = true;                        
+            this.checked = true;
         });
     } else {
         $(':checkbox').each(function() {
-            this.checked = false;                       
+            this.checked = false;
         });
     }
 }); --}}

@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserGroup extends Model
 {
     use HasFactory;
-    protected $table = 'user_group';
+    protected $table = 'table_user_grups';
     protected $guarded = 'id';
     protected $fillable = [
-        'nama_group',
+        'nama_grup',
         'id_pwnu',
         'id_pcnu',
         'id_mwcnu',
