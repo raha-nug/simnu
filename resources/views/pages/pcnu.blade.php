@@ -44,26 +44,26 @@
                     <tbody>
                         @foreach ($dataTable as $item)
                             <tr>
-                                <th scope="row"><a href="/admin/detail-pcnu">{{ $item->nama }}</a></th>
+                                <th scope="row"><a href="{{ route('pcnu-detail',['id_pc' => setRoute($item->id)]) }}">{{ $item->nama }}</a></th>
                                 <td>{{ $item->alamat }}</td>
                                 <td>{{ $item->jumlah_mwc }}</td>
                                 <td>
-                                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                                    <button type="button" class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots-vertical"></i>
-                                    </a>
-                                    <ul
-                                    class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                    <li><a class="dropdown-item" href="#" >
-                                        <i class="bi bi-pencil-square"></i>
-                                        Edit
-                                        </a>
-                                    </li>
-                                    <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
-                                        <i class="bi bi-trash"></i>
-                                        Hapus
-                                        </a>
-                                    </li>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('pcnu-detail',['id_pc' => setRoute($item->id)]) }}" >
+                                                <i class="bi bi-pencil-square"></i>
+                                            Edit
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-danger" href="{{ route('pcnu-delete',['id_pc' => setRoute($item->id)]) }}">
+                                                <i class="bi bi-trash"></i>
+                                                Hapus
+                                            </a>
+                                        </li>
                                     </ul>
                                 </td>
                             </tr>

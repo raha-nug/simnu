@@ -9,12 +9,17 @@ use Illuminate\Support\Facades\Validator;
 
 class MwcController extends Controller
 {
-    public function index(){
+    public function index(Re)
+    {
         $mwc = MWCNU::query()->where('id_pcnu')->get();
         $data = [
-            'mwcnu' => $mwc
+            'mwcnu' => $mwc,
+            'title' => 'MWCNU',
+            'username' => 'John Doe',
+            'from' => 'Jawa Barat',
         ];
-        return view($data);
+
+        return view('pages.mwcnu',$data);
     }
 
     public function detailmwc($id_mwcnu){
@@ -52,7 +57,7 @@ class MwcController extends Controller
         $data['id_pcnu'] = 1;
         MWCNU::query()->create($data);
         Alert::success('Data Berhasil Ditambahkan');
-        return redirect();
+        return redirect(route(''));
     }
 
     public function updateMwc(Request $request, $id_mwcnu){
@@ -86,7 +91,7 @@ class MwcController extends Controller
     }
 
     public function deleteMwc($id_mwcnu){
-        $mwcnu = MWC::query()->where('id',$id_mwcnu)->first();
+        $mwcnu = MWCNU::query()->where('id',$id_mwcnu)->first();
         $deleted = $mwcnu->delete();
         if($deleted > 0){
             Alert::success('Data Berhasil Dihapus');

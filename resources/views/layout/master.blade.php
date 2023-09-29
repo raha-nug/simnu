@@ -9,7 +9,7 @@
     <meta content="" name="keywords" />
 
     <!-- Favicons -->
-    <link href="../assets/img/logo.svg" rel="icon" />
+    <link href="{{ url('/') }}/assets/img/logo.svg" rel="icon" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect" />
@@ -21,12 +21,12 @@
       rel="stylesheet" />
 
     <!-- Vendor CSS Files -->
-    <link href="../assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/bootstrap/bootstrap-icons.css" rel="stylesheet" />
-    <link href="../assets/css/data-tables.css" rel="stylesheet" />
+    <link href="{{ url('/') }}/assets/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ url('/') }}/assets/css/bootstrap/bootstrap-icons.css" rel="stylesheet" />
+    <link href="{{ url('/') }}/assets/css/data-tables.css" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="{{ url('/') }}/assets/css/style.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- JQuery -->
@@ -39,7 +39,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
         <a href="" class="logo d-flex align-items-center">
-          <img src="../assets/img/logo.svg" class="ms-lg-4" alt="" />
+          <img src="{{ url('/') }}/assets/img/logo.svg" class="ms-lg-4" alt="" />
           <span class="d-none d-lg-block">SIM NU</span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -55,7 +55,7 @@
               data-bs-toggle="dropdown">
               <span class="d-none d-md-block px-2">@yield('username')</span>
               <img
-                src="../assets/img/profile-image.png"
+                src="{{ url('/') }}/assets/img/profile-image.png"
                 alt="Profile"
                 class="rounded-circle me-3 ms-3" />
             </a>
@@ -147,7 +147,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
-            href="pcnu/list">
+            href="{{ route('pcnu') }}">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
@@ -338,7 +338,7 @@
     <main id="main" class="main">
       @yield('pagetitle')
       <!-- End Page Title -->
-
+      @include('sweetalert::alert')
       <section class="section">@yield('content')</section>
     </main>
     <!-- End #main -->
@@ -360,11 +360,11 @@
     </a>
 
     <!-- Vendor JS Files -->
-    <script src="../assets/js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/simple-datatables.js"></script>
+    <script src="{{ url('/') }}/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{{ url('/') }}/assets/js/simple-datatables.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="../assets/js/main.js"></script>
+    <script src="{{ url('/') }}/assets/js/main.js"></script>
     @yield('js-page')
   </body>
 </html>

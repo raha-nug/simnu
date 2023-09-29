@@ -24,9 +24,19 @@ class PcnuController extends Controller
         return view('pages.pcnu', $data);
     }
 
-    public function addPcnu()
+    public function detailPcnu($id_pc)
     {
+        $id = getRoute($id_pc);
+        if (!$id)
+            return redirect('pcnu');
 
+        $pcnu = PCNU::query()->where('id', $id)
+            ->first();
+        return $this->addPcnu($pcnu);
+    }
+
+    public function addPcnu($pc_data=null)
+    {
         $data = [
             'title' => 'PCNU',
             'username' => 'John Doe',
@@ -36,6 +46,9 @@ class PcnuController extends Controller
             'method' => 'POST',
             'action' => route('pcnu-process')
         ];
+
+        if ($pc_data)
+            $data['pc_data'] = $pc_data;
 
         return view('pages.add.add-pcnu', $data);
     }
@@ -49,6 +62,7 @@ class PcnuController extends Controller
             'lat' => 'sometimes|nullable|regex:/^[0-9.\-]+$/',
             'long' => 'sometimes|nullable|regex:/^[0-9.\-]+$/',
             'website' => 'sometimes|nullable|regex:/^[A-Za-z0-9.,\s\n\/:\-]+$/',
+            'email' => 'required|email',
             'kota' => 'required'
         ];
 
@@ -60,24 +74,51 @@ class PcnuController extends Controller
             'lat.regex' => 'Penulisan Latitude tidak benar',
             'long.regex' => 'Penulisan Longitude tidak benar',
             'website.regex' => 'Penulisan Url website tidak benar',
+            'email.required' => 'Email Harus diisi',
+            'email.email' => 'Email Tidak valid',
             'kota.required' => 'Kota Harus diisi'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
         if ($validated->fails()) {
-            Alert::error('Oops!', $validated->errors()->messages());
-            dd($validated->errors()->messages());
-            return redirect()->back();
+            $error = implode(", ", array_map('implode', array_values($validated->errors()->messages())));
+            Alert::error('Oops!', $error);
+            return redirect(route('pcnu-add'));
         }
 
         $data = $validated->validate();
         $data['id_pwnu'] = 1;
         $data['provinsi'] = "32";
         if (isset($request->id)) {
-            dd($data);
+            $is_updated = PCNU::where('id', $request->id)->update($data);
+            if (!$is_updated)
+            {
+                Alert::error('Oops! , Gagal melakukan update');
+                return redirect()->back(400);
+            }
+            Alert::success('Data Berhasil Disimpan');
+            return redirect(route('pcnu'));
         }
         PCNU::create($data);
         Alert::success('Data Berhasil Disimpan');
         return redirect(route('pcnu'));
+    }
+
+    public function deletePcnu($id_pc)
+    {
+        $id = getRoute($id_pc);
+        $is_deleted = PCNU::where('id', $id)
+            ->delete();
+        
+        if ($is_deleted)
+        {
+            Alert::success('Data Berhasil Dihapus');
+            return redirect(route('pcnu'));
+        }
+        else 
+        {
+            Alert::error('Data Gagal Dihapus');
+            return redirect(route('pcnu'));
+        }
     }
 }
