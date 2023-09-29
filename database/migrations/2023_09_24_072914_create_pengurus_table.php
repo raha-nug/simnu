@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengurus', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->uuid('id_sk');
+            $table->uuid('id')->primary();
+            $table->foreignUuid('id_sk');
             $table->string('nik', 16);
             $table->string('nama', 125);
-            $table->uuid('jabatan');
+            $table->string('jabatan',36);
             $table->dateTime('mulai_jabatan');
             $table->dateTime('akhir_jabatan');
             $table->timestamps();

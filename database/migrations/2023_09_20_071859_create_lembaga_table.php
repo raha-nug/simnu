@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('lembaga', function (Blueprint $table) {
             $table->uuid('id');
-            $table->integer('id_pwnu');
-            $table->integer('id_pcnu');
-            $table->integer('id_mwcnu');
+            $table->unsignedBigInteger('id_pwnu');
+            $table->unsignedBigInteger('id_pcnu');
+            $table->unsignedBigInteger('id_mwcnu');
             $table->string('nama', 255);
             $table->string('alamat', 500);
             $table->string('telp', 16)->nullable();
