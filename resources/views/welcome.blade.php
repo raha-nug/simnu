@@ -67,7 +67,7 @@
               </div>
 
               <div class="navbar-btn d-none d-sm-inline-block">
-                <a class="ud-main-btn ud-white-btn" href="/login">
+                <a class="ud-main-btn ud-white-btn" href="{{route('login')}}">
                   Login
                 </a>
               </div>
@@ -95,7 +95,7 @@
                   <a
                     href="/login"
                     rel="nofollow noopener"
-                    
+
                     class="ud-main-btn ud-white-btn">
                     Mulai
                   </a>
@@ -440,7 +440,7 @@
                 <h2>
                   Ayo bicara bersama
                   <br />
-                  
+
                 </h2>
               </div>
               <div class="ud-contact-info-wrapper">

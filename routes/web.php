@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\PcnuController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PcnuController;
+use App\Http\Controllers\PwnuController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login', [LoginController::class, 'Login'])->name('login');
-Route::post('/login', [LoginController::class, 'Login'])->name('login');
+Route::any('/Login', [LoginController::class, 'Login'])->name('login');
 Route::get('/wilayah', [Controller::class, 'getSingleAddress']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
