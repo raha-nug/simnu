@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('kecamatan', 16)->nullable();
             $table->string('desa', 16)->nullable();
             $table->boolean('is_whatsapp')->nullable();
-            $table->unsignedBigInteger('id_grup')->nullable();
+            $table->integer('id_grup')->nullable();
             $table->timestamps();
 
             $table->index('nik');

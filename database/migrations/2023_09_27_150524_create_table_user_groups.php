@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('id_pcnu')->nullable();
             $table->integer('id_mwcnu')->nullable();
             $table->uuid('id_rantingnu')->nullable();
+            $table->timestamps();
 
             $table->index(['nama_grup', 'id_pwnu'],'idx_pwnu_groups');
             $table->index(['nama_grup', 'id_pcnu'], 'idx_pcnu_groups');
