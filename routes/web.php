@@ -7,6 +7,7 @@ use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
+use App\Http\Controllers\MwcController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,12 +32,12 @@ Route::prefix('pwnu')->group(function () {
 });
 
 Route::prefix('pcnu')->group(function () {
-    Route::get('/list', [PcnuController::class, 'index'])->name('pcnu');
+    Route::get('/', [PcnuController::class, 'index'])->name('pcnu');
     Route::get('/get', [PcnuController::class, 'getPcnu'])->name('pcnu-get');
     Route::get('/add', [PcnuController::class, 'addPcnu'])->name('pcnu-add');
-    Route::get('/detail', [PcnuController::class, 'getDetail'])->name('pcnu-detail');
+    Route::get('/detail/{id_pc}', [PcnuController::class, 'detailPcnu'])->name('pcnu-detail');
     Route::post('/process', [PcnuController::class, 'process'])->name('pcnu-process');
-    Route::post('/delete', [PcnuController::class, 'process'])->name('pcnu-delete');
+    Route::get('/delete/{id_pc}', [PcnuController::class, 'deletePcnu'])->name('pcnu-delete');
 });
 
 Route::prefix('user-group')->group(function () {
@@ -54,13 +55,11 @@ Route::get('pwnu', function () {
     ]);
 });
 
-Route::get('mwcnu', function () {
-    return view('pages.mwcnu',[
-        'title'=> 'MWCNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
+Route::prefix('mwcnu')->group(function () {
+    Route::get('/', [MwcController::class, 'index'])->name('mwc');
+    Route::get('/get', [MwcController::class, 'index'])->name('mwc-get');
 });
+
 Route::get('ranting', function () {
     return view('pages.ranting',[
         'title'=> 'Ranting',
