@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PcnuController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
