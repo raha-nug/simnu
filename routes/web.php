@@ -4,6 +4,7 @@ use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/login', [LoginController::class, 'Login'])->name('login');
+Route::post('/login', [LoginController::class, 'Login'])->name('login');
 Route::get('/wilayah', [Controller::class, 'getSingleAddress']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::prefix('pwnu')->group(function () {
     Route::get('/', [PwnuController::class, 'index'])->name('pwnu');
@@ -36,13 +39,6 @@ Route::prefix('pcnu')->group(function () {
     Route::post('/delete', [PcnuController::class, 'process'])->name('pcnu-delete');
 });
 
-Route::get('dashboard', function () {
-    return view('pages.dashboard',[
-        'title'=> 'Dashboard',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
-});
 Route::get('pwnu', function () {
     return view('pages.pwnu',[
         'title'=> 'PWNU',
