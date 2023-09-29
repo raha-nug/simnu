@@ -22,7 +22,7 @@
   </x-slot:title>
   <div class="col-md-12 mt-2">
     <label for="nama" class="form-label">Nama</label>
-    <input type="text" class="form-control" id="nama" required readonly>
+    <input type="text" class="form-control" id="nama" name="nama" required readonly>
   </div>
   <div class="col-md-12 mt-2">
     <label for="tgl-mulai" class="form-label">Alamat</label>

@@ -14,11 +14,10 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-        $user_group = UserGroup::query()->where('super_admin','Yes')->first();
         Users::query()->create([
+            'nama' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => 'admin1234',
-            'id_user_group' => $user_group->id
         ]);
     }
 }

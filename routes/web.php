@@ -26,9 +26,8 @@ Route::prefix('pwnu')->group(function () {
     Route::get('/', [PwnuController::class, 'index'])->name('pwnu');
 });
 
-
 Route::prefix('pcnu')->group(function () {
-    Route::get('/', [PcnuController::class, 'index'])->name('pcnu');
+    Route::get('/list', [PcnuController::class, 'index'])->name('pcnu');
     Route::get('/get', [PcnuController::class, 'getPcnu'])->name('pcnu-get');
     Route::get('/add', [PcnuController::class, 'addPcnu'])->name('pcnu-add');
     Route::get('/detail', [PcnuController::class, 'getDetail'])->name('pcnu-detail');
@@ -240,7 +239,7 @@ Route::get('detail-user', function () {
     return view('pages.detail-user',[
         'title'=> 'Detail User',
         'username'=>'John Doe',
-        'from'=>'Jawa Barat', 
+        'from'=>'Jawa Barat',
     ]);
 });
 Route::get('detail-user', function () {

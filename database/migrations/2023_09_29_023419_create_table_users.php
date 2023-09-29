@@ -15,18 +15,19 @@ return new class extends Migration
             $table->id();
             $table->string('nama', 255);
             $table->string('email', 255);
-            $table->string('no_telp', 16);
+            $table->string('no_telp', 16)->nullable();
             $table->string('password', 255);
             $table->string('nik', 16)->nullable();
             $table->string('provinsi', 16)->nullable();
             $table->string('kota', 16)->nullable();
             $table->string('kecamatan', 16)->nullable();
             $table->string('desa', 16)->nullable();
-            $table->boolean('is_whatsapp');
-            $table->integer('id_grup')->nullable();
+            $table->boolean('is_whatsapp')->nullable();
+            $table->unsignedBigInteger('id_grup')->nullable();
+            $table->timestamps();
 
             $table->index('nik');
-            $table->foreign('id_grup')->references('id')->on('user_groups')->onDelete('cascade');
+            $table->foreign('id_grup')->references('id')->on('table_user_groups')->onDelete('cascade');
         });
     }
 
