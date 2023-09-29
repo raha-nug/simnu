@@ -2,25 +2,31 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\UserGroup;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Users extends Model
 {
-    use HasFactory,HasUuids;
-    protected $table = 'user';
-    protected $primaryKey = 'id';
-    protected $keyType = 'string';
+    use HasFactory;
+    protected $table = 'table_users';
     protected $guarded = 'id';
     protected $fillable = [
+        'nama',
         'email',
         'password',
-        'id_user_group',
-        'id_pcnu',
-        'id_mwcnu',
-        'id_lembaga',
-        'id_banom',
-        'id_ranting',
-        'id_anak_ranting'
+        'no_telp',
+        'nik',
+        'provinsi',
+        'kota',
+        'kecamatan',
+        'desa',
+        'is_whatsapp',
+        'id_group'
     ];
+
+    public function userGroup(): BelongsTo
+    {
+        return $this->belongsTo(UserGroup::class);
+    }
 }

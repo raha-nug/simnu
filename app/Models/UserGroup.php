@@ -11,8 +11,10 @@ class UserGroup extends Model
     protected $table = 'user_group';
     protected $guarded = 'id';
     protected $fillable = [
-        'nama_user_group',
-        'deskripsi_user_group',
-        'super_admin'
+        'nama_group',
+        'id_pwnu',
+        'id_pcnu',
+        'id_mwcnu',
+        'id_rantingnu'
     ];
 }

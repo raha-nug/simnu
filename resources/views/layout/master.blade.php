@@ -116,7 +116,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('pwnu') ? 'active':'' }}"
-            href="">
+            href="pwnu">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
@@ -147,7 +147,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
-            href="pcnu">
+            href="pcnu/list">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
