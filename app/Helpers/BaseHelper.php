@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Helpers;
-
-class BaseHelper 
-{
-   private $chiper_algo = "aes-192-cbc";
-   private $key = "@cmr-2022";
-   private $iv;
-
-   
-   public function __construct()
+if (!function_exists('setRoute')) {
+   function setRoute(string $slug) : string
    {
-      $this->iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($this->chiper_algo));
+      $chiper_algo = "aes-192-cbc";
+      $key = "@cmr-2022";
+      $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($chiper_algo));
+      $encoded_str = openssl_encrypt($slug, $chiper_algo, $key, 0, $iv);
+      return rawurlencode(base64_encode($iv.$encoded_str));
    }
+}
 
-   public function setRoute(string $slug) :string
+if (!function_exists('getRoute')) {
+   function getRoute(string $slug) : string
    {
-      return openssl_encrypt($slug, $this->chiper_algo, $this->key, 0, $this->iv);
+      $chiper_algo = "aes-192-cbc";
+      $key = "@cmr-2022";
+      $base64_str = rawurldecode(base64_decode($slug));
+      try {
+         $result = openssl_decrypt(substr($base64_str, 16), $chiper_algo, $key, 0, substr($base64_str, 0, 16));
+         return $result;
+         //code...
+      } catch (\Throwable $th) {
+         dd($th->getMessage(), $base64_str, $slug);
+      }
    }
-
-   public function getRoute(string $slug) :string 
-   {
-      return openssl_decrypt($slug, $this->chiper_algo, $this->key, 0, $this->iv);
-   }
-   
 }
 
