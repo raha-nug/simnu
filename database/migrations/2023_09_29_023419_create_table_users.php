@@ -22,9 +22,8 @@ return new class extends Migration
             $table->string('kota', 16)->nullable();
             $table->string('kecamatan', 16)->nullable();
             $table->string('desa', 16)->nullable();
-            $table->boolean('is_whatsapp')->nullable();
-            $table->integer('id_grup')->nullable();
-            $table->timestamps();
+            $table->boolean('is_whatsapp');
+            $table->unsignedBigInteger('id_grup');
 
             $table->index('nik');
             $table->foreign('id_grup')->references('id')->on('table_user_groups')->onDelete('cascade');

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('table_user_groups', function (Blueprint $table) {
             $table->id();
             $table->string('nama_grup', 100);
-            $table->integer('id_pwnu')->nullable();
-            $table->integer('id_pcnu')->nullable();
-            $table->integer('id_mwcnu')->nullable();
+            $table->unsignedBigInteger('id_pwnu')->nullable();
+            $table->unsignedBigInteger('id_pcnu')->nullable();
+            $table->unsignedBigInteger('id_mwcnu')->nullable();
             $table->uuid('id_rantingnu')->nullable();
             $table->timestamps();
 

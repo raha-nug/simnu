@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengurus', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->uuid('id_sk');
             $table->string('nik', 16);
             $table->string('nama', 125);
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->dateTime('akhir_jabatan');
             $table->timestamps();
 
-            $table->foreign('id_sk')->references('id')->on('surat_keputusan')->onDelete('cascade');
+            $table->foreign('id_sk')->references('sk_id')->on('surat_keputusan')->onDelete('cascade');
             $table->index('nik');
         });
     }

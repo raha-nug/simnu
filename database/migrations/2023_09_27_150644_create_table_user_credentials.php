@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('table_user_credentials', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_grup');
+            $table->unsignedBigInteger('id_grup');
             $table->boolean('can_update');
             $table->boolean('can_create');
             $table->boolean('can_delete');
