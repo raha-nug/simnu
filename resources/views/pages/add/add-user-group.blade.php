@@ -20,6 +20,39 @@
   <x-slot:title>
     Tambah User Group
   </x-slot:title>
+  @if (isset($user_group))
+    <div class="col-md-6">
+        <label for="namaUG" class="form-label">Nama User Group</label>
+        <input type="text" class="form-control" id="namaUG" name="nama_grup" value="{{$user_group->nama_grup}}" required>
+        <input type="hidden" name="id" value="{{ $user_group->id }}">
+    </div>
+    <div class="col-md-6">
+        <label for="status" class="form-label">Role</label>
+        <select class="form-select" id="status" name="role" required>
+            <option selected disabled value="">--pilih role--</option>
+            <option value="PWNU">PWNU</option>
+            <option value="PCNU">PCNU</option>
+            <option value="MWCNU">MWC</option>
+        </select>
+    </div>
+    <div class="col-md-12">
+    <label for="kota" class="form-label">Kota/Kab</label>
+    <select class="form-select" id="kabkot" name="kota" required disabled>
+        <option></option>
+        @foreach($kab_kota as $item)
+            @if($item->kode == $user_group->kota)
+                <option value="{{ $item->kode }}" selected>{{ $item->nama }}</option>
+            @else
+                <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+            @endif
+        @endforeach
+    </select>
+    </div>
+    <div class="col-md-12">
+        <label for="ket" class="form-label">Keterangan User Group</label>
+        <textarea name="ket" class="form-control" id="ket"  style="height: 100px"></textarea>
+    </div>
+  @else
     <div class="col-md-6">
         <label for="namaUG" class="form-label">Nama User Group</label>
         <input type="text" class="form-control" id="namaUG" name="nama_grup" required>
@@ -930,6 +963,7 @@
 
         </div>
     </div>
+    @endif
 </x-form>
 
 <script>

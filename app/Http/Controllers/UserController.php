@@ -73,8 +73,10 @@ class UserController extends Controller
     }
 
     public function delete($id_user){
-        $user_group = Users::query()->where('id', $id_user)->delete();
-        if($user_group > 0){
+        $id = getRoute($id_user);
+        $is_deleted = Users::where('id', $id)
+            ->delete();
+        if($is_deleted){
             Alert::success('Data Berhasil Dihapus');
             return redirect()->back();
         } else {

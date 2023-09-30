@@ -44,8 +44,10 @@ Route::prefix('pcnu')->group(function () {
 Route::prefix('user-group')->group(function () {
     Route::get('/', [UserGroupController::class, 'index'])->name('user-group');
     Route::get('/add', [UserGroupController::class, 'addUserGroup'])->name('add-user-group');
+    Route::get('/update/{id_user_group}', [UserGroupController::class, 'getUserGroup'])->name('update-user-group');
     Route::post('/process', [UserGroupController::class, 'process'])->name('process-user-group');
-    Route::get('/detail/{id_user_group}', [UserGroupController::class, 'detail'])->name('detail-user-group');
+    Route::get('/detail', [UserGroupController::class, 'detail'])->name('detail-user-group');
+    Route::get('/delete/{id_ug}', [UserGroupController::class, 'delete'])->name('delete-user-group');
 });
 
 Route::prefix('user')->group(function () {
@@ -217,13 +219,13 @@ Route::get('add-user', function () {
     ]);
 });
 
-Route::get('detail-user-group', function () {
-    return view('pages.detail-user-group',[
-        'title'=> 'Detail User Group',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
-});
+// Route::get('detail-user-group', function () {
+//     return view('pages.detail-user-group',[
+//         'title'=> 'Detail User Group',
+//         'username'=>'John Doe',
+//         'from'=>'Jawa Barat',
+//     ]);
+// });
 Route::get('detail-user', function () {
     return view('pages.detail-user',[
         'title'=> 'Detail User',

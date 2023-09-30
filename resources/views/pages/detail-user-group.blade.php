@@ -55,7 +55,7 @@
           <dt class="text-lg-end text-sm-start">Keterangan :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>{{$user_group->nama_grup}}{{$user_grup->id_pcnu}}</dd>
+          <dd>{{$user_group->nama_grup}}{{$user_group->id_pcnu}}</dd>
         </div>
       </div>
       <div class="row">

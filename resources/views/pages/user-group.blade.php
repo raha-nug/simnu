@@ -41,7 +41,7 @@
                     @foreach ($user_group as $value)
                     <tr>
                         <th scope="row">1</th>
-                        <td><a href="{{route('detail-user-group', ['id_user_group' => setRoute($value->id)])}}">{{$value->nama_grup}}</a></td>
+                        <td><a href="{{ route('detail-user-group') }}?page=10&ug={{ setRoute($value->id) }}">{{$value->nama_grup}}</a></td>
                         <td>
 
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
@@ -50,12 +50,12 @@
                             <ul
                             class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{{route('update-user-group', ['id_user_group' => setRoute($value->id)])}}">
                                 <i class="bi bi-pencil-square"></i>
                                 Edit
                                 </a>
                             </li>
-                            <li><a class="dropdown-item text-danger" href="#">
+                            <li><a class="dropdown-item text-danger" href="{{route('delete-user-group', ['id_ug' => setRoute($value->id)])}}">
                                 <i class="bi bi-trash"></i>
                                 Hapus
                                 </a>

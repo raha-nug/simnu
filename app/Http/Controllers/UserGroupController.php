@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class UserGroupController extends Controller
 {
     public function index(){
-        $user_group = PCNU::select('id_pcnu', 'nama', 'nama_grup')
-                            ->join('table_user_groups', 'pcnu.id', '=', 'table_user_groups.id_pcnu')
-                            ->get();
+        $user_group = UserGroup::select('table_user_groups.id','table_user_groups.nama_grup', 'pcnu.nama')
+                                ->join('pcnu', 'table_user_groups.id_pcnu', '=', 'pcnu.id')
+                                ->get();
+        // dd($user_group);
         if(empty($user_group)){
             Alert::error('Oops', 'Data User Group Tidak Tersedia');
             return redirect()->back();
@@ -27,7 +28,21 @@ class UserGroupController extends Controller
         return view('pages.user-group',$data);
     }
 
-    public function addUserGroup(){
+    public function getUserGroup($id_user_group)
+    {
+        $id = getRoute($id_user_group);
+        if (!$id)
+            return redirect('user_groups');
+
+        $user_group = UserGroup::select('table_user_groups.id', 'table_user_groups.nama_grup', 'pcnu.kota', 'pcnu.nama')
+                                ->join('pcnu', 'table_user_groups.id_pcnu', '=', 'pcnu.id')
+                                ->where('table_user_groups.id', $id)
+                                ->first();
+
+        return $this->addUserGroup($user_group);
+    }
+
+    public function addUserGroup($data_user_group=null){
         $data = [
             'title'=> 'User Group',
             'username'=>'John Doe',
@@ -36,6 +51,10 @@ class UserGroupController extends Controller
             'method' => 'POST',
             'action' => route('process-user-group')
         ];
+
+        if($data_user_group)
+            $data['user_group'] = $data_user_group;
+
         return view('pages.add.add-user-group',$data);
     }
 
@@ -63,17 +82,60 @@ class UserGroupController extends Controller
         }
         $data = $validated->validate();
         $data['id_pcnu'] = $pcnu->id;
+        if (isset($request->id)) {
+            unset($data['kota']);
+            $data['id_pcnu'] = $pcnu->id;
+            $is_updated = UserGroup::where('id', $request->id)->update($data);
+            if (!$is_updated)
+            {
+                Alert::error('Oops! , Gagal melakukan update');
+                return redirect()->back(400);
+            }
+            Alert::success('Data Berhasil Disimpan');
+            return redirect(route('user-group'));
+        }
         UserGroup::create($data);
         Alert::success('Data Berhasil Disimpan');
         return redirect(route('user-group'));
     }
 
-    public function detail($id_user_group){
-        $id = getRoute($id_user_group);
-        $user = UserGroup::query()->where('id',$id)->first();
+    public function detail(Request $request){
+        $limit = $request->page ?? 10;
+
+        if(!isset($request->ug))
+            return redirect(route('no-found'));
+
+        $id_ug = $request->ug;
+        $id = getRoute($id_ug);
+        if (!$id)
+            return redirect('user-group');
+
+        $user_group = UserGroup::query()->where('id', $id)
+            ->first();
         $data = [
-            'user_group' => $user
+            'title'=> 'Detail User Group',
+            'username'=>'John Doe',
+            'from'=>'Jawa Barat',
+            'user_group' => $user_group
         ];
         return view('pages.detail-user-group',$data);
+    }
+
+    public function delete($id_ug)
+    {
+        $id = getRoute($id_ug);
+        $is_deleted = UserGroup::where('id', $id)
+            ->delete();
+
+        if ($is_deleted)
+        {
+            Alert::success('Data Berhasil Dihapus');
+            return redirect(route('user-group'));
+        }
+        else
+        {
+            Alert::error('Data Gagal Dihapus');
+            return redirect(route('user-group'));
+        }
     }
 }

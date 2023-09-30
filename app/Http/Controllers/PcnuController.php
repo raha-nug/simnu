@@ -21,7 +21,7 @@ class PcnuController extends Controller
             'name' => 'PCNU Jawa Barat',
             'list_pcnu' => $pcnu_list
         ];
-        
+
         return view('pages.pcnu', $data);
     }
 
@@ -137,13 +137,13 @@ class PcnuController extends Controller
         $id = getRoute($id_pc);
         $is_deleted = PCNU::where('id', $id)
             ->delete();
-        
+
         if ($is_deleted)
         {
             Alert::success('Data Berhasil Dihapus');
             return redirect(route('pcnu'));
         }
-        else 
+        else
         {
             Alert::error('Data Gagal Dihapus');
             return redirect(route('pcnu'));

@@ -56,7 +56,7 @@
                             Edit
                             </a>
                         </li>
-                        <li><a class="dropdown-item text-danger" href="{{route('delete-user', ['id_user' => $value->id])}}">
+                        <li><a class="dropdown-item text-danger" href="{{route('delete-user', ['id_user' => setRoute($value->id)])}}">
                             <i class="bi bi-trash"></i>
                             Hapus
                             </a>
