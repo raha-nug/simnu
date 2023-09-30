@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MWCNU;
 use App\Models\PCNU;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,13 +19,13 @@ class PcnuController extends Controller
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
             'name' => 'PCNU Jawa Barat',
-            'dataTable' => $pcnu_list
+            'list_pcnu' => $pcnu_list
         ];
         
         return view('pages.pcnu', $data);
     }
 
-    public function detailPcnu($id_pc)
+    public function getPcnu($id_pc)
     {
         $id = getRoute($id_pc);
         if (!$id)
@@ -32,7 +33,34 @@ class PcnuController extends Controller
 
         $pcnu = PCNU::query()->where('id', $id)
             ->first();
+
         return $this->addPcnu($pcnu);
+    }
+
+    public function detailPcnu(Request $request)
+    {
+        $limit = $request->page ?? 10;
+
+        if(!isset($request->pc))
+            return redirect(route('no-found'));
+
+        $id_pc = $request->pc;
+        $id = getRoute($id_pc);
+        if (!$id)
+            return redirect('pcnu');
+
+        $pcnu = PCNU::query()->where('id', $id)
+            ->first();
+        $mwc_list = MWCNU::getListByPcnu($id, $limit);
+
+        return view('pages.detail-pcnu', [
+            'title' => 'Detail PCNU',
+            'username' => 'John Doe',
+            'from' => 'Jawa Barat',
+            'pc_data' => $pcnu,
+            'list_mwc' => $mwc_list,
+            'kota' => $this->wilayah->getSingleAddress($pcnu->kota ?? '')
+        ]);
     }
 
     public function addPcnu($pc_data=null)

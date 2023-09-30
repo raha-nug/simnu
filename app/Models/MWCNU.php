@@ -30,6 +30,24 @@ class MWCNU extends Model
         'kecamatan'
     ];
 
+
+    public static function getListByPcnu($id_pc, $paginate)
+    {
+        if (!$id_pc)
+            return [];
+
+        $query = self::query()
+            ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
+            ->selectRaw('COUNT(ranting.id) as jumlah_ranting')
+            ->leftJoin('ranting', 'mwcnu.id', '=', 'id_mwcnu')
+            ->where('id_pcnu', $id_pc)
+            ->groupBy(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
+            ->paginate($paginate);
+        // ->get();
+
+        return $query;
+    }
+
     public function pcnu(): BelongsTo
     {
         return $this->belongsTo(PCNU::class);
