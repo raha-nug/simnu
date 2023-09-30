@@ -22,7 +22,7 @@
             <div class="card-body">
                 <div class="card-title">Daftar User Group</div>
                 <div class="d-flex justify-content-end me-3 btn-sm">
-                <a class="btn btn-primary" href="add-user">
+                <a class="btn btn-primary" href="{{route('add-user')}}">
                 <i class="bi bi-plus me-1"></i>
                 Tambah
                 </a>
@@ -43,7 +43,7 @@
                     <td><a href="detail-user">Admin PC Kab Bogor</a></td>
                     <td><a href="detail-user-group">Admin</a></td>
                     <td>
-                        
+
                         <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-three-dots-vertical"></i>
                         </a>
@@ -61,7 +61,7 @@
                             </a>
                         </li>
                         </ul>
-                    
+
                     </td>
                     </tr>
                     <tr>
@@ -69,7 +69,7 @@
                     <td><a href="detail-user">Admin PC Kab Tasik</a></td>
                     <td><a href="detail-user-group">Admin PC Kab Tasik</a></td>
                     <td>
-                        
+
                         <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                         <i class="bi bi-three-dots-vertical"></i>
                         </a>
@@ -87,7 +87,7 @@
                             </a>
                         </li>
                         </ul>
-                    
+
                     </td>
                     </tr>
                 </tbody>
