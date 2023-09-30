@@ -239,7 +239,7 @@
           </a>
         </li> --}}
         <li class="nav-heading">Datas</li>
-        <li class="nav-item">
+        <li class="nav-item d-none">
           <a
             class="nav-link {{ Request::is('cari-data*') ? 'active':'' }}"
             href="pengurus">

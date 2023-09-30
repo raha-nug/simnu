@@ -270,3 +270,87 @@ Route::get('detail-member', function () {
         'from'=>'Jawa Barat',
     ]);
 });
+Route::get('jabatan', function () {
+    return view('pages.jabatan',[
+        'title'=> 'Daftar Jabatan',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('add-jabatan', function () {
+    return view('pages.add.add-jabatan',[
+        'title'=> 'Tambah Jabatan',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('detail-jabatan', function () {
+    return view('pages.detail-jabatan',[
+        'title'=> 'Detail Jabatan',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('banom-basis', function () {
+    return view('pages.banom-basis',[
+        'title'=> 'Daftar Banom Basis',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('add-banom-basis', function () {
+    return view('pages.add.add-banom-basis',[
+        'title'=> 'Tambah Banom Basis',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('detail-banom-basis', function () {
+    return view('pages.detail-banom-basis',[
+        'title'=> 'Detail Banom Basis',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('master-lembaga', function () {
+    return view('pages.master-lembaga',[
+        'title'=> 'Daftar Master Lembaga',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('add-master-lembaga', function () {
+    return view('pages.add.add-master-lembaga',[
+        'title'=> 'Tambah Master Lembaga',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('detail-master-lembaga', function () {
+    return view('pages.detail-master-lembaga',[
+        'title'=> 'Detail Master Lembaga',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('master-banom', function () {
+    return view('pages.master-banom',[
+        'title'=> 'Daftar Master Banom',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('add-master-banom', function () {
+    return view('pages.add.add-master-banom',[
+        'title'=> 'Tambah Master Banom',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('detail-master-banom', function () {
+    return view('pages.detail-master-banom',[
+        'title'=> 'Detail Master Banom',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
