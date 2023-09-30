@@ -1,5 +1,8 @@
 @extends('layout.master')
 
+@section('title',$title)
+@section('username',$username)
+@section('from',$from)
 
 @section('pagetitle')
 <div class="pagetitle">

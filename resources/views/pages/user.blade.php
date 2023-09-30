@@ -31,7 +31,6 @@
                 <table class="table table-borderless table-hover datatable">
                 <thead>
                     <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Nama User</th>
                     <th scope="col">User Group</th>
                     <th scope="col">Aksi</th>
@@ -39,7 +38,6 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <th scope="row">1</th>
                     <td><a href="detail-user">Admin PC Kab Bogor</a></td>
                     <td><a href="detail-user-group">Admin</a></td>
                     <td>
@@ -65,7 +63,6 @@
                     </td>
                     </tr>
                     <tr>
-                    <th scope="row">2</th>
                     <td><a href="detail-user">Admin PC Kab Tasik</a></td>
                     <td><a href="detail-user-group">Admin PC Kab Tasik</a></td>
                     <td>

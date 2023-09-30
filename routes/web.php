@@ -228,3 +228,45 @@ Route::get('detail-user', function () {
         'from'=>'Jawa Barat',
     ]);
 });
+Route::get('jenis-pengurus', function () {
+    return view('pages.jenis-pengurus',[
+        'title'=> 'Jenis Pengurus',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+})->name('jenis_pengurus');
+Route::get('add-jenis-pengurus', function () {
+    return view('pages.add.add-jenis-pengurus',[
+        'title'=> 'Tambah Jenis Pengurus',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('detail-jenis-pengurus', function () {
+    return view('pages.detail-jenis-pengurus',[
+        'title'=> 'Detail Jenis Pengurus',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('member', function () {
+    return view('pages.member',[
+        'title'=> 'Daftar Member',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('add-member', function () {
+    return view('pages.add.add-member',[
+        'title'=> 'Tambah Member',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});
+Route::get('detail-member', function () {
+    return view('pages.detail-member',[
+        'title'=> 'Detail Member',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+    ]);
+});

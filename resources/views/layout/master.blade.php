@@ -283,13 +283,13 @@
               </a>
             </li>
             <li>
-              <a href="members">
+              <a href="member">
                 <i class="bi bi-circle"></i>
                 <span>Member</span>
               </a>
             </li>
             <li>
-              <a href="jenis-pengurus">
+              <a href="{{route('jenis_pengurus')}}">
                 <i class="bi bi-circle"></i>
                 <span>Jenis Pengurus</span>
               </a>
