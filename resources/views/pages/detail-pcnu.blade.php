@@ -25,12 +25,11 @@
       <a class="icon" href="#" data-bs-toggle="dropdown">
         <i class="bi bi-three-dots"></i>
       </a>
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
 
         <li><a class="dropdown-item" href="{{ route('pcnu-update',['id_pc' => setRoute($pc_data->id)]) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">Detail PCNU</div>
@@ -108,72 +107,29 @@
   <div class="card">
     <div class="card-body">
       <!-- Bordered Tabs Justified -->
-      <ul
-        class="nav nav-tabs nav-tabs-bordered d-flex pt-5"
-        id="borderedTabJustified"
-        role="tablist">
+      <ul class="nav nav-tabs nav-tabs-bordered d-flex pt-5" id="borderedTabJustified" role="tablist">
         <li class="nav-item flex-fill" role="presentation">
-          <button
-            class="nav-link w-100 active"
-            id="pengurus-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#bordered-justified-pengurus"
-            type="button"
-            role="tab"
-            aria-controls="pengurus"
-            aria-selected="true">
+          <button class="nav-link w-100 active" id="pengurus-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-pengurus" type="button" role="tab" aria-controls="pengurus" aria-selected="true">
             Pengurus
           </button>
         </li>
         <li class="nav-item flex-fill" role="presentation">
-          <button
-            class="nav-link w-100"
-            id="kepengurusan-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#bordered-justified-kepengurusan"
-            type="button"
-            role="tab"
-            aria-controls="kepengurusan"
-            aria-selected="false">
+          <button class="nav-link w-100" id="kepengurusan-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-kepengurusan" type="button" role="tab" aria-controls="kepengurusan" aria-selected="false">
             SK Kepengurusan
           </button>
         </li>
         <li class="nav-item flex-fill" role="presentation">
-          <button
-            class="nav-link w-100"
-            id="lembaga-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#bordered-justified-lembaga"
-            type="button"
-            role="tab"
-            aria-controls="lembaga"
-            aria-selected="false">
+          <button class="nav-link w-100" id="lembaga-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-lembaga" type="button" role="tab" aria-controls="lembaga" aria-selected="false">
             Lembaga
           </button>
         </li>
         <li class="nav-item flex-fill" role="presentation">
-          <button
-            class="nav-link w-100"
-            id="banom-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#bordered-justified-banom"
-            type="button"
-            role="tab"
-            aria-controls="banom"
-            aria-selected="false">
+          <button class="nav-link w-100" id="banom-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-banom" type="button" role="tab" aria-controls="banom" aria-selected="false">
             Banom
           </button>
         </li>
         <li class="nav-item flex-fill" role="presentation">
-          <button
-            class="nav-link w-100"
-            id="banom-tab"
-            data-bs-toggle="tab"
-            data-bs-target="#bordered-justified-mwc"
-            type="button"
-            role="tab"
-            aria-controls="banom"
-            aria-selected="false">
+          <button class="nav-link w-100" id="banom-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-mwc" type="button" role="tab" aria-controls="banom" aria-selected="false">
             MWC
           </button>
         </li>
@@ -192,39 +148,73 @@
 @endsection
 @section('js-page')
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
     mwcTable();
   })
 
   const mwcTable = () => {
     $("#mwcTable").DataTable({
-        responsive: true,
-        language: {
-          search: "_INPUT_",
-          searchPlaceholder: "Cari...",
-          sLengthMenu: "_MENU_",
+      responsive: true,
+      language: {
+        "scrollX": true,
+        "scrollY": true,
+        search: "_INPUT_",
+        searchPlaceholder: "Cari...",
+        sLengthMenu: "_MENU_",
+        "zeroRecords": "Tidak ada data untuk ditampilkan",
+        "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+        "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+        "infoFiltered": ""
+      },
+      "aLengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, "Show All"]
+      ],
+      "processing": true,
+      "bAutoWidth": false,
+      "serverSide": true,
+      "iDisplayLength": 10,
+      "bInfo": true,
+      "orderCellsTop": false,
+      "ajax": {
+        "url": "{{ route('mwc-list-bypcnu') }}",
+        "type": "GET",
+        "data": function(d) {
+          d.pc = "{{ $pc_data->id }}";
+        }
+      },
+      "columns": [{
+          mData: "nama",
+          mRender: function(data, type, row) {
+            return "{{ route('pcnu-detail') }}?page=10&pc={{ setRoute(" + row.id + ") }}";
+          },
+          "orderable": false
         },
-        "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Show All"]],
-        "processing": true,
-        "bAutoWidth": false,
-        "serverSide": true,
-        "iDisplayLength": 10,
-        "bInfo": true,
-        "orderCellsTop":false,
-        "ajax": {
-          "url": "{{ route('mwc-list-bypcnu') }}",
-          "type": "GET",
-          "data": function (d) {
-            d.pc = "{{ $pc_data->id }}";
-          }
+        {
+          mData: "alamat",
+          mRender: function(data, type, row) {
+            return row.alamat;
+          },
+          "orderable": false
         },
-        "columns": [
-          { mData:"nama", mRender: function(data,type,row){ return "{{ route('pcnu-detail') }}?page=10&pc={{ setRoute("+row.id+") }}"; }, "orderable": false },
-          { mData:"alamat", mRender: function(data,type,row){ return row.alamat; }, "orderable": false },
-          { mData:"", mRender: function(data,type,row){ return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`; }, "orderable": false },
-          { mData:"jumlah_ranting", mRender: function(data,type,row){ return row.jumlah_ranting; }, "orderable": false },
-          { mData:"", mRender: function(data,type,row){ return 
-            `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+            return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "jumlah_ranting",
+          mRender: function(data, type, row) {
+            return row.jumlah_ranting;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
               <i class="bi bi-three-dots-vertical"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -239,12 +229,14 @@
                   </a>
               </li>
             </ul>`;
-          }, "orderable": false },
-        ],
-        "tabIndex": 1,
-          "drawCallback": function( settings ) {
-              // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
-        }
+          },
+          "orderable": false
+        },
+      ],
+      "tabIndex": 1,
+      "drawCallback": function(settings) {
+        // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+      }
     });
   }
 </script>
