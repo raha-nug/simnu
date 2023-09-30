@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MwcController extends Controller
 {
-    public function index(Re)
+    public function index()
     {
         $mwc = MWCNU::query()->where('id_pcnu')->get();
         $data = [

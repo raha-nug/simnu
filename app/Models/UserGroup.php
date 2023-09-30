@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserGroup extends Model
 {
     use HasFactory;
-    protected $table = 'table_user_grups';
+    protected $table = 'table_user_groups';
     protected $guarded = 'id';
     protected $fillable = [
         'nama_grup',
@@ -17,4 +17,9 @@ class UserGroup extends Model
         'id_mwcnu',
         'id_rantingnu'
     ];
+
+    public function pcnu()
+    {
+        return $this->belongsTo(PCNU::class);
+    }
 }

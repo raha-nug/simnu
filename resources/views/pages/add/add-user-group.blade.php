@@ -14,6 +14,7 @@
 @endsection
 
 @section('content')
+    @include('sweetalert::alert')
 <x-form :$method :$action>
     @csrf
   <x-slot:title>
@@ -21,7 +22,7 @@
   </x-slot:title>
     <div class="col-md-6">
         <label for="namaUG" class="form-label">Nama User Group</label>
-        <input type="text" class="form-control" id="namaUG" name="nama-group" required>
+        <input type="text" class="form-control" id="namaUG" name="nama_grup" required>
    </div>
    <div class="col-md-6">
         <label for="status" class="form-label">Role</label>

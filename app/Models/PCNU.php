@@ -35,7 +35,7 @@ class PCNU extends Model
             ->select(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
             ->selectRaw('COUNT(mwcnu.id) as jumlah_mwc')
             ->leftJoin('mwcnu', 'pcnu.id', '=', 'mwcnu.id_pcnu')
-            ->groupBy('pcnu.id')
+            ->groupBy(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
             ->paginate($paginate);
         // ->get();
 

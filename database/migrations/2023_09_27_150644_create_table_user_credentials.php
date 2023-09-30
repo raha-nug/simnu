@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('table_user_credentials', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_grup');
+            $table->unsignedBigInteger('id_grup');
             $table->boolean('can_update');
             $table->boolean('can_create');
             $table->boolean('can_delete');
             $table->boolean('can_manage_user');
             $table->timestamps();
 
-            $table->foreign('id_grup')->references('id')->on('user_groups')->onDelete('cascade');
+            $table->foreign('id_grup')->references('id')->on('table_user_groups')->onDelete('cascade');
         });
     }
 

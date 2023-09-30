@@ -17,6 +17,7 @@
 </div>
 @endsection
 @section('content')
+    @include('sweetalert::alert')
     <div class="container">
         <div class="card">
             <div class="card-body">
@@ -37,56 +38,33 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($user_group as $value)
                     <tr>
-                    <th scope="row">1</th>
-                    <td><a href="detail-user-group">Admin</a></td>
-                    <td>
-                        
-                        <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul
-                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <th scope="row">1</th>
+                        <td><a href="detail-user-group">{{$value->nama_grup}}</a></td>
+                        <td>
 
-                        <li><a class="dropdown-item" href="#">
-                            <i class="bi bi-pencil-square"></i>
-                            Edit
+                            <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-three-dots-vertical"></i>
                             </a>
-                        </li>
-                        <li><a class="dropdown-item text-danger" href="#">
-                            <i class="bi bi-trash"></i>
-                            Hapus
-                            </a>
-                        </li>
-                        </ul>
-                    
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td><a href="detail-user-group">Admin PC</a></td>
-                    <td>
-                        
-                        <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul
-                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <ul
+                            class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                        <li><a class="dropdown-item" href="#">
-                            <i class="bi bi-pencil-square"></i>
-                            Edit
-                            </a>
-                        </li>
-                        <li><a class="dropdown-item text-danger" href="#">
-                            <i class="bi bi-trash"></i>
-                            Hapus
-                            </a>
-                        </li>
-                        </ul>
-                    
-                    </td>
-                    </tr>
+                            <li><a class="dropdown-item" href="#">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="#">
+                                <i class="bi bi-trash"></i>
+                                Hapus
+                                </a>
+                            </li>
+                            </ul>
+
+                        </td>
+                        </tr>
+                    @endforeach
                 </tbody>
                 </table>
             </div>

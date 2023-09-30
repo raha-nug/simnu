@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MwcController;
 use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\PwnuController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
-use App\Http\Controllers\MwcController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +44,12 @@ Route::prefix('user-group')->group(function () {
     Route::get('/', [UserGroupController::class, 'index'])->name('user-group');
     Route::get('/add', [UserGroupController::class, 'addUserGroup'])->name('add-user-group');
     Route::post('/process', [UserGroupController::class, 'process'])->name('process-user-group');
+});
+
+Route::prefix('user')->group(function () {
+    Route::get('/',[UserController::class, 'index'])->name('user');
+    Route::get('addUser', [UserController::class, 'addUser'])->name('add-user');
+    Route::post('processUser', [UserController::class, 'process'])->name('process-user');
 });
 
 Route::get('pwnu', function () {
@@ -211,13 +217,6 @@ Route::get('add-user', function () {
     ]);
 });
 
-Route::get('user', function () {
-    return view('pages.user',[
-        'title'=> 'User',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
-});
 Route::get('detail-user-group', function () {
     return view('pages.detail-user-group',[
         'title'=> 'Detail User Group',
