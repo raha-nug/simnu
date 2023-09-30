@@ -31,7 +31,7 @@ class MWCNU extends Model
     ];
 
 
-    public static function getListByPcnu($id_pc, $paginate)
+    public static function getListByPcnu($id_pc, $limit, $start, $search=null)
     {
         if (!$id_pc)
             return [];
@@ -42,10 +42,15 @@ class MWCNU extends Model
             ->leftJoin('ranting', 'mwcnu.id', '=', 'id_mwcnu')
             ->where('id_pcnu', $id_pc)
             ->groupBy(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
-            ->paginate($paginate);
-        // ->get();
+            // ->paginate($paginate);
+            ->limit($limit)
+            ->offset($start);
+        if ($search){
+            $query->whereRaw("mwcnu.nama LIKE '%{$search}%'")
+                ->orWhereRaw("mwcnu.alamat LIKE '%{$search}%'");
+        }
 
-        return $query;
+        return $query->get();
     }
 
     public function pcnu(): BelongsTo

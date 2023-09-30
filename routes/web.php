@@ -40,6 +40,10 @@ Route::prefix('pcnu')->group(function () {
     Route::get('/delete/{id_pc}', [PcnuController::class, 'deletePcnu'])->name('pcnu-delete');
 });
 
+Route::prefix('mwcnu')->group(function () {
+    Route::get('/getmwcByPcnu', [PcnuController::class, 'getmwcByPcnu'])->name('mwc-list-bypcnu');
+});
+
 Route::prefix('user-group')->group(function () {
     Route::get('/', [UserGroupController::class, 'index'])->name('user-group');
     Route::get('/add', [UserGroupController::class, 'addUserGroup'])->name('add-user-group');

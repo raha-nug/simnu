@@ -6,7 +6,7 @@
       </a>
    </div>
    <div class="table-responsive">
-      <table class="table table-borderless table-hover datatable">
+      <table class="table table-borderless table-hover" id="mwcTable">
          <thead>
             <tr>
                <th scope="col">Nama MWC</th>

@@ -189,5 +189,63 @@
     </div>
   </div>
 </div>
+@endsection
+@section('js-page')
+<script>
+  $(document).ready(function () {
+    mwcTable();
+  })
 
+  const mwcTable = () => {
+    $("#mwcTable").DataTable({
+        responsive: true,
+        language: {
+          search: "_INPUT_",
+          searchPlaceholder: "Cari...",
+          sLengthMenu: "_MENU_",
+        },
+        "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Show All"]],
+        "processing": true,
+        "bAutoWidth": false,
+        "serverSide": true,
+        "iDisplayLength": 10,
+        "bInfo": true,
+        "orderCellsTop":false,
+        "ajax": {
+          "url": "{{ route('mwc-list-bypcnu') }}",
+          "type": "GET",
+          "data": function (d) {
+            d.pc = "{{ $pc_data->id }}";
+          }
+        },
+        "columns": [
+          { mData:"nama", mRender: function(data,type,row){ return "{{ route('pcnu-detail') }}?page=10&pc={{ setRoute("+row.id+") }}"; }, "orderable": false },
+          { mData:"alamat", mRender: function(data,type,row){ return row.alamat; }, "orderable": false },
+          { mData:"", mRender: function(data,type,row){ return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`; }, "orderable": false },
+          { mData:"jumlah_ranting", mRender: function(data,type,row){ return row.jumlah_ranting; }, "orderable": false },
+          { mData:"", mRender: function(data,type,row){ return 
+            `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-three-dots-vertical"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li><a class="dropdown-item" href="#">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit
+                  </a>
+              </li>
+              <li><a class="dropdown-item text-danger" href="#">
+                    <i class="bi bi-trash"></i>
+                    Hapus
+                  </a>
+              </li>
+            </ul>`;
+          }, "orderable": false },
+        ],
+        "tabIndex": 1,
+          "drawCallback": function( settings ) {
+              // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+        }
+    });
+  }
+</script>
 @endsection
