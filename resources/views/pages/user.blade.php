@@ -51,7 +51,7 @@
                         <ul
                         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                        <li><a class="dropdown-item" href="#">
+                        <li><a class="dropdown-item" href="{{route('update-user', ['id_user' => setRoute($value->id)])}}">
                             <i class="bi bi-pencil-square"></i>
                             Edit
                             </a>

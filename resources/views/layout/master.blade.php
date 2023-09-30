@@ -271,7 +271,7 @@
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav">
             <li>
-              <a href="{{route('add-user')}}">
+              <a href="{{route('user')}}">
                 <i class="bi bi-circle"></i>
                 <span>User</span>
               </a>

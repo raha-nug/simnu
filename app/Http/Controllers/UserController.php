@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     public function index(){
-        $user = Users::join('table_user_groups', 'table_users.id_grup', '=', 'table_user_groups.id')
+        $user = Users::select('table_users.id', 'table_users.nama', 'table_users.email','table_user_groups.nama_grup')
+                        ->join('table_user_groups', 'table_users.id_grup', '=', 'table_user_groups.id')
                         ->get();
         $data = [
             'title'=> 'User',
@@ -23,7 +24,18 @@ class UserController extends Controller
         return view('pages.user', $data);
     }
 
-    public function addUser(){
+    public function getUser($id_user){
+        $id = getRoute($id_user);
+        if (!$id)
+            return redirect('user');
+        $user = Users::select('table_users.id', 'table_users.nama', 'table_users.email', 'table_users.password', 'table_user_groups.nama_grup')
+                    ->join('table_user_groups', 'table_users.id_grup', '=', 'table_user_groups.id')
+                    ->where('table_users.id', $id_user)
+                    ->get();
+        return $this->addUser($user);
+    }
+
+    public function addUser($data_user=null){
         $user_group = UserGroup::query()->get();
         $data = [
             'title'=> 'User Group',
@@ -33,6 +45,8 @@ class UserController extends Controller
             'method' => 'POST',
             'action' => route('process-user')
         ];
+        if($data_user)
+            $data['data_user'] = $data_user;
         return view('pages.add.add-user',$data);
     }
 
@@ -67,14 +81,27 @@ class UserController extends Controller
         $data = $validated->validate();
         $data['password'] = $password;
         $data['id_grup'] = $user_group->id;
+        if (isset($request->id)) {
+            $password = Hash::make($request->input('password'));
+            $data['password'] = $password;
+            $data['id_grup'] = $user_group->id;
+            $is_updated = Users::where('id', $request->id)->update($data);
+            if (!$is_updated)
+            {
+                Alert::error('Oops! , Gagal melakukan update');
+                return redirect()->back(400);
+            }
+            Alert::success('Data Berhasil Disimpan');
+            return redirect(route('pcnu'));
+        }
         Users::create($data);
         Alert::success('Data Berhasil Disimpan');
         return redirect(route('user'));
     }
 
     public function delete($id_user){
-        $id = getRoute($id_user);
-        $is_deleted = Users::where('id', $id)
+        // $id = getRoute($id_user);
+        $is_deleted = Users::where('id', $id_user)
             ->delete();
         if($is_deleted){
             Alert::success('Data Berhasil Dihapus');

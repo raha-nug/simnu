@@ -52,7 +52,8 @@ Route::prefix('user-group')->group(function () {
 
 Route::prefix('user')->group(function () {
     Route::get('/',[UserController::class, 'index'])->name('user');
-    Route::get('addUser', [UserController::class, 'addUser'])->name('add-user');
+    Route::get('/addUser', [UserController::class, 'addUser'])->name('add-user');
+    Route::get('/update/{id_user}', [UserController::class, 'getUser'])->name('update-user');
     Route::post('processUser', [UserController::class, 'process'])->name('process-user');
     Route::get('/delete/{id_user}', [UserController::class, 'delete'])->name('delete-user');
 });
