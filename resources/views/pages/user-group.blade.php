@@ -23,7 +23,7 @@
             <div class="card-body">
                 <div class="card-title">Daftar User Group</div>
                 <div class="d-flex justify-content-end me-3 btn-sm">
-                <a class="btn btn-primary" href="add-user-group">
+                <a class="btn btn-primary" href="{{route('add-user-group')}}">
                 <i class="bi bi-plus me-1"></i>
                 Tambah
                 </a>
@@ -41,7 +41,7 @@
                     @foreach ($user_group as $value)
                     <tr>
                         <th scope="row">1</th>
-                        <td><a href="detail-user-group">{{$value->nama_grup}}</a></td>
+                        <td><a href="{{route('detail-user-group', ['id_user_group' => setRoute($value->id)])}}">{{$value->nama_grup}}</a></td>
                         <td>
 
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">

@@ -22,7 +22,7 @@ class Users extends Model
         'kecamatan',
         'desa',
         'is_whatsapp',
-        'id_group'
+        'id_grup'
     ];
 
     public function userGroup(): BelongsTo

@@ -38,10 +38,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($user as $value)
                     <tr>
                     <th scope="row">1</th>
-                    <td><a href="detail-user">Admin PC Kab Bogor</a></td>
-                    <td><a href="detail-user-group">Admin</a></td>
+                    <td><a href="detail-user">{{$value->nama}}</a></td>
+                    <td><a href="detail-user-group">{{$value->nama_grup}}</a></td>
                     <td>
 
                         <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
@@ -55,7 +56,7 @@
                             Edit
                             </a>
                         </li>
-                        <li><a class="dropdown-item text-danger" href="#">
+                        <li><a class="dropdown-item text-danger" href="{{route('delete-user', ['id_user' => $value->id])}}">
                             <i class="bi bi-trash"></i>
                             Hapus
                             </a>
@@ -64,6 +65,7 @@
 
                     </td>
                     </tr>
+                    @endforeach
                     <tr>
                     <th scope="row">2</th>
                     <td><a href="detail-user">Admin PC Kab Tasik</a></td>

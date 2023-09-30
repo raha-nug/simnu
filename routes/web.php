@@ -45,12 +45,14 @@ Route::prefix('user-group')->group(function () {
     Route::get('/', [UserGroupController::class, 'index'])->name('user-group');
     Route::get('/add', [UserGroupController::class, 'addUserGroup'])->name('add-user-group');
     Route::post('/process', [UserGroupController::class, 'process'])->name('process-user-group');
+    Route::get('/detail/{id_user_group}', [UserGroupController::class, 'detail'])->name('detail-user-group');
 });
 
 Route::prefix('user')->group(function () {
     Route::get('/',[UserController::class, 'index'])->name('user');
     Route::get('addUser', [UserController::class, 'addUser'])->name('add-user');
     Route::post('processUser', [UserController::class, 'process'])->name('process-user');
+    Route::get('/delete/{id_user}', [UserController::class, 'delete'])->name('delete-user');
 });
 
 Route::get('pwnu', function () {

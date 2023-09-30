@@ -23,10 +23,10 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+
 
         <li><a class="dropdown-item" href="edit-user-group"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">Data User Group </div>
@@ -37,7 +37,7 @@
           <dt class="text-lg-end text-sm-start">Nama :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Admin</dd>
+          <dd>{{$user_group->nama_grup}}</dd>
         </div>
       </div>
       <div class="row">
@@ -55,7 +55,7 @@
           <dt class="text-lg-end text-sm-start">Keterangan :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Ini adalah admin super</dd>
+          <dd>{{$user_group->nama_grup}}{{$user_grup->id_pcnu}}</dd>
         </div>
       </div>
       <div class="row">
@@ -68,205 +68,205 @@
                 <li>
                     <b>Kelola User</b>
                     Lihat Daftar
-                        ,  
+                        ,
                     Lihat Detail
-                        ,  
+                        ,
                     Tambah Baru
-                        ,  
+                        ,
                     Edit
-                        ,  
+                        ,
                     Hapus
             </li>
             <li>
                 <b>Kelola User Group</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Pengurus</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Jenis Pengurus</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Jenis Pengurus</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Jabatan</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Member</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola PWNU</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola PCNU</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola MWC NU</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Anak Ranting</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Lembaga</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Master Lembaga</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Banom Basis</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Banom</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             <li>
                 <b>Kelola Master Banom</b>
             Lihat Daftar
-                ,  
+                ,
             Lihat Detail
-                ,  
+                ,
             Tambah Baru
-                ,  
+                ,
             Edit
-                ,  
+                ,
             Hapus
             </li>
             <li>
                 <b>Kelola Surat Keputusan</b>
                 Lihat Daftar
-                    ,  
+                    ,
                 Lihat Detail
-                    ,  
+                    ,
                 Tambah Baru
-                    ,  
+                    ,
                 Edit
-                    ,  
+                    ,
                 Hapus
             </li>
             </ul>
@@ -275,5 +275,5 @@
       </div>
     </div>
   </div>
-    
+
 @endsection

@@ -67,4 +67,13 @@ class UserGroupController extends Controller
         Alert::success('Data Berhasil Disimpan');
         return redirect(route('user-group'));
     }
+
+    public function detail($id_user_group){
+        $id = getRoute($id_user_group);
+        $user = UserGroup::query()->where('id',$id)->first();
+        $data = [
+            'user_group' => $user
+        ];
+        return view('pages.detail-user-group',$data);
+    }
 }
