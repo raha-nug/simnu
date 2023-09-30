@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,9 +34,9 @@ Route::prefix('pwnu')->group(function () {
 
 Route::prefix('pcnu')->group(function () {
     Route::get('/', [PcnuController::class, 'index'])->name('pcnu');
-    Route::get('/get', [PcnuController::class, 'getPcnu'])->name('pcnu-get');
+    Route::get('/detail', [PcnuController::class, 'detailPcnu'])->name('pcnu-detail');
+    Route::get('/update/{id_pc}', [PcnuController::class, 'getPcnu'])->name('pcnu-update');
     Route::get('/add', [PcnuController::class, 'addPcnu'])->name('pcnu-add');
-    Route::get('/detail/{id_pc}', [PcnuController::class, 'detailPcnu'])->name('pcnu-detail');
     Route::post('/process', [PcnuController::class, 'process'])->name('pcnu-process');
     Route::get('/delete/{id_pc}', [PcnuController::class, 'deletePcnu'])->name('pcnu-delete');
 });
@@ -60,6 +61,10 @@ Route::get('pwnu', function () {
         'name'=>'PWNU Jawa Barat'
     ]);
 });
+// Exception view
+Route::get('no-found', function () {
+    return view('errors.not_found');
+})->name('not-found');
 
 Route::prefix('mwcnu')->group(function () {
     Route::get('/', [MwcController::class, 'index'])->name('mwc');
@@ -134,13 +139,6 @@ Route::get('add-banom', function () {
 Route::get('add-pcnu', function () {
     return view('pages.add.add-pcnu',[
         'title'=> 'Tambah PCNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-    ]);
-});
-Route::get('detail-pcnu', function () {
-    return view('pages.detail-pcnu',[
-        'title'=> 'Detail PCNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
     ]);
