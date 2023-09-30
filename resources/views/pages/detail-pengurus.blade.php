@@ -11,7 +11,6 @@
   <nav>
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-      <li class="breadcrumb-item"><a href="/admin/pcnu">PCNU</a></li>
       <li class="breadcrumb-item active">{{ $title }}</li>
     </ol>
   </nav>
@@ -30,7 +29,6 @@
                 <img src="../assets/img/pengurus.jpg" alt="Profile"  >
               </div>
               <h5>KH. Hasan Nuri Hidayatullah</h5>
-              <p class="text-primary text-center"><i class="bi bi-bookmark-fill me-2"></i>Ketua Tanfidzyah  - PWNU Jawa Barat (2016 - 2021)</p>
             </div>
           </div>
 
@@ -174,7 +172,35 @@
 
             </div>
           </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                History Kepegurusan
+              </h5>
 
+              <div class="activity">
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2016 - 2021</div>
+                  <i
+                    class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                  <div class="activity-content">
+                    <a href="detaik-sk">Ketua Tanfidzyah PWNU Jawa Barat</a>
+                  </div>
+                </div>
+                <!-- End history item-->
+                <div class="activity-item d-flex">
+                  <div class="activite-label">2016 - 2021</div>
+                  <i
+                    class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                  <div class="activity-content">
+                    <a href="detaik-sk">Ketua Tanfidzyah PWNU Jawa Barat</a>
+                  </div>
+                </div>
+                <!-- End history item-->
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 @endsection
