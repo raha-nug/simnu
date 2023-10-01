@@ -31,6 +31,28 @@ class Ranting extends Model
         'desa'
     ];
 
+    public static function getListByMwcnu($id_mwcnu, $limit, $start, $search = null)
+    {
+        if (!$id_mwcnu)
+            return [];
+
+        $query = self::query()
+            ->select(['ranting.id', 'ranting.nama', 'ranting.alamat'])
+            ->selectRaw('COUNT(anak_ranting.id) as jumlah')
+            ->leftJoin('anak_ranting', 'ranting.id', '=', 'id_ranting')
+            ->where('id_mwcnu', $id_mwcnu)
+            ->groupBy(['ranting.id', 'ranting.nama', 'ranting.alamat'])
+            // ->paginate($paginate);
+            ->limit($limit)
+            ->offset($start);
+        if ($search) {
+            $query->whereRaw("ranting.nama LIKE '%{$search}%'")
+            ->orWhereRaw("ranting.alamat LIKE '%{$search}%'");
+        }
+
+        return $query->get();
+    }
+
     public function mwcnu(): BelongsTo
     {
         return $this->belongsTo(MWCNU::class);

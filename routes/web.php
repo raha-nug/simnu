@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\MwcController;
+use App\Http\Controllers\RantingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +46,15 @@ Route::prefix('mwcnu')->group(function () {
     Route::get('/detail', [MwcController::class, 'index'])->name('mwcnu');
     Route::get('/add', [MwcController::class, 'addMwcnu'])->name('mwcnu-add');
     Route::post('/process', [MwcController::class, 'process'])->name('mwcnu-process');
-    Route::get('/delete/{id_mwc?}', [MwcController::class, 'deleteMwcnu'])->name('mwcnu-delete');
+    Route::get('/delete', [MwcController::class, 'deleteMwcnu'])->name('mwcnu-delete');
+});
+
+Route::prefix('ranting')->group(function () {
+    Route::get('/getRantingByMwc', [MwcController::class, 'getRantingByMwc'])->name('ranting-list-bymwc');
+    Route::get('/detail', [RantingController::class, 'index'])->name('ranting');
+    Route::get('/add', [RantingController::class, 'addRanting'])->name('ranting-add');
+    Route::post('/process', [RantingController::class, 'process'])->name('ranting-process');
+    Route::get('/delete', [RantingController::class, 'deleteRanting'])->name('ranting-delete');
 });
 
 Route::prefix('user-group')->group(function () {
