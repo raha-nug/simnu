@@ -15,48 +15,116 @@
 @endsection
 
 @section('content')
-<x-form method="POST" action="/admin/pwnu">
+<x-form :$action :$method>
+  @csrf
   <x-slot:title>
     Tambah MWC
   </x-slot:title>
-  <div class="col-md-12 mt-2">
-    <label for="no-sk" class="form-label">Nama</label>
-    <input type="text" class="form-control" id="no-sk" required disabled>
-  </div>
-  <div class="col-md-12 mt-2">
-    <label for="tgl-mulai" class="form-label">Alamat</label>
-    <input type="text" class="form-control" id="tgl-mulai" required>
-  </div>
-  <div class="col-md-12 mt-2">
-    <label for="telepon" class="form-label">Telepon</label>
-    <input type="text" class="form-control" id="telepon" required>
-  </div>
-  <div class="col-md-12 mt-2">
-    <label for="website" class="form-label">Website</label>
-    <input type="text" class="form-control" id="website" required>
-  </div>
-  <div class="col-md-6 mt-2">
-    <label for="pcnu" class="form-label">PCNU</label>
-    <select class="form-select" id="pcnu" required>
-        <option selected disabled value="">--pilih pcnu--</option>
-        <option>...</option>
+  @if(isset($mwc_data))
+    <div class="col-md-12 mt-2">
+      <label for="no-sk" class="form-label">Nama</label>
+      <input type="text" class="form-control" id="nama" name="nama" value="{{ $mwc_data->nama }}" readonly>
+      <input type="hidden" name="id" value="{{ $mwc_data->id }}">
+      <input type="hidden" name="id_pcnu" value="{{ $mwc_data->id_pcnu }}">
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="tgl-mulai" class="form-label">Alamat</label>
+      <input type="text" class="form-control" name="alamat" value="{{ $mwc_data->alamat  ?? '' }}" required>
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="telepon" class="form-label">Telepon</label>
+      <input type="text" class="form-control" name="telp" value="{{ $mwc_data->telp  ?? '' }}">
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" value="{{ $mwc_data->email ?? ''}}">
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="website" class="form-label">Website</label>
+      <input type="text" class="form-control" name="website" value="{{ $mwc_data->website ?? ''}}">
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="kabkot" class="form-label">Kecamatan</label>
+      <input type="hidden" name="kota" value="{{ $mwc_data->kota }}">
+      <input type="hidden" name="kecamatan" value="{{ $mwc_data->kecamatan }}">
+      <select class="form-select" id="kecamatan" disabled>
+        <option></option>
+        @foreach($kecamatan as $item)
+          @if($item->kode == $mwc_data->kecamatan)
+            <option value="{{ $item->kode }}" selected >{{ $item->nama }}</option>
+          @else 
+            <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+          @endif
+        @endforeach
       </select>
-  </div>
-  <div class="col-md-6 mt-2">
-    <label for="kabkot" class="form-label">Kecamatan</label>
-      <select class="form-select" id="kabkot" required>
-        <option selected disabled value="">--pilih kecamatan--</option>
-        <option>...</option>
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="latitude" class="form-label">Latitude</label>
+      <input type="text" class="form-control" name="lat" value="{{ $mwc_data->lat ?? '' }}">
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="longitude" class="form-label">Longitude</label>
+      <input type="text" class="form-control" name="long" value="{{ $mwc_data->long ?? '' }}">
+    </div>
+  @else
+    <div class="col-md-12 mt-2">
+      <label for="no-sk" class="form-label">Nama</label>
+      <input type="text" class="form-control" id="nama" name="nama" readonly>
+      <input type="hidden" name="id_pcnu" value="{{ $pc_data->id }}">
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="tgl-mulai" class="form-label">Alamat</label>
+      <input type="text" class="form-control" name="alamat" required>
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="telepon" class="form-label">Telepon</label>
+      <input type="text" class="form-control" name="telp">
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email">
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="website" class="form-label">Website</label>
+      <input type="text" class="form-control" name="website">
+    </div>
+    <div class="col-md-12 mt-2">
+      <label for="kabkot" class="form-label">Kecamatan</label>
+      <input type="hidden" name="kota" value="{{ $pc_data->kota }}">
+      <select class="form-select" id="kecamatan" name="kecamatan" >
+        <option></option>
+        @foreach($kecamatan as $item)
+            <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+        @endforeach
       </select>
-  </div>
-  <div class="col-md-6 mt-2">
-    <label for="latitude" class="form-label">Latitude</label>
-    <input type="text" class="form-control" id="latitude" required>
-  </div>
-  <div class="col-md-6 mt-2">
-    <label for="longitude" class="form-label">Longitude</label>
-    <input type="text" class="form-control" id="longitude" required>
-  </div>
-</x-form>
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="latitude" class="form-label">Latitude</label>
+      <input type="text" class="form-control" name="lat">
+    </div>
+    <div class="col-md-6 mt-2">
+      <label for="longitude" class="form-label">Longitude</label>
+      <input type="text" class="form-control" name="long">
+    </div>
+  @endif
+  </x-form>
+@endsection
+@section('js-page')
+<script>
+  $(document).ready(function () {
+    $("#kecamatan").select2({
+      placeholder: "Pilih kecamatan"
+    });
+    $('.select2-container').addClass('form-select');
+    $('.select2-selection').addClass('custom-selection');
+    $('.select2-search__field').addClass('select2-custom-search_field');
+    $('.select2-selection__arrow').addClass('d-none');
+  })
 
+  $("#kecamatan").change(function () {
+    $.get("/wilayah?kode="+$(this).val(),function (o) {
+        $("#nama").val("MWCNU "+o.data.nama);
+    })
+  })
+</script>
 @endsection

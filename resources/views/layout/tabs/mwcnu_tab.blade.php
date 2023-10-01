@@ -1,6 +1,6 @@
 <div class="tab-pane fade mt-3" id="bordered-justified-mwc" role="tabpanel" aria-labelledby="mwc-tab">
    <div class="d-flex justify-content-end align-items-center">
-      <a class="btn btn-primary" href="add-mwc">
+      <a class="btn btn-primary" href="{{ route('mwcnu-add') }}?pc={{setRoute($pc_data->id)}}">
          <i class="bi bi-plus me-1"></i>
          Tambah
       </a>
@@ -17,7 +17,7 @@
             </tr>
          </thead>
          <tbody>
-            
+
          </tbody>
       </table>
    </div>

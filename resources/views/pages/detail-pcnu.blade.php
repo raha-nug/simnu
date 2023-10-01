@@ -185,8 +185,8 @@
       },
       "columns": [{
           mData: "nama",
-          mRender: function(data, type, row) {
-            return "{{ route('pcnu-detail') }}?page=10&pc={{ setRoute(" + row.id + ") }}";
+          mRender: function(data, type, row) { 
+            return `<th scope="row"><a href="{{ route('mwcnu') }}?mwc=${row.id}">${row.nama}</a></th>`;
           },
           "orderable": false
         },
@@ -214,16 +214,17 @@
         {
           mData: "",
           mRender: function(data, type, row) {
+            
             return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
               <i class="bi bi-three-dots-vertical"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <li><a class="dropdown-item" href="#">
+              <li><a class="dropdown-item" href="{{ route('mwcnu-add') }}?mwc=${row.id}">
                     <i class="bi bi-pencil-square"></i>
                     Edit
                   </a>
               </li>
-              <li><a class="dropdown-item text-danger" href="#">
+              <li><a class="dropdown-item text-danger" href="{{ route('mwcnu-delete') }}?mwc=${row.id}">
                     <i class="bi bi-trash"></i>
                     Hapus
                   </a>

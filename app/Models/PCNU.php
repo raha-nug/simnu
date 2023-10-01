@@ -42,6 +42,14 @@ class PCNU extends Model
         return $query;
     }
 
+    public static function getRowData($id)
+    {
+        return self::query()
+            ->select(['id', 'kota'])
+            ->where('id',$id)
+            ->first();
+    }
+
     public function pwnu(): BelongsTo
     {
         return $this->belongsTo(PWNU::class);

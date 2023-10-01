@@ -86,10 +86,10 @@ class PcnuController extends Controller
         }
 
         $mwc_list = MWCNU::getListByPcnu($id, $limit, $start,$request->search['value']);
-
+        // dd(mapSetRoute($mwc_list));
         return response()->json((object)[
             'success' => 1,
-            'data' => $mwc_list
+            'data' => mapSetRoute($mwc_list)
         ]);;
     }
 

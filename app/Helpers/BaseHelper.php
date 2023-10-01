@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Collection;
 
 if (!function_exists('setRoute')) {
    function setRoute(string $slug) : string
@@ -20,10 +21,27 @@ if (!function_exists('getRoute')) {
       try {
          $result = openssl_decrypt(substr($base64_str, 16), $chiper_algo, $key, OPENSSL_RAW_DATA, substr($base64_str, 0, 16));
          return $result;
-         //code...
       } catch (\Throwable $th) {
          dd($th->getMessage(), $base64_str, $slug);
       }
+   }
+}
+
+if (!function_exists('mapSetRoute')) {
+   function mapSetRoute(Collection $collection) : Collection
+   {
+      $result = collect([]);
+      foreach ($collection as $item) {
+         $val = [
+            "id" => setRoute($item->id),
+            "nama" => $item->nama,
+            "alamat" =>  $item->nama,
+            "jumlah_ranting" =>  $item->jumlah_ranting
+         ];
+         $result->push($val);
+      }
+      $result->escapeWhenCastingToString(false);
+      return $result;
    }
 }
 
