@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MWCNU;
 use App\Models\PCNU;
+use App\Models\Ranting;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -17,15 +18,19 @@ class MwcController extends Controller
         if (!$id)
             return redirect('dashboard');
 
-        $mwcnu = MWCNU::query()->where('id', $id)
-        ->first();
+        $mwcnu = MWCNU::query()
+            ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat','id_pcnu', 'mwcnu.telp', 'mwcnu.email', 'mwcnu.website','kecamatan', 'pcnu.nama as pc_nama'])
+            ->leftJoin('pcnu', 'id_pcnu', '=', 'pcnu.id')
+            ->where('mwcnu.id', $id)
+            ->first();
 
         return view( 'pages.detail-mwc', [
             'title' => 'Detail MWC NU',
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
             'kota' => $this->wilayah->getSingleAddress($mwcnu->kota ?? ''),
-            'kecamatan' => $this->wilayah->getSingleAddress($mwcnu->kecamatan ?? '')
+            'kecamatan' => $this->wilayah->getSingleAddress($mwcnu->kecamatan ?? ''),
+            'mwc_data' => $mwcnu
         ]);
     }
 
@@ -153,5 +158,33 @@ class MwcController extends Controller
             Alert::error('Data Gagal Dihapus');
             return redirect(route('pcnu'));
         }
+    }
+
+    public function getRantingByMwc(Request $request)
+    {
+        $limit = $request->length ?? 10;
+        $start = $request->start ?? 0;
+
+        if (!isset($request->mwc)) {
+            return response()->json((object)[
+                'success' => 0,
+                'data' => collect([])
+            ]);
+        }
+
+        $id = $request->mwc;
+        if (!$id) {
+            return response()->json((object)[
+                'success' => 0,
+                'data' => collect([])
+            ]);
+        }
+
+        $ranting_list = Ranting::getListByMwcnu($id, $limit, $start, $request->search['value']);
+        // dd(mapSetRoute($ranting_list));
+        return response()->json((object)[
+            'success' => 1,
+            'data' => mapSetRoute($ranting_list)
+        ]);;
     }
 }

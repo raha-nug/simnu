@@ -38,7 +38,7 @@ class MWCNU extends Model
 
         $query = self::query()
             ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
-            ->selectRaw('COUNT(ranting.id) as jumlah_ranting')
+            ->selectRaw('COUNT(ranting.id) as jumlah')
             ->leftJoin('ranting', 'mwcnu.id', '=', 'id_mwcnu')
             ->where('id_pcnu', $id_pc)
             ->groupBy(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
@@ -51,6 +51,14 @@ class MWCNU extends Model
         }
 
         return $query->get();
+    }
+
+    public static function getRowData($id)
+    {
+        return self::query()
+            ->select(['id', 'kota', 'kecamatan'])
+            ->where('id', $id)
+            ->first();
     }
 
     public function pcnu(): BelongsTo

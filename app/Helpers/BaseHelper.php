@@ -36,7 +36,7 @@ if (!function_exists('mapSetRoute')) {
             "id" => setRoute($item->id),
             "nama" => $item->nama,
             "alamat" =>  $item->nama,
-            "jumlah_ranting" =>  $item->jumlah_ranting
+            "jumlah" =>  $item->jumlah
          ];
          $result->push($val);
       }

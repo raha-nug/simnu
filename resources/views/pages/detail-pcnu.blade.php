@@ -205,9 +205,9 @@
           "orderable": false
         },
         {
-          mData: "jumlah_ranting",
+          mData: "jumlah",
           mRender: function(data, type, row) {
-            return row.jumlah_ranting;
+            return row.jumlah;
           },
           "orderable": false
         },

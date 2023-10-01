@@ -29,7 +29,7 @@
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
         
 
-        <li><a class="dropdown-item" href="edit-mwc"><i class="bi bi-pencil-square"></i>Edit</a></li>
+        <li><a class="dropdown-item" href="{{ route('ranting-add') }}?mwc={{ setRoute($mwc_data->id) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
         
       </ul>
     </div>
@@ -41,7 +41,7 @@
           <dt class="text-lg-end text-sm-start">Nama :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>MWC NU Singaparna</dd>
+          <dd>{{ $mwc_data->nama }}</dd>
         </div>
       </div>
       <div class="row">
@@ -50,7 +50,7 @@
         </div>
         <div class="col-lg-9">
           <dd>
-            Jln Raya Gedung Bupati Desa Sukaasih Kec. Singaparna
+            {{ $mwc_data->alamat }}
           </dd>
         </div>
       </div>
@@ -59,7 +59,7 @@
           <dt class="text-lg-end text-sm-start">Telepon :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>082337300566</dd>
+          <dd>{{ $mwc_data->telp ?? '-' }}</dd>
         </div>
       </div>
       <div class="row">
@@ -67,7 +67,7 @@
           <dt class="text-lg-end text-sm-start">Email :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>mwcnusingaparna@gmail.com</dd>
+          <dd>{{ $mwc_data->email ?? '-' }}</dd>
         </div>
       </div>
       <div class="row">
@@ -75,7 +75,7 @@
           <dt class="text-lg-end text-sm-start">Website :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>https://medianu.or.id/</dd>
+          <dd>{{ $mwc_data->website ?? '-' }}</dd>
         </div>
       </div>
       <div class="row">
@@ -83,7 +83,7 @@
           <dt class="text-lg-end text-sm-start">NU Kota/Kab :</dt>
         </div>
         <div class="col-lg-9">
-          <dd><a href="">PCNU Kab Tasikmalaya</a></dd>
+          <dd><a href="{{ route('pcnu-detail') }}?pc={{ setRoute($mwc_data->id_pcnu) }}">{{ $mwc_data->pc_nama }}</a></dd>
         </div>
       </div>
       <div class="row">
@@ -91,7 +91,7 @@
           <dt class="text-lg-end text-sm-start">Kecamatan :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Singaparna</dd>
+          <dd>{{ $kecamatan->nama }}</dd>
         </div>
       </div>
       <div class="row">
@@ -99,7 +99,7 @@
           <dt class="text-lg-end text-sm-start">Latitude :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>-7.323617768813682</dd>
+          <dd>{{ $mwc_data->lat ?? '-' }}</dd>
         </div>
       </div>
       <div class="row">
@@ -107,7 +107,7 @@
           <dt class="text-lg-end text-sm-start">Longitude :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>108.22126124815536</dd>
+          <dd>{{ $mwc_data->long ?? '-' }}</dd>
         </div>
       </div>
 
@@ -162,185 +162,107 @@
         
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
-        <div
-          class="tab-pane fade show active mt-3"
-          id="bordered-justified-pengurus"
-          role="tabpanel"
-          aria-labelledby="pengurus-tab">
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Pengurus</th>
-                  <th scope="col">Jabatan</th>
-                  <th scope="col">Periode</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>KH. Asep Burhanudin</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2016-05-25</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Prof. Dr. KH. Fuad Wahab, MA.</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2014-12-05</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>KH. M. Nuh Addawami</td>
-                  <td>Syuriah</td>
-                  <td>Rais</td>
-                  <td>2011-08-12</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Dr. KH. Abun Bunyamin</td>
-                  <td>Syuriah</td>
-                  <td>Wakil Rais</td>
-                  <td>2012-06-11</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>KH. M. Usamah Manshur</td>
-                  <td>Syuriah</td>
-                  <td>Katib</td>
-                  <td>2011-04-19</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade mt-3"
-          id="bordered-justified-kepengurusan"
-          role="tabpanel"
-          aria-labelledby="kepengurusan-tab">
-          <div class="d-flex justify-content-end align-items-center  me-3">
-            
-            <a class="btn btn-primary" href="add-sk">
-              <i class="bi bi-plus me-1"></i>
-              Tambah
-            </a>
-          </div>
-
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">No Surat</th>
-                  <th scope="col">Masa Jabatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="#">112/A.II.04/11/2016</a></td>
-                  <td>04 Nov 2016 - 04 Nov 2021</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td><a href="">790/A.II.04/11/2021</a></td>
-                  <td>24 Nov 2021 - 24 Nov 2026</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade mt-3"
-          id="bordered-justified-ranting"
-          role="tabpanel"
-          aria-labelledby="ranting-tab">
-          <div class="d-flex justify-content-end align-items-center  me-3">
-            
-            <a class="btn btn-primary" href="add-ranting">
-              <i class="bi bi-plus me-1"></i>
-              Tambah
-            </a>
-          </div>
-          <div class="table-responsive ">
-            <table class="table table-borderless table-hover datatable">
-            <thead>
-                <tr>
-                <th scope="col">Nama</th>
-                <th scope="col">Telepon</th>
-                <th scope="col">Email</th>
-                <th scope="col">Jumlah Anak Ranting</th>
-                <th scope="col">Kelengkapan Dokumen</th>
-                <th scope="col">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><a href="detail-ranting">Ranting Cipakat</a></th>
-                    <td>08000001</td>
-                    <td>cipakat@gmail.com</td>
-                    <td>11</td>
-                    <td><span class="badge bg-primary"><i class="bi bi-check-circle me-1"></i> Lengkap</span></td>
-                    <td>
-                        <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul
-                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                        <li><a class="dropdown-item" href="#" >
-                            <i class="bi bi-pencil-square"></i>
-                            Edit
-                            </a>
-                        </li>
-                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
-                            <i class="bi bi-trash"></i>
-                            Hapus
-                            </a>
-                        </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="detail-ranting">Ranting Cintaraja</a></th>
-                    <td>080000002</td>  
-                    <td>cintaraja@gmail.com</td>
-                    <td>12</td>
-                    <td><span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap
-                    </span></td>
-                    <td>
-                        <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-three-dots-vertical"></i>
-                        </a>
-                        <ul
-                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                        <li><a class="dropdown-item" href="#" >
-                            <i class="bi bi-pencil-square"></i>
-                            Edit
-                            </a>
-                        </li>
-                        <li><a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
-                            <i class="bi bi-trash"></i>
-                            Hapus
-                            </a>
-                        </li>
-                        </ul>
-                    </td>
-                </tr>
-
-            </tbody>
-            </table>
-          </div>
-        </div>
+        @include('layout.tabs.pengurus_tab')
+        @include('layout.tabs.kepengurusan_tab')
+        @include('layout.tabs.ranting_tab')
       </div>
     </div>
   </div>
 </div>
+@endsection
+@section('js-page')
+<script>
+  $(document).ready(function() {
+    rantingTable();
+  })
 
+  const rantingTable = () => {
+    $("#rantingTable").DataTable({
+      responsive: true,
+      language: {
+        "scrollX": true,
+        "scrollY": true,
+        search: "_INPUT_",
+        searchPlaceholder: "Cari...",
+        sLengthMenu: "_MENU_",
+        "zeroRecords": "Tidak ada data untuk ditampilkan",
+        "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+        "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+        "infoFiltered": ""
+      },
+      "aLengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, "Show All"]
+      ],
+      "processing": true,
+      "bAutoWidth": false,
+      "serverSide": true,
+      "iDisplayLength": 10,
+      "bInfo": true,
+      "orderCellsTop": false,
+      "ajax": {
+        "url": "{{ route('ranting-list-bymwc') }}",
+        "type": "GET",
+        "data": function(d) {
+          d.mwc = "{{ $mwc_data->id }}";
+        }
+      },
+      "columns": [{
+          mData: "nama",
+          mRender: function(data, type, row) { 
+            return `<th scope="row"><a href="{{ route('ranting') }}?ranting=${row.id}">${row.nama}</a></th>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "alamat",
+          mRender: function(data, type, row) {
+            return row.alamat;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+            return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "jumlah",
+          mRender: function(data, type, row) {
+            return row.jumlah;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+            
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-three-dots-vertical"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li><a class="dropdown-item" href="{{ route('ranting-add') }}?ranting=${row.id}">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit
+                  </a>
+              </li>
+              <li><a class="dropdown-item text-danger" href="{{ route('ranting-delete') }}?ranting=${row.id}">
+                    <i class="bi bi-trash"></i>
+                    Hapus
+                  </a>
+              </li>
+            </ul>`;
+          },
+          "orderable": false
+        },
+      ],
+      "tabIndex": 1,
+      "drawCallback": function(settings) {
+        // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+      }
+    });
+  }
+</script>
 @endsection
