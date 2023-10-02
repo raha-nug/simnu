@@ -8,5 +8,7 @@ $(document).ready(function () {
 
 $("#kabkot").change(function () {
     var kota = $.get("/wilayah?kode=" + $(this).val());
-    console.log(kota);
+    $.each(kota, function (key, value) {
+        console.log(value.kode);
+    });
 });

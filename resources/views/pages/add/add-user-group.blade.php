@@ -75,7 +75,7 @@
         @endforeach
       </select>
   </div>
-   <div class="col-md-6">
+   {{-- <div class="col-md-6">
     <label for="kota" class="form-label">Kota/Kab</label>
       <select class="form-select" id="kabkot" name="kota" required>
         <option></option>
@@ -83,7 +83,7 @@
           <option value="{{ $item->kode }}">{{ $item->nama }}</option>
         @endforeach
       </select>
-  </div>
+  </div> --}}
    <div class="col-md-12">
         <label for="ket" class="form-label">Keterangan User Group</label>
         <textarea name="ket" class="form-control" id="ket"  style="height: 100px"></textarea>

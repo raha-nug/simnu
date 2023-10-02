@@ -29,7 +29,6 @@ class UserController extends Controller
         if (!$id)
             return redirect('user');
         $user = Users::query()->where('id', $id)->first();
-        // dd($user);
         return $this->addUser($user);
     }
 
@@ -39,7 +38,7 @@ class UserController extends Controller
             'title'=> 'User Group',
             'username'=>'John Doe',
             'from'=>'Jawa Barat',
-            'user_group' => $user_group,
+            'user_group'=>$user_group,
             'method' => 'POST',
             'action' => route('process-user')
         ];
@@ -78,6 +77,8 @@ class UserController extends Controller
         $data = $validated->validate();
         $data['id_grup'] = $user_group->id;
         if (isset($request->id)) {
+            unset($data['user_group']);
+            $data['id_grup'] = $user_group->id;
             $is_updated = Users::where('id', $request->id)->update($data);
             if (!$is_updated)
             {
@@ -103,8 +104,10 @@ class UserController extends Controller
         if (!$id)
             return redirect('user');
 
-        $user = Users::query()->where('id', $id)
-            ->first();
+        $user = Users::select('table_users.nama', 'table_users.email', 'table_users.password', 'table_user_groups.nama_grup')
+                        ->join('table_user_groups', 'table_users.id_grup', '=', 'table_user_groups.id')
+                        ->where('table_users.id', $id)
+                        ->first();
         $data = [
             'title'=> 'Detail User Group',
             'username'=>'John Doe',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PCNU;
 use App\Models\UserGroup;
 use Illuminate\Http\Request;
+use App\Models\UserCredentials;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
@@ -94,7 +95,15 @@ class UserGroupController extends Controller
             Alert::success('Data Berhasil Disimpan');
             return redirect(route('user-group'));
         }
-        UserGroup::create($data);
+        $user_group = UserGroup::create($data);
+        $data_credentials = [
+            'id_grup' => $user_group->id,
+            'can_update' => true,
+            'can_delete' => true,
+            'can_create' => true,
+            'can_manage_user' => true,
+        ];
+        UserCredentials::create($data_credentials);
         Alert::success('Data Berhasil Disimpan');
         return redirect(route('user-group'));
     }

@@ -23,6 +23,7 @@
     <div class="col-md-12 mt-2">
         <label for="name" class="form-label">Nama</label>
         <input type="text" class="form-control" id="name" name="nama" value="{{$data_user->nama}}" required>
+        <input type="hidden" name="id" value="{{ $data_user->id }}">
     </div>
     <div class="col-md-12 mt-2">
         <label for="email" class="form-label">Email</label>

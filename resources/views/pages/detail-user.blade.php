@@ -23,10 +23,10 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+
 
         <li><a class="dropdown-item" href="edit-user-group"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">Data User Group </div>
@@ -37,7 +37,7 @@
           <dt class="text-lg-end text-sm-start">Email :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>pckabtasik@email.com</dd>
+          <dd>{{$user->email}}</dd>
         </div>
       </div>
       <div class="row">
@@ -46,11 +46,11 @@
         </div>
         <div class="col-lg-9">
           <dd>
-            Admin PC
+            {{$user->nama_grup}}
           </dd>
         </div>
       </div>
     </div>
   </div>
-    
+
 @endsection
