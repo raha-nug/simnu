@@ -297,7 +297,7 @@
               </a>
             </li>
             <li>
-              <a href="jabatan">
+              <a href="{{route('jabatan')}}">
                 <i class="bi bi-circle"></i>
                 <span>Jabatan</span>
               </a>

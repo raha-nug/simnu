@@ -22,7 +22,7 @@
             <div class="card-body">
                 <div class="card-title">Daftar Jenis Pengurus</div>
                 <div class="d-flex justify-content-end me-3 btn-sm">
-                <a class="btn btn-primary" href="add-jenis-pengurus">
+                <a class="btn btn-primary" href="{{route('add_jenis_pengurus')}}">
                 <i class="bi bi-plus me-1"></i>
                 Tambah
                 </a>
@@ -36,10 +36,36 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($jp as $value)
                     <tr>
-                        <td><a href="detail-jenis-pengurus">Tanfidzyah</a></td>
+                        <td><a href="{{route('detail_jenis_pengurus', ['id' => setRoute($value->id)])}}">{{$value->nama_jp}}</a></td>
                         <td>
-                            
+
+                            <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-three-dots-vertical"></i>
+                            </a>
+                            <ul
+                            class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                            <li><a class="dropdown-item" href="{{route('update_jenis_pengurus', ['id_jp' => setRoute($value->id)])}}">
+                                <i class="bi bi-pencil-square"></i>
+                                Edit
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item text-danger" href="{{route('delete_jenis_pengurus', ['id' => setRoute($value->id)])}}">
+                                <i class="bi bi-trash"></i>
+                                Hapus
+                                </a>
+                            </li>
+                            </ul>
+
+                        </td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <td><a href="detail-user">Syuriah</a></td>
+                        <td>
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -57,13 +83,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">Syuriah</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -81,37 +107,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="detail-user">Syuriah</a></td>
-                        <td>
-                            
-                            <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-three-dots-vertical"></i>
-                            </a>
-                            <ul
-                            class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                            <li><a class="dropdown-item" href="#">
-                                <i class="bi bi-pencil-square"></i>
-                                Edit
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item text-danger" href="#">
-                                <i class="bi bi-trash"></i>
-                                Hapus
-                                </a>
-                            </li>
-                            </ul>
-                        
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">Mutasyar</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -129,13 +131,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">lembaga</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -153,13 +155,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">Banom</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -177,7 +179,7 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                 </tbody>

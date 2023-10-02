@@ -1,15 +1,17 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MwcController;
 use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\RantingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
-use App\Http\Controllers\MwcController;
-use App\Http\Controllers\RantingController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JenisPengurusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +76,24 @@ Route::prefix('user')->group(function () {
     Route::post('processUser', [UserController::class, 'process'])->name('process-user');
     Route::get('detail', [UserController::class, 'detail'])->name('detail-user');
     Route::get('/delete/{id_user}', [UserController::class, 'delete'])->name('delete-user');
+});
+
+Route::prefix('jenis-pengurus')->group(function () {
+    Route::get('/', [JenisPengurusController::class, 'index'])->name('jenis_pengurus');
+    Route::get('/add-jenis-pengurus', [JenisPengurusController::class, 'addJenisPengurus'])->name('add_jenis_pengurus');
+    Route::get('/updated/{id_jp}', [JenisPengurusController::class, 'getJenisPengurus'])->name('update_jenis_pengurus');
+    Route::post('/process', [JenisPengurusController::class, 'process'])->name('process_jenis_pengurus');
+    Route::get('/detail/{id}', [JenisPengurusController::class, 'detail'])->name('detail_jenis_pengurus');
+    Route::get('/delete/{id}', [JenisPengurusController::class, 'delete'])->name('delete_jenis_pengurus');
+});
+
+Route::prefix('jabatan')->group(function () {
+    Route::get('/', [JabatanController::class, 'index'])->name('jabatan');
+    Route::get('/add-jabatan', [JabatanController::class, 'addJabatan'])->name('add_jabatan');
+    Route::get('/updated/{id}', [JabatanController::class, 'getJabatan'])->name('update_jabatan');
+    Route::post('/process', [JabatanController::class, 'process'])->name('process_jabatan');
+    Route::get('/detail/{id}', [JabatanController::class, 'detail'])->name('detail_jabatan');
+    Route::get('/delete/{id}', [JabatanController::class, 'delete'])->name('delete_jabatan');
 });
 
 Route::get('pwnu', function () {

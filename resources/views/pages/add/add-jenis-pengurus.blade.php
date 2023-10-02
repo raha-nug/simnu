@@ -17,14 +17,23 @@
 @endsection
 
 @section('content')
-<x-form method="POST" action="/admin/pwnu">
+<x-form :$method :$action>
+    @csrf
   <x-slot:title>
     Tambah Jenis Pengurus
   </x-slot:title>
+  @if(isset($data_jp))
     <div class="col-md-12">
       <label for="nama" class="form-label">Nama</label>
-      <input type="text" class="form-control" name="nama" id="nama">
+      <input type="text" class="form-control" name="nama_jp" value="{{$data_jp->nama_jp}}" id="nama">
+      <input type="hidden" name="id" value="{{ $data_jp->id }}">
     </div>
+    @else
+    <div class="col-md-12">
+      <label for="nama" class="form-label">Nama</label>
+      <input type="text" class="form-control" name="nama_jp" id="nama">
+    </div>
+    @endif
 </x-form>
 
 @endsection
