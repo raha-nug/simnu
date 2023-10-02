@@ -42,7 +42,7 @@ class PcnuController extends Controller
         $limit = $request->page ?? 10;
 
         if(!isset($request->pc))
-            return redirect(route('no-found'));
+            return redirect(route('not-found'));
 
         $id_pc = $request->pc;
         $id = getRoute($id_pc);
@@ -51,16 +51,46 @@ class PcnuController extends Controller
 
         $pcnu = PCNU::query()->where('id', $id)
             ->first();
-        $mwc_list = MWCNU::getListByPcnu($id, $limit);
+        // $mwc_list = MWCNU::getListByPcnu($id, $limit);
 
         return view('pages.detail-pcnu', [
             'title' => 'Detail PCNU',
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
             'pc_data' => $pcnu,
-            'list_mwc' => $mwc_list,
+            'list_mwc' => collect([]),
             'kota' => $this->wilayah->getSingleAddress($pcnu->kota ?? '')
         ]);
+    }
+
+    public function getmwcByPcnu(Request $request)
+    {
+        $limit = $request->length ?? 10;
+        $start = $request->start ?? 0;
+
+        if (!isset($request->pc))
+        {
+            return response()->json((object)[
+                'success' => 0,
+                'data' => collect([])
+            ]);
+        }
+        
+        $id = $request->pc; 
+        if (!$id)
+        {
+            return response()->json((object)[
+                'success' => 0,
+                'data' => collect([])
+            ]);
+        }
+
+        $mwc_list = MWCNU::getListByPcnu($id, $limit, $start,$request->search['value']);
+        // dd(mapSetRoute($mwc_list));
+        return response()->json((object)[
+            'success' => 1,
+            'data' => mapSetRoute($mwc_list)
+        ]);;
     }
 
     public function addPcnu($pc_data=null)
