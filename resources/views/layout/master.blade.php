@@ -241,7 +241,7 @@
           </a>
         </li> --}}
         <li class="nav-heading">Datas</li>
-        <li class="nav-item">
+        <li class="nav-item d-none">
           <a
             class="nav-link {{ Request::is('cari-data*') ? 'active':'' }}"
             href="pengurus">
@@ -285,13 +285,13 @@
               </a>
             </li>
             <li>
-              <a href="members">
+              <a href="member">
                 <i class="bi bi-circle"></i>
                 <span>Member</span>
               </a>
             </li>
             <li>
-              <a href="jenis-pengurus">
+              <a href="{{route('jenis_pengurus')}}">
                 <i class="bi bi-circle"></i>
                 <span>Jenis Pengurus</span>
               </a>

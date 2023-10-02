@@ -31,7 +31,6 @@
                 <table class="table table-borderless table-hover datatable">
                 <thead>
                     <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Nama User</th>
                     <th scope="col">User Group</th>
                     <th scope="col">Aksi</th>

@@ -19,13 +19,16 @@
 @section('content')
 <x-form method="POST" action="/admin/pwnu">
   <x-slot:title>
-    Tambah Lembaga
+    Tambah Master Banom
   </x-slot:title>
     <div class="col-md-12">
-      <label for="no-sk" class="form-label">Nama Lembaga</label>
-      <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">--pilih lembaga--</option>
-        <option>...</option>
+      <label for="nama" class="form-label">Nama</label>
+      <input type="text" class="form-control" name="nama" id="nama">
+    </div>
+    <div class="col-md-12">
+      <label for="banomBase" class="form-label">Banom Base</label>
+      <select name="" id="" class="form-select">
+        <option value="" selected disabled>-- pilih banom base --</option>
       </select>
     </div>
 </x-form>
