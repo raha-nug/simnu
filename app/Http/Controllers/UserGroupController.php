@@ -38,7 +38,6 @@ class UserGroupController extends Controller
                                 ->join('pcnu', 'table_user_groups.id_pcnu', '=', 'pcnu.id')
                                 ->where('table_user_groups.id', $id)
                                 ->first();
-
         return $this->addUserGroup($user_group);
     }
 
@@ -85,6 +84,7 @@ class UserGroupController extends Controller
         if (isset($request->id)) {
             unset($data['kota']);
             $data['id_pcnu'] = $pcnu->id;
+            // dd($data);
             $is_updated = UserGroup::where('id', $request->id)->update($data);
             if (!$is_updated)
             {

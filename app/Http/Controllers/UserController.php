@@ -28,10 +28,8 @@ class UserController extends Controller
         $id = getRoute($id_user);
         if (!$id)
             return redirect('user');
-        $user = Users::select('table_users.id', 'table_users.nama', 'table_users.email', 'table_users.password', 'table_user_groups.nama_grup')
-                    ->join('table_user_groups', 'table_users.id_grup', '=', 'table_user_groups.id')
-                    ->where('table_users.id', $id_user)
-                    ->get();
+        $user = Users::query()->where('id', $id)->first();
+        // dd($user);
         return $this->addUser($user);
     }
 
@@ -63,7 +61,7 @@ class UserController extends Controller
             'email.required' => 'Email Harus Diisi',
             // 'email.unique' => 'Email Sudah Terdaftar',
             'password.required' => 'Password Harus Diisi',
-            'user_groups.required' => 'User Groups Harus Diisi',
+            'user_group.required' => 'User Groups Harus Diisi',
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
@@ -77,21 +75,16 @@ class UserController extends Controller
             Alert::error('Oops', 'User group tidak tersedia');
             return redirect()->back();
         }
-        $password = Hash::make($request->input('password'));
         $data = $validated->validate();
-        $data['password'] = $password;
         $data['id_grup'] = $user_group->id;
         if (isset($request->id)) {
-            $password = Hash::make($request->input('password'));
-            $data['password'] = $password;
-            $data['id_grup'] = $user_group->id;
             $is_updated = Users::where('id', $request->id)->update($data);
             if (!$is_updated)
             {
                 Alert::error('Oops! , Gagal melakukan update');
                 return redirect()->back(400);
             }
-            Alert::success('Data Berhasil Disimpan');
+            Alert::success('Data Berhasil Diupdate');
             return redirect(route('pcnu'));
         }
         Users::create($data);
@@ -99,9 +92,31 @@ class UserController extends Controller
         return redirect(route('user'));
     }
 
+    public function detail(Request $request){
+        $limit = $request->page ?? 10;
+
+        if(!isset($request->u))
+            return redirect(route('no-found'));
+
+        $id_u = $request->u;
+        $id = getRoute($id_u);
+        if (!$id)
+            return redirect('user');
+
+        $user = Users::query()->where('id', $id)
+            ->first();
+        $data = [
+            'title'=> 'Detail User Group',
+            'username'=>'John Doe',
+            'from'=>'Jawa Barat',
+            'user' => $user
+        ];
+        return view('pages.detail-user',$data);
+    }
+
     public function delete($id_user){
-        // $id = getRoute($id_user);
-        $is_deleted = Users::where('id', $id_user)
+        $id = getRoute($id_user);
+        $is_deleted = Users::where('id', $id)
             ->delete();
         if($is_deleted){
             Alert::success('Data Berhasil Dihapus');

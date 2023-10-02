@@ -22,8 +22,8 @@
   </x-slot:title>
   @if (isset($user_group))
     <div class="col-md-6">
-        <label for="namaUG" class="form-label">Nama User Group</label>
-        <input type="text" class="form-control" id="namaUG" name="nama_grup" value="{{$user_group->nama_grup}}" required>
+        <label for="nama_grup" class="form-label">Nama User Group</label>
+        <input type="text" class="form-control" id="nama" name="nama_grup" value="{{$user_group->nama_grup}}" required>
         <input type="hidden" name="id" value="{{ $user_group->id }}">
     </div>
     <div class="col-md-6">
@@ -37,7 +37,7 @@
     </div>
     <div class="col-md-12">
     <label for="kota" class="form-label">Kota/Kab</label>
-    <select class="form-select" id="kabkot" name="kota" required disabled>
+    <select class="form-select" id="kabkot" name="kota" required>
         <option></option>
         @foreach($kab_kota as $item)
             @if($item->kode == $user_group->kota)
@@ -54,8 +54,8 @@
     </div>
   @else
     <div class="col-md-6">
-        <label for="namaUG" class="form-label">Nama User Group</label>
-        <input type="text" class="form-control" id="namaUG" name="nama_grup" required>
+        <label for="nama" class="form-label">Nama User Group</label>
+        <input type="text" class="form-control" id="nama" name="nama_grup" required>
    </div>
    <div class="col-md-6">
         <label for="status" class="form-label">Role</label>
@@ -66,7 +66,16 @@
             <option value="MWCNU">MWC</option>
         </select>
    </div>
-   <div class="col-md-12">
+   <div class="col-md-6">
+    <label for="kota" class="form-label">Kota/Kab</label>
+      <select class="form-select" id="kabkot" name="kota" required>
+        <option></option>
+        @foreach($kab_kota as $item)
+          <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+        @endforeach
+      </select>
+  </div>
+   <div class="col-md-6">
     <label for="kota" class="form-label">Kota/Kab</label>
       <select class="form-select" id="kabkot" name="kota" required>
         <option></option>
@@ -1019,7 +1028,7 @@
 @endsection
 
 @section('js-page')
-<script src="../assets/sources/js/pcnu.js"></script>
+<script src="../assets/sources/js/user_group.js"></script>
 @endsection
 
 

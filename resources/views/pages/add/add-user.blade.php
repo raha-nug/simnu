@@ -47,11 +47,11 @@
     </div>
     <div class="col-md-12 mt-2">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" value="{{$value->password}}" required>
+        <input type="password" class="form-control" id="password" name="password" value="{{$data_user->password}}" required>
     </div>
     <div class="col-md-12 mt-2">
         <label for="confirmPass" class="form-label">Konfirmasi Password</label>
-        <input type="password" class="form-control" id="confirmPass" value="{{$value->password}}" required>
+        <input type="password" class="form-control" id="confirmPass" value="{{$data_user->password}}" required>
     </div>
    @else
     <div class="col-md-12 mt-2">
