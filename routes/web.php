@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnakRantingController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\PwnuController;
@@ -55,6 +56,14 @@ Route::prefix('ranting')->group(function () {
     Route::get('/add', [RantingController::class, 'addRanting'])->name('ranting-add');
     Route::post('/process', [RantingController::class, 'process'])->name('ranting-process');
     Route::get('/delete', [RantingController::class, 'deleteRanting'])->name('ranting-delete');
+});
+
+Route::prefix('anak-ranting')->group(function () {
+    Route::get('/getListByRanting', [RantingController::class, 'getListByRanting'])->name('anak-ranting-list');
+    Route::get('/detail', [AnakRantingController::class, 'index'])->name('anak-ranting');
+    Route::get('/add', [AnakRantingController::class, 'addAnakRanting'])->name('anak-ranting-add');
+    Route::post('/process', [AnakRantingController::class, 'process'])->name('anak-ranting-process');
+    Route::get('/delete', [AnakRantingController::class, 'deleteAnakRanting'])->name('anak-ranting-delete');
 });
 
 Route::prefix('user-group')->group(function () {

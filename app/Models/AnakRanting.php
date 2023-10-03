@@ -31,6 +31,23 @@ class AnakRanting extends Model
         'desa'
     ];
 
+    public static function getListByRanting($id_ranting, $limit, $start, $search = null)
+    {
+        if (!$id_ranting)
+            return [];
+
+        $query = self::query()
+            ->where('id_ranting', $id_ranting)
+            // ->paginate($paginate);
+            ->limit($limit)
+            ->offset($start);
+        if ($search) {
+            $query->whereRaw("anak_ranting.nama LIKE '%{$search}%'")
+            ->orWhereRaw("anak_ranting.alamat LIKE '%{$search}%'");
+        }
+
+        return $query->get();
+    }
 
     public function ranting(): BelongsTo
     {
