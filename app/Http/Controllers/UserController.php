@@ -65,8 +65,8 @@ class UserController extends Controller
 
         $validated = Validator::make($request->all(), $rules, $message);
         if($validated->fails()){
-            Alert::error('Oops!', $validated->errors()->messages());
-            dd($validated->errors()->messages());
+            $error = implode(", ", array_map('implode', array_values($validated->errors()->messages())));
+            Alert::error('Oops!', $error);
             return redirect()->back();
         }
         $user_group = UserGroup::query()->where('nama_grup', $request->user_group)->first();
