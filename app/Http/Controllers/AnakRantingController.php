@@ -2,71 +2,69 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MWCNU;
+use App\Models\AnakRanting;
 use App\Models\Ranting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class RantingController extends Controller
+class AnakRantingController extends Controller
 {
     public function index(Request $request)
     {
-        $id_ranting = $request->ranting;
-        $id = getRoute($id_ranting);
+        $id_anak_ranting = $request->anakranting;
+        $id = getRoute($id_anak_ranting);
         if (!$id)
             return redirect('dashboard');
 
-        $ranting = Ranting::query()
-            ->select(['ranting.id','ranting.nama','ranting.alamat','mwcnu.nama mwc_nama'])
+        $anak_ranting = AnakRanting::query()
+            ->select(['anak_ranting.id', 'anak_ranting.nama', 'anak_ranting.alamat', 'ranting.nama ranting_nama', 'id_ranting'])
             ->where('id', $id)
-            ->leftJoin('mwcnu','id_mwcnu','=','mwcnu.id')
+            ->leftJoin('ranting', 'id_ranting', '=', 'ranting.id')
             ->first();
 
-        return view('pages.detail-ranting', [
-            'title' => 'Detail Ranting NU',
+        return view('pages.detail-anak-ranting', [
+            'title' => 'Detail Anak Ranting NU',
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
-            'kecamatan' => $this->wilayah->getSingleAddress($ranting->kecamatan ?? ''),
-            'ranting' => $ranting
+            'anak_ranting_data' => $anak_ranting
         ]);
     }
 
-    public function addRanting(Request $request)
+    public function addAnakRanting(Request $request)
     {
-        if (!isset($request->ranting)) {
+        if (!isset($request->anakranting)) {
             // ambil data pc jika tambah mwc baru
-            if (!isset($request->mwc))
+            if (!isset($request->ranting))
                 return redirect(route('not-found'));
 
-            $id_mwc = $request->mwc;
-            $id = getRoute($id_mwc);
+            $id_ranting = $request->ranting;
+            $id = getRoute($id_ranting);
             if (!$id)
                 return redirect('dashboard');
 
-                
-                $mwc_data = MWCNU::getRowData($id);
+
+            $ranting_data = Ranting::getRowData($id);
 
             $data = [
-                'title' => 'Ranting',
+                'title' => 'Anak Ranting',
                 'username' => 'John Doe',
                 'from' => 'Singaparna',
                 'name' => 'MWC Singaparna',
-                'desa' => $this->wilayah->getAddress($mwc_data->kecamatan),
-                'mwc_data' => $mwc_data,
+                'ranting_data' => $ranting_data,
                 'method' => 'POST',
-                'action' => route('ranting-process')
+                'action' => route('anak-ranting-process')
             ];
 
-            return view('pages.add.add-ranting', $data);
+            return view('pages.add.add-anak-ranting', $data);
         }
 
-        $id_ranting = $request->ranting;
-        $id = getRoute($id_ranting);
+        $id_anak_ranting = $request->anakranting;
+        $id = getRoute($id_anak_ranting);
         if (!$id)
             return redirect('dashboard');
 
-        $ranting = Ranting::query()->where('id', $id)
+        $anak_ranting = AnakRanting::query()->where('id', $id)
             ->first();
 
         $data = [
@@ -74,13 +72,12 @@ class RantingController extends Controller
             'username' => 'John Doe',
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
-            'desa' => $this->wilayah->getAddress($ranting->kecamatan),
-            'ranting_data' => $ranting,
+            'anak_ranting_data' => $anak_ranting,
             'method' => 'POST',
             'action' => route('ranting-process')
         ];
 
-        return view('pages.add.add-ranting', $data);
+        return view('pages.add.add-anak-ranting', $data);
     }
 
     public function process(Request $request)
@@ -96,7 +93,7 @@ class RantingController extends Controller
             'kota' => 'required',
             'kecamatan' => 'required',
             'desa' => 'required',
-            'id_mwcnu' => 'required'
+            'id_ranting' => 'required'
         ];
 
         $message = [
@@ -111,7 +108,7 @@ class RantingController extends Controller
             'kota.required' => 'Kota Harus diisi',
             'kecamatan.required' => 'Kecamatan Harus diisi',
             'desa.required' => 'Desa Harus diisi',
-            'id_mwcnu.required' => 'MWCNU tidak ditemukan'
+            'id_ranting.required' => 'Ranting tidak ditemukan'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
@@ -124,66 +121,39 @@ class RantingController extends Controller
         $data = $validated->validate();
         $data['provinsi'] = "32";
         if (isset($request->id)) {
-            $is_updated = Ranting::where('id', $request->id)->update($data);
+            $is_updated = AnakRanting::where('id', $request->id)->update($data);
             if (!$is_updated) {
                 Alert::error('Oops! , Gagal melakukan update');
                 return redirect()->back();
             }
             Alert::success('Data Berhasil Disimpan');
-            return redirect(route('mwcnu') . "?mwc=" . setRoute($request->id_mwcnu));
+            return redirect(route('ranting') . "?ranting=" . setRoute($request->id_ranting));
         }
-        Ranting::create($data);
+        AnakRanting::create($data);
         Alert::success('Data Berhasil Disimpan');
-        return redirect(route('mwcnu') . "?mwc=" . setRoute($request->id_mwcnu));
+        return redirect(route('ranting') . "?ranting=" . setRoute($request->id_ranting));
     }
 
-    public function deleteRanting(Request $request)
+    public function deleteAnakRanting(Request $request)
     {
 
-        if (!isset($request->ranting)) {
+        if (!isset($request->anakranting)) {
             Alert::error('Data Gagal Dihapus');
             return redirect()->back();
         }
 
-        $id_ranting = $request->ranting;
-        $id = getRoute($id_ranting);
-        $is_deleted = Ranting::where('id', $id)
+        $id_anak_ranting = $request->anakranting;
+        $id = getRoute($id_anak_ranting);
+        $ranting = AnakRanting::where('id', $id)->firts();
+        $is_deleted = AnakRanting::where('id', $id)
             ->delete();
 
         if ($is_deleted) {
             Alert::success('Data Berhasil Dihapus');
-            return redirect(route('ranting') . "?ranting=" . $id_ranting);
+            return redirect(route('ranting') . "?ranting=" . setRoute($ranting->id_ranting));
         } else {
             Alert::error('Data Gagal Dihapus');
             return redirect()->back();
         }
-    }
-
-    public function getAnakByRanting(Request $request)
-    {
-        $limit = $request->length ?? 10;
-        $start = $request->start ?? 0;
-
-        if (!isset($request->ranting)) {
-            return response()->json((object)[
-                'success' => 0,
-                'data' => collect([])
-            ]);
-        }
-
-        $id = $request->ranting;
-        if (!$id) {
-            return response()->json((object)[
-                'success' => 0,
-                'data' => collect([])
-            ]);
-        }
-
-        $ranting_list = Ranting::getListByMwcnu($id, $limit, $start, $request->search['value']);
-        // dd(mapSetRoute($ranting_list));
-        return response()->json((object)[
-            'success' => 1,
-            'data' => mapSetRoute($ranting_list)
-        ]);;
     }
 }
