@@ -31,6 +31,8 @@ Route::any('/Login', [LoginController::class, 'Login'])->name('login');
 Route::get('/wilayah', [Controller::class, 'getSingleAddress']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/get-kecamatan/{kode}', [UserGroupController::class, 'getKecamatan']);
+
 Route::prefix('pwnu')->group(function () {
     Route::get('/', [PwnuController::class, 'index'])->name('pwnu');
 });

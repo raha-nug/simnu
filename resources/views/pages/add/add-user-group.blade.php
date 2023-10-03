@@ -38,7 +38,7 @@
             <option value="MWCNU">MWC</option>
         </select>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-6">
     <label for="kota" class="form-label">Kota/Kab</label>
     <select class="form-select" id="kabkot" name="kota" required>
         <option></option>
@@ -51,6 +51,23 @@
         @endforeach
     </select>
     </div>
+    <div class="col-md-6">
+        <label for="kota" class="form-label">Kecamatan</label>
+          <select class="form-select" id="kecamatan" name="kecamatan" required>
+            <option></option>
+            @foreach ($kecamatan as $value)
+                @if($value->kode == $user_group->kecamatan)
+                <option value="{{$value->kode}}" selected>{{$value->nama}}</option>
+                @else
+                <option value="{{$value->kode}}">{{$value->nama}}</option>
+                @endif
+            @endforeach
+          </select>
+      </div>
+    <div class="col-md-12">
+        <label for="ket" class="form-label">Keterangan User Group</label>
+        <textarea name="ket" class="form-control" id="ket"  style="height: 100px"></textarea>
+   </div>
     <div class="col-md-12">
         <label for="ket" class="form-label">Keterangan User Group</label>
         <textarea name="ket" class="form-control" id="ket"  style="height: 100px"></textarea>
@@ -78,15 +95,13 @@
         @endforeach
       </select>
   </div>
-   {{-- <div class="col-md-6">
-    <label for="kota" class="form-label">Kota/Kab</label>
-      <select class="form-select" id="kabkot" name="kota" required>
+   <div class="col-md-6">
+    <label for="kota" class="form-label">Kecamatan</label>
+      <select class="form-select" id="kecamatan" name="kecamatan" required>
         <option></option>
-        @foreach($kab_kota as $item)
-          <option value="{{ $item->kode }}">{{ $item->nama }}</option>
-        @endforeach
+          <option value="">-- Pilih Kecamatan --</option>
       </select>
-  </div> --}}
+  </div>
    <div class="col-md-12">
         <label for="ket" class="form-label">Keterangan User Group</label>
         <textarea name="ket" class="form-control" id="ket"  style="height: 100px"></textarea>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PCNU;
+use App\Models\MWCNU;
 use App\Models\UserGroup;
 use Illuminate\Http\Request;
 use App\Models\UserCredentials;
@@ -35,8 +36,9 @@ class UserGroupController extends Controller
         if (!$id)
             return redirect('user_groups');
 
-        $user_group = UserGroup::select('table_user_groups.id', 'table_user_groups.nama_grup', 'pcnu.kota', 'pcnu.nama')
+        $user_group = UserGroup::select('table_user_groups.id', 'table_user_groups.nama_grup', 'pcnu.kota', 'pcnu.nama', 'mwcnu.kecamatan')
                                 ->join('pcnu', 'table_user_groups.id_pcnu', '=', 'pcnu.id')
+                                ->join('mwcnu', 'table_user_groups.id_mwcnu', '=', 'mwcnu.id')
                                 ->where('table_user_groups.id', $id)
                                 ->first();
         return $this->addUserGroup($user_group);
@@ -48,14 +50,19 @@ class UserGroupController extends Controller
             'username'=>'John Doe',
             'from'=>'Jawa Barat',
             'kab_kota' => $this->wilayah->getAddress('32'),
+            'kecamatan' => $this->wilayah->getAddress($data_user_group->kota),
             'method' => 'POST',
             'action' => route('process-user-group')
         ];
-
         if($data_user_group)
             $data['user_group'] = $data_user_group;
 
         return view('pages.add.add-user-group',$data);
+    }
+
+    public function getKecamatan($kode){
+        $kecamatan = $this->wilayah->getAddress($kode);
+        return response()->json($kecamatan);
     }
 
     public function process(Request $request){
@@ -80,11 +87,20 @@ class UserGroupController extends Controller
             Alert::error('Oops!', 'Pcnu Tidak Ditemukan');
             return redirect()->back();
         }
+        $mwcnu = MWCNU::query()->where('kecamatan', $request->kecamatan)->first();
+        if(empty($mwcnu)){
+            Alert::error('Oops!', 'Mwcnu Tidak Ditemukan');
+            return redirect()->back();
+        }
         $data = $validated->validate();
         $data['id_pcnu'] = $pcnu->id;
+        $data['id_mwcnu'] = $mwcnu->id;
+        // dd($data);
         if (isset($request->id)) {
             unset($data['kota']);
+            unset($data['kecamatan']);
             $data['id_pcnu'] = $pcnu->id;
+            $data['id_mwcnu'] = $mwcnu->id;
             // dd($data);
             $is_updated = UserGroup::where('id', $request->id)->update($data);
             if (!$is_updated)
