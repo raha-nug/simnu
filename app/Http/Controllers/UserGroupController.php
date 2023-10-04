@@ -37,10 +37,11 @@ class UserGroupController extends Controller
             return redirect('user_groups');
 
         $user_group = UserGroup::select('table_user_groups.id', 'table_user_groups.nama_grup', 'pcnu.kota', 'pcnu.nama', 'mwcnu.kecamatan')
-                                ->join('pcnu', 'table_user_groups.id_pcnu', '=', 'pcnu.id')
-                                ->join('mwcnu', 'table_user_groups.id_mwcnu', '=', 'mwcnu.id')
+                                ->leftjoin('pcnu', 'table_user_groups.id_pcnu', '=', 'pcnu.id')
+                                ->leftjoin('mwcnu', 'table_user_groups.id_mwcnu', '=', 'mwcnu.id')
                                 ->where('table_user_groups.id', $id)
                                 ->first();
+        // dd($user_group);
         return $this->addUserGroup($user_group);
     }
 
@@ -50,12 +51,12 @@ class UserGroupController extends Controller
             'username'=>'John Doe',
             'from'=>'Jawa Barat',
             'kab_kota' => $this->wilayah->getAddress('32'),
-            'kecamatan' => $this->wilayah->getAddress($data_user_group->kota),
             'method' => 'POST',
             'action' => route('process-user-group')
         ];
         if($data_user_group)
             $data['user_group'] = $data_user_group;
+            $data['kecamatan'] = $this->wilayah->getAddress($data_user_group->kota ?? "");
 
         return view('pages.add.add-user-group',$data);
     }
@@ -87,14 +88,14 @@ class UserGroupController extends Controller
             Alert::error('Oops!', 'Pcnu Tidak Ditemukan');
             return redirect()->back();
         }
-        $mwcnu = MWCNU::query()->where('kecamatan', $request->kecamatan)->first();
-        if(empty($mwcnu)){
+        if($request->kecamatan){
+            $mwcnu = MWCNU::query()->where('kecamatan', $request->kecamatan)->first();
             Alert::error('Oops!', 'Mwcnu Tidak Ditemukan');
             return redirect()->back();
         }
         $data = $validated->validate();
         $data['id_pcnu'] = $pcnu->id;
-        $data['id_mwcnu'] = $mwcnu->id;
+        $data['id_mwcnu'] = $mwcnu->id ?? null;
         // dd($data);
         if (isset($request->id)) {
             unset($data['kota']);
@@ -112,12 +113,32 @@ class UserGroupController extends Controller
             return redirect(route('user-group'));
         }
         $user_group = UserGroup::create($data);
+        if(isset($request->nambah)){
+            $enable_nambah = true;
+        } else {
+            $enable_nambah = false;
+        }
+        if(isset($request->edit)){
+            $enable_edit = true;
+        } else {
+            $enable_edit = false;
+        }
+        if(isset($request->delete)){
+            $enable_hapus = true;
+        } else {
+            $enable_hapus = false;
+        }
+        if(isset($request->kelola_user)){
+            $enable_user = true;
+        } else {
+            $enable_user = false;
+        }
         $data_credentials = [
             'id_grup' => $user_group->id,
-            'can_update' => true,
-            'can_delete' => true,
-            'can_create' => true,
-            'can_manage_user' => true,
+            'can_update' => $enable_edit,
+            'can_delete' => $enable_hapus,
+            'can_create' => $enable_nambah,
+            'can_manage_user' => $enable_user,
         ];
         UserCredentials::create($data_credentials);
         Alert::success('Data Berhasil Disimpan');

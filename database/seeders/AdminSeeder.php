@@ -17,7 +17,7 @@ class AdminSeeder extends Seeder
         Users::query()->create([
             'nama' => 'Admin',
             'email' => 'admin@gmail.com',
-            'password' => password_hash('admin1234',PASSWORD_DEFAULT),
+            'password' => 'admin1234',
         ]);
     }
 }

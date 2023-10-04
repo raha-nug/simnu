@@ -97,7 +97,7 @@
   </div>
    <div class="col-md-6">
     <label for="kota" class="form-label">Kecamatan</label>
-      <select class="form-select" id="kecamatan" name="kecamatan" required>
+      <select class="form-select" id="kecamatan" name="kecamatan">
         <option></option>
           <option value="">-- Pilih Kecamatan --</option>
       </select>
@@ -106,19 +106,19 @@
         <label for="ket" class="form-label">Keterangan User Group</label>
         <textarea name="ket" class="form-control" id="ket"  style="height: 100px"></textarea>
    </div>
-   <div class="row mt-5">
+   <div class="row mt-3">
         <legend class="col-form-label col-sm-2 pt-0">Hak Akses</legend>
         <div class="col-sm-10">
           <div class="row">
             <div class="col-md-12">
               <div class="form-check mb-3">
-                <input class="form-check-input" name="user" type="checkbox" id="gridCheck1">
+                <input class="form-check-input" name="nambah" type="checkbox" id="gridCheck1">
                 <label class="form-check-label fw-semibold" for="gridCheck1">
-                Kelola User
+                Menambah Data
                 </label>
               </div>
             </div>
-            <div class=" float-start" style="width:40%;">
+            {{-- <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="user" type="checkbox" id="gridCheck2">
                 <label class="form-check-label" for="gridCheck2">
@@ -157,21 +157,21 @@
                 Hapus
                 </label>
               </div>
-            </div>
+            </div> --}}
           </div>
 
 
 
-          <div class="row mt-5">
+          <div class="row mt-3">
             <div class="col-md-12">
               <div class="form-check mb-3">
-                <input class="form-check-input" name="userGroup" type="checkbox" id="gridCheck7">
+                <input class="form-check-input" name="edit" type="checkbox" id="gridCheck7">
                 <label class="form-check-label fw-semibold" for="gridCheck7">
-                Kelola User Group
+                Mengedit Data
                 </label>
               </div>
             </div>
-            <div class=" float-start" style="width:40%;">
+            {{-- <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="userGroup" type="checkbox" id="gridCheck8">
                 <label class="form-check-label" for="gridCheck8">
@@ -210,23 +210,23 @@
                 Hapus
                 </label>
               </div>
-            </div>
+            </div> --}}
           </div>
 
 
 
 
 
-          <div class="row mt-5">
+          <div class="row mt-3">
             <div class="col-md-12">
               <div class="form-check mb-3">
-                <input class="form-check-input" name="pengurus" type="checkbox" id="gridCheck13">
+                <input class="form-check-input" name="hapus" type="checkbox" id="gridCheck13">
                 <label class="form-check-label fw-semibold" for="gridCheck13">
-                Kelola Pengurus
+                Menghapus Data
                 </label>
               </div>
             </div>
-            <div class=" float-start" style="width:40%;">
+            {{-- <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="pengurus" type="checkbox" id="gridCheck14">
                 <label class="form-check-label" for="gridCheck14">
@@ -265,23 +265,23 @@
                 Hapus
                 </label>
               </div>
-            </div>
+            </div> --}}
           </div>
 
 
 
 
 
-          <div class="row mt-5">
+          <div class="row mt-3">
             <div class="col-md-12">
               <div class="form-check mb-3">
-                <input class="form-check-input" name="jenisPengurus" type="checkbox" id="gridCheck19">
+                <input class="form-check-input" name="kelola_user" type="checkbox" id="gridCheck19">
                 <label class="form-check-label fw-semibold" for="gridCheck19">
-                Kelola Jenis Pengurus
+                Mengelola User
                 </label>
               </div>
             </div>
-            <div class=" float-start" style="width:40%;">
+            {{-- <div class=" float-start" style="width:40%;">
               <div class="form-check">
                 <input class="form-check-input" name="jenisPengurus" type="checkbox" id="gridCheck20">
                 <label class="form-check-label" for="gridCheck20">
@@ -321,14 +321,14 @@
                 Hapus
                 </label>
               </div>
-            </div>
+            </div> --}}
           </div>
 
 
 
 
 
-          <div class="row mt-5">
+          {{-- <div class="row mt-5">
             <div class="col-md-12">
               <div class="form-check mb-3">
                 <input class="form-check-input" name="jabatan" type="checkbox" id="gridCheck25">
@@ -378,12 +378,12 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
 
 
-          <div class="row mt-5">
+          {{-- <div class="row mt-5">
             <div class="col-md-12">
               <div class="form-check mb-3">
                 <input class="form-check-input" name="pwnu" type="checkbox" id="gridCheck31">
@@ -433,13 +433,13 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
 
 
 
-          <div class="row mt-5">
+          {{-- <div class="row mt-5">
             <div class="col-md-12">
               <div class="form-check mb-3">
                 <input class="form-check-input" name="pcnu" type="checkbox" id="gridCheck37">
@@ -489,13 +489,13 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
 
 
 
-          <div class="row mt-5">
+          {{-- <div class="row mt-5">
             <div class="col-md-12">
               <div class="form-check mb-3">
                 <input class="form-check-input" name="mwcnu" type="checkbox" id="gridCheck43">
@@ -544,13 +544,13 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
 
 
 
-          <div class="row mt-5">
+          {{-- <div class="row mt-5">
             <div class="col-md-12">
               <div class="form-check mb-3">
                 <input class="form-check-input" name="ranting" type="checkbox" id="gridCheck49">
@@ -599,13 +599,13 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
 
 
 
-          <div class="row mt-5">
+          {{-- <div class="row mt-5">
             <div class="col-md-12">
               <div class="form-check mb-3">
                 <input class="form-check-input" name="anakRanting" type="checkbox" id="gridCheck55">
@@ -984,7 +984,7 @@
                 </label>
               </div>
             </div>
-          </div>
+          </div> --}}
 
 
 
