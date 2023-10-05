@@ -112,11 +112,11 @@ Route::prefix('jabatan')->group(function () {
 
 Route::prefix('master-banom')->group(function () {
     Route::get('/', [MasterBanomController::class, 'index'])->name('master-banom');
-    Route::get('/add-jabatan', [JabatanController::class, 'addJabatan'])->name('add_jabatan');
-    Route::get('/updated/{id}', [JabatanController::class, 'getJabatan'])->name('update_jabatan');
-    Route::post('/process', [JabatanController::class, 'process'])->name('process_jabatan');
-    Route::get('/detail/{id}', [JabatanController::class, 'detail'])->name('detail_jabatan');
-    Route::get('/delete/{id}', [JabatanController::class, 'delete'])->name('delete_jabatan');
+    Route::get('/add-master-banom', [MasterBanomController::class, 'addMasterBanom'])->name('add_master_banom');
+    Route::get('/updated/{id_mb}', [MasterBanomController::class, 'getMasterBanom'])->name('update_master_banom');
+    Route::post('/process', [MasterBanomController::class, 'process'])->name('process_mater_banom');
+    Route::get('/detail/{id_mb}', [MasterBanomController::class, 'detail'])->name('detail_master_banom');
+    Route::get('/delete/{id_mb}', [MasterBanomController::class, 'delete'])->name('delete_master_banom');
 });
 
 Route::prefix('master-lembaga')->group(function () {
