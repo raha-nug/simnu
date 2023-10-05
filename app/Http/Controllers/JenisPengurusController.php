@@ -71,7 +71,7 @@ class JenisPengurusController extends Controller
                 return redirect()->back();
             }
             Alert::success('Data Berhasil Diupdate');
-            return view(route('jenis_pengurus'));
+            return redirect(route('jenis_pengurus'));
         }
         JenisPengurus::create($data);
         Alert::success('Data Berhasil Disimpan');

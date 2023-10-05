@@ -22,7 +22,7 @@
             <div class="card-body">
                 <div class="card-title">Daftar Master Lembaga</div>
                 <div class="d-flex justify-content-end me-3 btn-sm">
-                <a class="btn btn-primary" href="add-master-lembaga">
+                <a class="btn btn-primary" href="{{route('add_master_lembaga')}}">
                 <i class="bi bi-plus me-1"></i>
                 Tambah
                 </a>
@@ -36,34 +36,36 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($data_ml as $value)
                     <tr>
-                        <td><a href="detail-master-lembaga">Lembaga Amil Zakat Infak dan Sodaqoh NU</a></td>
+                        <td><a href="{{route('detail_master_lembaga', ['id_ml' => setRoute($value->id)])}}">{{$value->nama_lembaga}}</a></td>
                         <td>
-                            
-                            <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+
+                            <a class="btn btn-outline-primary icon" href="{{route('detail_master_lembaga', ['id_ml' => setRoute($value->id)])}}" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
                             <ul
                             class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{{route('update_master_lembaga', ['id_ml' => setRoute($value->id)])}}">
                                 <i class="bi bi-pencil-square"></i>
                                 Edit
                                 </a>
                             </li>
-                            <li><a class="dropdown-item text-danger" href="#">
+                            <li><a class="dropdown-item text-danger" href="{{route('delete_master_lembaga', ['id_ml' => setRoute($value->id)])}}">
                                 <i class="bi bi-trash"></i>
                                 Hapus
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
+                    @endforeach
                     <tr>
                         <td><a href="detail-user">Lembaga Bahtsul Masail NU</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -81,13 +83,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">Lembaga Dakwah NU (LDNU)</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -105,13 +107,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">Lembaga Falakiyah NU</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -129,13 +131,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">Lembaga Kajian dan Pengembangan SDM NU</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -153,13 +155,13 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                     <tr>
                         <td><a href="detail-user">Lembaga Kemaslahatan Keluarga NU</a></td>
                         <td>
-                            
+
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-three-dots-vertical"></i>
                             </a>
@@ -177,7 +179,7 @@
                                 </a>
                             </li>
                             </ul>
-                        
+
                         </td>
                     </tr>
                 </tbody>

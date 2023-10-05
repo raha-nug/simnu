@@ -23,10 +23,10 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+
 
         <li><a class="dropdown-item" href="edit-user-group"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">Data Master Lembaga </div>
@@ -37,10 +37,10 @@
           <dt class="text-lg-end text-sm-start">Nama :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Lembaga Amil Zakat Infak dan Sodaqoh NU</dd>
+          <dd>{{$data_ml->nama_lembaga}}</dd>
         </div>
       </div>
     </div>
   </div>
-    
+
 @endsection

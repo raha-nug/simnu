@@ -23,24 +23,24 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+
 
         <li><a class="dropdown-item" href="edit-user-group"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
-    <div class="card-header">Data Jabatan </div>
+    <div class="card-header">Data Banom Basis </div>
     <div class="card-body">
-      <h5 class="card-title">Informasi Jabatan</h5>
+      <h5 class="card-title">Informasi Banom Basis</h5>
       <div class="row">
         <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Nama Jabatan:</dt>
+          <dt class="text-lg-end text-sm-start">Nama Banom Basis:</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Rais</dd>
+          <dd>{{$data_bb->nama_banom_basis}}</dd>
         </div>
       </div>
     </div>
   </div>
-    
+
 @endsection

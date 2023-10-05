@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AnakRantingController;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MwcController;
@@ -12,7 +11,11 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\RantingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
+use App\Http\Controllers\BanomBasisController;
+use App\Http\Controllers\AnakRantingController;
+use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
+use App\Http\Controllers\MasterLembagaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,8 +97,8 @@ Route::prefix('jenis-pengurus')->group(function () {
     Route::get('/add-jenis-pengurus', [JenisPengurusController::class, 'addJenisPengurus'])->name('add_jenis_pengurus');
     Route::get('/updated/{id_jp}', [JenisPengurusController::class, 'getJenisPengurus'])->name('update_jenis_pengurus');
     Route::post('/process', [JenisPengurusController::class, 'process'])->name('process_jenis_pengurus');
-    Route::get('/detail/{id}', [JenisPengurusController::class, 'detail'])->name('detail_jenis_pengurus');
-    Route::get('/delete/{id}', [JenisPengurusController::class, 'delete'])->name('delete_jenis_pengurus');
+    Route::get('/detail/{id_jp}', [JenisPengurusController::class, 'detail'])->name('detail_jenis_pengurus');
+    Route::get('/delete/{id_jp}', [JenisPengurusController::class, 'delete'])->name('delete_jenis_pengurus');
 });
 
 Route::prefix('jabatan')->group(function () {
@@ -105,6 +108,33 @@ Route::prefix('jabatan')->group(function () {
     Route::post('/process', [JabatanController::class, 'process'])->name('process_jabatan');
     Route::get('/detail/{id}', [JabatanController::class, 'detail'])->name('detail_jabatan');
     Route::get('/delete/{id}', [JabatanController::class, 'delete'])->name('delete_jabatan');
+});
+
+Route::prefix('master-banom')->group(function () {
+    Route::get('/', [MasterBanomController::class, 'index'])->name('master-banom');
+    Route::get('/add-jabatan', [JabatanController::class, 'addJabatan'])->name('add_jabatan');
+    Route::get('/updated/{id}', [JabatanController::class, 'getJabatan'])->name('update_jabatan');
+    Route::post('/process', [JabatanController::class, 'process'])->name('process_jabatan');
+    Route::get('/detail/{id}', [JabatanController::class, 'detail'])->name('detail_jabatan');
+    Route::get('/delete/{id}', [JabatanController::class, 'delete'])->name('delete_jabatan');
+});
+
+Route::prefix('master-lembaga')->group(function () {
+    Route::get('/', [MasterLembagaController::class, 'index'])->name('master-lembaga');
+    Route::get('/add-master-lembaga', [MasterLembagaController::class, 'addMasterLembaga'])->name('add_master_lembaga');
+    Route::get('/updated/{id_ml}', [MasterLembagaController::class, 'getMasterLembaga'])->name('update_master_lembaga');
+    Route::post('/process', [MasterLembagaController::class, 'process'])->name('process_master_lembaga');
+    Route::get('/detail/{id_ml}', [MasterLembagaController::class, 'detail'])->name('detail_master_lembaga');
+    Route::get('/delete/{id_ml}', [MasterLembagaController::class, 'delete'])->name('delete_master_lembaga');
+});
+
+Route::prefix('banom-basis')->group(function () {
+    Route::get('/', [BanomBasisController::class, 'index'])->name('banom-basis');
+    Route::get('/add-banom-basis', [BanomBasisController::class, 'addBanomBasis'])->name('add_banom_basis');
+    Route::get('/updated/{id_bb}', [BanomBasisController::class, 'getBanomBasis'])->name('update_banom_basis');
+    Route::post('/process', [BanomBasisController::class, 'process'])->name('process_banom_basis');
+    Route::get('/detail/{id_bb}', [BanomBasisController::class, 'detail'])->name('detail_banom_basis');
+    Route::get('/delete/{id_bb}', [BanomBasisController::class, 'delete'])->name('delete_banom_basis');
 });
 
 Route::get('pwnu', function () {

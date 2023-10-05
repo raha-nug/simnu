@@ -303,19 +303,19 @@
               </a>
             </li>
             <li>
-              <a href="banom-basis">
+              <a href="{{route('banom-basis')}}">
                 <i class="bi bi-circle"></i>
                 <span>Banom Basis</span>
               </a>
             </li>
             <li>
-              <a href="master-lembaga">
+              <a href="{{route('master-lembaga')}}">
                 <i class="bi bi-circle"></i>
                 <span>Master Lembaga</span>
               </a>
             </li>
             <li>
-              <a href="master-banom">
+              <a href="{{route('master-banom')}}">
                 <i class="bi bi-circle"></i>
                 <span>Master Banom</span>
               </a>
