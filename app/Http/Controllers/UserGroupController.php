@@ -88,10 +88,13 @@ class UserGroupController extends Controller
             Alert::error('Oops!', 'Pcnu Tidak Ditemukan');
             return redirect()->back();
         }
+        // dd($request->kecamatan);
         if($request->kecamatan){
             $mwcnu = MWCNU::query()->where('kecamatan', $request->kecamatan)->first();
-            Alert::error('Oops!', 'Mwcnu Tidak Ditemukan');
-            return redirect()->back();
+            if(empty($mwcnu)){
+                Alert::error('Oops!', 'Mwcnu Tidak Ditemukan');
+                return redirect()->back();
+            }
         }
         $data = $validated->validate();
         $data['id_pcnu'] = $pcnu->id;
