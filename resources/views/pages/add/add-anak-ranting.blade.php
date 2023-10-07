@@ -39,7 +39,7 @@
     </div>
     <div class="col-md-12 mt-2">
       <label for="telepon" class="form-label">Telepon</label>
-      <input type="text" class="form-control" name="telepon" value="{{ $anak_ranting_data->telp ?? ''}}" >
+      <input type="text" class="form-control" name="telp" value="{{ $anak_ranting_data->telp ?? ''}}" >
     </div>
   @else
     <div class="col-md-12 mt-2">
@@ -56,7 +56,7 @@
     </div>
     <div class="col-md-12 mt-2">
       <label for="telepon" class="form-label">Telepon</label>
-      <input type="text" class="form-control" name="telepon" >
+      <input type="text" class="form-control" name="telp" >
     </div>
   @endif
   <!-- <div class="col-md-12 mt-2">

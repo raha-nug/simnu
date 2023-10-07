@@ -1,4 +1,4 @@
-<div class="tab-pane fade mt-3" id="bordered-justified-ranting" role="tabpanel" aria-labelledby="ranting-tab">
+<div class="tab-pane fade mt-3" id="bordered-justified-anak-ranting" role="tabpanel" aria-labelledby="anak-ranting-ranting-tab">
    <div class="d-flex justify-content-end align-items-center">
       <a class="btn btn-primary" href="{{ route('anak-ranting-add') }}?ranting={{setRoute($ranting_data->id)}}">
          <i class="bi bi-plus me-1"></i>
@@ -12,7 +12,6 @@
                <th scope="col">Nama Anak Ranting</th>
                <th scope="col">Alamat </th>
                <th scope="col">Kelengkapan Dokumen</th>
-               {{-- <th scope="col">Jumlah Anak Ranting</th> --}}
                <th scope="col">Aksi</th>
             </tr>
          </thead>

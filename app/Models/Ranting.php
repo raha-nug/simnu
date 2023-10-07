@@ -53,6 +53,14 @@ class Ranting extends Model
         return $query->get();
     }
 
+    public static function getRowData($id)
+    {
+        return self::query()
+            ->select(['id', 'kota', 'kecamatan','desa'])
+            ->where('id', $id)
+            ->first();
+    }
+
     public function mwcnu(): BelongsTo
     {
         return $this->belongsTo(MWCNU::class);

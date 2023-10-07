@@ -74,7 +74,7 @@ class AnakRantingController extends Controller
             'name' => 'MWC Singaparna',
             'anak_ranting_data' => $anak_ranting,
             'method' => 'POST',
-            'action' => route('ranting-process')
+            'action' => route('anak-ranting-process')
         ];
 
         return view('pages.add.add-anak-ranting', $data);
