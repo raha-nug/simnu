@@ -139,7 +139,6 @@
         @include('layout.tabs.kepengurusan_tab')
         @include('layout.tabs.lembaga_tab')
         @include('layout.tabs.banom_tab')
-        @include('layout.tabs.banom_tab')
         @include('layout.tabs.mwcnu_tab')
       </div>
     </div>
