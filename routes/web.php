@@ -15,6 +15,7 @@ use App\Http\Controllers\BanomBasisController;
 use App\Http\Controllers\AnakRantingController;
 use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
+use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\MasterLembagaController;
 
 /*
@@ -37,9 +38,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::get('/get-kecamatan/{kode}', [UserGroupController::class, 'getKecamatan']);
 
-Route::prefix('pwnu')->group(function () {
-    Route::get('/', [PwnuController::class, 'index'])->name('pwnu');
-});
+Route::get('/pwnu', [PwnuController::class, 'index'])->name('pwnu');
 
 Route::prefix('pcnu')->group(function () {
     Route::get('/', [PcnuController::class, 'index'])->name('pcnu');
@@ -137,13 +136,11 @@ Route::prefix('banom-basis')->group(function () {
     Route::get('/delete/{id_bb}', [BanomBasisController::class, 'delete'])->name('delete_banom_basis');
 });
 
-Route::get('pwnu', function () {
-    return view('pages.pwnu',[
-        'title'=> 'PWNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-        'name'=>'PWNU Jawa Barat'
-    ]);
+Route::prefix('lembaga')->group(function () {
+    Route::get('/detail', [LembagaController::class, 'index'])->name('lembaga');
+    Route::get('/add', [LembagaController::class, 'addLembaga'])->name('lembaga-add');
+    Route::post('/process', [LembagaController::class, 'process'])->name('lembaga-process');
+    Route::get('/delete', [LembagaController::class, 'deleteLembaga'])->name('lembaga-delete');
 });
 Route::get('search-data', function () {
     return view('pages.search-data',[
