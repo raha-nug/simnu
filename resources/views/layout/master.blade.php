@@ -241,7 +241,7 @@
           </a>
         </li> --}}
         <li class="nav-heading">Datas</li>
-        <li class="nav-item">
+        <li class="nav-item d-none">
           <a
             class="nav-link {{ Request::is('cari-data*') ? 'active':'' }}"
             href="pengurus">
@@ -273,49 +273,49 @@
             class="nav-content collapse"
             data-bs-parent="#sidebar-nav">
             <li>
-              <a href="user">
+              <a href="{{route('user')}}">
                 <i class="bi bi-circle"></i>
                 <span>User</span>
               </a>
             </li>
             <li>
-              <a href="{{route('add-user-group')}}">
+              <a href="{{route('user-group')}}">
                 <i class="bi bi-circle"></i>
                 <span>User Group</span>
               </a>
             </li>
             <li>
-              <a href="members">
+              <a href="member">
                 <i class="bi bi-circle"></i>
                 <span>Member</span>
               </a>
             </li>
             <li>
-              <a href="jenis-pengurus">
+              <a href="{{route('jenis_pengurus')}}">
                 <i class="bi bi-circle"></i>
                 <span>Jenis Pengurus</span>
               </a>
             </li>
             <li>
-              <a href="jabatan">
+              <a href="{{route('jabatan')}}">
                 <i class="bi bi-circle"></i>
                 <span>Jabatan</span>
               </a>
             </li>
             <li>
-              <a href="banom-basis">
+              <a href="{{route('banom-basis')}}">
                 <i class="bi bi-circle"></i>
                 <span>Banom Basis</span>
               </a>
             </li>
             <li>
-              <a href="master-lembaga">
+              <a href="{{route('master-lembaga')}}">
                 <i class="bi bi-circle"></i>
                 <span>Master Lembaga</span>
               </a>
             </li>
             <li>
-              <a href="master-banom">
+              <a href="{{route('master-banom')}}">
                 <i class="bi bi-circle"></i>
                 <span>Master Banom</span>
               </a>

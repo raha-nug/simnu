@@ -41,7 +41,7 @@ class MwcController extends Controller
             // ambil data pc jika tambah mwc baru
             if (!isset($request->pc))
                 return redirect(route('not-found'));
-    
+
             $id_pc = $request->pc;
             $id = getRoute($id_pc);
             if (!$id)
@@ -81,7 +81,7 @@ class MwcController extends Controller
             'method' => 'POST',
             'action' => route('mwcnu-process')
         ];
-        
+
         return view('pages.add.add-mwc', $data);
     }
 
@@ -139,7 +139,7 @@ class MwcController extends Controller
 
     public function deleteMwcnu(Request $request)
     {
-        
+
         if(!isset($request->mwc))
         {
             Alert::error('Data Gagal Dihapus');

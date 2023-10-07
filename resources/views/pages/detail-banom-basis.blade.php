@@ -29,25 +29,15 @@
 
       </ul>
     </div>
-    <div class="card-header">Data User Group </div>
+    <div class="card-header">Data Banom Basis </div>
     <div class="card-body">
-      <h5 class="card-title">Informasi User Group</h5>
+      <h5 class="card-title">Informasi Banom Basis</h5>
       <div class="row">
         <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Email :</dt>
+          <dt class="text-lg-end text-sm-start">Nama Banom Basis:</dt>
         </div>
         <div class="col-lg-9">
-          <dd>{{$user->email}}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Group User :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>
-            {{$user->nama_grup}}
-          </dd>
+          <dd>{{$data_bb->nama_banom_basis}}</dd>
         </div>
       </div>
     </div>

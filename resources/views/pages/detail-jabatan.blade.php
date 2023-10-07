@@ -23,34 +23,24 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
+        
 
         <li><a class="dropdown-item" href="edit-user-group"><i class="bi bi-pencil-square"></i>Edit</a></li>
-
+        
       </ul>
     </div>
-    <div class="card-header">Data User Group </div>
+    <div class="card-header">Data Jabatan </div>
     <div class="card-body">
-      <h5 class="card-title">Informasi User Group</h5>
+      <h5 class="card-title">Informasi Jabatan</h5>
       <div class="row">
         <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Email :</dt>
+          <dt class="text-lg-end text-sm-start">Nama Jabatan:</dt>
         </div>
         <div class="col-lg-9">
-          <dd>{{$user->email}}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Group User :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>
-            {{$user->nama_grup}}
-          </dd>
+          <dd>Rais</dd>
         </div>
       </div>
     </div>
   </div>
-
+    
 @endsection
