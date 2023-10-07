@@ -118,7 +118,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('pwnu') ? 'active':'' }}"
-            href="pwnu">
+            href="{{ route('pwnu') ?? '#' }}">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <svg
