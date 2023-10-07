@@ -67,7 +67,7 @@ Route::prefix('ranting')->group(function () {
 });
 
 Route::prefix('anak-ranting')->group(function () {
-    Route::get('/getListByRanting', [RantingController::class, 'getListByRanting'])->name('anak-ranting-list');
+    Route::get('/getListByRanting', [RantingController::class, 'getAnakByRanting'])->name('anak-ranting-list');
     Route::get('/detail', [AnakRantingController::class, 'index'])->name('anak-ranting');
     Route::get('/add', [AnakRantingController::class, 'addAnakRanting'])->name('anak-ranting-add');
     Route::post('/process', [AnakRantingController::class, 'process'])->name('anak-ranting-process');

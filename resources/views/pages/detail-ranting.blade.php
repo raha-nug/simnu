@@ -74,7 +74,7 @@
           <dt class="text-lg-end text-sm-start">MWC NU :</dt>
         </div>
         <div class="col-lg-9">
-          <dd><a href="{{ route('mwcnu') }}?mwc={{ setRoute($ranting_data->id_mwc) }}">{{ $ranting_data->mwc_nama }}</a></dd>
+          <dd><a href="{{ route('mwcnu') }}?mwc={{ setRoute($ranting_data->id_mwcnu) }}">{{ $ranting_data->mwc_nama }}</a></dd>
         </div>
       </div>
       <div class="row">
@@ -255,7 +255,7 @@
       },
       "columns": [{
           mData: "nama",
-          mRender: function(data, type, row) { 
+          mRender: function(data, type, row) {
             return `<th scope="row"><a href="{{ route('anak-ranting') }}?anakranting=${row.id}">${row.nama}</a></th>`;
           },
           "orderable": false
@@ -284,7 +284,7 @@
         {
           mData: "",
           mRender: function(data, type, row) {
-            
+
             return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
               <i class="bi bi-three-dots-vertical"></i>
             </a>

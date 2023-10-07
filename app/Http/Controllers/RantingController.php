@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnakRanting;
 use App\Models\MWCNU;
 use App\Models\Ranting;
 use Illuminate\Http\Request;
@@ -18,9 +19,9 @@ class RantingController extends Controller
             return redirect('dashboard');
 
         $ranting = Ranting::query()
-            ->select(['ranting.id','ranting.nama','ranting.alamat','mwcnu.nama mwc_nama'])
-            ->where('id', $id)
+            ->select(['ranting.id','ranting.nama','ranting.alamat','mwcnu.nama as mwc_nama', 'id_mwcnu', 'ranting.kecamatan'])
             ->leftJoin('mwcnu','id_mwcnu','=','mwcnu.id')
+            ->where('ranting.id', $id)
             ->first();
 
         return view('pages.detail-ranting', [
@@ -28,7 +29,7 @@ class RantingController extends Controller
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
             'kecamatan' => $this->wilayah->getSingleAddress($ranting->kecamatan ?? ''),
-            'ranting' => $ranting
+            'ranting_data' => $ranting
         ]);
     }
 
@@ -179,7 +180,7 @@ class RantingController extends Controller
             ]);
         }
 
-        $ranting_list = Ranting::getListByMwcnu($id, $limit, $start, $request->search['value']);
+        $ranting_list = AnakRanting::getListByRanting($id, $limit, $start, $request->search['value']);
         // dd(mapSetRoute($ranting_list));
         return response()->json((object)[
             'success' => 1,
