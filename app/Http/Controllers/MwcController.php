@@ -185,6 +185,6 @@ class MwcController extends Controller
         return response()->json((object)[
             'success' => 1,
             'data' => mapSetRoute($ranting_list)
-        ]);;
+        ]);
     }
 }

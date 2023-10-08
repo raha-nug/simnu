@@ -13,7 +13,7 @@
     </ol>
   </nav>
 </div>
-@endsection 
+@endsection
 @section('content')
 <div class="container">
   <div class="card">
@@ -21,12 +21,11 @@
       <a class="icon" href="#" data-bs-toggle="dropdown">
         <i class="bi bi-three-dots"></i>
       </a>
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
 
         <li><a class="dropdown-item" href="edit-pwnu"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">PWNU Jawa Barat</div>
@@ -120,6 +119,98 @@
 </div>
 
 @endsection
-@section('js-page')
-<script src="../assets/sources/js/pwnu.js"></script>
+<script>
+  $(document).ready(function() {
+    mwcTable();
+  })
+
+  const mwcTable = () => {
+    $("#mwcTable").DataTable({
+      responsive: true,
+      language: {
+        "scrollX": true,
+        "scrollY": true,
+        search: "_INPUT_",
+        searchPlaceholder: "Cari...",
+        sLengthMenu: "_MENU_",
+        "zeroRecords": "Tidak ada data untuk ditampilkan",
+        "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+        "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+        "infoFiltered": ""
+      },
+      "aLengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, "Show All"]
+      ],
+      "processing": true,
+      "bAutoWidth": false,
+      "serverSide": true,
+      "iDisplayLength": 10,
+      "bInfo": true,
+      "orderCellsTop": false,
+      "ajax": {
+        "url": "{{ route('mwc-list-bypcnu') }}",
+        "type": "GET",
+        "data": function(d) {
+          d.pc = "{{ $pc_data->id }}";
+        }
+      },
+      "columns": [{
+          mData: "nama",
+          mRender: function(data, type, row) {
+            return `<th scope="row"><a href="{{ route('mwcnu') }}?mwc=${row.id}">${row.nama}</a></th>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "alamat",
+          mRender: function(data, type, row) {
+            return row.alamat;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+            return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "jumlah",
+          mRender: function(data, type, row) {
+            return row.jumlah;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-three-dots-vertical"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li><a class="dropdown-item" href="{{ route('mwcnu-add') }}?mwc=${row.id}">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit
+                  </a>
+              </li>
+              <li><a class="dropdown-item text-danger" href="{{ route('mwcnu-delete') }}?mwc=${row.id}">
+                    <i class="bi bi-trash"></i>
+                    Hapus
+                  </a>
+              </li>
+            </ul>`;
+          },
+          "orderable": false
+        },
+      ],
+      "tabIndex": 1,
+      "drawCallback": function(settings) {
+        // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+      }
+    });
+  }
+</script>
 @endsection
