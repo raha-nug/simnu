@@ -13,15 +13,13 @@ use Illuminate\Support\Facades\Validator;
 class UserGroupController extends Controller
 {
     public function index(){
-        $user_group = UserGroup::select('table_user_groups.id','table_user_groups.nama_grup', 'pcnu.nama')
-                                ->join('pcnu', 'table_user_groups.id_pcnu', '=', 'pcnu.id')
-                                ->get();
-        // dd($user_group);
+        $user_group = UserGroup::query()->get();
         if(empty($user_group)){
             Alert::error('Oops', 'Data User Group Tidak Tersedia');
             return redirect()->back();
         }
         $data = [
+            'count' => 1,
             'title'=> 'User Group',
             'username'=>'John Doe',
             'from'=>'Jawa Barat',
@@ -83,10 +81,12 @@ class UserGroupController extends Controller
             Alert::error('Oops!', $error);
             return redirect()->back();
         }
-        $pcnu = PCNU::query()->where('kota', $request->kota)->first();
-        if(empty($pcnu)){
-            Alert::error('Oops!', 'Pcnu Tidak Ditemukan');
-            return redirect()->back();
+        if($request->kota){
+            $pcnu = PCNU::query()->where('kota', $request->kota)->first();
+            if(empty($pcnu)){
+                Alert::error('Oops!', 'Pcnu Tidak Ditemukan');
+                return redirect()->back();
+            }
         }
         // dd($request->kecamatan);
         if($request->kecamatan){
@@ -115,6 +115,12 @@ class UserGroupController extends Controller
             Alert::success('Data Berhasil Disimpan');
             return redirect(route('user-group'));
         }
+        if($request->kecamatan){
+            if($data['id_mwcnu'] = $mwcnu->id){
+                unset($data['id_pcnu']);
+            }
+        }
+
         $user_group = UserGroup::create($data);
         if(isset($request->nambah)){
             $enable_nambah = true;
@@ -126,7 +132,7 @@ class UserGroupController extends Controller
         } else {
             $enable_edit = false;
         }
-        if(isset($request->delete)){
+        if(isset($request->hapus)){
             $enable_hapus = true;
         } else {
             $enable_hapus = false;

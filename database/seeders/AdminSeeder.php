@@ -18,6 +18,7 @@ class AdminSeeder extends Seeder
     {
         $user_group = UserGroup::query()->create([
             'nama_grup' => 'Admin Super',
+            'id_pwnu' => 1
         ]);
 
         UserCredentials::query()->create([

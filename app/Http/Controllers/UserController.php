@@ -16,6 +16,7 @@ class UserController extends Controller
                         ->join('table_user_groups', 'table_users.id_grup', '=', 'table_user_groups.id')
                         ->get();
         $data = [
+            'count' => 1,
             'title'=> 'User',
             'username'=>'John Doe',
             'from'=>'Jawa Barat',

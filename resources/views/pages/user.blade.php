@@ -39,7 +39,6 @@
                 <tbody>
                     @foreach ($user as $value)
                     <tr>
-                    <th scope="row">1</th>
                     <td><a href="{{ route('detail-user') }}?page=10&u={{ setRoute($value->id) }}">{{$value->nama}}</a></td>
                     <td><a href="detail-user-group">{{$value->nama_grup}}</a></td>
                     <td>

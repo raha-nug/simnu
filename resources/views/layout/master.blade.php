@@ -88,7 +88,7 @@
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
-                  href="/login">
+                  href="{{route('logout')}}">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Logout</span>
                 </a>
@@ -326,7 +326,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            href="/login">
+            href="{{route('logout')}}">
             <i class="bi bi-box-arrow-right"></i>
             <span>Logout</span>
           </a>
