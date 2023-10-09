@@ -28,7 +28,7 @@
       <select class="form-select" id="lembaga" name="master_id" required>
         <option></option>
         @foreach($master_data as $item)
-          <option value="{{ $item->id }}" data-nama={{ $item->nama_lembaga }}>{{ $item->nama_lembaga }}</option>
+          <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}">{{ $item->nama_lembaga }}</option>
         @endforeach
       </select>
     </div>
@@ -63,9 +63,9 @@
         <option></option>
         @foreach($master_data as $item)
           @if ($item->id == $lembaga_data->master_id)
-            <option value="{{ $item->id }}" data-nama={{ $item->nama_lembaga }} selected>{{ $item->nama_lembaga }}</option>
+            <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}" selected>{{ $item->nama_lembaga }}</option>
           @else
-            <option value="{{ $item->id }}" data-nama={{ $item->nama_lembaga }}>{{ $item->nama_lembaga }}</option>
+            <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}">{{ $item->nama_lembaga }}</option>
           @endif
         @endforeach
       </select>

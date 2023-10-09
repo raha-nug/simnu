@@ -137,6 +137,7 @@ Route::prefix('banom-basis')->group(function () {
 });
 
 Route::prefix('lembaga')->group(function () {
+    Route::get('/list', [LembagaController::class, 'getLembagalist'])->name('lembaga-list');
     Route::get('/detail', [LembagaController::class, 'index'])->name('lembaga');
     Route::get('/add', [LembagaController::class, 'addLembaga'])->name('lembaga-add');
     Route::post('/process', [LembagaController::class, 'process'])->name('lembaga-process');
