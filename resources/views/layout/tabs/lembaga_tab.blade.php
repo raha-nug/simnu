@@ -1,12 +1,26 @@
 <div class="tab-pane fade mt-3" id="bordered-justified-lembaga" role="tabpanel" aria-labelledby="lembaga-tab">
-   <div class="d-flex justify-content-end align-items-center  me-3">
-      <a class="btn btn-primary" href="add-lembaga">
-         <i class="bi bi-plus me-1"></i>
-         Tambah
-      </a>
+   <div class="d-flex justify-content-end align-items-center">
+      @isset($pwnu_data)
+         <a class="btn btn-primary" href="{{ route('lembaga-add') }}?pw={{setRoute($pwnu_data->id)}}">
+            <i class="bi bi-plus me-1"></i>
+            Tambah
+         </a>
+      @endisset
+      @isset($pcnu_data)
+         <a class="btn btn-primary" href="{{ route('lembaga-add') }}?pc={{setRoute($pcnu_data->id)}}">
+            <i class="bi bi-plus me-1"></i>
+            Tambah
+         </a>
+      @endisset
+      @isset($mwcnu_data)
+         <a class="btn btn-primary" href="{{ route('lembaga-add') }}?mwc={{setRoute($mwcnu_data->id)}}">
+            <i class="bi bi-plus me-1"></i>
+            Tambah
+         </a>
+      @endisset
    </div>
-   <div class="table-responsive">
-      <table class="table table-borderless table-hover datatable">
+   <div class="table-responsive mt-3">
+      <table class="table table-borderless table-hover" id="lembagaTable">
          <thead>
             <tr>
                <th scope="col">No</th>

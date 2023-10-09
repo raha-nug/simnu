@@ -111,7 +111,7 @@
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
         @include('layout.tabs.pengurus_tab')
         @include('layout.tabs.kepengurusan_tab')
-        @include('layout.tabs.lembaga_tab')
+        @include('layout.tabs.lembaga_tab',['pwnu_data' => $pw_detail])
         @include('layout.tabs.banom_tab')
       </div>
     </div>
@@ -119,13 +119,14 @@
 </div>
 
 @endsection
+@section('js-page')
 <script>
   $(document).ready(function() {
-    mwcTable();
+    lembagaTable();
   })
-
-  const mwcTable = () => {
-    $("#mwcTable").DataTable({
+  
+  const lembagaTable = () => {
+    $("#lembagaTable").DataTable({
       responsive: true,
       language: {
         "scrollX": true,
@@ -149,37 +150,23 @@
       "bInfo": true,
       "orderCellsTop": false,
       "ajax": {
-        "url": "{{ route('mwc-list-bypcnu') }}",
+        "url": "{{ route('lembaga-list') }}",
         "type": "GET",
         "data": function(d) {
-          d.pc = "{{ $pc_data->id }}";
+          d.pw = "{{ $pw_detail->id }}";
         }
       },
       "columns": [{
+          mData: "no",
+          mRender: function(data, type, row, meta) {
+            return meta.row + meta.settings._iDisplayStart + 1;
+          },
+          "orderable": false
+        },
+        {
           mData: "nama",
           mRender: function(data, type, row) {
-            return `<th scope="row"><a href="{{ route('mwcnu') }}?mwc=${row.id}">${row.nama}</a></th>`;
-          },
-          "orderable": false
-        },
-        {
-          mData: "alamat",
-          mRender: function(data, type, row) {
-            return row.alamat;
-          },
-          "orderable": false
-        },
-        {
-          mData: "",
-          mRender: function(data, type, row) {
-            return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
-          },
-          "orderable": false
-        },
-        {
-          mData: "jumlah",
-          mRender: function(data, type, row) {
-            return row.jumlah;
+            return `<th scope="row"><a href="{{ route('lembaga') }}?lembaga=${row.id}">${row.nama}</a></th>`;
           },
           "orderable": false
         },
@@ -191,12 +178,12 @@
               <i class="bi bi-three-dots-vertical"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <li><a class="dropdown-item" href="{{ route('mwcnu-add') }}?mwc=${row.id}">
+              <li><a class="dropdown-item" href="{{ route('lembaga-add') }}?lembaga=${row.id}">
                     <i class="bi bi-pencil-square"></i>
                     Edit
                   </a>
               </li>
-              <li><a class="dropdown-item text-danger" href="{{ route('mwcnu-delete') }}?mwc=${row.id}">
+              <li><a class="dropdown-item text-danger" href="{{ route('lembaga-delete') }}?lembaga=${row.id}">
                     <i class="bi bi-trash"></i>
                     Hapus
                   </a>

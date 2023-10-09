@@ -44,28 +44,30 @@ class LembagaController extends Controller
             else
                 return redirect('not-found');
         }
-
-        $id_lembaga = $request->lembaga;
-        $id = getRoute($id_lembaga);
-        if (!$id)
+        else
+        {
+            $id_lembaga = $request->lembaga;
+            $id = getRoute($id_lembaga);
+            if (!$id)
             return redirect('dashboard');
 
-        $lembaga_data = Lembaga::query()->where('id', $id)
+            $lembaga_data = Lembaga::query()->where('id', $id)
             ->first();
 
-        $data = [
-            'title' => 'Lembaga',
-            'username' => 'John Doe',
-            'from' => 'Singaparna',
-            'name' => 'MWC Singaparna',
-            'master_data' => MasterLembaga::get(),
-            'kota' => $this->wilayah->getAddress('32'),
-            'lembaga_data' => $lembaga_data,
-            'method' => 'POST',
-            'action' => route('lembaga-process')
-        ];
+            $data = [
+                'title' => 'Lembaga',
+                'username' => 'John Doe',
+                'from' => 'Singaparna',
+                'name' => 'MWC Singaparna',
+                'master_data' => MasterLembaga::get(),
+                'kota' => $this->wilayah->getAddress('32'),
+                'lembaga_data' => $lembaga_data,
+                'method' => 'POST',
+                'action' => route('lembaga-process')
+            ];
 
-        return view('pages.add.add-lembaga', $data);
+            return view('pages.add.add-lembaga', $data);
+        }
     }
 
     public function process(Request $request)
@@ -187,8 +189,7 @@ class LembagaController extends Controller
         if (!$id)
             return redirect('dashboard');
 
-
-        $pcnu_data = PCNU::select(['id','kota'])->where('id', $id)->first();
+            $pcnu_data = PCNU::select(['id','kota'])->where('id', $id)->first();
 
         $data = [
             'title' => 'Lembaga',
@@ -199,10 +200,11 @@ class LembagaController extends Controller
             'kota' => $this->wilayah->getAddress('32'),
             'pcnu_data' => $pcnu_data,
             'method' => 'POST',
-            'action' => route('ranting-process')
+            'action' => route('lembaga-process')
         ];
 
-        return view('pages.add.add-lembaga', $data);
+        // dd($data);
+        return view('pages.add.add-lembaga');
     }
     private function addLembagaMwcnu($mwcnu_id)
     {
