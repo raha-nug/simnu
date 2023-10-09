@@ -145,6 +145,14 @@ Route::get('pwnu', function () {
         'name'=>'PWNU Jawa Barat'
     ]);
 });
+Route::get('search-data', function () {
+    return view('pages.search-data',[
+        'title'=> 'Search Data',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+});
 // Exception view
 Route::get('no-found', function () {
     return view('errors.not_found');

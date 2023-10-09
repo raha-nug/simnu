@@ -241,10 +241,10 @@
           </a>
         </li> --}}
         <li class="nav-heading">Datas</li>
-        <li class="nav-item d-none">
+        <li class="nav-item">
           <a
-            class="nav-link {{ Request::is('cari-data*') ? 'active':'' }}"
-            href="pengurus">
+            class="nav-link {{ Request::is('search-data*') ? 'active':'' }}"
+            href="search-data">
             <i class="bi bi-search"></i>
             <span>Cari Data</span>
           </a>
