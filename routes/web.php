@@ -143,6 +143,14 @@ Route::prefix('lembaga')->group(function () {
     Route::post('/process', [LembagaController::class, 'process'])->name('lembaga-process');
     Route::get('/delete', [LembagaController::class, 'deleteLembaga'])->name('lembaga-delete');
 });
+Route::get('search-data', function () {
+    return view('pages.search-data',[
+        'title'=> 'Search Data',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+});
 
 // Exception view
 Route::get('no-found', function () {
