@@ -64,6 +64,9 @@
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#contact">Kontak</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#berita">Berita</a>
+                  </li>
                 </ul>
               </div>
 
@@ -121,6 +124,10 @@
       </div>
     </section>
     <!-- ====== Hero End ====== -->
+
+    <section id="tranding">
+      
+    </section>
 
     <!-- ====== About Start ====== -->
     <section id="about" class="ud-about">
@@ -329,50 +336,21 @@
         <div class="splide" aria-labelledby="carousel-heading">
           <div class="splide__track">
             <ul class="splide__list gap-3">
-              <li class="splide__slide" data-splide-interval="2000">
-                <a href="">
-                  <div class="card">
-                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="mt-4">Tanggal</span>
-                  </div>
-                </div>
-                </a>
-              </li>
-              <li class="splide__slide" data-splide-interval="2000">
-                <a href="">
-                  <div class="card">
-                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="mt-4">Tanggal</span>
-                  </div>
-                </div>
-                </a>
-              </li>
-              <li class="splide__slide" data-splide-interval="2000">
-                <a href="">
-                  <div class="card">
-                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="mt-4">Tanggal</span>
-                  </div>
-                </div>
-                </a>
-              </li>
-              <li class="splide__slide" data-splide-interval="2000">
-                <a href="">
-                  <div class="card">
-                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <span class="mt-4">Tanggal</span>
-                  </div>
-                </div>
-                </a>
-              </li>
+              @foreach ($news_list as $item)
+                <li class="splide__slide" data-splide-interval="2000">
+                  <a href="{{ $item['link'] }}">
+                    <div class="card">
+                      <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
+                      <div class="card-body">
+                        <a href="{{ $item['link'] }}">
+                          <p class="d-inline-block text-truncate mt-3 mb-4" style="max-width: 280px;">{{ $item['title'] }}</p>
+                          <span class="mt-4">{{ $item['date'] }}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -678,7 +656,7 @@
     const splide = new Splide( '.splide', {
         type   : 'loop',
         drag   : 'free',
-        focus  : 'left',
+        focus  : 0,
         perPage: 4,
         autoScroll: {
           speed: 1,
@@ -688,8 +666,18 @@
             perPage: 1,
         },
       },
-      autoplay: true
+      autoplay: true,
         
+      } );
+
+      splide.on( 'pagination:mounted', function ( data ) {
+        // You can add your class to the UL element
+        data.list.classList.add( 'splide__pagination--custom' );
+
+        // `items` contains all dot items
+        data.items.forEach( function ( item ) {
+          item.button.style.display = 'none';
+        } );
       } );
 
       splide.mount();

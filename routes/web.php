@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\BanomBasisController;
 use App\Http\Controllers\AnakRantingController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
 use App\Http\Controllers\LembagaController;
@@ -29,9 +30,7 @@ use App\Http\Controllers\MasterLembagaController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::any('/Login', [LoginController::class, 'Login'])->name('login');
 Route::get('/wilayah', [Controller::class, 'getSingleAddress']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
