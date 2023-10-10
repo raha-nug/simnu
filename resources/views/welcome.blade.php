@@ -329,7 +329,7 @@
         <div class="splide" aria-labelledby="carousel-heading">
           <div class="splide__track">
             <ul class="splide__list gap-3">
-              <li class="splide__slide">
+              <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
                   <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
@@ -340,7 +340,7 @@
                 </div>
                 </a>
               </li>
-              <li class="splide__slide">
+              <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
                   <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
@@ -351,7 +351,7 @@
                 </div>
                 </a>
               </li>
-              <li class="splide__slide">
+              <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
                   <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
@@ -362,7 +362,7 @@
                 </div>
                 </a>
               </li>
-              <li class="splide__slide">
+              <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
                   <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
@@ -687,7 +687,8 @@
           640: {
             perPage: 1,
         },
-      }
+      },
+      autoplay: true
         
       } );
 
