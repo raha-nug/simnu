@@ -332,7 +332,7 @@
               <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
-                  <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
+                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
                   <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <span class="mt-4">Tanggal</span>
@@ -343,7 +343,7 @@
               <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
-                  <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
+                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
                   <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <span class="mt-4">Tanggal</span>
@@ -354,7 +354,7 @@
               <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
-                  <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
+                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
                   <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <span class="mt-4">Tanggal</span>
@@ -365,7 +365,7 @@
               <li class="splide__slide" data-splide-interval="2000">
                 <a href="">
                   <div class="card">
-                  <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3c3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" class="card-img-top " alt="...">
+                  <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
                   <div class="card-body">
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <span class="mt-4">Tanggal</span>
