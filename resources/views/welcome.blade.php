@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/css/animate.css" />
     <link rel="stylesheet" href="assets/css/lineicons.css" />
     <link rel="stylesheet" href="assets/css/ud-styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
@@ -62,6 +63,9 @@
                   </li>
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#contact">Kontak</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#berita">Berita</a>
                   </li>
                 </ul>
               </div>
@@ -120,6 +124,10 @@
       </div>
     </section>
     <!-- ====== Hero End ====== -->
+
+    <section id="tranding">
+      
+    </section>
 
     <!-- ====== About Start ====== -->
     <section id="about" class="ud-about">
@@ -322,6 +330,33 @@
       </div>
     </section>
 
+    <section class="mb-5">
+      <div class="container">
+          <h2 class="text-center mb-5">Berita Terkini</h2>
+        <div class="splide" aria-labelledby="carousel-heading">
+          <div class="splide__track">
+            <ul class="splide__list gap-3">
+              @foreach ($news_list as $item)
+                <li class="splide__slide" data-splide-interval="2000">
+                  <a href="{{ $item['link'] }}">
+                    <div class="card">
+                      <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
+                      <div class="card-body">
+                        <a href="{{ $item['link'] }}">
+                          <p class="d-inline-block text-truncate mt-3 mb-4" style="max-width: 280px;">{{ $item['title'] }}</p>
+                          <span class="mt-4">{{ $item['date'] }}</span>
+                        </a>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
     <!-- ====== FAQ Start ====== -->
     <section id="faq" class="ud-faq">
       <div class="shape">
@@ -543,7 +578,7 @@
                 </li>
               </ul>
             </div>
-            <div class="col-md-4">
+            <div class="">
               <p class="ud-footer-bottom-right">
                 Designed and Developed by
                 <a href="javascript:void(0)" rel="nofollow">CMR</a>
@@ -615,6 +650,37 @@
       }
 
       window.document.addEventListener("scroll", onScroll);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+    <script>
+    const splide = new Splide( '.splide', {
+        type   : 'loop',
+        drag   : 'free',
+        focus  : 0,
+        perPage: 4,
+        autoScroll: {
+          speed: 1,
+        },
+        breakpoints: {
+          640: {
+            perPage: 1,
+        },
+      },
+      autoplay: true,
+        
+      } );
+
+      splide.on( 'pagination:mounted', function ( data ) {
+        // You can add your class to the UL element
+        data.list.classList.add( 'splide__pagination--custom' );
+
+        // `items` contains all dot items
+        data.items.forEach( function ( item ) {
+          item.button.style.display = 'none';
+        } );
+      } );
+
+      splide.mount();
     </script>
   </body>
 </html>

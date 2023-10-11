@@ -30,6 +30,41 @@ class Lembaga extends Model
         'kecamatan',
     ];
 
+    public static function getReferenceData($id)
+    {
+        return self::query()
+            ->select(['id_pwnu', 'id_pcnu', 'id_mwcnu'])
+            ->where('id', $id)
+            ->first();
+    }
+
+    public static function getLembagalist($limit, $start, $options)
+    {
+        $query = self::query();
+        switch ($options) {
+            case !empty($options['id_pwnu']):
+                $query->where('id_pwnu', $options['id_pwnu']);
+                break;
+            case !empty($options['id_pcnu']):
+                $query->where('id_pcnu', $options['id_pcnu']);
+                break;
+            case !empty($options['id_mwcnu']):
+                $query->where('id_mwcnu', $options['id_mwcnu']);
+                break;
+            
+            default:
+                break;
+        }
+
+        if($options['search']) {
+            $query->whereRaw("nama LIKE '%{$options['search']}%'");
+        }
+
+        return $query->limit($limit)
+            ->offset($start)
+            ->get();
+    }
+
     public function mwcnu(): BelongsTo
     {
         return $this->belongsTo(MWCNU::class);

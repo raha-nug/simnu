@@ -34,7 +34,7 @@ class MWCNU extends Model
     public static function getListByPcnu($id_pc, $limit, $start, $search=null)
     {
         if (!$id_pc)
-            return [];
+            return collect([]);
 
         $query = self::query()
             ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])

@@ -13,20 +13,19 @@
     </ol>
   </nav>
 </div>
-@endsection @section('content')
-
+@endsection
+@section('content')
 <div class="container">
   <div class="card">
     <div class="filter">
       <a class="icon" href="#" data-bs-toggle="dropdown">
         <i class="bi bi-three-dots"></i>
       </a>
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
 
         <li><a class="dropdown-item" href="edit-pwnu"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">PWNU Jawa Barat</div>
@@ -110,227 +109,10 @@
         </li>
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
-        <div class="tab-pane fade show active mt-3" id="bordered-justified-pengurus" role="tabpanel" aria-labelledby="pengurus-tab">
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Pengurus</th>
-                  <th scope="col">Jabatan</th>
-                  <th scope="col">Periode</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>KH. Asep Burhanudin</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2016-05-25</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Prof. Dr. KH. Fuad Wahab, MA.</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2014-12-05</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>KH. M. Nuh Addawami</td>
-                  <td>Syuriah</td>
-                  <td>Rais</td>
-                  <td>2011-08-12</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Dr. KH. Abun Bunyamin</td>
-                  <td>Syuriah</td>
-                  <td>Wakil Rais</td>
-                  <td>2012-06-11</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>KH. M. Usamah Manshur</td>
-                  <td>Syuriah</td>
-                  <td>Katib</td>
-                  <td>2011-04-19</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade mt-3" id="bordered-justified-kepengurusan" role="tabpanel" aria-labelledby="kepengurusan-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-sk">
-              <i class="bi bi-plus me-1"></i>
-              Tambah
-            </a>
-          </div>
-
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">No Surat</th>
-                  <th scope="col">Masa Jabatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="detail-sk">112/A.II.04/11/2016</a></td>
-                  <td>04 Nov 2016 - 04 Nov 2021</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td><a href="">790/A.II.04/11/2021</a></td>
-                  <td>24 Nov 2021 - 24 Nov 2026</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade mt-3" id="bordered-justified-banom" role="tabpanel" aria-labelledby="banom-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-banom">
-              <i class="bi bi-plus me-1"></i>
-              Tambah
-            </a>
-          </div>
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama Banom</th>
-                  <th scope="col">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><a href="detail-banom">Ikatan Pelajar Putri NU (IPPNU) Jawa Barat</a></td>
-                 <td>
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                          <i class="bi bi-pencil-square"></i>
-                          Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                          <i class="bi bi-trash"></i>
-                          Hapus
-                        </a>
-                      </li>
-                    </ul>
-
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td><a href="detail-banom">Ikatan Pelajar Putri NU (IPPNU) Jawa Barat</a></td>
-                  <td>
-
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                          <i class="bi bi-pencil-square"></i>
-                          Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                          <i class="bi bi-trash"></i>
-                          Hapus
-                        </a>
-                      </li>
-                    </ul>
-
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade mt-3" id="bordered-justified-lembaga" role="tabpanel" aria-labelledby="lembaga-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-lembaga">
-              <i class="bi bi-plus me-1"></i>
-              Tambah
-            </a>
-          </div>
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama Lembaga</th>
-                  <th scope="col">Aksi</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Lembaga Dakwah NU (LDNU) Jawa Barat</td>
-                  <td>
-
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                          <i class="bi bi-pencil-square"></i>
-                          Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                          <i class="bi bi-trash"></i>
-                          Hapus
-                        </a>
-                      </li>
-                    </ul>
-
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Lembaga Pendidikan Ma’arif NU Jawa Barat</td>
-                  <td>
-
-                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                      <i class="bi bi-three-dots-vertical"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                      <li><a class="dropdown-item" href="#">
-                          <i class="bi bi-pencil-square"></i>
-                          Edit
-                        </a>
-                      </li>
-                      <li><a class="dropdown-item text-danger" href="#">
-                          <i class="bi bi-trash"></i>
-                          Hapus
-                        </a>
-                      </li>
-                    </ul>
-
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        @include('layout.tabs.pengurus_tab')
+        @include('layout.tabs.kepengurusan_tab')
+        @include('layout.tabs.lembaga_tab',['pwnu_data' => $pw_detail])
+        @include('layout.tabs.banom_tab')
       </div>
     </div>
   </div>
@@ -338,5 +120,84 @@
 
 @endsection
 @section('js-page')
-<script src="../assets/sources/js/pwnu.js"></script>
+<script>
+  $(document).ready(function() {
+    lembagaTable();
+  })
+  
+  const lembagaTable = () => {
+    $("#lembagaTable").DataTable({
+      responsive: true,
+      language: {
+        "scrollX": true,
+        "scrollY": true,
+        search: "_INPUT_",
+        searchPlaceholder: "Cari...",
+        sLengthMenu: "_MENU_",
+        "zeroRecords": "Tidak ada data untuk ditampilkan",
+        "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+        "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+        "infoFiltered": ""
+      },
+      "aLengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, "Show All"]
+      ],
+      "processing": true,
+      "bAutoWidth": false,
+      "serverSide": true,
+      "iDisplayLength": 10,
+      "bInfo": true,
+      "orderCellsTop": false,
+      "ajax": {
+        "url": "{{ route('lembaga-list') }}",
+        "type": "GET",
+        "data": function(d) {
+          d.pw = "{{ $pw_detail->id }}";
+        }
+      },
+      "columns": [{
+          mData: "no",
+          mRender: function(data, type, row, meta) {
+            return meta.row + meta.settings._iDisplayStart + 1;
+          },
+          "orderable": false
+        },
+        {
+          mData: "nama",
+          mRender: function(data, type, row) {
+            return `<th scope="row"><a href="{{ route('lembaga') }}?lembaga=${row.id}">${row.nama}</a></th>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-three-dots-vertical"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li><a class="dropdown-item" href="{{ route('lembaga-add') }}?lembaga=${row.id}">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit
+                  </a>
+              </li>
+              <li><a class="dropdown-item text-danger" href="{{ route('lembaga-delete') }}?lembaga=${row.id}">
+                    <i class="bi bi-trash"></i>
+                    Hapus
+                  </a>
+              </li>
+            </ul>`;
+          },
+          "orderable": false
+        },
+      ],
+      "tabIndex": 1,
+      "drawCallback": function(settings) {
+        // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+      }
+    });
+  }
+</script>
 @endsection

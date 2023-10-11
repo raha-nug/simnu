@@ -147,6 +147,11 @@
           </button>
         </li>
         <li class="nav-item flex-fill" role="presentation">
+          <button class="nav-link w-100" id="lembaga-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-lembaga" type="button" role="tab" aria-controls="lembaga" aria-selected="false">
+            Lembaga
+          </button>
+        </li>
+        <li class="nav-item flex-fill" role="presentation">
           <button
             class="nav-link w-100"
             id="ranting-tab"
@@ -164,6 +169,7 @@
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
         @include('layout.tabs.pengurus_tab')
         @include('layout.tabs.kepengurusan_tab')
+        @include('layout.tabs.lembaga_tab',['mwcnu_data' => $mwc_data])
         @include('layout.tabs.ranting_tab')
       </div>
     </div>
@@ -174,6 +180,7 @@
 <script>
   $(document).ready(function() {
     rantingTable();
+    lembagaTable();
   })
 
   const rantingTable = () => {
@@ -249,6 +256,81 @@
                   </a>
               </li>
               <li><a class="dropdown-item text-danger" href="{{ route('ranting-delete') }}?ranting=${row.id}">
+                    <i class="bi bi-trash"></i>
+                    Hapus
+                  </a>
+              </li>
+            </ul>`;
+          },
+          "orderable": false
+        },
+      ],
+      "tabIndex": 1,
+      "drawCallback": function(settings) {
+        // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+      }
+    });
+  }
+
+  const lembagaTable = () => {
+    $("#lembagaTable").DataTable({
+      responsive: true,
+      language: {
+        "scrollX": true,
+        "scrollY": true,
+        search: "_INPUT_",
+        searchPlaceholder: "Cari...",
+        sLengthMenu: "_MENU_",
+        "zeroRecords": "Tidak ada data untuk ditampilkan",
+        "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+        "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+        "infoFiltered": ""
+      },
+      "aLengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, "Show All"]
+      ],
+      "processing": true,
+      "bAutoWidth": false,
+      "serverSide": true,
+      "iDisplayLength": 10,
+      "bInfo": true,
+      "orderCellsTop": false,
+      "ajax": {
+        "url": "{{ route('lembaga-list') }}",
+        "type": "GET",
+        "data": function(d) {
+          d.mwc = "{{ $mwc_data->id }}";
+        }
+      },
+      "columns": [{
+          mData: "no",
+          mRender: function(data, type, row, meta) {
+            return meta.row + meta.settings._iDisplayStart + 1;
+          },
+          "orderable": false
+        },
+        {
+          mData: "nama",
+          mRender: function(data, type, row) {
+            return `<th scope="row"><a href="{{ route('lembaga') }}?lembaga=${row.id}">${row.nama}</a></th>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-three-dots-vertical"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li><a class="dropdown-item" href="{{ route('lembaga-add') }}?lembaga=${row.id}">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit
+                  </a>
+              </li>
+              <li><a class="dropdown-item text-danger" href="{{ route('lembaga-delete') }}?lembaga=${row.id}">
                     <i class="bi bi-trash"></i>
                     Hapus
                   </a>
