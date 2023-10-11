@@ -85,7 +85,7 @@ class JabatanController extends Controller
             return redirect()->back();
         }
 
-        $jp = Jabatan::query()->where('id', $id_jp)->first();
+        $jp = Jabatan::query()->where('id', $id)->first();
         $data = [
             'title'=> 'Detail User Group',
             'username'=>'John Doe',

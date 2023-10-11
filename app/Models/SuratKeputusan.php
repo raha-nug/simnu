@@ -15,13 +15,14 @@ class SuratKeputusan extends Model
 {
     use HasFactory,HasUuids;
     protected $table = "surat_keputusan";
-    protected $primaryKey = 'sk_id';
+    protected $primaryKey = 'id';
     protected $keyType = 'string';
-    protected $guarded = 'sk_id';
+    protected $guarded = 'id';
     protected $fillable = [
         'id_pwnu',
         'id_pcnu',
         'id_mwcnu',
+        'no_dokumen',
         'tanggal_mulai',
         'tanggal_berakhir',
         'file_sk',

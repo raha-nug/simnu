@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MWCNU;
 use App\Models\PCNU;
+use App\Models\MWCNU;
 use App\Models\Ranting;
 use Illuminate\Http\Request;
+use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,10 +25,14 @@ class MwcController extends Controller
             ->where('mwcnu.id', $id)
             ->first();
 
+        $sk = SuratKeputusan::query()->where('id_mwcnu', $id)->get();
+
         return view( 'pages.detail-mwc', [
             'title' => 'Detail MWC NU',
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
+            'sk' => $sk ?? new SuratKeputusan,
+            'nomor' => $count = 1,
             'kota' => $this->wilayah->getSingleAddress($mwcnu->kota ?? ''),
             'kecamatan' => $this->wilayah->getSingleAddress($mwcnu->kecamatan ?? ''),
             'mwc_data' => $mwcnu

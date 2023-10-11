@@ -18,6 +18,7 @@ use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
 use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\MasterLembagaController;
+use App\Http\Controllers\SuratKeputusanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,7 @@ Route::prefix('banom-basis')->group(function () {
     Route::get('/delete/{id_bb}', [BanomBasisController::class, 'delete'])->name('delete_banom_basis');
 });
 
+<<<<<<< Updated upstream
 Route::prefix('lembaga')->group(function () {
     Route::get('/list', [LembagaController::class, 'getLembagalist'])->name('lembaga-list');
     Route::get('/detail', [LembagaController::class, 'index'])->name('lembaga');
@@ -146,6 +148,19 @@ Route::prefix('lembaga')->group(function () {
 Route::get('search-data', function () {
     return view('pages.search-data',[
         'title'=> 'Search Data',
+=======
+Route::prefix('sk')->group(function () {
+    Route::get('/', [SuratKeputusanController::class, 'index'])->name('sk');
+    Route::get('/add_sk', [SuratKeputusanController::class, 'add_sk'])->name('add_sk');
+    Route::post('/process', [SuratKeputusanController::class, 'process'])->name('sk_process');
+    Route::get('/detail', [SuratKeputusanController::class, 'detail'])->name('sk_detail');
+    Route::get('/file', [SuratKeputusanController::class, 'download'])->name('download_sk');
+});
+
+Route::get('pwnu', function () {
+    return view('pages.pwnu',[
+        'title'=> 'PWNU',
+>>>>>>> Stashed changes
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
         'name'=>'PWNU Jawa Barat'

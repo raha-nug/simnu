@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('surat_keputusan', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('id_pwnu');
-            $table->unsignedBigInteger('id_pcnu');
-            $table->unsignedBigInteger('id_mwcnu');
+            $table->unsignedBigInteger('id_pwnu')->nullable();
+            $table->unsignedBigInteger('id_pcnu')->nullable();
+            $table->unsignedBigInteger('id_mwcnu')->nullable();
             $table->string('no_dokumen',255);
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
