@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PCNU;
+use App\Models\PWNU;
 use App\Models\MWCNU;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
@@ -16,6 +17,19 @@ class SuratKeputusanController extends Controller
 {
     public function add_sk(Request $request){
         if(!isset($request->sk)){
+            if($request->pw){
+                if(!isset($request->pw)){
+                    return redirect(route('not-found'));
+                }
+                $id_pw = $request->pw;
+                $id = getRoute($id_pw);
+
+                if(!$id)
+                    return redirect()->route('not-found');
+
+                $pw_data = PWNU::query()->where('id', $id)->first();
+            }
+
             if($request->pc){
                 if(!isset($request->pc)){
                     return redirect(route('not-found'));
@@ -30,6 +44,9 @@ class SuratKeputusanController extends Controller
             }
 
             if($request->mwc){
+                if(!isset($request->mwc)){
+                    return redirect(route('not-found'));
+                }
                 $id_mwc = $request->mwc;
                 $id = getRoute($id_mwc);
 
@@ -43,6 +60,7 @@ class SuratKeputusanController extends Controller
                 'title' => 'Tambah Surat Keputusan',
                 'username' => 'John Doe',
                 'from' => 'Jawa Barat',
+                'pw_data' => $pw_data ?? new PWNU,
                 'pc_data' => $pc_data ?? new PCNU,
                 'mwc_data' => $mwc_data ?? new MWCNU,
                 'method' => 'POST',
@@ -98,6 +116,12 @@ class SuratKeputusanController extends Controller
             $file_path = Storage::disk('public')->putFileAs($sk, $file_name);
             $data['file_sk'] = $file_path;
         }
+        if($request->id_pwnu){
+            $data['id_pwnu'] = $request->id_pwnu;
+        } else {
+            $data['id_pwnu'] = null;
+        }
+
         if($request->id_pcnu) {
             $data['id_pcnu'] = $request->id_pcnu;
         } else {
@@ -119,7 +143,6 @@ class SuratKeputusanController extends Controller
             return redirect(route('pcnu-detail') . "?pc=" . setRoute($request->id_pcnu));
         }
         SuratKeputusan::create($data);
-        // dd($data);
         Alert::success("Data Berhasil Disimpan");
         return redirect()->back();
     }

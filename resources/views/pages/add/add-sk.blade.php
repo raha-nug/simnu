@@ -30,6 +30,7 @@
     <input type="hidden" id="sk_id" name="id" value="{{$sk->id}}">
     <input type="hidden" id="id_pcnu" name="id_pcnu" value="{{$sk->id_pcnu}}">
     <input type="hidden" id="id_mwcnu" name="id_mwcnu" value="{{$sk->id_mwcnu}}">
+    <input type="hidden" id="id_pwnu" name="id_pwnu" value="{{$sk->id_pwnu}}">
   </div>
   <div class="col-md-6 mt-2">
     <label for="tgl-mulai" class="form-label">Tanggal Mulai</label>
@@ -50,6 +51,7 @@
      <input type="text" class="form-control" id="no-sk" name="no_dokumen" required>
      <input type="hidden" id="id_pcnu" name="id_pcnu" value="{{$pc_data->id}}">
      <input type="hidden" id="id_mwcnu" name="id_mwcnu" value="{{$mwc_data->id}}">
+     <input type="hidden" id="id_pwnu" name="id_pwnu" value="{{$pw_data->id}}">
    </div>
    <div class="col-md-6 mt-2">
      <label for="tgl-mulai" class="form-label">Tanggal Mulai</label>

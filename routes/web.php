@@ -147,9 +147,10 @@ Route::prefix('lembaga')->group(function () {
 Route::get('search-data', function () {
     return view('pages.search-data',[
         'title'=> 'Search Data',
+        'username' => 'jhone Doe',
+        'from' => 'Tasik',
     ]);
 });
-
 Route::prefix('sk')->group(function () {
     Route::get('/', [SuratKeputusanController::class, 'index'])->name('sk');
     Route::get('/add_sk', [SuratKeputusanController::class, 'add_sk'])->name('add_sk');
@@ -158,14 +159,14 @@ Route::prefix('sk')->group(function () {
     Route::get('/file', [SuratKeputusanController::class, 'download'])->name('download_sk');
 });
 
-Route::get('pwnu', function () {
-    return view('pages.pwnu',[
-        'title'=> 'PWNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-        'name'=>'PWNU Jawa Barat'
-    ]);
-});
+// Route::get('pwnu', function () {
+//     return view('pages.pwnu',[
+//         'title'=> 'PWNU',
+//         'username'=>'John Doe',
+//         'from'=>'Jawa Barat',
+//         'name'=>'PWNU Jawa Barat'
+//     ]);
+// });
 
 // Exception view
 Route::get('no-found', function () {

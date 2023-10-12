@@ -1,6 +1,8 @@
 <div class="tab-pane fade mt-3" id="bordered-justified-kepengurusan" role="tabpanel" aria-labelledby="kepengurusan-tab">
    <div class="d-flex justify-content-end align-items-center  me-3">
-    @if($pc_data->id ?? null)
+    @if($pw_detail->id ?? null)
+        <a class="btn btn-primary" href="{{route('add_sk')}}?pw={{setRoute($pw_detail->id)}}">
+    @elseif($pc_data->id ?? null)
       <a class="btn btn-primary" href="{{route('add_sk')}}?pc={{setRoute($pc_data->id)}}">
     @elseif($mwc_data->id ?? null)
       <a class="btn btn-primary" href="{{route('add_sk')}}?mwc={{setRoute($mwc_data->id)}}">
