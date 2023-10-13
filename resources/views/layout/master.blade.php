@@ -252,7 +252,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('pengurus*') ? 'active':'' }}"
-            href="pengurus">
+            href="{{route('pengurus')}}">
             <i class="bi bi-person-fill"></i>
             <span>Data Pengurus</span>
           </a>

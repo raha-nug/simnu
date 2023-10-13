@@ -36,11 +36,11 @@ class LembagaController extends Controller
     {
         if (!isset($request->lembaga)) {
             if (isset($request->pw))
-                $this->addLembagaPwnu($request->pw);
+                return $this->addLembagaPwnu($request->pw);
             elseif (isset($request->pc))
-                $this->addLembagaPcnu($request->pc);
+                return $this->addLembagaPcnu($request->pc);
             elseif (isset($request->mwc))
-                $this->addLembagaMwcnu($request->mwc);
+                return $this->addLembagaMwcnu($request->mwc);
             else
                 return redirect('not-found');
         }
@@ -173,7 +173,7 @@ class LembagaController extends Controller
             'title' => 'Lembaga',
             'username' => 'John Doe',
             'from' => 'Singaparna',
-            'name' => 'MWC Singaparna', 
+            'name' => 'MWC Singaparna',
             'master_data' => MasterLembaga::get(),
             'kota' => $this->wilayah->getAddress('32'),
             'pwnu_data' => $pwnu_data,
@@ -204,7 +204,7 @@ class LembagaController extends Controller
         ];
 
         // dd($data);
-        return view('pages.add.add-lembaga');
+        return view('pages.add.add-lembaga', $data);
     }
     private function addLembagaMwcnu($mwcnu_id)
     {

@@ -90,7 +90,7 @@ class SuratKeputusanController extends Controller
 
     public function process(Request $request){
         $rules = [
-            'no_dokumen' => 'required',
+            'no_dokumen' => 'required|unique:surat_keputusan,no_dokumen',
             'tanggal_mulai' => 'required',
             'tanggal_berakhir' => 'required',
             'file_sk' => 'required',
@@ -98,6 +98,7 @@ class SuratKeputusanController extends Controller
 
         $message = [
             'no_dokumen.required' => 'Nomor Dokumen Harus Diisi',
+            'no_dokumen.unique' => 'Nomor Dokumen Sudah Terdaftar',
             'tanggal_mulai.required' => 'Tanggal Mulai Harus Diisi',
             'tanggal_berakhir.required' => 'Tanggal Berakhir Harus Diisi',
             'file_sk.required' => 'File SK Harus diisi',

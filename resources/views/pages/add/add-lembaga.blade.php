@@ -18,6 +18,7 @@
 
 @section('content')
 <x-form :$method :$action>
+    @csrf
   <x-slot:title>
     Tambah Lembaga
   </x-slot:title>

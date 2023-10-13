@@ -51,7 +51,7 @@ class UserController extends Controller
     public function process(Request $request){
         $rules = [
             'nama' => 'required',
-            'email' => 'required',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required',
             'user_group' => 'required',
         ];
@@ -59,7 +59,8 @@ class UserController extends Controller
         $message = [
             'nama.required' => 'Nama Harus Diisi',
             'email.required' => 'Email Harus Diisi',
-            // 'email.unique' => 'Email Sudah Terdaftar',
+            'email.unique' => 'Email Sudah Terdaftar',
+            'email.email' => 'Format Penulisan Email Salah',
             'password.required' => 'Password Harus Diisi',
             'user_group.required' => 'User Groups Harus Diisi',
         ];

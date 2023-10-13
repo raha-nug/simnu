@@ -29,7 +29,7 @@
 
 
         <li><a class="dropdown-item" href="{{route('add_sk')}}?sk={{setRoute($sk->id)}}"><i class="bi bi-pencil-square"></i>Edit SK</a></li>
-        <li><a class="dropdown-item" href="add-pengurus"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
+        <li><a class="dropdown-item" href="{{route('add_pengurus')}}"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
 
       </ul>
     </div>

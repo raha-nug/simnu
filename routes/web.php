@@ -159,6 +159,33 @@ Route::prefix('sk')->group(function () {
     Route::get('/file', [SuratKeputusanController::class, 'download'])->name('download_sk');
 });
 
+Route::get('/add_sk', function () {
+    return view('pages.add.add-pengurus', [
+        'title'=> 'PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+})->name('add_pengurus');
+
+Route::get('/pengurus', function () {
+    return view('pages.pengurus', [
+        'title'=> 'PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+})->name('pengurus');
+
+Route::get('/detail_pengurus', function () {
+    return view('pages.detail-pengurus', [
+        'title'=> 'PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+})->name('detail_pengurus');
+
 // Route::get('pwnu', function () {
 //     return view('pages.pwnu',[
 //         'title'=> 'PWNU',
