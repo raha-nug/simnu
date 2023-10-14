@@ -1,12 +1,18 @@
 <div class="tab-pane fade mt-3" id="bordered-justified-banom" role="tabpanel" aria-labelledby="banom-tab">
-   <div class="d-flex justify-content-end align-items-center  me-3">
-      <a class="btn btn-primary" href="add-banom">
-         <i class="bi bi-plus me-1"></i>
-         Tambah
-      </a>
+   <div class="d-flex justify-content-end align-items-center">
+    @if($pw_detail->id ?? null)
+        <a class="btn btn-primary" href="{{route('Banom-add')}}?pw={{setRoute($pw_detail->id)}}">
+    @elseif($pc_data->id ?? null)
+        <a class="btn btn-primary" href="{{route('Banom-add')}}?pc={{setRoute($pc_data->id)}}">
+    @elseif($mwc_data->id ?? null)
+        <a class="btn btn-primary" href="{{route('Banom-add')}}?mwc={{setRoute($mwc_data->id)}}">
+    @endif
+        <i class="bi bi-plus me-1"></i>
+            Tambah
+        </a>
    </div>
    <div class="table-responsive">
-      <table class="table table-borderless table-hover datatable">
+      <table class="table table-borderless table-hover" id="BanomTable">
          <thead>
             <tr>
                <th scope="col">No</th>
@@ -15,7 +21,7 @@
             </tr>
          </thead>
          <tbody>
-            <tr>
+            {{-- <tr>
                <th scope="row">1</th>
                <td>Ikatan Pelajar Putri NU (IPPNU) Jawa Barat</td>
                <td>
@@ -62,7 +68,7 @@
                   </ul>
 
                </td>
-            </tr>
+            </tr> --}}
          </tbody>
       </table>
    </div>

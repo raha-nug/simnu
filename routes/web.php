@@ -3,20 +3,21 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MwcController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BanomController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\RantingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\BanomBasisController;
 use App\Http\Controllers\AnakRantingController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
-use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\MasterLembagaController;
 use App\Http\Controllers\SuratKeputusanController;
 
@@ -143,6 +144,14 @@ Route::prefix('lembaga')->group(function () {
     Route::get('/add', [LembagaController::class, 'addLembaga'])->name('lembaga-add');
     Route::post('/process', [LembagaController::class, 'process'])->name('lembaga-process');
     Route::get('/delete', [LembagaController::class, 'deleteLembaga'])->name('lembaga-delete');
+});
+
+Route::prefix('banom')->group(function () {
+    Route::get('/list', [BanomController::class, 'getBanomlist'])->name('Banom-list');
+    Route::get('/detail', [BanomController::class, 'index'])->name('Banom');
+    Route::get('/add', [BanomController::class, 'addBanom'])->name('Banom-add');
+    Route::post('/process', [BanomController::class, 'process'])->name('Banom-process');
+    Route::get('/delete', [BanomController::class, 'deleteBanom'])->name('Banom-delete');
 });
 Route::get('search-data', function () {
     return view('pages.search-data',[
