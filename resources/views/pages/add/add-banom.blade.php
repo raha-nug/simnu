@@ -18,30 +18,75 @@
 @endsection
 
 @section('content')
-<x-form method="POST" action="/admin/pwnu">
+<x-form :$method :$action>
+    @csrf
   <x-slot:title>
     Tambah Banom
   </x-slot:title>
-  <div class="col-md-12 mt-2">
+  @if(!isset($banom_data))
+    <div class="col-md-12 mt-2">
       <label for="nama-banom" class="form-label">Nama Banom</label>
-      <select class="select2 form-select" name="state">
-      
-        <option selected disabled value="">--pilih banom master--</option>
-        <option>Muslimat</option>
-        <option>Fatayat</option>
-        <option>GP Ansor</option>
-        <option>PMII</option>
-        <option>Ikatan Pelajar NU (IPNU)</option>
-        <option>Ikatan Pelajar Putri NU (IPPNU)</option>
+      <input type="hidden" name="nama" id="nama_banom">
+      <select class="select2 form-select" id="banom">
+        <option></option>
+        @foreach ($master_banom as $value)
+            <option value="{{$value->nama_banom}}" data-nama="{{ $value->nama_banom }}">{{$value->nama_banom}}</option>
+        @endforeach
       </select>
+        @isset($pwnu_data)
+        <div class="col-md-12">
+            <input type="hidden" name="id_pwnu" value="{{ $pwnu_data->id }}">
+        </div>
+        @endisset
+        @isset($pcnu_data)
+        <div class="col-md-12">
+            <input type="hidden" name="id_pcnu" value="{{ $pcnu_data->id }}">
+        </div>
+        @endisset
+        @isset($mwcnu_data)
+        <div class="col-md-12">
+            <input type="hidden" name="id_mwcnu" value="{{ $mwcnu_data->id }}">
+        </div>
+        @endisset
     </div>
     <div class="col-md-12 mt-2">
       <label for="banom-base" class="form-label">Banom Base</label>
       <select class="form-select" id="banom-base" required>
         <option selected disabled value="">--pilih banom base--</option>
-        <option>...</option>
+        @foreach ($master_banom_basis as $value)
+        <option value="{{$value->id}}">{{$value->nama_banom_basis}}</option>
+        @endforeach
       </select>
     </div>
+    @endif
 </x-form>
+@endsection
+@section('js-page')
+<script>
+  $(document).ready(function() {
+    $("#banom").select2({
+      placeholder: "Pilih Banom"
+    });
+    $('.select2-container').addClass('form-select');
+    $('.select2-selection').addClass('custom-selection');
+    $('.select2-search__field').addClass('select2-custom-search_field');
+    $('.select2-selection__arrow').addClass('d-none');
+  })
 
+  $(document).ready(function() {
+    $("#banom-base").select2({
+      placeholder: "Pilih Banom"
+    });
+    $('.select2-container').addClass('form-select');
+    $('.select2-selection').addClass('custom-selection');
+    $('.select2-search__field').addClass('select2-custom-search_field');
+    $('.select2-selection__arrow').addClass('d-none');
+  })
+
+  $("#banom").change(function() {
+    let nama = $(this).find(":selected").val();
+        console.log(nama);
+        $("#nama_banom").val(nama);
+  });
+</script>
 @endsection

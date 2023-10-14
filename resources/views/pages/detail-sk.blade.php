@@ -26,11 +26,11 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
 
-        <li><a class="dropdown-item" href="edit-sk"><i class="bi bi-pencil-square"></i>Edit SK</a></li>
-        <li><a class="dropdown-item" href="add-pengurus"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
-        
+
+        <li><a class="dropdown-item" href="{{route('add_sk')}}?sk={{setRoute($sk->id)}}"><i class="bi bi-pencil-square"></i>Edit SK</a></li>
+        <li><a class="dropdown-item" href="{{route('add_pengurus')}}"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
+
       </ul>
     </div>
     <div class="card-header">Detail SK</div>
@@ -41,7 +41,7 @@
           <dt class="text-lg-end text-sm-start">Nomor Dokumen :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>112/A.II.04/11/2016</dd>
+          <dd>{{$sk->no_dokumen}}</dd>
         </div>
       </div>
       <div class="row">
@@ -50,7 +50,7 @@
         </div>
         <div class="col-lg-9">
           <dd>
-            2016-11-04
+            {{$sk->tanggal_mulai}}
           </dd>
         </div>
       </div>
@@ -59,7 +59,7 @@
           <dt class="text-lg-end text-sm-start">Tanggal Berakhir :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>2021-11-04</dd>
+          <dd>{{$sk->tanggal_berakhir}}</dd>
         </div>
       </div>
       <div class="row">
@@ -67,7 +67,7 @@
           <dt class="text-lg-end text-sm-start">File :</dt>
         </div>
         <div class="col-lg-9">
-          <dd><a href="">Download</a></dd>
+          <dd><a href="{{route('download_sk')}}?sk={{setRoute($sk->id)}}">Download</a></dd>
         </div>
       </div>
 

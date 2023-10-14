@@ -88,7 +88,7 @@
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
-                  href="/login">
+                  href="{{route('logout')}}">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Logout</span>
                 </a>
@@ -252,7 +252,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('pengurus*') ? 'active':'' }}"
-            href="pengurus">
+            href="{{route('pengurus')}}">
             <i class="bi bi-person-fill"></i>
             <span>Data Pengurus</span>
           </a>
@@ -326,7 +326,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            href="/login">
+            href="{{route('logout')}}">
             <i class="bi bi-box-arrow-right"></i>
             <span>Logout</span>
           </a>

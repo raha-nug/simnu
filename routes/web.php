@@ -3,21 +3,23 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MwcController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PcnuController;
 use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BanomController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\RantingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\BanomBasisController;
 use App\Http\Controllers\AnakRantingController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
-use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\MasterLembagaController;
+use App\Http\Controllers\SuratKeputusanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,7 @@ use App\Http\Controllers\MasterLembagaController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::any('/Login', [LoginController::class, 'Login'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/wilayah', [Controller::class, 'getSingleAddress']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -42,34 +45,34 @@ Route::get('/pwnu', [PwnuController::class, 'index'])->name('pwnu');
 Route::prefix('pcnu')->group(function () {
     Route::get('/', [PcnuController::class, 'index'])->name('pcnu');
     Route::get('/detail', [PcnuController::class, 'detailPcnu'])->name('pcnu-detail');
-    Route::get('/update/{id_pc}', [PcnuController::class, 'getPcnu'])->name('pcnu-update');
-    Route::get('/add', [PcnuController::class, 'addPcnu'])->name('pcnu-add');
+    Route::get('/update/{id_pc}', [PcnuController::class, 'getPcnu'])->name('pcnu-update')->middleware('can_update');
+    Route::get('/add', [PcnuController::class, 'addPcnu'])->name('pcnu-add')->middleware('can_create');
     Route::post('/process', [PcnuController::class, 'process'])->name('pcnu-process');
-    Route::get('/delete/{id_pc}', [PcnuController::class, 'deletePcnu'])->name('pcnu-delete');
+    Route::get('/delete/{id_pc}', [PcnuController::class, 'deletePcnu'])->name('pcnu-delete')->middleware('can_delete');
 });
 
 Route::prefix('mwcnu')->group(function () {
     Route::get('/getmwcByPcnu', [PcnuController::class, 'getmwcByPcnu'])->name('mwc-list-bypcnu');
     Route::get('/detail', [MwcController::class, 'index'])->name('mwcnu');
-    Route::get('/add', [MwcController::class, 'addMwcnu'])->name('mwcnu-add');
+    Route::get('/add', [MwcController::class, 'addMwcnu'])->name('mwcnu-add')->middleware(['can_create', 'can_update']);
     Route::post('/process', [MwcController::class, 'process'])->name('mwcnu-process');
-    Route::get('/delete', [MwcController::class, 'deleteMwcnu'])->name('mwcnu-delete');
+    Route::get('/delete', [MwcController::class, 'deleteMwcnu'])->name('mwcnu-delete')->middleware('can_delete');
 });
 
 Route::prefix('ranting')->group(function () {
     Route::get('/getRantingByMwc', [MwcController::class, 'getRantingByMwc'])->name('ranting-list-bymwc');
     Route::get('/detail', [RantingController::class, 'index'])->name('ranting');
-    Route::get('/add', [RantingController::class, 'addRanting'])->name('ranting-add');
+    Route::get('/add', [RantingController::class, 'addRanting'])->name('ranting-add')->middleware(['can_create', 'can_update']);
     Route::post('/process', [RantingController::class, 'process'])->name('ranting-process');
-    Route::get('/delete', [RantingController::class, 'deleteRanting'])->name('ranting-delete');
+    Route::get('/delete', [RantingController::class, 'deleteRanting'])->name('ranting-delete')->middleware('can_delete');
 });
 
 Route::prefix('anak-ranting')->group(function () {
     Route::get('/getListByRanting', [RantingController::class, 'getAnakByRanting'])->name('anak-ranting-list');
     Route::get('/detail', [AnakRantingController::class, 'index'])->name('anak-ranting');
-    Route::get('/add', [AnakRantingController::class, 'addAnakRanting'])->name('anak-ranting-add');
+    Route::get('/add', [AnakRantingController::class, 'addAnakRanting'])->name('anak-ranting-add')->middleware(['can_create', 'can_update']);
     Route::post('/process', [AnakRantingController::class, 'process'])->name('anak-ranting-process');
-    Route::get('/delete', [AnakRantingController::class, 'deleteAnakRanting'])->name('anak-ranting-delete');
+    Route::get('/delete', [AnakRantingController::class, 'deleteAnakRanting'])->name('anak-ranting-delete')->middleware('can_delete');
 });
 
 Route::prefix('user-group')->group(function () {
@@ -142,14 +145,64 @@ Route::prefix('lembaga')->group(function () {
     Route::post('/process', [LembagaController::class, 'process'])->name('lembaga-process');
     Route::get('/delete', [LembagaController::class, 'deleteLembaga'])->name('lembaga-delete');
 });
+
+Route::prefix('banom')->group(function () {
+    Route::get('/list', [BanomController::class, 'getBanomlist'])->name('Banom-list');
+    Route::get('/detail', [BanomController::class, 'index'])->name('Banom');
+    Route::get('/add', [BanomController::class, 'addBanom'])->name('Banom-add');
+    Route::post('/process', [BanomController::class, 'process'])->name('Banom-process');
+    Route::get('/delete', [BanomController::class, 'deleteBanom'])->name('Banom-delete');
+});
 Route::get('search-data', function () {
     return view('pages.search-data',[
         'title'=> 'Search Data',
+        'username' => 'jhone Doe',
+        'from' => 'Tasik',
+    ]);
+});
+Route::prefix('sk')->group(function () {
+    Route::get('/', [SuratKeputusanController::class, 'index'])->name('sk');
+    Route::get('/add_sk', [SuratKeputusanController::class, 'add_sk'])->name('add_sk');
+    Route::post('/process', [SuratKeputusanController::class, 'process'])->name('sk_process');
+    Route::get('/detail', [SuratKeputusanController::class, 'detail'])->name('sk_detail');
+    Route::get('/file', [SuratKeputusanController::class, 'download'])->name('download_sk');
+});
+
+Route::get('/add_sk', function () {
+    return view('pages.add.add-pengurus', [
+        'title'=> 'PWNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
         'name'=>'PWNU Jawa Barat'
     ]);
-});
+})->name('add_pengurus');
+
+Route::get('/pengurus', function () {
+    return view('pages.pengurus', [
+        'title'=> 'PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+})->name('pengurus');
+
+Route::get('/detail_pengurus', function () {
+    return view('pages.detail-pengurus', [
+        'title'=> 'PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+})->name('detail_pengurus');
+
+// Route::get('pwnu', function () {
+//     return view('pages.pwnu',[
+//         'title'=> 'PWNU',
+//         'username'=>'John Doe',
+//         'from'=>'Jawa Barat',
+//         'name'=>'PWNU Jawa Barat'
+//     ]);
+// });
 
 // Exception view
 Route::get('no-found', function () {

@@ -1,6 +1,4 @@
 @extends('layout.master')
-
-
 @section('title',$title)
 @section('username',$username)
 @section('from',$from)
@@ -32,7 +30,6 @@
                 <table class="table table-borderless table-hover datatable">
                 <thead>
                     <tr>
-                    <th scope="col">No</th>
                     <th scope="col">Nama User Group</th>
                     <th scope="col">Aksi</th>
                     </tr>
@@ -40,7 +37,6 @@
                 <tbody>
                     @foreach ($user_group as $value)
                     <tr>
-                        <th scope="row">1</th>
                         <td><a href="{{ route('detail-user-group') }}?page=10&ug={{ setRoute($value->id) }}">{{$value->nama_grup}}</a></td>
                         <td>
 

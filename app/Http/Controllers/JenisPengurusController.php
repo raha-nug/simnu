@@ -85,7 +85,7 @@ class JenisPengurusController extends Controller
             return redirect()->back();
         }
 
-        $jp = JenisPengurus::query()->where('id', $id_jp)->first();
+        $jp = JenisPengurus::query()->where('id', $id)->first();
         $data = [
             'title'=> 'Detail User Group',
             'username'=>'John Doe',

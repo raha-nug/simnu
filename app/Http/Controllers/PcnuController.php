@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MWCNU;
 use App\Models\PCNU;
+use App\Models\MWCNU;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class PcnuController extends Controller
 {
     public function index(Request $request)
     {
+
         $limit = $request->page ?? 10;
         $pcnu_list = PCNU::getData($limit);
         $data = [
@@ -52,14 +54,16 @@ class PcnuController extends Controller
         $pcnu = PCNU::query()->where('id', $id)
             ->first();
         // $mwc_list = MWCNU::getListByPcnu($id, $limit);
-
+        $sk = SuratKeputusan::query()->where('id_pcnu', $id)->get();
         return view('pages.detail-pcnu', [
             'title' => 'Detail PCNU',
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
             'pc_data' => $pcnu,
+            'nomor' => $count = 1,
             'list_mwc' => collect([]),
-            'kota' => $this->wilayah->getSingleAddress($pcnu->kota ?? '')
+            'kota' => $this->wilayah->getSingleAddress($pcnu->kota ?? ''),
+            'sk' => $sk ?? new SuratKeputusan
         ]);
     }
 
@@ -75,8 +79,8 @@ class PcnuController extends Controller
                 'data' => collect([])
             ]);
         }
-        
-        $id = $request->pc; 
+
+        $id = $request->pc;
         if (!$id)
         {
             return response()->json((object)[

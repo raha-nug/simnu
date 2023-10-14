@@ -62,7 +62,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row"><a href="detail-pengurus">KH. Hasan Nuri Hidayatullah</a></th>
+                            <th scope="row"><a href="{{route('detail_pengurus')}}">KH. Hasan Nuri Hidayatullah</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -161,7 +161,7 @@
                                 </ul>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <th scope="row"><a href="detail-pengurus">Drs. H. Daddy Syarif, MM.</a></th>
                             <td>081111111</td>
