@@ -195,14 +195,14 @@ Route::get('/detail_pengurus', function () {
     ]);
 })->name('detail_pengurus');
 
-// Route::get('pwnu', function () {
-//     return view('pages.pwnu',[
-//         'title'=> 'PWNU',
-//         'username'=>'John Doe',
-//         'from'=>'Jawa Barat',
-//         'name'=>'PWNU Jawa Barat'
-//     ]);
-// });
+Route::get('wizard', function () {
+    return view('pages.add.wizard',[
+        'title'=> 'Tambah Pengurus',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+});
 
 // Exception view
 Route::get('no-found', function () {

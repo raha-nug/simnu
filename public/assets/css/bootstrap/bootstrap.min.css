@@ -7650,6 +7650,12 @@ fieldset:disabled .btn {
 .w-25 {
     width: 25% !important;
 }
+.w-33 {
+    width: 33.33% !important;
+}
+.w-66 {
+    width: 66.66% !important;
+}
 .w-50 {
     width: 50% !important;
 }
