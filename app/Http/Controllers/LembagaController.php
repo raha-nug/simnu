@@ -24,11 +24,35 @@ class LembagaController extends Controller
             ->where('id', $id)
             ->first();
 
+        $wilayah_kerja = ['url' => '#', 'nama' => '-'];
+        if ($lembaga)
+        {
+            if ($lembaga->id_pwnu)
+            {
+                $wilayah_kerja['url'] = route('pwnu');
+                $wilayah_kerja['nama'] = "PWNU Jawa Barat";
+            }
+            elseif($lembaga->id_pcnu)
+            {
+                $pc = PCNU::where('id', $lembaga->id_pcnu)->first();
+                $wilayah_kerja['url'] = route('pcnu-detail')."?pc=".setRoute($lembaga->id_pcnu);
+                $wilayah_kerja['nama'] = $pc->nama;
+
+            }
+            elseif ($lembaga->id_mwcnu)
+            {
+                $mwc = MWCNU::where('id', $lembaga->id_mwcnu)->first();
+                $wilayah_kerja['url'] = route('mwcnu') . "?mwc=" . setRoute($lembaga->id_mwcnu);
+                $wilayah_kerja['nama'] = $mwc->nama;
+            }
+        }
+
         return view('pages.detail-lembaga', [
             'title' => 'Detail Lembaga',
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
-            'lembaga_data' => $lembaga
+            'lembaga_data' => $lembaga,
+            'wilayah_kerja' => $wilayah_kerja
         ]);
     }
 
@@ -116,7 +140,7 @@ class LembagaController extends Controller
         }
         $new_data = Lembaga::create($data);
         Alert::success('Data Berhasil Disimpan');
-        $this->checkRoute($new_data);
+        return $this->checkRoute($new_data);
     }
 
     public function deleteLembaga(Request $request)
@@ -189,7 +213,7 @@ class LembagaController extends Controller
         if (!$id)
             return redirect('dashboard');
 
-            $pcnu_data = PCNU::select(['id','kota'])->where('id', $id)->first();
+            $pcnu_data = PCNU::select(['id','kota','nama'])->where('id', $id)->first();
 
         $data = [
             'title' => 'Lembaga',

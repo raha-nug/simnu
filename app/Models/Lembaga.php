@@ -22,6 +22,7 @@ class Lembaga extends Model
         'id_pwnu',
         'id_pcnu',
         'id_mwcnu',
+        'master_id',
         'nama',
         'alamat',
         'telp',

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pwnu')->nullable();
             $table->unsignedBigInteger('id_pcnu')->nullable();
             $table->unsignedBigInteger('id_mwcnu')->nullable();
-            $table->unsignedBigInteger('id_lembaga')->nullable();
-            $table->unsignedBigInteger('id_banom')->nullable();
+            $table->foreignUuid('id_lembaga')->nullable();
+            $table->foreignUuid('id_banom')->nullable();
             $table->string('no_dokumen',255);
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
