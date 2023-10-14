@@ -31,9 +31,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('lembaga', function (Blueprint $table) {
-            $table->dropColumn('master_id');
-
             $table->dropForeign('fk_mst_lembaga');
+
+            $table->dropColumn('master_id');
         });
     }
 };
