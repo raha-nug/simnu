@@ -23,75 +23,65 @@
     Tambah Lembaga
   </x-slot:title>
   @if(!isset($lembaga_data))
-  <div class="col-md-12">
-    <label for="no-sk" class="form-label">Nama Lembaga</label>
-    <input type="hidden" name="nama" id="nama_lembaga">
-    <select class="form-select" id="lembaga" name="master_id" required>
-      <option></option>
-      @foreach($master_data as $item)
-      <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}">{{ $item->nama_lembaga }}</option>
-      @endforeach
-    </select>
-  </div>
-  @isset($pwnu_data)
-  <div class="col-md-12">
-    <label for="wil_kerja">Wilayah kerja</label>
-    <h4 type="text" value="{{ $pwnu_data->nama }}" id="wilKerja" readonly>
-      <input type="hidden" name="id_pcnu" value="{{ $pwnu_data->id }}">
-  </div>
-  @endisset
-  @isset($pcnu_data)
-  <div class="col-md-12">
-    <label for="wil_kerja">Wilayah kerja</label>
-    <input type="text" class="form-control" value="{{ $pcnu_data->nama }}" id="wilKerja" readonly>
-    <input type="hidden" name="id_pcnu" value="{{ $pcnu_data->id }}">
-  </div>
-  @endisset
-  @isset($mwcnu_data)
-  <div class="col-md-12">
-    <label for="wil_kerja">Wilayah kerja</label>
-    <input type="text" value="{{ $mwcnu_data->nama }}" id="wilKerja" readonly>
-    <input type="hidden" name="id_mwcnu" value="{{ $mwcnu_data->id }}">
-  </div>
-  @endisset
+    <div class="col-md-12">
+      <label for="no-sk" class="form-label">Nama Lembaga</label>
+      <input type="hidden" name="nama" id="nama_lembaga">
+      <select class="form-select" id="lembaga" name="master_id" required>
+        <option></option>
+        @foreach($master_data as $item)
+        <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}">{{ $item->nama_lembaga }}</option>
+        @endforeach
+      </select>
+    </div>
+    @isset($pwnu_data)
+    <div class="col-md-12">
+      <label for="wil_kerja">Wilayah kerja</label>
+      <input type="text" class="form-control" value="{{ $pwnu_data->nama }}" id="wilKerja" readonly>
+      <input type="hidden" name="id_pwnu" value="{{ $pwnu_data->id }}">
+    </div>
+    @endisset
+    @isset($pcnu_data)
+    <div class="col-md-12">
+      <label for="wil_kerja">Wilayah kerja</label>
+      <input type="text" class="form-control" value="{{ $pcnu_data->nama }}" id="wilKerja" readonly>
+      <input type="hidden" name="id_pcnu" value="{{ $pcnu_data->id }}">
+    </div>
+    @endisset
+    @isset($mwcnu_data)
+    <div class="col-md-12">
+      <label for="wil_kerja">Wilayah kerja</label>
+      <input type="text" class="form-control" value="{{ $mwcnu_data->nama }}" id="wilKerja" readonly>
+      <input type="hidden" name="id_mwcnu" value="{{ $mwcnu_data->id }}">
+    </div>
+    @endisset
   @else
-  <div class="col-md-12">
-    <label for="no-sk" class="form-label">Nama Lembaga</label>
-    <input type="hidden" name="nama" id="nama_lembaga" value="{{ $lembaga_data->nama }}">
-    <input type="hidden" name="id" value="{{ $lembaga_data->id }}">
-    <input type="hidden" name="master_id" value="{{ $lembaga_data->master_id }}">
-    <select class="form-select" id="lembaga" required>
-      <option></option>
-      @foreach($master_data as $item)
-      @if ($item->id == $lembaga_data->master_id)
-      <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}" selected>{{ $item->nama_lembaga }}</option>
-      @else
-      <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}">{{ $item->nama_lembaga }}</option>
+    <div class="col-md-12">
+      <label for="no-sk" class="form-label">Nama Lembaga</label>
+      <input type="hidden" name="nama" id="nama_lembaga" value="{{ $lembaga_data->nama }}">
+      <input type="hidden" name="id" value="{{ $lembaga_data->id }}">
+      <input type="hidden" name="master_id" value="{{ $lembaga_data->master_id }}">
+      <select class="form-select" id="lembaga" required>
+        <option></option>
+        @foreach($master_data as $item)
+          @if ($item->id == $lembaga_data->master_id)
+            <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}" selected>{{ $item->nama_lembaga }}</option>
+          @else
+            <option value="{{ $item->id }}" data-nama="{{ $item->nama_lembaga }}">{{ $item->nama_lembaga }}</option>
+          @endif
+        @endforeach
+      </select>
+    </div>
+    <div class="col-md-12">
+      <label for="wil_kerja">Wilayah kerja</label>
+      <input type="text" class="form-control" value="{{ $lembaga_data->nama_wilayah_kerja }}" id="wilKerja" readonly>
+      @if($lembaga_data->wilayah_kerja == 'pwnu')
+        <input type="hidden" name="id_pwnu" value="{{ $lembaga_data->id_wilayah_kerja }}">
+      @elseif($lembaga_data->wilayah_kerja == 'pcnu')
+        <input type="hidden" name="id_pcnu" value="{{ $lembaga_data->id_wilayah_kerja }}">
+      @elseif($lembaga_data->wilayah_kerja == 'mwcnu')
+        <input type="hidden" name="id_mwcnu" value="{{ $lembaga_data->id_wilayah_kerja }}">
       @endif
-      @endforeach
-    </select>
-  </div>
-  @isset($pwnu_data)
-  <div class="col-md-12">
-    <label for="wil_kerja">Wilayah kerja</label>
-    <input type="text" value="{{ $pwnu_data->nama }}" id="wilKerja" readonly>
-    <input type="hidden" name="id_pcnu" value="{{ $pwnu_data->id }}">
-  </div>
-  @endisset
-  @isset($pcnu_data)
-  <div class="col-md-12">
-    <label for="wil_kerja">Wilayah kerja</label>
-    <input type="text" value="{{ $pcnu_data->nama }}" id="wilKerja" readonly>
-    <input type="hidden" name="id_pcnu" value="{{ $pcnu_data->id }}">
-  </div>
-  @endisset
-  @isset($mwcnu_data)
-  <div class="col-md-12">
-    <label for="wil_kerja">Wilayah kerja</label>
-    <input type="text" value="{{ $mwcnu_data->nama }}" id="wilKerja" readonly>
-    <input type="hidden" name="id_mwcnu" value="{{ $mwcnu_data->id }}">
-  </div>
-  @endisset
+    </div>
   @endif
 </x-form>
 @endsection

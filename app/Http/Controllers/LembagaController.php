@@ -75,7 +75,33 @@ class LembagaController extends Controller
             if (!$id)
             return redirect('dashboard');
 
-            $lembaga_data = Lembaga::query()->where('id', $id)
+            $lembaga_data = Lembaga::query()
+            ->selectRaw("
+                CASE 
+                    WHEN lembaga.id_pwnu IS NOT NULL THEN pwnu.nama 
+                    WHEN lembaga.id_pcnu IS NOT NULL THEN pcnu.nama 
+                    WHEN lembaga.id_mwcnu IS NOT NULL THEN mwcnu.nama 
+                    ELSE '-' 
+                END As nama_wilayah_kerja,
+                CASE 
+                    WHEN lembaga.id_pwnu IS NOT NULL THEN lembaga.id_pwnu 
+                    WHEN lembaga.id_pcnu IS NOT NULL THEN lembaga.id_pcnu 
+                    WHEN lembaga.id_mwcnu IS NOT NULL THEN lembaga.id_mwcnu 
+                    ELSE '-' 
+                END As id_wilayah_kerja,
+                CASE 
+                    WHEN lembaga.id_pwnu IS NOT NULL THEN 'pwnu' 
+                    WHEN lembaga.id_pcnu IS NOT NULL THEN 'pcnu' 
+                    WHEN lembaga.id_mwcnu IS NOT NULL THEN 'mwcnu' 
+                    ELSE '-' 
+                END As wilayah_kerja,
+                lembaga.id,
+                master_id
+            ")
+            ->leftJoin('pwnu','pwnu.id','=','lembaga.id_pwnu')
+            ->leftJoin('pcnu','pcnu.id','=','lembaga.id_pcnu')
+            ->leftJoin('mwcnu','mwcnu.id','=','lembaga.id_mwcnu')
+            ->where('lembaga.id', $id)
             ->first();
 
             $data = [
@@ -131,12 +157,13 @@ class LembagaController extends Controller
         $data = $validated->validate();
         if (isset($request->id)) {
             $is_updated = Lembaga::where('id', $request->id)->update($data);
+            $updated_lembaga = Lembaga::where('id', $request->id)->first();
             if (!$is_updated) {
                 Alert::error('Oops! , Gagal melakukan update');
                 return redirect()->back();
             }
             Alert::success('Data Berhasil Disimpan');
-            return redirect(route('mwcnu') . "?mwc=" . setRoute($request->id_mwcnu));
+            return $this->checkRoute($updated_lembaga);
         }
         $new_data = Lembaga::create($data);
         Alert::success('Data Berhasil Disimpan');

@@ -66,6 +66,11 @@ class Lembaga extends Model
             ->get();
     }
 
+    public static function checkRelation()
+    {
+        
+    }
+
     public function mwcnu(): BelongsTo
     {
         return $this->belongsTo(MWCNU::class);
