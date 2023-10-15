@@ -195,9 +195,9 @@ Route::get('/detail_pengurus', function () {
     ]);
 })->name('detail_pengurus');
 
-Route::get('wizard', function () {
-    return view('pages.add.wizard',[
-        'title'=> 'Tambah Pengurus',
+Route::get('profile', function () {
+    return view('pages.profile',[
+        'title'=> 'Profile',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
         'name'=>'PWNU Jawa Barat'
