@@ -65,6 +65,14 @@ class Banom extends Model
             ->get();
     }
 
+    public static function getRowData($id)
+    {
+        return self::query()
+            ->select(['id', 'nama',])
+            ->where('id', $id)
+            ->first();
+    }
+
     public function mwcnu(): BelongsTo
     {
         return $this->belongsTo(MWCNU::class);

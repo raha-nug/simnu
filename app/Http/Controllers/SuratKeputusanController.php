@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\PCNU;
 use App\Models\PWNU;
+use App\Models\Banom;
 use App\Models\MWCNU;
+use App\Models\Lembaga;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -56,6 +58,32 @@ class SuratKeputusanController extends Controller
                 $mwc_data = MWCNU::getRowData($id);
             }
 
+            if($request->banom){
+                if(!isset($request->banom)){
+                    return redirect(route('not-found'));
+                }
+                $id_banom = $request->banom;
+                $id = getRoute($id_banom);
+
+                if(!$id)
+                    return redirect()->route('not-found');
+
+                $banom_data = Banom::getRowData($id);
+            }
+
+            if($request->lembaga){
+                if(!isset($request->lembaga)){
+                    return redirect(route('not-found'));
+                }
+                $id_lembaga = $request->lembaga;
+                $id = getRoute($id_lembaga);
+
+                if(!$id)
+                    return redirect()->route('not-found');
+
+                $lembaga_data = Lembaga::getRowData($id);
+            }
+
             $data = [
                 'title' => 'Tambah Surat Keputusan',
                 'username' => 'John Doe',
@@ -63,6 +91,8 @@ class SuratKeputusanController extends Controller
                 'pw_data' => $pw_data ?? new PWNU,
                 'pc_data' => $pc_data ?? new PCNU,
                 'mwc_data' => $mwc_data ?? new MWCNU,
+                'banom_data' => $banom_data ?? new Banom,
+                'lembaga_data' => $lembaga_data ?? new Lembaga,
                 'method' => 'POST',
                 'action' => route('sk_process')
             ];
@@ -134,6 +164,18 @@ class SuratKeputusanController extends Controller
         } else {
             $data['id_mwcnu'] = null;
         }
+
+        if($request->id_lembaga) {
+            $data['id_lembaga'] = $request->id_lembaga;
+        } else {
+            $data['id_lembaga'] = null;
+        }
+
+        if($request->id_banom) {
+            $data['id_banom'] = $request->id_banom;
+        } else {
+            $data['id_banom'] = null;
+        }
         if (isset($request->id)) {
             $is_updated = SuratKeputusan::where('id', $request->id)->update($data);
             if (!$is_updated) {
@@ -141,11 +183,32 @@ class SuratKeputusanController extends Controller
                 return redirect()->back();
             }
             Alert::success('Data Berhasil Diupdate');
-            return redirect(route('pcnu-detail') . "?pc=" . setRoute($request->id_pcnu));
+            return redirect(route('pcnu-detail') . "?sk=" . setRoute($request->id));
         }
-        SuratKeputusan::create($data);
+        $new_data = SuratKeputusan::create($data);
         Alert::success("Data Berhasil Disimpan");
-        return redirect()->back();
+        return $this->checkRoute($new_data);
+    }
+
+    public function getSklist(Request $request)
+    {
+        $limit = $request->length ?? 10;
+        $start = $request->start ?? 0;
+        $options = [
+            'id_pwnu' => $request->pw,
+            'id_pcnu' => $request->pc,
+            'id_mwcnu' => $request->mwc,
+            'id_lembaga' => $request->lembaga,
+            'id_banom' => $request->banom,
+            'search' => $request->search['value']
+        ];
+
+        $sk_list = SuratKeputusan::getSklist($limit, $start, $options);
+        // dd($sk_list);
+        return response()->json((object)[
+            'success' => 1,
+            'data' => mapSetRoute($sk_list)
+        ]);
     }
 
     public function detail(Request $request){
@@ -171,5 +234,23 @@ class SuratKeputusanController extends Controller
         ];
         $pdf = Pdf::loadView('components.sk', $data);
         return $pdf->stream('surat_keputusan');
+    }
+
+    private function checkRoute($data)
+    {
+        switch ($data) {
+            case !empty($data->id_pwnu):
+                return redirect(route('pwnu'));
+            case !empty($data->id_pcnu):
+                return redirect(route('pcnu-detail') . "?pc=" . setRoute($data->id_pcnu));
+            case !empty($data->id_mwcnu):
+                return redirect(route('mwcnu') . "?mwc=" . setRoute($data->id_mwcnu));
+            case !empty($data->id_lembaga):
+                return redirect(route('lembaga') . "?lembaga=" . setRoute($data->id_mwcnu));
+            case !empty($data->id_banom):
+                return redirect(route('Banom') . "?banom=" . setRoute($data->id_mwcnu));
+            default:
+                return redirect(route('no-found'));
+        }
     }
 }

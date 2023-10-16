@@ -123,8 +123,10 @@
 <script>
   $(document).ready(function() {
     lembagaTable();
+    BanomTable();
+    SkTable();
   })
-  
+
   const lembagaTable = () => {
     $("#lembagaTable").DataTable({
       responsive: true,
@@ -189,6 +191,140 @@
                   </a>
               </li>
             </ul>`;
+          },
+          "orderable": false
+        },
+      ],
+      "tabIndex": 1,
+      "drawCallback": function(settings) {
+        // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+      }
+    });
+  }
+
+  const BanomTable = () => {
+    $("#BanomTable").DataTable({
+      responsive: true,
+      language: {
+        "scrollX": true,
+        "scrollY": true,
+        search: "_INPUT_",
+        searchPlaceholder: "Cari...",
+        sLengthMenu: "_MENU_",
+        "zeroRecords": "Tidak ada data untuk ditampilkan",
+        "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+        "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+        "infoFiltered": ""
+      },
+      "aLengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, "Show All"]
+      ],
+      "processing": true,
+      "bAutoWidth": false,
+      "serverSide": true,
+      "iDisplayLength": 10,
+      "bInfo": true,
+      "orderCellsTop": false,
+      "ajax": {
+        "url": "{{ route('Banom-list') }}",
+        "type": "GET",
+        "data": function(d) {
+          d.pw = "{{ $pw_detail->id }}";
+        }
+      },
+      "columns": [{
+          mData: "no",
+          mRender: function(data, type, row, meta) {
+            return meta.row + meta.settings._iDisplayStart + 1;
+          },
+          "orderable": false
+        },
+        {
+          mData: "nama",
+          mRender: function(data, type, row) {
+            return `<th scope="row"><a href="{{ route('Banom') }}?banom=${row.id}">${row.nama}</a></th>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "",
+          mRender: function(data, type, row) {
+
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-three-dots-vertical"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li><a class="dropdown-item" href="{{ route('Banom-add') }}?Banom=${row.id}">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit
+                  </a>
+              </li>
+              <li><a class="dropdown-item text-danger" href="{{ route('Banom-delete') }}?banom=${row.id}">
+                    <i class="bi bi-trash"></i>
+                    Hapus
+                  </a>
+              </li>
+            </ul>`;
+          },
+          "orderable": false
+        },
+      ],
+      "tabIndex": 1,
+      "drawCallback": function(settings) {
+        // $('[data-toggle="tooltip"]').tooltip({ trigger:"hover" });
+      }
+    });
+  }
+  const SkTable = () => {
+    $("#SkTable").DataTable({
+      responsive: true,
+      language: {
+        "scrollX": true,
+        "scrollY": true,
+        search: "_INPUT_",
+        searchPlaceholder: "Cari...",
+        sLengthMenu: "_MENU_",
+        "zeroRecords": "Tidak ada data untuk ditampilkan",
+        "info": "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
+        "infoEmpty": "Menampilkan 0 sampai 0 dari 0 data",
+        "infoFiltered": ""
+      },
+      "aLengthMenu": [
+        [10, 25, 50, -1],
+        [10, 25, 50, "Show All"]
+      ],
+      "processing": true,
+      "bAutoWidth": false,
+      "serverSide": true,
+      "iDisplayLength": 10,
+      "bInfo": true,
+      "orderCellsTop": false,
+      "ajax": {
+        "url": "{{ route('Sk-list') }}",
+        "type": "GET",
+        "data": function(d) {
+          d.pw = "{{ $pw_detail->id }}";
+        }
+      },
+      "columns": [{
+          mData: "no",
+          mRender: function(data, type, row, meta) {
+            return meta.row + meta.settings._iDisplayStart + 1;
+          },
+          "orderable": false
+        },
+        {
+          mData: "no_dokumen",
+          mRender: function(data, type, row) {
+            return `<th scope="row"><a href="{{ route('sk_detail') }}?sk=${row.id}">${row.no_dokumen}</a></th>`;
+          },
+          "orderable": false
+        },
+        {
+          mData: "masa_jabatan",
+          mRender: function(data, type, row) {
+            return row.tanggal_mulai + ' - ' + row.tanggal_berakhir;
           },
           "orderable": false
         },
