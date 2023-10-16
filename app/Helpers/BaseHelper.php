@@ -35,6 +35,9 @@ if (!function_exists('mapSetRoute')) {
          $val = [
             "id" => setRoute($item->id),
             "nama" => $item->nama,
+            'no_dokumen' => $item->no_dokumen,
+            'tanggal_mulai' => $item->tanggal_mulai,
+            'tanggal_berakhir' => $item->tanggal_berakhir,
             "alamat" =>  $item->nama,
             "jumlah" =>  $item->jumlah
          ];

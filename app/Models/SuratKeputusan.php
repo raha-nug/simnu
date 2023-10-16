@@ -22,11 +22,45 @@ class SuratKeputusan extends Model
         'id_pwnu',
         'id_pcnu',
         'id_mwcnu',
+        'id_banom',
+        'id_lembaga',
         'no_dokumen',
         'tanggal_mulai',
         'tanggal_berakhir',
         'file_sk',
     ];
+
+    public static function getSklist($limit, $start, $options)
+    {
+        $query = self::query();
+        switch ($options) {
+            case !empty($options['id_pwnu']):
+                $query->where('id_pwnu', $options['id_pwnu']);
+                break;
+            case !empty($options['id_pcnu']):
+                $query->where('id_pcnu', $options['id_pcnu']);
+                break;
+            case !empty($options['id_mwcnu']):
+                $query->where('id_mwcnu', $options['id_mwcnu']);
+                break;
+            case !empty($options['id_lembaga']):
+                $query->where('id_lembaga', $options['id_lembaga']);
+                break;
+            case !empty($options['id_banom']):
+                $query->where('id_banom', $options['id_banom']);
+                break;
+
+            default:
+                break;
+        }
+        if($options['search']) {
+            $query->whereRaw("nama LIKE '%{$options['search']}%'");
+        }
+
+        return $query->limit($limit)
+            ->offset($start)
+            ->get();
+    }
 
     public function mwcnu(): BelongsTo
     {

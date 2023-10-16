@@ -161,7 +161,8 @@ Route::get('search-data', function () {
     ]);
 });
 Route::prefix('sk')->group(function () {
-    Route::get('/', [SuratKeputusanController::class, 'index'])->name('sk');
+    Route::get('/list', [SuratKeputusanController::class, 'getSklist'])->name('Sk-list');
+    // Route::get('/', [SuratKeputusanController::class, 'index'])->name('sk');
     Route::get('/add_sk', [SuratKeputusanController::class, 'add_sk'])->name('add_sk');
     Route::post('/process', [SuratKeputusanController::class, 'process'])->name('sk_process');
     Route::get('/detail', [SuratKeputusanController::class, 'detail'])->name('sk_detail');

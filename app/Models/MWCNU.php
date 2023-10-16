@@ -56,7 +56,7 @@ class MWCNU extends Model
     public static function getRowData($id)
     {
         return self::query()
-            ->select(['id', 'kota', 'kecamatan'])
+            ->select(['id', 'kota', 'kecamatan', 'nama'])
             ->where('id', $id)
             ->first();
     }

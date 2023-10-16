@@ -30,6 +30,8 @@
     <input type="hidden" id="id_pcnu" name="id_pcnu" value="{{$sk->id_pcnu}}">
     <input type="hidden" id="id_mwcnu" name="id_mwcnu" value="{{$sk->id_mwcnu}}">
     <input type="hidden" id="id_pwnu" name="id_pwnu" value="{{$sk->id_pwnu}}">
+    <input type="hidden" id="id_banom" name="id_banom" value="{{$sk->id_banom}}">
+    <input type="hidden" id="id_lembaga" name="id_lembaga" value="{{$sk->id_lembaga}}">
   </div>
   <div class="col-md-6 mt-2">
     <label for="tgl-mulai" class="form-label">Tanggal Mulai</label>
@@ -44,14 +46,15 @@
     <input type="file" class="form-control" id="file_sk" name="file_sk" required>
   </div>
   @else
-
   <div class="col-md-12 mt-2">
      <label for="no-sk" class="form-label">Nomer SK</label>
      <input type="text" class="form-control" id="no-sk" name="no_dokumen" required>
      <input type="hidden" id="id_pcnu" name="id_pcnu" value="{{$pc_data->id}}">
      <input type="hidden" id="id_mwcnu" name="id_mwcnu" value="{{$mwc_data->id}}">
      <input type="hidden" id="id_pwnu" name="id_pwnu" value="{{$pw_data->id}}">
-   </div>
+     <input type="hidden" id="id_banom" name="id_banom" value="{{$banom_data->id}}">
+     <input type="hidden" id="id_lembaga" name="id_lembaga" value="{{$lembaga_data->id}}">
+    </div>
    <div class="col-md-6 mt-2">
      <label for="tgl-mulai" class="form-label">Tanggal Mulai</label>
      <input type="date" class="form-control" id="tanggal_mulai" name="tanggal_mulai" required>

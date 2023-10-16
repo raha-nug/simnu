@@ -26,10 +26,10 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+
 
         <li><a class="dropdown-item" href="edit-banom"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">Detail Banom</div>
@@ -40,7 +40,7 @@
           <dt class="text-lg-end text-sm-start">Nama :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Ikatan Pelajar Putra NU (IPNU) Jawa Barat</dd>
+          <dd>{{$banom_data->nama}}</dd>
         </div>
       </div>
       <div class="row">
@@ -48,9 +48,11 @@
           <dt class="text-lg-end text-sm-start">NU Kota/Kab :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>
-            -
-          </dd>
+            <a href="{{$wilayah_kerja['url']}}">
+                <dd>
+                  {{$wilayah_kerja['nama']}}
+                </dd>
+            </a>
         </div>
       </div>
 
@@ -90,7 +92,7 @@
             SK Kepengurusan
           </button>
         </li>
-        
+
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
         <div
@@ -155,7 +157,7 @@
           role="tabpanel"
           aria-labelledby="kepengurusan-tab">
           <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-sk">
+            <a class="btn btn-primary" href="{{route('add_sk')}}?banom={{setRoute($banom_data->id)}}">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -171,16 +173,13 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($sk as $value)
                 <tr>
-                  <th scope="row">1</th>
-                  <td><a href="#">112/A.II.04/11/2016</a></td>
-                  <td>04 Nov 2016 - 04 Nov 2021</td>
+                  <th scope="row">{{$number++}}</th>
+                  <td><a href="{{route('sk_detail')}}?sk={{setRoute($value->id)}}">{{$value->no_dokumen}}</a></td>
+                  <td>{{$value->tanggal_mulai}} - {{$value->tanggal_berakhir}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td><a href="">790/A.II.04/11/2021</a></td>
-                  <td>24 Nov 2021 - 24 Nov 2026</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
