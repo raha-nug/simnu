@@ -18,10 +18,11 @@ class AnakRantingController extends Controller
             return redirect('dashboard');
 
         $anak_ranting = AnakRanting::query()
-            ->select(['anak_ranting.id', 'anak_ranting.nama', 'anak_ranting.alamat', 'ranting.nama ranting_nama', 'id_ranting'])
-            ->where('id', $id)
+            ->select(['anak_ranting.id', 'anak_ranting.nama', 'anak_ranting.alamat', 'anak_ranting.id_ranting'])
+            ->where('anak_ranting.id', $id)
             ->leftJoin('ranting', 'id_ranting', '=', 'ranting.id')
             ->first();
+        dd($anak_ranting);
 
         return view('pages.detail-anak-ranting', [
             'title' => 'Detail Anak Ranting NU',

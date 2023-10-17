@@ -25,6 +25,21 @@
   </x-slot:title>
   @if(isset($mwc_data))
     <div class="col-md-12 mt-2">
+      <label for="kabkot" class="form-label">Kecamatan</label>
+      <input type="hidden" name="kota" value="{{ $mwc_data->kota }}">
+      <input type="hidden" name="kecamatan" value="{{ $mwc_data->kecamatan }}">
+      <select class="form-select" id="kecamatan" disabled>
+        <option></option>
+        @foreach($kecamatan as $item)
+          @if($item->kode == $mwc_data->kecamatan)
+            <option value="{{ $item->kode }}" selected >{{ $item->nama }}</option>
+          @else 
+            <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+          @endif
+        @endforeach
+      </select>
+    </div>
+    <div class="col-md-12 mt-2">
       <label for="no-sk" class="form-label">Nama</label>
       <input type="text" class="form-control" id="nama" name="nama" value="{{ $mwc_data->nama }}" readonly>
       <input type="hidden" name="id" value="{{ $mwc_data->id }}">
@@ -46,21 +61,7 @@
       <label for="website" class="form-label">Website</label>
       <input type="text" class="form-control" name="website" value="{{ $mwc_data->website ?? ''}}">
     </div>
-    <div class="col-md-6 mt-2">
-      <label for="kabkot" class="form-label">Kecamatan</label>
-      <input type="hidden" name="kota" value="{{ $mwc_data->kota }}">
-      <input type="hidden" name="kecamatan" value="{{ $mwc_data->kecamatan }}">
-      <select class="form-select" id="kecamatan" disabled>
-        <option></option>
-        @foreach($kecamatan as $item)
-          @if($item->kode == $mwc_data->kecamatan)
-            <option value="{{ $item->kode }}" selected >{{ $item->nama }}</option>
-          @else 
-            <option value="{{ $item->kode }}">{{ $item->nama }}</option>
-          @endif
-        @endforeach
-      </select>
-    </div>
+
     <div class="col-md-6 mt-2">
       <label for="latitude" class="form-label">Latitude</label>
       <input type="text" class="form-control" name="lat" value="{{ $mwc_data->lat ?? '' }}">
@@ -70,6 +71,16 @@
       <input type="text" class="form-control" name="long" value="{{ $mwc_data->long ?? '' }}">
     </div>
   @else
+    <div class="col-md-12 mt-2">
+      <label for="kabkot" class="form-label">Kecamatan</label>
+      <input type="hidden" name="kota" value="{{ $pc_data->kota }}">
+      <select class="form-select" id="kecamatan" name="kecamatan" >
+        <option></option>
+        @foreach($kecamatan as $item)
+            <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+        @endforeach
+      </select>
+    </div>
     <div class="col-md-12 mt-2">
       <label for="no-sk" class="form-label">Nama</label>
       <input type="text" class="form-control" id="nama" name="nama" readonly>
@@ -91,16 +102,7 @@
       <label for="website" class="form-label">Website</label>
       <input type="text" class="form-control" name="website">
     </div>
-    <div class="col-md-12 mt-2">
-      <label for="kabkot" class="form-label">Kecamatan</label>
-      <input type="hidden" name="kota" value="{{ $pc_data->kota }}">
-      <select class="form-select" id="kecamatan" name="kecamatan" >
-        <option></option>
-        @foreach($kecamatan as $item)
-            <option value="{{ $item->kode }}">{{ $item->nama }}</option>
-        @endforeach
-      </select>
-    </div>
+
     <div class="col-md-6 mt-2">
       <label for="latitude" class="form-label">Latitude</label>
       <input type="text" class="form-control" name="lat">

@@ -59,14 +59,15 @@
                     <a class="ud-menu-scroll" href="#tranding">Galeri</a>
                   </li>
                   <li class="nav-item">
+                    <a class="ud-menu-scroll" href="#berita">Berita</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="ud-menu-scroll" href="#faq">FAQ</a>
                   </li>
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#contact">Kontak</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="ud-menu-scroll" href="#berita">Berita</a>
-                  </li>
+                  
                 </ul>
               </div>
 
@@ -124,10 +125,6 @@
       </div>
     </section>
     <!-- ====== Hero End ====== -->
-
-    <section id="tranding">
-      
-    </section>
 
     <!-- ====== About Start ====== -->
     <section id="about" class="ud-about">
@@ -330,7 +327,7 @@
       </div>
     </section>
 
-    <section class="mb-5">
+    <section class="mb-5" id="berita">
       <div class="container">
           <h2 class="text-center mb-5">Berita Terkini</h2>
         <div class="splide" aria-labelledby="carousel-heading">
@@ -343,7 +340,7 @@
                       <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
                       <div class="card-body">
                         <a href="{{ $item['link'] }}">
-                          <p class="d-inline-block text-truncate mt-3 mb-4" style="max-width: 280px;">{{ $item['title'] }}</p>
+                          <p class="d-inline-block text-truncate mt-3 mb-4 fw-bold" style="max-width: 280px;">{{ $item['title'] }}</p>
                           <span class="mt-4">{{ $item['date'] }}</span>
                         </a>
                       </div>

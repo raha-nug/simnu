@@ -12,7 +12,7 @@
 :root {
     scroll-behavior: smooth;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
 }
 
@@ -712,11 +712,9 @@ h6 {
 .sidebar-nav .nav-link .icon-nav {
     margin-right: 8px;
     margin-left: -4px;
-
 }
 .sidebar-nav .nav-link .icon-nav path {
     fill: rgb(169, 207, 212);
-     
 }
 
 .sidebar-nav .nav-link i {
@@ -1285,16 +1283,20 @@ h6 {
     background: rgb(60, 171, 136);
 }
 
-
-
-.detail-pengurus img{
+.detail-pengurus img,
+.profile-img img {
     object-fit: contain;
-    height: 100%;
-    width: 100%;
     margin-bottom: 1rem;
     border-radius: 5px;
 }
-
+.detail-pengurus img {
+    height: 100%;
+    width: 100%;
+}
+.profile-img img {
+    height: 8rem;
+    width: 8rem;
+}
 .custom-selection {
-    border: none!important;
+    border: none !important;
 }

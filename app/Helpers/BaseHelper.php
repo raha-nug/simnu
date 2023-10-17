@@ -1,19 +1,20 @@
 <?php
+
 use Illuminate\Support\Collection;
 
 if (!function_exists('setRoute')) {
-   function setRoute(string $slug) : string
+   function setRoute(string $slug): string
    {
       $chiper_algo = "aes-192-cbc";
       $key = "@cmr-2022";
       $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($chiper_algo));
       $encoded_str = openssl_encrypt($slug, $chiper_algo, $key, OPENSSL_RAW_DATA, $iv);
-      return rawurlencode(base64_encode($iv.$encoded_str));
+      return rawurlencode(base64_encode($iv . $encoded_str));
    }
 }
 
 if (!function_exists('getRoute')) {
-   function getRoute(string $slug) : string
+   function getRoute(string $slug): string
    {
       $chiper_algo = "aes-192-cbc";
       $key = "@cmr-2022";
@@ -28,7 +29,7 @@ if (!function_exists('getRoute')) {
 }
 
 if (!function_exists('mapSetRoute')) {
-   function mapSetRoute(Collection $collection) : Collection
+   function mapSetRoute(Collection $collection): Collection
    {
       $result = collect([]);
       foreach ($collection as $item) {
@@ -47,4 +48,3 @@ if (!function_exists('mapSetRoute')) {
       return $result;
    }
 }
-
