@@ -278,7 +278,7 @@
           </a>
           <ul
             id="master-nav"
-            class="nav-content collapse {{ $isShow ? 'show':'' }}"
+            class="nav-content collapse {{ $isShow ? 'show':'' }} active"
             data-bs-parent="#sidebar-nav">
             <li>
               <a href="{{route('user')}}" class="{{ Request::is('user') ? 'active':'' }}">

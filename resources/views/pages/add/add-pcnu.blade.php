@@ -23,6 +23,20 @@
     Tambah PCNU
   </x-slot:title>
   @if(isset($pc_data))
+    <div class="col-md-12 mt-2">
+    <label for="kota" class="form-label">Kota/Kab</label>
+    <input type="hidden" name="kota" value="{{ $pc_data->kota }}">
+    <select class="form-select" id="kabkot" required disabled>
+      <option></option>
+      @foreach($kab_kota as $item)
+      @if($item->kode == $pc_data->kota)
+      <option value="{{ $item->kode }}" selected>{{ $item->nama }}</option>
+      @else
+      <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+      @endif
+      @endforeach
+    </select>
+  </div>
   <div class="col-md-12 mt-2">
     <label for="nama" class="form-label">Nama</label>
     <input type="text" class="form-control" id="nama" name="nama" value="{{ $pc_data->nama }}" required readonly>
@@ -44,20 +58,7 @@
     <label for="website" class="form-label">Website</label>
     <input type="text" class="form-control" name="website" value="{{ $pc_data->website ?? '' }}">
   </div>
-  <div class="col-md-12 mt-2">
-    <label for="kota" class="form-label">Kota/Kab</label>
-    <input type="hidden" name="kota" value="{{ $pc_data->kota }}">
-    <select class="form-select" id="kabkot" required disabled>
-      <option></option>
-      @foreach($kab_kota as $item)
-      @if($item->kode == $pc_data->kota)
-      <option value="{{ $item->kode }}" selected>{{ $item->nama }}</option>
-      @else
-      <option value="{{ $item->kode }}">{{ $item->nama }}</option>
-      @endif
-      @endforeach
-    </select>
-  </div>
+
   <div class="col-md-6 mt-2">
     <label for="latitude" class="form-label">Latitude</label>
     <input type="text" class="form-control" name="lat" value="{{ $pc_data->lat ?? '' }}">
@@ -67,6 +68,15 @@
     <input type="text" class="form-control" name="long" value="{{ $pc_data->long ?? ''}}">
   </div>
   @else
+    <div class="col-md-12 mt-2">
+    <label for="kota" class="form-label">Kota/Kab</label>
+    <select class="form-select" id="kabkot" name="kota" required>
+      <option></option>
+      @foreach($kab_kota as $item)
+      <option value="{{ $item->kode }}">{{ $item->nama }}</option>
+      @endforeach
+    </select>
+  </div>
   <div class="col-md-12 mt-2">
     <label for="nama" class="form-label">Nama</label>
     <input type="text" class="form-control" id="nama" name="nama" required readonly>
@@ -87,15 +97,7 @@
     <label for="website" class="form-label">Website</label>
     <input type="text" class="form-control" name="website">
   </div>
-  <div class="col-md-12 mt-2">
-    <label for="kota" class="form-label">Kota/Kab</label>
-    <select class="form-select" id="kabkot" name="kota" required>
-      <option></option>
-      @foreach($kab_kota as $item)
-      <option value="{{ $item->kode }}">{{ $item->nama }}</option>
-      @endforeach
-    </select>
-  </div>
+
   <div class="col-md-6 mt-2">
     <label for="latitude" class="form-label">Latitude</label>
     <input type="text" class="form-control" name="lat">

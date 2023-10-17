@@ -29,6 +29,11 @@
                 <img src="../assets/img/pengurus.jpg" alt="Profile"  >
               </div>
               <h5>KH. Hasan Nuri Hidayatullah</h5>
+              <h6 class="text-primary">Web Designer <i class="bi bi-bookmark-star-fill"></i></h6>
+              <div class="social-links mt-2 d-flex gap-3">
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              </div>
             </div>
           </div>
 
