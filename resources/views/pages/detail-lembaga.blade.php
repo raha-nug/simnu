@@ -127,7 +127,7 @@
         </div>
         <div class="tab-pane fade mt-3" id="bordered-justified-kepengurusan" role="tabpanel" aria-labelledby="kepengurusan-tab">
           <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-sk">
+            <a class="btn btn-primary" href="{{route('add_sk')}}?lembaga={{setRoute($lembaga_data->id)}}">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -143,16 +143,13 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($sk as $value)
                 <tr>
                   <th scope="row">1</th>
-                  <td><a href="#">112/A.II.04/11/2016</a></td>
-                  <td>04 Nov 2016 - 04 Nov 2021</td>
+                  <td><a href="{{route('sk_detail')}}?sk={{setRoute($value->id)}}">{{$value->no_dokumen}}</a></td>
+                  <td>{{$value->tanggal_mulai}} - {{$value->tanggal_berakhir}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td><a href="">790/A.II.04/11/2021</a></td>
-                  <td>24 Nov 2021 - 24 Nov 2026</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

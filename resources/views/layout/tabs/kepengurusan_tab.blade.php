@@ -13,7 +13,7 @@
    </div>
 
    <div class="table-responsive">
-      <table class="table table-borderless table-hover datatable">
+      <table class="table table-borderless table-hover" id="SkTable">
          <thead>
             <tr>
                <th scope="col">No</th>
@@ -22,18 +22,7 @@
             </tr>
          </thead>
          <tbody>
-            @foreach ($sk as $value)
-            <tr>
-               <th scope="row">{{$nomor++}}</th>
-               <td><a href="{{route('sk_detail')}}?sk={{setRoute($value->id)}}">{{$value->no_dokumen}}</a></td>
-               <td>{{$value->tanggal_mulai}} - {{$value->tanggal_berakhir}}</td>
-            </tr>
-            @endforeach
-            <tr>
-               <th scope="row">2</th>
-               <td><a href="">790/A.II.04/11/2021</a></td>
-               <td>24 Nov 2021 - 24 Nov 2026</td>
-            </tr>
+
          </tbody>
       </table>
    </div>

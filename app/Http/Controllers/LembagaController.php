@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lembaga;
-use App\Models\MasterLembaga;
-use App\Models\MWCNU;
 use App\Models\PCNU;
 use App\Models\PWNU;
-use Illuminate\Support\Facades\Validator;
+use App\Models\MWCNU;
+use App\Models\Lembaga;
 use Illuminate\Http\Request;
+use App\Models\MasterLembaga;
+use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class LembagaController extends Controller
 {
@@ -23,7 +24,7 @@ class LembagaController extends Controller
         $lembaga = Lembaga::query()
             ->where('id', $id)
             ->first();
-
+        $sk = SuratKeputusan::query()->where('id_lembaga', $id)->get();
         $wilayah_kerja = ['url' => '#', 'nama' => '-'];
         if ($lembaga)
         {
@@ -52,7 +53,8 @@ class LembagaController extends Controller
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
             'lembaga_data' => $lembaga,
-            'wilayah_kerja' => $wilayah_kerja
+            'wilayah_kerja' => $wilayah_kerja,
+            'sk' => $sk ?? new SuratKeputusan,
         ]);
     }
 

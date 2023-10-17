@@ -9,6 +9,7 @@ use App\Models\MWCNU;
 use App\Models\BanomBasis;
 use App\Models\MasterBanom;
 use Illuminate\Http\Request;
+use App\Models\SuratKeputusan;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -25,12 +26,36 @@ class BanomController extends Controller
         $banom = Banom::query()
             ->where('id', $id)
             ->first();
+        if ($banom)
+        {
+            if ($banom->id_pwnu)
+            {
+                $wilayah_kerja['url'] = route('pwnu');
+                $wilayah_kerja['nama'] = "PWNU Jawa Barat";
+            }
+            elseif($banom->id_pcnu)
+            {
+                $pc = PCNU::where('id', $banom->id_pcnu)->first();
+                $wilayah_kerja['url'] = route('pcnu-detail')."?pc=".setRoute($banom->id_pcnu);
+                $wilayah_kerja['nama'] = $pc->nama;
 
+            }
+            elseif ($banom->id_mwcnu)
+            {
+                $mwc = MWCNU::where('id', $banom->id_mwcnu)->first();
+                $wilayah_kerja['url'] = route('mwcnu') . "?mwc=" . setRoute($banom->id_mwcnu);
+                $wilayah_kerja['nama'] = $mwc->nama;
+            }
+        }
+        $sk = SuratKeputusan::query()->where('id_banom', $id)->get();
         return view('pages.detail-banom', [
             'title' => 'Detail Banom',
             'username' => 'John Doe',
             'from' => 'Jawa Barat',
-            'banom_data' => $banom
+            'banom_data' => $banom,
+            'wilayah_kerja' => $wilayah_kerja,
+            'sk' => $sk,
+            'number' => $number = 1
         ]);
     }
 
@@ -173,7 +198,7 @@ class BanomController extends Controller
             return redirect('dashboard');
 
 
-        $pwnu_data = PWNU::select(['id','provinsi'])->where('id',$id)->first();
+        $pwnu_data = PWNU::select(['id','provinsi', 'nama'])->where('id',$id)->first();
 
         $data = [
             'title' => 'Banom',
@@ -196,7 +221,7 @@ class BanomController extends Controller
         if (!$id)
             return redirect('dashboard');
 
-            $pcnu_data = PCNU::select(['id','kota'])->where('id', $id)->first();
+            $pcnu_data = PCNU::select(['id','kota', 'nama'])->where('id', $id)->first();
 
         $data = [
             'title' => 'Banom',
