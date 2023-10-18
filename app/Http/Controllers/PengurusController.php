@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -55,6 +56,13 @@ class PengurusController extends Controller
 
         $data = Pengurus::setValue($validated->validate());
         $new_data = Pengurus::create($data);
+        if($new_data)
+        {
+            $is_exist = Anggota::where('nik', $data['nik'])->first();
+            if(!$is_exist) {
+                Anggota::create(['nik' => $data['nik'], 'nama' => $data['nama']]);
+            }
+        }
         return response()->json(['success' => 1, 'msg' => 'Data Berhasil Disimpan', 'data' => $new_data , 'token' => csrf_token()]);
         // Alert::success('Data Berhasil Disimpan');
     }
