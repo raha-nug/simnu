@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 
 class Pengurus extends Model
 {
@@ -22,7 +23,18 @@ class Pengurus extends Model
         'jabatan',
         'mulai_jabatan',
         'akhir_jabatan',
+        'jenis_pengurus'
     ];
+
+    public static function setValue(array $data): array 
+    {
+        $pengurus = DB::table('surat_keputusan')
+            ->select('tanggal_mulai', 'tanggal_berakhir')
+            ->where('id', $data['id_sk'])
+            ->first();
+
+        return array_merge($data, ['mulai_jabatan' => $pengurus->tanggal_mulai, 'akhir_jabatan' => $pengurus->tanggal_berakhir]);
+    }
 
     public function sk(): BelongsTo
     {

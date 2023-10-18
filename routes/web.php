@@ -19,6 +19,7 @@ use App\Http\Controllers\AnakRantingController;
 use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
 use App\Http\Controllers\MasterLembagaController;
+use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\SuratKeputusanController;
 
 /*
@@ -169,14 +170,12 @@ Route::prefix('sk')->group(function () {
     Route::get('/file', [SuratKeputusanController::class, 'download'])->name('download_sk');
 });
 
-Route::get('/add_sk', function () {
-    return view('pages.add.add-pengurus', [
-        'title'=> 'PWNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-        'name'=>'PWNU Jawa Barat'
-    ]);
-})->name('add_pengurus');
+Route::prefix('pengurus')->group(function () {
+    Route::get('/list', [PengurusController::class, 'listPengurus'])->name('pengurus-list');
+    Route::get('/add_pengurus', [PengurusController::class, 'index'])->name('add_pengurus');
+    Route::post('/process', [PengurusController::class, 'process'])->name('pengurus_process');
+    Route::post('/delete', [PengurusController::class, 'delete'])->name('del_pengurus');
+});
 
 Route::get('/pengurus', function () {
     return view('pages.pengurus', [
