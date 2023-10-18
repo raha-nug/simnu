@@ -258,7 +258,7 @@
           </a>
         </li>
         <li class="nav-heading">master menu</li>
-        <@php
+        @php
             $isShow = false;
 
             if (Request::is('user') || Request::is('user-group') || Request::is('banom-basis') || Request::is('master-lembaga') || Request::is('master-banom') || Request::is('jabatan') || Request::is('member') || Request::is('jenis-pengurus'))  {
@@ -266,9 +266,9 @@
             }
         @endphp
 
-        <li class="nav-item">
+        <li class="nav-item {{ $isShow ? 'active':'' }}">
           <a
-            class="nav-link active collapsed"
+            class="nav-link collapsed {{ $isShow ? 'active':'' }}"
             data-bs-target="#master-nav"
             data-bs-toggle="collapse"
             href="#">
@@ -278,53 +278,53 @@
           </a>
           <ul
             id="master-nav"
-            class="nav-content collapse {{ $isShow ? 'show':'' }} active"
+            class="nav-content collapse {{ $isShow ? 'show':'' }} "
             data-bs-parent="#sidebar-nav">
             <li>
               <a href="{{route('user')}}" class="{{ Request::is('user') ? 'active':'' }}">
-                <i class="bi bi-circle"></i>
+                
                 <span>User</span>
               </a>
             </li>
             <li>
               <a href="{{route('user-group')}}" class="{{ Request::is('user-group*') ? 'active':'' }}">
-                <i class="bi bi-circle"></i>
+                
                 <span>User Group</span>
               </a>
             </li>
             <li>
               <a href="member">
-                <i class="bi bi-circle"></i>
+                
                 <span>Member</span>
               </a>
             </li>
             <li>
               <a href="{{route('jenis_pengurus')}}" class="{{ Request::is('jenis-pengurus') ? 'active':'' }}">
-                <i class="bi bi-circle"></i>
+                
                 <span>Jenis Pengurus</span>
               </a>
             </li>
             <li>
               <a href="{{route('jabatan')}}" class="{{ Request::is('jabatan') ? 'active':'' }}">
-                <i class="bi bi-circle"></i>
+                
                 <span>Jabatan</span>
               </a>
             </li>
             <li>
               <a href="{{route('banom-basis')}}" class="{{ Request::is('banom-basis') ? 'active':'' }}">
-                <i class="bi bi-circle"></i>
+                
                 <span>Banom Basis</span>
               </a>
             </li>
             <li>
               <a href="{{route('master-lembaga')}}" class="{{ Request::is('master-lembaga') ? 'active':'' }}">
-                <i class="bi bi-circle"></i>
+                
                 <span>Master Lembaga</span>
               </a>
             </li>
             <li>
               <a href="{{route('master-banom')}}" class="{{ Request::is('master-banom') ? 'active':'' }}">
-                <i class="bi bi-circle"></i>
+                
                 <span>Master Banom</span>
               </a>
             </li>
