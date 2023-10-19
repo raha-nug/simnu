@@ -79,23 +79,23 @@ class LembagaController extends Controller
 
             $lembaga_data = Lembaga::query()
             ->selectRaw("
-                CASE 
-                    WHEN lembaga.id_pwnu IS NOT NULL THEN pwnu.nama 
-                    WHEN lembaga.id_pcnu IS NOT NULL THEN pcnu.nama 
-                    WHEN lembaga.id_mwcnu IS NOT NULL THEN mwcnu.nama 
-                    ELSE '-' 
+                CASE
+                    WHEN lembaga.id_pwnu IS NOT NULL THEN pwnu.nama
+                    WHEN lembaga.id_pcnu IS NOT NULL THEN pcnu.nama
+                    WHEN lembaga.id_mwcnu IS NOT NULL THEN mwcnu.nama
+                    ELSE '-'
                 END As nama_wilayah_kerja,
-                CASE 
-                    WHEN lembaga.id_pwnu IS NOT NULL THEN lembaga.id_pwnu 
-                    WHEN lembaga.id_pcnu IS NOT NULL THEN lembaga.id_pcnu 
-                    WHEN lembaga.id_mwcnu IS NOT NULL THEN lembaga.id_mwcnu 
-                    ELSE '-' 
+                CASE
+                    WHEN lembaga.id_pwnu IS NOT NULL THEN lembaga.id_pwnu
+                    WHEN lembaga.id_pcnu IS NOT NULL THEN lembaga.id_pcnu
+                    WHEN lembaga.id_mwcnu IS NOT NULL THEN lembaga.id_mwcnu
+                    ELSE '-'
                 END As id_wilayah_kerja,
-                CASE 
-                    WHEN lembaga.id_pwnu IS NOT NULL THEN 'pwnu' 
-                    WHEN lembaga.id_pcnu IS NOT NULL THEN 'pcnu' 
-                    WHEN lembaga.id_mwcnu IS NOT NULL THEN 'mwcnu' 
-                    ELSE '-' 
+                CASE
+                    WHEN lembaga.id_pwnu IS NOT NULL THEN 'pwnu'
+                    WHEN lembaga.id_pcnu IS NOT NULL THEN 'pcnu'
+                    WHEN lembaga.id_mwcnu IS NOT NULL THEN 'mwcnu'
+                    ELSE '-'
                 END As wilayah_kerja,
                 lembaga.id,
                 master_id
@@ -277,7 +277,7 @@ class LembagaController extends Controller
             'kecamatan' => $this->wilayah->getAddress($mwcnu_data->kota),
             'mwcnu_data' => $mwcnu_data,
             'method' => 'POST',
-            'action' => route('ranting-process')
+            'action' => route('lembaga-process')
         ];
 
         return view('pages.add.add-lembaga', $data);

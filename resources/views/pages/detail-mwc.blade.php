@@ -30,7 +30,7 @@
 
 
         <li><a class="dropdown-item" href="{{ route('ranting-add') }}?mwc={{ setRoute($mwc_data->id) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        <li><a href="#" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
+        <li><a href="{{route('add-review-mwc')}}" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
 
       </ul>
     </div>
@@ -153,6 +153,11 @@
           </button>
         </li>
         <li class="nav-item flex-fill" role="presentation">
+          <button class="nav-link w-100" id="banom-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-banom" type="button" role="tab" aria-controls="banom" aria-selected="false">
+            Banom
+          </button>
+        </li>
+        <li class="nav-item flex-fill" role="presentation">
           <button
             class="nav-link w-100"
             id="ranting-tab"
@@ -171,6 +176,7 @@
         @include('layout.tabs.pengurus_tab')
         @include('layout.tabs.kepengurusan_tab')
         @include('layout.tabs.lembaga_tab',['mwcnu_data' => $mwc_data])
+        @include('layout.tabs.banom_tab')
         @include('layout.tabs.ranting_tab')
       </div>
     </div>

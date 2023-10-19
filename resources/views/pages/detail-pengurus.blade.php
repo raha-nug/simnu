@@ -26,10 +26,10 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <div class="detail-pengurus">
-                <img src="../assets/img/pengurus.jpg" alt="Profile"  >
+                <img src="{{Storage::url($anggota->img)}}" alt="Profile"  >
               </div>
-              <h5>KH. Hasan Nuri Hidayatullah</h5>
-              <h6 class="text-primary">Web Designer <i class="bi bi-bookmark-star-fill"></i></h6>
+              <h5>{{$pengurus->nama}}</h5>
+              <h6 class="text-primary">{{$pengurus->jabatan}} {{$pengurus->jenis_pengurus}} {{$sk_data->nama_wilayah_kerja}}<i class="bi bi-bookmark-star-fill"></i></h6>
               <div class="social-links mt-2 d-flex gap-3">
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
@@ -51,7 +51,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profil</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit" id="edit" data-id="{{setRoute($anggota->id)}}">Edit Profil</button>
                 </li>
 
               </ul>
@@ -63,34 +63,34 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nama Lengkap</div>
-                    <div class="col-lg-9 col-md-8">KH. Hasan Nuri Hidayatullah</div>
+                    <div class="col-lg-9 col-md-8">{{$anggota->nama}}</div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">NIK</div>
-                    <div class="col-lg-9 col-md-8">3206240000001</div>
+                    <div class="col-lg-9 col-md-8">{{$anggota->nik}}</div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">ID KartaNU</div>
-                    <div class="col-lg-9 col-md-8">PWNU-JABAR</div>
+                    <div class="col-lg-9 col-md-8">{{$anggota->karta_nu}}</div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Alamat</div>
-                    <div class="col-lg-9 col-md-8">Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</div>
+                    <div class="col-lg-9 col-md-8">{{$anggota->alamat}}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Telepon</div>
-                    <div class="col-lg-9 col-md-8">0811111111</div>
+                    <div class="col-lg-9 col-md-8">{{$anggota->no_telp}}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">contoh@email.com</div>
+                    <div class="col-lg-9 col-md-8">{{$anggota->email}}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Whatsapp</div>
-                    <div class="col-lg-9 col-md-8">0811111111</div>
+                    <div class="col-lg-9 col-md-8">{{$anggota->no_telp}}</div>
                   </div>
 
                 </div>
@@ -98,40 +98,41 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form id="submit">
+                  <form id="submit" method="POST" action="{{route('edit')}}" enctype="multipart/form-data">
+                    @csrf
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
                         <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                          <input type="file" class="btn btn-primary btn-sm" name="img" title="Upload new profile image"><i class="bi bi-upload"></i>
                           <a href="#" class="btn btn-danger btn-sm" title="Remove profile image"><i class="bi bi-trash"></i></a>
                         </div>
                       </div>
                     </div>
-
+                    <input type="hidden" name="id" value="{{$anggota->id}}">
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="KH. Hasan Nuri Hidayatullah">
+                        <input type="text" class="form-control" id="fullName" name="nama" value="{{$anggota->nama}}">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="NIK" class="col-md-4 col-lg-3 col-form-label">NIK</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="NIK" type="text" class="form-control" id="NIK" value="3206020000001">
+                        <input type="text" class="form-control" id="NIK" name="nik" value="{{$anggota->nik}}">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="id-karta-nu" class="col-md-4 col-lg-3 col-form-label">ID KartaNU</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="id-karta-nu" type="text" class="form-control" id="id-karta-nu" value="PWNU-JABAR">
+                        <input type="text" class="form-control" id="id-karta-nu" name="karta_nu" value="{{$anggota->karta_nu}}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="about" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="about" class="form-control" id="about"  style="height: 100px">Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang.
+                        <textarea class="form-control" id="about"  name="alamat" style="height: 100px">{{$anggota->alamat}}
                         </textarea>
                       </div>
                     </div>
@@ -139,28 +140,28 @@
                     <div class="row mb-3">
                       <label for="company" class="col-md-4 col-lg-3 col-form-label">Telepon</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="0811111111">
+                        <input type="text" class="form-control" id="company" name="no_telp" value="{{$anggota->no_telp}}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="email" value="contoh@email.com">
+                        <input type="email" class="form-control" id="email" name="email" value="{{$anggota->email}}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="whatsapp" class="col-md-4 col-lg-3 col-form-label">Whatsapp</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="whatsapp" type="text" class="form-control" id="whatsapp" value="081111111">
+                        <input type="text" class="form-control" id="whatsapp" value="081111111">
                       </div>
                     </div>
                     <div class="row mb-3">
                       <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan</label>
                       <div class="col-md-8 col-lg-9">
-                        <select class="form-select" id="${inputId}" required>
-                          <option selected value="">Ketua Tanfidzyah</option>
+                        <select class="form-select" disabled id="${inputId}">
+                          <option selected disabled value="">{{$pengurus->jabatan}} {{$pengurus->jenis_pengurus}}</option>
                           <option>...</option>
                         </select>
                       </div>
@@ -185,27 +186,37 @@
 
               <div class="activity">
                 <div class="activity-item d-flex">
-                  <div class="activite-label">2016 - 2021</div>
+                  <div class="activite-label">{{$pengurus->tanggal_mulai}} - {{$pengurus->tanggal_berakhir}}</div>
                   <i
                     class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
                   <div class="activity-content">
-                    <a href="detaik-sk">Ketua Tanfidzyah PWNU Jawa Barat</a>
+                    <a href="detaik-sk">{{$pengurus->jabatan}} {{$pengurus->jenis_pengurus}} {{$sk_data->nama_wilayah_kerja}}</a>
                   </div>
                 </div>
                 <!-- End history item-->
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2016 - 2021</div>
-                  <i
-                    class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
-                  <div class="activity-content">
-                    <a href="detaik-sk">Ketua Tanfidzyah PWNU Jawa Barat</a>
-                  </div>
-                </div>
-                <!-- End history item-->
-
               </div>
             </div>
           </div>
         </div>
       </div>
+      <script>
+        $(document).on('click', '#edit', function(o) {
+            let id = $(this).attr('data-id');
+            console.log(id);
+            getData(id);
+        })
+
+        function getData(id){
+            $.get("{{route('getPengurus')}}?id=" + id, function(o) {
+                $("input[name='id']").val(o.id);
+                $("input[name='nama']").val(o.nama);
+                $("input[name='nik']").val(o.nik);
+                $("input[name='alamat']").val(o.alamat);
+                $("input[name='no_telp']").val(o.no_telp);
+                $("input[name='email']").val(o.email);
+                $("input[name='karta_nu']").val(o.karta_nu);
+                $("input[name='img']").val(o.img);
+            })
+        }
+      </script>
 @endsection

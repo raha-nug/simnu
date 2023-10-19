@@ -246,9 +246,9 @@ class SuratKeputusanController extends Controller
             case !empty($data->id_mwcnu):
                 return redirect(route('mwcnu') . "?mwc=" . setRoute($data->id_mwcnu));
             case !empty($data->id_lembaga):
-                return redirect(route('lembaga') . "?lembaga=" . setRoute($data->id_mwcnu));
+                return redirect(route('lembaga') . "?lembaga=" . setRoute($data->id_lembaga));
             case !empty($data->id_banom):
-                return redirect(route('Banom') . "?banom=" . setRoute($data->id_mwcnu));
+                return redirect(route('Banom') . "?banom=" . setRoute($data->id_banom));
             default:
                 return redirect(route('no-found'));
         }

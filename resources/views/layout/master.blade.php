@@ -282,50 +282,55 @@
             data-bs-parent="#sidebar-nav">
             <li>
               <a href="{{route('user')}}" class="{{ Request::is('user') ? 'active':'' }}">
-                
+
                 <span>User</span>
               </a>
             </li>
             <li>
               <a href="{{route('user-group')}}" class="{{ Request::is('user-group*') ? 'active':'' }}">
-                
+
                 <span>User Group</span>
               </a>
             </li>
             <li>
               <a href="member">
-                
+
                 <span>Member</span>
               </a>
             </li>
             <li>
               <a href="{{route('jenis_pengurus')}}" class="{{ Request::is('jenis-pengurus') ? 'active':'' }}">
-                
+
                 <span>Jenis Pengurus</span>
               </a>
             </li>
             <li>
               <a href="{{route('jabatan')}}" class="{{ Request::is('jabatan') ? 'active':'' }}">
-                
+
                 <span>Jabatan</span>
               </a>
             </li>
             <li>
               <a href="{{route('banom-basis')}}" class="{{ Request::is('banom-basis') ? 'active':'' }}">
-                
+
                 <span>Banom Basis</span>
               </a>
             </li>
             <li>
               <a href="{{route('master-lembaga')}}" class="{{ Request::is('master-lembaga') ? 'active':'' }}">
-                
+
                 <span>Master Lembaga</span>
               </a>
             </li>
             <li>
               <a href="{{route('master-banom')}}" class="{{ Request::is('master-banom') ? 'active':'' }}">
-                
+
                 <span>Master Banom</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('indikator')}}" class="{{ Request::is('master-indikator') ? 'active':'' }}">
+                <span>Master Indikator</span>
               </a>
             </li>
           </ul>

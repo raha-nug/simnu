@@ -6,24 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Anggota extends Model
+class RelasiIndikator extends Model
 {
-    use HasFactory,HasUuids;
-    protected $table = "anggota";
+    use HasFactory, HasUuids;
+    protected $table = "relasi_indikator";
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $guarded = 'id';
     protected $fillable = [
-        'nik',
-        'nama',
-        'karta_nu',
-        'no_telp',
-        'email',
-        'alamat',
-        'provinsi',
-        'kab',
-        'kec',
-        'desa',
-        'img'
+        'id_pwnu',
+        'id_pcnu',
+        'id_mwcnu',
+        'id_indikator',
+        'nilai'
     ];
+
 }

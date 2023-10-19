@@ -12,14 +12,16 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\RantingController;
+use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IndikatorController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\BanomBasisController;
 use App\Http\Controllers\AnakRantingController;
+use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\MasterBanomController;
 use App\Http\Controllers\JenisPengurusController;
 use App\Http\Controllers\MasterLembagaController;
-use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\SuratKeputusanController;
 
 /*
@@ -139,6 +141,15 @@ Route::prefix('banom-basis')->group(function () {
     Route::get('/delete/{id_bb}', [BanomBasisController::class, 'delete'])->name('delete_banom_basis');
 });
 
+Route::prefix('indikator')->group(function () {
+    Route::get('/', [IndikatorController::class, 'index'])->name('indikator');
+    Route::get('/add-indikator', [IndikatorController::class, 'addIndikator'])->name('add_indikator');
+    Route::get('/updated/{id_i}', [IndikatorController::class, 'getIndikator'])->name('update_indikator');
+    Route::post('/process', [IndikatorController::class, 'process'])->name('process_indikator');
+    Route::get('/detail/{id_i}', [IndikatorController::class, 'detail'])->name('detail_indikator');
+    Route::get('/delete/{id_i}', [IndikatorController::class, 'delete'])->name('delete_indikator');
+});
+
 Route::prefix('lembaga')->group(function () {
     Route::get('/list', [LembagaController::class, 'getLembagalist'])->name('lembaga-list');
     Route::get('/detail', [LembagaController::class, 'index'])->name('lembaga');
@@ -177,23 +188,57 @@ Route::prefix('pengurus')->group(function () {
     Route::post('/delete', [PengurusController::class, 'delete'])->name('del_pengurus');
 });
 
-Route::get('/pengurus', function () {
-    return view('pages.pengurus', [
-        'title'=> 'PWNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-        'name'=>'PWNU Jawa Barat'
-    ]);
-})->name('pengurus');
+Route::prefix('anggota')->group(function () {
+    Route::get('/', [EditProfileController::class, 'index'])->name('pengurus');
+    Route::get('/detail', [EditProfileController::class, 'detail'])->name('detail_pengurus');
+    Route::get('/getPengurus', [EditProfileController::class, 'getPengurus'])->name('getPengurus');
+    Route::post('/update', [EditProfileController::class, 'edit'])->name('edit');
+});
 
-Route::get('/detail_pengurus', function () {
-    return view('pages.detail-pengurus', [
+Route::get('/review_pcnu', function () {
+    return view('pages.add.add-review-pcnu', [
         'title'=> 'PWNU',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
         'name'=>'PWNU Jawa Barat'
     ]);
-})->name('detail_pengurus');
+})->name('add-review');
+Route::get('/review_mwcnu', function () {
+    return view('pages.add.add-review-mwc', [
+        'title'=> 'PWNU',
+        'username'=>'John Doe',
+        'from'=>'Jawa Barat',
+        'name'=>'PWNU Jawa Barat'
+    ]);
+})->name('add-review-mwc');
+
+
+// Route::get('/add_sk', function () {
+//     return view('pages.add.add-pengurus', [
+//         'title'=> 'PWNU',
+//         'username'=>'John Doe',
+//         'from'=>'Jawa Barat',
+//         'name'=>'PWNU Jawa Barat'
+//     ]);
+// })->name('add_pengurus');
+
+// Route::get('/pengurus', function () {
+//     return view('pages.pengurus', [
+//         'title'=> 'PWNU',
+//         'username'=>'John Doe',
+//         'from'=>'Jawa Barat',
+//         'name'=>'PWNU Jawa Barat'
+//     ]);
+// })->name('pengurus');
+
+// Route::get('/detail_pengurus', function () {
+//     return view('pages.detail-pengurus', [
+//         'title'=> 'PWNU',
+//         'username'=>'John Doe',
+//         'from'=>'Jawa Barat',
+//         'name'=>'PWNU Jawa Barat'
+//     ]);
+// })->name('detail_pengurus');
 
 Route::get('add-review-pcnu', function () {
     return view('pages.add.add-review-pcnu',[

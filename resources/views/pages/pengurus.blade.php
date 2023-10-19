@@ -61,8 +61,9 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($anggota as $item)
                         <tr>
-                            <th scope="row"><a href="{{route('detail_pengurus')}}">KH. Hasan Nuri Hidayatullah</a></th>
+                            <th scope="row"><a href="{{route('detail_pengurus')}}?pengurus={{setRoute($item->id)}}">{{$item->nama}}</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
                             <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
@@ -73,7 +74,7 @@
                                 <ul
                                 class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" id="edit" data-syarat={{$item->id}}>
                                     <i class="bi bi-pencil-square"></i>
                                     Edit
                                     </a>
@@ -86,6 +87,7 @@
                                 </ul>
                             </td>
                         </tr>
+                        @endforeach
                         <tr>
                             <th scope="row"><a href="detail-pengurus">H. Asep Saepudin Abdillah</a></th>
                             <td>081111111</td>
@@ -244,4 +246,6 @@
             </div>
         </div>
     </div>
+    <script>
+    </script>
 @endsection
