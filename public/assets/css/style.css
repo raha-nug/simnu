@@ -727,6 +727,9 @@ h6 {
     color: rgb(169, 207, 212);
     background: #187865;
 }
+.sidebar-nav .nav-link.collapsed.active{
+    background-color: #1c8d77;
+}
 
 .sidebar-nav .nav-link.collapsed i {
     color: rgb(169, 207, 212);

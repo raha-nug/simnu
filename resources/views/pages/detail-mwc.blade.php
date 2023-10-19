@@ -30,6 +30,7 @@
 
 
         <li><a class="dropdown-item" href="{{ route('ranting-add') }}?mwc={{ setRoute($mwc_data->id) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
+        <li><a href="#" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
 
       </ul>
     </div>

@@ -195,9 +195,9 @@ Route::get('/detail_pengurus', function () {
     ]);
 })->name('detail_pengurus');
 
-Route::get('profile', function () {
-    return view('pages.profile',[
-        'title'=> 'Profile',
+Route::get('add-review-pcnu', function () {
+    return view('pages.add.add-review-pcnu',[
+        'title'=> 'Reviews',
         'username'=>'John Doe',
         'from'=>'Jawa Barat',
         'name'=>'PWNU Jawa Barat'
