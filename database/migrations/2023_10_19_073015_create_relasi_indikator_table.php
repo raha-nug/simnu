@@ -17,7 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pcnu')->nullable();
             $table->unsignedBigInteger('id_mwcnu')->nullable();
             $table->unsignedBigInteger('id_indikator')->nullable();
-            $table->decimal('nilai',12);
+            $table->decimal('nilai_kurang',12);
+            $table->decimal('nilai_cukup',12);
+            $table->decimal('nilai_baik',12);
             $table->timestamps();
 
             $table->foreign('id_pwnu')->references('id')->on('pwnu')->onDelete('cascade');

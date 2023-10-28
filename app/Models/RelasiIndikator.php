@@ -18,7 +18,9 @@ class RelasiIndikator extends Model
         'id_pcnu',
         'id_mwcnu',
         'id_indikator',
-        'nilai'
+        'nilai_kurang',
+        'nilai_cukup',
+        'nilai_baik'
     ];
 
 }

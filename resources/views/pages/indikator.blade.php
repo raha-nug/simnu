@@ -46,6 +46,11 @@
                             <ul
                             class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
+                            <li><a class="dropdown-item" href="{{route('add_uraian')}}?indikator={{setRoute($value->id)}}">
+                                <i class="bi bi-pencil-square"></i>
+                                Tambah Uraian
+                                </a>
+                            </li>
                             <li><a class="dropdown-item" href="{{route('update_indikator', ['id_i' => setRoute($value->id)])}}">
                                 <i class="bi bi-pencil-square"></i>
                                 Edit

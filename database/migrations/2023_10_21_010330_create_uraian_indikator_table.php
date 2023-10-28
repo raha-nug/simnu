@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('indikator', function (Blueprint $table) {
+        Schema::create('uraian_indikator', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_indikator', 255);
+            $table->string('nama_uraian', 255);
+            $table->unsignedBigInteger('id_indikator')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_indikator')->references('id')->on('indikator')->onDelete('cascade');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('indikator');
+        Schema::dropIfExists('uraian_indikator');
     }
 };

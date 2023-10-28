@@ -148,6 +148,11 @@ Route::prefix('indikator')->group(function () {
     Route::post('/process', [IndikatorController::class, 'process'])->name('process_indikator');
     Route::get('/detail/{id_i}', [IndikatorController::class, 'detail'])->name('detail_indikator');
     Route::get('/delete/{id_i}', [IndikatorController::class, 'delete'])->name('delete_indikator');
+    Route::get('/add-review', [IndikatorController::class, 'addReview'])->name('add-review');
+    Route::post('/process-review', [IndikatorController::class, 'processReview'])->name('process-review');
+
+    Route::get('/add_uraian', [IndikatorController::class, 'addUraian'])->name('add_uraian');
+    Route::post('/process_uraian', [IndikatorController::class, 'processUraian'])->name('process_uraian');
 });
 
 Route::prefix('lembaga')->group(function () {
@@ -195,14 +200,14 @@ Route::prefix('anggota')->group(function () {
     Route::post('/update', [EditProfileController::class, 'edit'])->name('edit');
 });
 
-Route::get('/review_pcnu', function () {
-    return view('pages.add.add-review-pcnu', [
-        'title'=> 'PWNU',
-        'username'=>'John Doe',
-        'from'=>'Jawa Barat',
-        'name'=>'PWNU Jawa Barat'
-    ]);
-})->name('add-review');
+// Route::get('/review_pcnu', function () {
+//     return view('pages.add.add-review-pcnu', [
+//         'title'=> 'PWNU',
+//         'username'=>'John Doe',
+//         'from'=>'Jawa Barat',
+//         'name'=>'PWNU Jawa Barat'
+//     ]);
+// })->name('add-review');
 Route::get('/review_mwcnu', function () {
     return view('pages.add.add-review-mwc', [
         'title'=> 'PWNU',

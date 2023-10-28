@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PCNU;
 use App\Models\Indikator;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use App\Models\RelasiIndikator;
+use App\Models\UraianIndikator;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -32,6 +36,39 @@ class IndikatorController extends Controller
         $indikator = Indikator::query()->where('id', $id)->first();
         return $this->addIndikator($indikator);
     }
+
+    public function getUraian($id_ui){
+        $id = getRoute($id_ui);
+        if(!$id){
+            Alert::error('Oops', 'Data Tidak Ditemukan');
+            return view('pages.detail-indikator');
+        }
+
+        $uraian = UraianIndikator::query()->where('id', $id)->first();
+        return $this->addUraian($uraian);
+    }
+
+    public function addUraian(Request $request, $data_ui=null){
+        $id = $request->indikator;
+        $id_indikator = getRoute($id);
+
+        $data_indikator = Indikator::select(['id','nama_indikator'])->where('id', $id_indikator)->first();
+
+        $data = [
+            'title'=> 'Uraian Indikator',
+            'username'=>'John Doe',
+            'from'=>'Jawa Barat',
+            'data_ui' => $data_indikator,
+            'method'=>'POST',
+            'action' => route('process_uraian')
+        ];
+
+        if($data_ui)
+            $data['data_ui'] = $data_ui;
+
+        return view('pages.add.add_uraian_indikator', $data);
+    }
+
     public function addIndikator($data_i=null){
         $data = [
             'title'=> 'Indikator',
@@ -78,6 +115,38 @@ class IndikatorController extends Controller
         return redirect(route('indikator'));
     }
 
+    public function processUraian(Request $request){
+        $rules = [
+            'nama_uraian' => 'required',
+            'id_indikator' => 'sometimes|nullable',
+        ];
+
+        $message = [
+            'nama_uraian.required' => 'Nama Indikator Harus Diisi'
+        ];
+
+        $validated = Validator::make($request->all(), $rules, $message);
+        if($validated->fails()){
+            $error = implode(", ", array_map('implode', array_values($validated->errors()->messages())));
+            Alert::error('Oops!', $error);
+            return redirect()->back();
+        }
+
+        $data = $validated->validate();
+        if(isset($request->id)){
+            $is_updated = UraianIndikator::query()->where('id', $request->id)->update($data);
+            if(!$is_updated){
+                Alert::error('Oops', 'Data Gagal Diupdate');
+                return redirect()->back();
+            }
+            Alert::success('Data Berhasil Diupdate');
+            return redirect(route('indikator'));
+        }
+        UraianIndikator::create($data);
+        Alert::success('Data Berhasil Disimpan');
+        return redirect(route('indikator'));
+    }
+
     public function detail($id_i){
         $id = getRoute($id_i);
         if(!$id){
@@ -86,11 +155,13 @@ class IndikatorController extends Controller
         }
 
         $bb = Indikator::query()->where('id', $id)->first();
+        $uraian = UraianIndikator::query()->where('id_indikator',$bb->id)->get();
         $data = [
             'title'=> 'Detail Banom Basis',
             'username'=>'John Doe',
             'from'=>'Jawa Barat',
             'data_i' => $bb,
+            'data_uraian' => $uraian
         ];
         return view('pages.detail-indikator', $data);
     }
@@ -110,5 +181,125 @@ class IndikatorController extends Controller
             Alert::success('Data Berhasil Dihapus');
             return redirect()->back();
         }
+    }
+
+    public function addReview(Request $request){
+        if($request->pcnu){
+            $id = $request->pcnu;
+            $id_pc = getRoute($id);
+
+            $id_relasi_indikator = RelasiIndikator::query()->where('id_pcnu', $id_pc)->first();
+        }
+
+        if($request->mwcnu) {
+            $id = $request->pcnu;
+            $id_mwc = getRoute($id);
+
+            $id_relasi_indikator = RelasiIndikator::query()->where('id_mwcnu', $id_mwc)->first();
+        }
+
+        $indikator = Indikator::get()->toArray();
+        $list = Arr::map($indikator, function(array $value){
+            $uraian = ['nama_indikator' => $value['nama_indikator'], 'id' => $value['id']];
+            $uraian['uraian_indikator'] =  UraianIndikator::where('id_indikator', $value['id'])->get();
+            return collect($uraian);
+        });
+        $pcnu = PCNU::query()->where('id', $id_pc)->first();
+        $data = [
+            'pcnu_data' => $pcnu,
+            'title'=> 'PCNU',
+            'username'=>'John Doe',
+            'from'=>'Jawa Barat',
+            'name'=>'PWNU Jawa Barat',
+            'list' => $list,
+            'relasi_indikator' => $id_relasi_indikator,
+            'method' => 'POST',
+            'action' => route('process-review'),
+        ];
+
+        return view('pages.add.add-review-pcnu', $data);
+    }
+
+    public function processReview(Request $request){
+        $rules = [
+            'id_pwnu' => 'sometimes|nullable',
+            'id_pcnu' => 'sometimes|nullable',
+            'id_mwcnu' => 'sometimes|nullable',
+            'nilai' => 'sometimes|nullable',
+        ];
+
+        $message = [
+            // 'id_pwnu.required' => 'Id Pwnu Harus Diisi',
+            'id_pcnu.required' => 'Id Pcnu Harus Diisi',
+            'id_mwcnu.required' => 'Id Mwcnu Harus Diisi',
+            // 'nilai.required' => 'Nilai Haris Diisi'
+        ];
+
+        $validated = Validator::make($request->all(), $rules, $message);
+        if($validated->fails()){
+            $error = implode(", ", array_map('implode', array_values($validated->errors()->messages())));
+            Alert::error('Oops!', $error);
+            return redirect()->back();
+        }
+        $data = $validated->validate();
+        if(isset($request->id)){
+            $verifikasiAda = $request->input('verifikasiAda');
+            $verifikasiTidakAda = $request->input('verifikasiTidakAda');
+            $validasiKurang = $request->input('validasiKurang');
+            $validasiCukup = $request->input('validasiCukup');
+            $validasiBaik = $request->input('validasiBaik');
+            if($verifikasiAda){
+                $ada = count($verifikasiAda);
+            }
+            if($verifikasiTidakAda){
+                $tidakAda = count($verifikasiTidakAda);
+            }
+            if($validasiBaik){
+                $baik = count($validasiBaik);
+                $data['nilai_baik'] = $baik;
+            }
+            if($validasiCukup){
+                $cukup = count($validasiCukup);
+                $data['nilai_cukup'] = $cukup;
+            }
+            if($validasiKurang){
+                $kurang = count($validasiKurang);
+                $data['nilai_kurang'] = $kurang;
+            }
+            $is_updated = RelasiIndikator::query()->where('id', $request->id)->update($data);
+            if (!$is_updated)
+            {
+                Alert::error('Oops! , Gagal melakukan update');
+                return redirect()->back(400);
+            }
+            Alert::success('Reaview Berhasil DiUpdate');
+            return redirect(route('pcnu'));
+        }
+        $verifikasiAda = $request->input('verifikasiAda');
+        $verifikasiTidakAda = $request->input('verifikasiTidakAda');
+        $validasiKurang = $request->input('validasiKurang');
+        $validasiCukup = $request->input('validasiCukup');
+        $validasiBaik = $request->input('validasiBaik');
+        if($verifikasiAda){
+            $ada = count($verifikasiAda);
+        }
+        if($verifikasiTidakAda){
+            $tidakAda = count($verifikasiTidakAda);
+        }
+        if($validasiBaik){
+            $baik = count($validasiBaik);
+            $data['nilai_baik'] = $baik;
+        }
+        if($validasiCukup){
+            $cukup = count($validasiCukup);
+            $data['nilai_cukup'] = $cukup;
+        }
+        if($validasiKurang){
+            $kurang = count($validasiKurang);
+            $data['nilai_kurang'] = $kurang;
+        }
+        Alert::success('Review Berhasl Disimpan');
+        RelasiIndikator::create($data);
+        return redirect(route('pcnu'));
     }
 }

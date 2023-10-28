@@ -32,9 +32,11 @@ class PCNU extends Model
     public static function getData($paginate)
     {
         $query = self::query()
-            ->select(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
+            ->select(['pcnu.id', 'pcnu.nama', 'pcnu.alamat', 'relasi_indikator.nilai_kurang',
+                       'relasi_indikator.nilai_cukup', 'relasi_indikator.nilai_baik'])
             ->selectRaw('COUNT(mwcnu.id) as jumlah_mwc')
             ->leftJoin('mwcnu', 'pcnu.id', '=', 'mwcnu.id_pcnu')
+            ->leftJoin('relasi_indikator', 'pcnu.id', '=', 'relasi_indikator.id_pcnu')
             ->groupBy(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
             ->paginate($paginate);
         // ->get();

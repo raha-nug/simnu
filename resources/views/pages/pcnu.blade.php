@@ -36,6 +36,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Nama</th>
+                            <th scope="col">Nilai Verifikasi & Validasi</th>
                             <th scope="col">Alamat</th>
                             <th scope="col">MWC</th>
                             <th scope="col">Aksi</th>
@@ -45,6 +46,17 @@
                         @foreach ($list_pcnu as $item)
                         <tr>
                             <th scope="row"><a href="{{ route('pcnu-detail') }}?page=10&pc={{ setRoute($item->id) }}">{{ $item->nama }}</a></th>
+                            <td>
+                                @if($item->nilai_kurang > $item->nilai_cukup && $item->nilai_kurang > $item->nilai_baik)
+                                    <span class="bg-danger text-white px-3 py-1 rounded">Kurang</span>
+                                @elseif ($item->nilai_cukup > $item->nilai_kurang && $item->nilai_cukup > $item->nilai_baik)
+                                    <span class="bg-warning text-white px-3 py-1 rounded">Cukup</span>
+                                @elseif ($item->nilai_baik > $item->nilai_cukup && $item->nilai_baik > $item->nilai_kurang)
+                                    <span class="bg-success text-white px-3 py-1 rounded">Baik</span>
+                                @else
+                                    <span>Belum Di Verifikasi Dan Validasi</span>
+                               @endif
+                            </td>
                             <td>{{ $item->alamat }}</td>
                             <td>{{ $item->jumlah_mwc }}</td>
                             <td>
