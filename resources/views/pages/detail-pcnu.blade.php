@@ -1,9 +1,10 @@
-@extends('layout.master')
+@extends('layout.master',$pc_data)
 
 
 @section('title',$title)
 @section('username',$username)
 @section('from',$from)
+
 
 @section('pagetitle')
 <div class="pagetitle">
@@ -29,7 +30,7 @@
 
 
         <li><a class="dropdown-item" href="{{ route('pcnu-update',['id_pc' => setRoute($pc_data->id)]) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        <li><a href="{{route('add-review')}}?pcnu={{setRoute($pc_data->id)}}" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
+        <li><a href="{{route('add-review-pcnu')}}?pcnu={{setRoute($pc_data->id)}}" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
       </ul>
     </div>
     <div class="card-header">Detail PCNU</div>
@@ -200,9 +201,19 @@
           "orderable": false
         },
         {
-          mData: "",
+          mData: "nilai_baik",
           mRender: function(data, type, row) {
-            return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
+            if(row.nilai_baik == 0 && row.nilai_cukup == 0 && row.nilai_kurang == 0){
+                return `<span class="badge bg-danger"><i class="bi bi-info-circle me-1"></i> Kurang </span>`;
+            } else if( row.nilai_kurang > row.nilai_cukup && row.nilai_kurang > row.nilai_baik) {
+                return `<span class="badge bg-danger"><i class="bi bi-info-circle me-1"></i> Kurang </span>`;
+            } else if( row.nilai_cukup > row.nilai_kurang && row.nilai_cukup > row.nilai_baik) {
+                return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Cukup </span>`;
+            } else if( row.nilai_baik > row.nilai_cukup && row.nilai_baik > row.nilai_kurang) {
+                return `<span class="badge bg-success"><i class="bi bi-info-circle me-1"></i> Baik </span>`;
+            } else {
+                return `<span> Belum Diverifikasi dan Validasi </span>`;
+            }
           },
           "orderable": false
         },

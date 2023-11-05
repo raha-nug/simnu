@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.master',$ranting_data)
 
 
 @section('title',$title)

@@ -40,7 +40,15 @@ if (!function_exists('mapSetRoute')) {
             'tanggal_mulai' => $item->tanggal_mulai,
             'tanggal_berakhir' => $item->tanggal_berakhir,
             "alamat" =>  $item->nama,
-            "jumlah" =>  $item->jumlah
+            "jumlah" =>  $item->jumlah,
+            "nilai_baik" => $item->nilai_baik,
+            "nilai_cukup" => $item->nilai_cukup,
+            "nilai_kurang" => $item->nilai_kurang,
+            "nama" => $item->nama,
+            "jabatan" => $item->jabatan,
+            "pengurus" => $item->jenis_pengurus,
+            "mulai_jabatan" => $item->mulai_jabatan,
+            "akhir_jabatan" => $item->akhir_jabatan,
          ];
          $result->push($val);
       }

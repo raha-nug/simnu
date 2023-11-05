@@ -11,7 +11,7 @@
             </tr>
          </thead>
          <tbody>
-            <tr>
+            {{-- <tr>
                <th scope="row">1</th>
                <td>KH. Asep Burhanudin</td>
                <td>Mustasyar</td>
@@ -45,7 +45,7 @@
                <td>Syuriah</td>
                <td>Katib</td>
                <td>2011-04-19</td>
-            </tr>
+            </tr> --}}
          </tbody>
       </table>
    </div>

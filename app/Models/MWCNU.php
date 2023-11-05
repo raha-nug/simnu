@@ -37,10 +37,11 @@ class MWCNU extends Model
             return collect([]);
 
         $query = self::query()
-            ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
+            ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat','relasi_indikator.nilai_baik', 'relasi_indikator.nilai_cukup', 'relasi_indikator.nilai_kurang'])
             ->selectRaw('COUNT(ranting.id) as jumlah')
-            ->leftJoin('ranting', 'mwcnu.id', '=', 'id_mwcnu')
-            ->where('id_pcnu', $id_pc)
+            ->leftJoin('ranting', 'mwcnu.id', '=', 'ranting.id_mwcnu')
+            ->leftJoin('relasi_indikator', 'mwcnu.id', '=', 'relasi_indikator.id_mwcnu')
+            ->where('mwcnu.id_pcnu', $id_pc)
             ->groupBy(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
             // ->paginate($paginate);
             ->limit($limit)
@@ -50,7 +51,7 @@ class MWCNU extends Model
                 ->orWhereRaw("mwcnu.alamat LIKE '%{$search}%'");
         }
 
-        return $query->get();
+         return $query->get();
     }
 
     public static function getRowData($id)

@@ -40,6 +40,12 @@
           <dd>{{$data_i->nama_indikator}}</dd>
         </div>
         <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Nama Tingkat Indikator:</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{$data_i->tingkat_indikator}}</dd>
+        </div>
+        <div class="col-lg-3">
           <dt class="text-lg-end text-sm-start">Nama Uraian Indikator:</dt>
         </div>
         <div class="col-lg-9">

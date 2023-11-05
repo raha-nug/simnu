@@ -23,9 +23,9 @@
       Review Kinerja
     </x-slot:title>
     <div class="col-md-12">
-      <label for="pcnu" class="form-label">Nama PCNU</label>
-      <input type="text" name="pcnu" class="form-control" id="pcnu" value="{{$pcnu_data->nama}}" readonly>
-      <input type="hidden" name="id_pcnu" value="{{$pcnu_data->id}}">
+        <label for="pcnu" class="form-label">Nama PCNU</label>
+        <input type="text" name="pcnu" class="form-control" id="pcnu" value="{{$pcnu_data->nama}}" readonly>
+        <input type="hidden" name="id_pcnu" value="{{$pcnu_data->id}}">
    </div>
     <div class="table-responsive">
       <table class="table table-bordered">

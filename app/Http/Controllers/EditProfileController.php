@@ -127,8 +127,23 @@ class EditProfileController extends Controller
             $data['img'] = $file_img_path;
         }
         // dd($data);
-        Anggota::query()->where('id', $request->id)->update($data);
+        $id_anggota = $request->id;
+        $id = getRoute($id_anggota);
+        Anggota::query()->where('id', $id)->update($data);
         Alert::success('Data Berhasil DiUpadte');
         return redirect()->back();
+    }
+
+    public function delete(Request $request){
+        $id = $request->id_anggota;
+        $id_anggota = getRoute($id);
+        $is_deleted = Anggota::query()->where('id', $id_anggota)->delete();
+        if($is_deleted){
+            Alert::success('Data Berhasil DiHapus');
+            return redirect()->back();
+        } else {
+            Alert::success('Data Gagal Dihapus');
+            return redirect()->back();
+        }
     }
 }

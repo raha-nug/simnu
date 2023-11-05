@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\Jabatan;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class PengurusController extends Controller
 {
@@ -21,6 +22,7 @@ class PengurusController extends Controller
             'username' => 'John Doe',
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
+            'jabatan' => Jabatan::get(),
             'id_sk' => getRoute($request->id_sk)
         ];
 
@@ -92,8 +94,15 @@ class PengurusController extends Controller
         $list = Pengurus::where('id_sk', $request->id_sk)
             ->where('jenis_pengurus', $request->jenis_pengurus)
             ->get();
-        
-        return response()->json(['success' => 1, 'data' => $list]);
+        $data = [
+            'pengurus' => $list
+        ];
+        return view('pages.detail-sk', $data);
+        // return response()->json((object)
+        //     [
+        //      'success' => 1,
+        //      'data' => mapSetRoute($list)
+        // ]);
     }
 
 }

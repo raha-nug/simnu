@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('kab', 16)->nullable();
             $table->string('kec', 16)->nullable();
             $table->string('desa', 16)->nullable();
-            $table->string('img', 255)->default('default.jpg');
+            $table->string('img', 255)->nullable();
             $table->timestamps();
 
             $table->index('nik');

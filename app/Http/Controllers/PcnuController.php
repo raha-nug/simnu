@@ -94,7 +94,7 @@ class PcnuController extends Controller
         return response()->json((object)[
             'success' => 1,
             'data' => mapSetRoute($mwc_list)
-        ]);;
+        ]);
     }
 
     public function addPcnu($pc_data=null)

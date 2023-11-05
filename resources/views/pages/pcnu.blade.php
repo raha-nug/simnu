@@ -49,9 +49,11 @@
                             <td>
                                 @if($item->nilai_kurang > $item->nilai_cukup && $item->nilai_kurang > $item->nilai_baik)
                                     <span class="bg-danger text-white px-3 py-1 rounded">Kurang</span>
-                                @elseif ($item->nilai_cukup > $item->nilai_kurang && $item->nilai_cukup > $item->nilai_baik)
+                                {{-- @elseif($item->nilai_kurang == 0 && $item->nilai_cukup == 0 && $item->nilai_baik == 0) --}}
+                                    <span class="bg-danger text-white px-3 py-1 rounded">Kurang</span>
+                                @elseif($item->nilai_cukup > $item->nilai_kurang && $item->nilai_cukup > $item->nilai_baik)
                                     <span class="bg-warning text-white px-3 py-1 rounded">Cukup</span>
-                                @elseif ($item->nilai_baik > $item->nilai_cukup && $item->nilai_baik > $item->nilai_kurang)
+                                @elseif($item->nilai_baik > $item->nilai_cukup && $item->nilai_baik > $item->nilai_kurang)
                                     <span class="bg-success text-white px-3 py-1 rounded">Baik</span>
                                 @else
                                     <span>Belum Di Verifikasi Dan Validasi</span>

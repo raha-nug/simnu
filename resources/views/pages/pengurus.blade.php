@@ -64,9 +64,9 @@
                         @foreach ($anggota as $item)
                         <tr>
                             <th scope="row"><a href="{{route('detail_pengurus')}}?pengurus={{setRoute($item->id)}}">{{$item->nama}}</a></th>
-                            <td>081111111</td>
-                            <td>contoh@email.com</td>
-                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
+                            <td>{{$item->telepon}}</td>
+                            <td>{{$item->email}}</td>
+                            <td>{{$item->alamat}}</td>
                             <td>
                                 <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-three-dots-vertical"></i>
@@ -74,12 +74,12 @@
                                 <ul
                                 class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
-                                <li><a class="dropdown-item" id="edit" data-syarat={{$item->id}}>
+                                <li><a class="dropdown-item" id="edit" data-syarat={{$item->id}} href="{{route('detail_pengurus')}}?pengurus={{setRoute($item->id)}}">
                                     <i class="bi bi-pencil-square"></i>
                                     Edit
                                     </a>
                                 </li>
-                                <li><a class="dropdown-item text-danger" href="#">
+                                <li><a class="dropdown-item text-danger" href="{{route('delete')}}?id_anggota={{setRoute($item->id)}}">
                                     <i class="bi bi-trash"></i>
                                     Hapus
                                     </a>
@@ -88,7 +88,7 @@
                             </td>
                         </tr>
                         @endforeach
-                        <tr>
+                        {{-- <tr>
                             <th scope="row"><a href="detail-pengurus">H. Asep Saepudin Abdillah</a></th>
                             <td>081111111</td>
                             <td>contoh@email.com</td>
@@ -238,7 +238,7 @@
                                 </li>
                                 </ul>
                             </td>
-                        </tr>
+                        </tr> --}}
 
                     </tbody>
                     </table>

@@ -148,7 +148,8 @@ Route::prefix('indikator')->group(function () {
     Route::post('/process', [IndikatorController::class, 'process'])->name('process_indikator');
     Route::get('/detail/{id_i}', [IndikatorController::class, 'detail'])->name('detail_indikator');
     Route::get('/delete/{id_i}', [IndikatorController::class, 'delete'])->name('delete_indikator');
-    Route::get('/add-review', [IndikatorController::class, 'addReview'])->name('add-review');
+    Route::get('/add-review-pcnu', [IndikatorController::class, 'addReviewPcnu'])->name('add-review-pcnu');
+    Route::get('/add-review-mwcnu', [IndikatorController::class, 'addReviewMwcnu'])->name('add-review-mwcnu');
     Route::post('/process-review', [IndikatorController::class, 'processReview'])->name('process-review');
 
     Route::get('/add_uraian', [IndikatorController::class, 'addUraian'])->name('add_uraian');
@@ -191,6 +192,7 @@ Route::prefix('pengurus')->group(function () {
     Route::get('/add_pengurus', [PengurusController::class, 'index'])->name('add_pengurus');
     Route::post('/process', [PengurusController::class, 'process'])->name('pengurus_process');
     Route::post('/delete', [PengurusController::class, 'delete'])->name('del_pengurus');
+    Route::get('/listPengurus', [PengurusController::class, 'listPengurus'])->name('listPengurus');
 });
 
 Route::prefix('anggota')->group(function () {
@@ -198,6 +200,7 @@ Route::prefix('anggota')->group(function () {
     Route::get('/detail', [EditProfileController::class, 'detail'])->name('detail_pengurus');
     Route::get('/getPengurus', [EditProfileController::class, 'getPengurus'])->name('getPengurus');
     Route::post('/update', [EditProfileController::class, 'edit'])->name('edit');
+    Route::get('/delete', [EditProfileController::class, 'delete'])->name('delete');
 });
 
 // Route::get('/review_pcnu', function () {

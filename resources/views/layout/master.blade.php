@@ -106,6 +106,7 @@
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
       <ul class="sidebar-nav" id="sidebar-nav">
+        @if(session()->get('admin_super'))
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*dashboard*') ? 'active':'' }}"
@@ -114,7 +115,9 @@
             <span>Dashboard</span>
           </a>
         </li>
+        @endif
         <li class="nav-heading">Districts</li>
+        @if(session()->get('admin_super'))
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('pwnu') ? 'active':'' }}"
@@ -146,10 +149,108 @@
             <span>PWNU</span>
           </a>
         </li>
+        @endif
         <li class="nav-item">
-          <a
-            class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
-            href="{{ route('pcnu') }}">
+        @if (session()->get('hak_akses_pcnu'))
+        <a
+          class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
+          href="{{route('pcnu-detail')}}?page=10&pc={{setRoute($pc_data->id)}}">
+          <div class="icon-nav">
+            <?xml version="1.0" ?>
+            <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+            <svg
+              height="25"
+              style="
+                fill-rule: evenodd;
+                clip-rule: evenodd;
+                stroke-linejoin: round;
+                stroke-miterlimit: 2;
+              "
+              version="1.1"
+              viewBox="0 0 100 100"
+              width="25"
+              xml:space="preserve"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:serif="http://www.serif.com/"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+              <g transform="matrix(1,0,0,1,-450,-450)">
+                <g id="Layer1">
+                  <path
+                    d="M495.013,463.667L469.797,467.107C469.054,467.208 468.5,467.843 468.5,468.593L468.5,475.5C468.5,476.328 469.172,477 470,477L473.5,477L473.5,534.097C467.858,534.832 463.5,539.657 463.5,545.5C463.5,546.914 465,547 465,547L535,547C535,547 536.5,546.914 536.5,545.5L536.5,545.5C536.5,539.657 532.142,534.832 526.5,534.097L526.5,477L530,477C530.828,477 531.5,476.328 531.5,475.5L531.5,468.593C531.5,467.843 530.946,467.208 530.203,467.107L504.987,463.667C505.932,462.538 506.5,461.085 506.5,459.5C506.5,455.913 503.587,453 500,453C496.413,453 493.5,455.913 493.5,459.5C493.5,461.085 494.068,462.538 495.013,463.667ZM533.368,544L466.632,544C467.34,540.021 470.817,537 475,537C475,537 525,537 525,537C529.183,537 532.66,540.021 533.368,544ZM476.5,529.5L476.5,534C476.5,534 523.5,534 523.5,534L523.5,529.5L476.5,529.5ZM476.5,484.5L476.5,526.5L478.5,526.5L478.5,498.322C478.5,492.897 482.897,488.5 488.322,488.5L488.325,488.5C493.75,488.5 498.147,492.897 498.147,498.322L498.147,526.5L501.853,526.5L501.853,498.322C501.853,492.897 506.25,488.5 511.675,488.5L511.678,488.5C517.103,488.5 521.5,492.897 521.5,498.322L521.5,526.5L523.5,526.5L523.5,484.5L476.5,484.5ZM518.5,526.5L504.853,526.5C504.853,526.5 504.853,498.322 504.853,498.322C504.853,494.554 507.907,491.5 511.675,491.5C511.675,491.5 511.678,491.5 511.678,491.5C515.446,491.5 518.5,494.554 518.5,498.322L518.5,526.5ZM495.147,526.5L481.5,526.5C481.5,526.5 481.5,498.322 481.5,498.322C481.5,494.554 484.554,491.5 488.322,491.5C488.322,491.5 488.325,491.5 488.325,491.5C492.093,491.5 495.147,494.554 495.147,498.322L495.147,526.5ZM523.5,481.5L476.5,481.5L476.5,477L523.5,477L523.5,481.5ZM471.5,474L528.5,474L528.5,469.902L500,466.014C500,466.014 471.5,469.902 471.5,469.902C471.5,469.902 471.5,474 471.5,474ZM500,456C501.932,456 503.5,457.568 503.5,459.5C503.5,461.432 501.932,463 500,463C498.068,463 496.5,461.432 496.5,459.5C496.5,457.568 498.068,456 500,456Z" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <span>PCNU</span>
+        </a>
+        @elseif (session()->get('hak_akses_mwcnu'))
+        <a
+          class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
+          href="{{ route('mwcnu') }}?mwc={{setRoute($mwc_data->id)}}">
+            <div class="icon-nav">
+              <?xml version="1.0" ?>
+              <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+              <svg
+                height="25"
+                style="
+                  fill-rule: evenodd;
+                  clip-rule: evenodd;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 2;
+                "
+                version="1.1"
+                viewBox="0 0 100 100"
+                width="25"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:serif="http://www.serif.com/"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g transform="matrix(1,0,0,1,-450,-450)">
+                  <g id="Layer1">
+                    <path
+                      d="M495.013,463.667L469.797,467.107C469.054,467.208 468.5,467.843 468.5,468.593L468.5,475.5C468.5,476.328 469.172,477 470,477L473.5,477L473.5,534.097C467.858,534.832 463.5,539.657 463.5,545.5C463.5,546.914 465,547 465,547L535,547C535,547 536.5,546.914 536.5,545.5L536.5,545.5C536.5,539.657 532.142,534.832 526.5,534.097L526.5,477L530,477C530.828,477 531.5,476.328 531.5,475.5L531.5,468.593C531.5,467.843 530.946,467.208 530.203,467.107L504.987,463.667C505.932,462.538 506.5,461.085 506.5,459.5C506.5,455.913 503.587,453 500,453C496.413,453 493.5,455.913 493.5,459.5C493.5,461.085 494.068,462.538 495.013,463.667ZM533.368,544L466.632,544C467.34,540.021 470.817,537 475,537C475,537 525,537 525,537C529.183,537 532.66,540.021 533.368,544ZM476.5,529.5L476.5,534C476.5,534 523.5,534 523.5,534L523.5,529.5L476.5,529.5ZM476.5,484.5L476.5,526.5L478.5,526.5L478.5,498.322C478.5,492.897 482.897,488.5 488.322,488.5L488.325,488.5C493.75,488.5 498.147,492.897 498.147,498.322L498.147,526.5L501.853,526.5L501.853,498.322C501.853,492.897 506.25,488.5 511.675,488.5L511.678,488.5C517.103,488.5 521.5,492.897 521.5,498.322L521.5,526.5L523.5,526.5L523.5,484.5L476.5,484.5ZM518.5,526.5L504.853,526.5C504.853,526.5 504.853,498.322 504.853,498.322C504.853,494.554 507.907,491.5 511.675,491.5C511.675,491.5 511.678,491.5 511.678,491.5C515.446,491.5 518.5,494.554 518.5,498.322L518.5,526.5ZM495.147,526.5L481.5,526.5C481.5,526.5 481.5,498.322 481.5,498.322C481.5,494.554 484.554,491.5 488.322,491.5C488.322,491.5 488.325,491.5 488.325,491.5C492.093,491.5 495.147,494.554 495.147,498.322L495.147,526.5ZM523.5,481.5L476.5,481.5L476.5,477L523.5,477L523.5,481.5ZM471.5,474L528.5,474L528.5,469.902L500,466.014C500,466.014 471.5,469.902 471.5,469.902C471.5,469.902 471.5,474 471.5,474ZM500,456C501.932,456 503.5,457.568 503.5,459.5C503.5,461.432 501.932,463 500,463C498.068,463 496.5,461.432 496.5,459.5C496.5,457.568 498.068,456 500,456Z" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span>MWCNU</span>
+          </a>
+        @elseif(session()->get('hak_akses_rantingnu'))
+        <a
+          class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
+          href="{{ route('ranting') }}?rantinf={{setRoute($ranting_data->id)}}">
+            <div class="icon-nav">
+              <?xml version="1.0" ?>
+              <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+              <svg
+                height="25"
+                style="
+                  fill-rule: evenodd;
+                  clip-rule: evenodd;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 2;
+                "
+                version="1.1"
+                viewBox="0 0 100 100"
+                width="25"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:serif="http://www.serif.com/"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <g transform="matrix(1,0,0,1,-450,-450)">
+                  <g id="Layer1">
+                    <path
+                      d="M495.013,463.667L469.797,467.107C469.054,467.208 468.5,467.843 468.5,468.593L468.5,475.5C468.5,476.328 469.172,477 470,477L473.5,477L473.5,534.097C467.858,534.832 463.5,539.657 463.5,545.5C463.5,546.914 465,547 465,547L535,547C535,547 536.5,546.914 536.5,545.5L536.5,545.5C536.5,539.657 532.142,534.832 526.5,534.097L526.5,477L530,477C530.828,477 531.5,476.328 531.5,475.5L531.5,468.593C531.5,467.843 530.946,467.208 530.203,467.107L504.987,463.667C505.932,462.538 506.5,461.085 506.5,459.5C506.5,455.913 503.587,453 500,453C496.413,453 493.5,455.913 493.5,459.5C493.5,461.085 494.068,462.538 495.013,463.667ZM533.368,544L466.632,544C467.34,540.021 470.817,537 475,537C475,537 525,537 525,537C529.183,537 532.66,540.021 533.368,544ZM476.5,529.5L476.5,534C476.5,534 523.5,534 523.5,534L523.5,529.5L476.5,529.5ZM476.5,484.5L476.5,526.5L478.5,526.5L478.5,498.322C478.5,492.897 482.897,488.5 488.322,488.5L488.325,488.5C493.75,488.5 498.147,492.897 498.147,498.322L498.147,526.5L501.853,526.5L501.853,498.322C501.853,492.897 506.25,488.5 511.675,488.5L511.678,488.5C517.103,488.5 521.5,492.897 521.5,498.322L521.5,526.5L523.5,526.5L523.5,484.5L476.5,484.5ZM518.5,526.5L504.853,526.5C504.853,526.5 504.853,498.322 504.853,498.322C504.853,494.554 507.907,491.5 511.675,491.5C511.675,491.5 511.678,491.5 511.678,491.5C515.446,491.5 518.5,494.554 518.5,498.322L518.5,526.5ZM495.147,526.5L481.5,526.5C481.5,526.5 481.5,498.322 481.5,498.322C481.5,494.554 484.554,491.5 488.322,491.5C488.322,491.5 488.325,491.5 488.325,491.5C492.093,491.5 495.147,494.554 495.147,498.322L495.147,526.5ZM523.5,481.5L476.5,481.5L476.5,477L523.5,477L523.5,481.5ZM471.5,474L528.5,474L528.5,469.902L500,466.014C500,466.014 471.5,469.902 471.5,469.902C471.5,469.902 471.5,474 471.5,474ZM500,456C501.932,456 503.5,457.568 503.5,459.5C503.5,461.432 501.932,463 500,463C498.068,463 496.5,461.432 496.5,459.5C496.5,457.568 498.068,456 500,456Z" />
+                  </g>
+                </g>
+              </svg>
+            </div>
+            <span>RANTINGNU</span>
+          </a>
+        @else
+        <a
+          class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
+          href="{{ route('pcnu') }}">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
@@ -178,6 +279,7 @@
             </div>
             <span>PCNU</span>
           </a>
+          @endif
         </li>
         {{-- <li class="nav-item">
           <a
@@ -240,6 +342,7 @@
             <span>Anak Ranting</span>
           </a>
         </li> --}}
+        @if(session()->get('admin_super'))
         <li class="nav-heading">Datas</li>
         <li class="nav-item">
           <a
@@ -257,92 +360,93 @@
             <span>Data Pengurus</span>
           </a>
         </li>
-        <li class="nav-heading">master menu</li>
-        @php
-            $isShow = false;
+            <li class="nav-heading">master menu</li>
+            @php
+                $isShow = false;
 
-            if (Request::is('user') || Request::is('user-group') || Request::is('banom-basis') || Request::is('master-lembaga') || Request::is('master-banom') || Request::is('jabatan') || Request::is('member') || Request::is('jenis-pengurus'))  {
-              $isShow = true;
-            }
-        @endphp
+                if (Request::is('user') || Request::is('user-group') || Request::is('banom-basis') || Request::is('master-lembaga') || Request::is('master-banom') || Request::is('jabatan') || Request::is('member') || Request::is('jenis-pengurus'))  {
+                $isShow = true;
+                }
+            @endphp
 
-        <li class="nav-item {{ $isShow ? 'active':'' }}">
-          <a
-            class="nav-link collapsed {{ $isShow ? 'active':'' }}"
-            data-bs-target="#master-nav"
-            data-bs-toggle="collapse"
-            href="#">
-            <i class="bi bi-gear"></i>
-            <span>Master</span>
-            <i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul
-            id="master-nav"
-            class="nav-content collapse {{ $isShow ? 'show':'' }} "
-            data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="{{route('user')}}" class="{{ Request::is('user') ? 'active':'' }}">
+            <li class="nav-item {{ $isShow ? 'active':'' }}">
+            <a
+                class="nav-link collapsed {{ $isShow ? 'active':'' }}"
+                data-bs-target="#master-nav"
+                data-bs-toggle="collapse"
+                href="#">
+                <i class="bi bi-gear"></i>
+                <span>Master</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul
+                id="master-nav"
+                class="nav-content collapse {{ $isShow ? 'show':'' }} "
+                data-bs-parent="#sidebar-nav">
+                <li>
+                <a href="{{route('user')}}" class="{{ Request::is('user') ? 'active':'' }}">
 
-                <span>User</span>
-              </a>
+                    <span>User</span>
+                </a>
+                </li>
+                <li>
+                <a href="{{route('user-group')}}" class="{{ Request::is('user-group*') ? 'active':'' }}">
+
+                    <span>User Group</span>
+                </a>
+                </li>
+                <li>
+                <a href="member">
+
+                    <span>Member</span>
+                </a>
+                </li>
+                <li>
+                <a href="{{route('jenis_pengurus')}}" class="{{ Request::is('jenis-pengurus') ? 'active':'' }}">
+
+                    <span>Jenis Pengurus</span>
+                </a>
+                </li>
+                <li>
+                <a href="{{route('jabatan')}}" class="{{ Request::is('jabatan') ? 'active':'' }}">
+
+                    <span>Jabatan</span>
+                </a>
+                </li>
+                <li>
+                <a href="{{route('banom-basis')}}" class="{{ Request::is('banom-basis') ? 'active':'' }}">
+
+                    <span>Banom Basis</span>
+                </a>
+                </li>
+                <li>
+                <a href="{{route('master-lembaga')}}" class="{{ Request::is('master-lembaga') ? 'active':'' }}">
+
+                    <span>Master Lembaga</span>
+                </a>
+                </li>
+                <li>
+                <a href="{{route('master-banom')}}" class="{{ Request::is('master-banom') ? 'active':'' }}">
+
+                    <span>Master Banom</span>
+                </a>
+                </li>
+                <li>
+                <a href="{{route('indikator')}}" class="{{ Request::is('master-indikator') ? 'active':'' }}">
+                    <span>Master Indikator</span>
+                </a>
+                </li>
+            </ul>
             </li>
-            <li>
-              <a href="{{route('user-group')}}" class="{{ Request::is('user-group*') ? 'active':'' }}">
-
-                <span>User Group</span>
-              </a>
-            </li>
-            <li>
-              <a href="member">
-
-                <span>Member</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{route('jenis_pengurus')}}" class="{{ Request::is('jenis-pengurus') ? 'active':'' }}">
-
-                <span>Jenis Pengurus</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{route('jabatan')}}" class="{{ Request::is('jabatan') ? 'active':'' }}">
-
-                <span>Jabatan</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{route('banom-basis')}}" class="{{ Request::is('banom-basis') ? 'active':'' }}">
-
-                <span>Banom Basis</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{route('master-lembaga')}}" class="{{ Request::is('master-lembaga') ? 'active':'' }}">
-
-                <span>Master Lembaga</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{route('master-banom')}}" class="{{ Request::is('master-banom') ? 'active':'' }}">
-
-                <span>Master Banom</span>
-              </a>
-            </li>
-            <li>
-              <a href="{{route('indikator')}}" class="{{ Request::is('master-indikator') ? 'active':'' }}">
-                <span>Master Indikator</span>
-              </a>
-            </li>
-          </ul>
-        </li>
+        @endif
         <li class="nav-heading">Others</li>
         <li class="nav-item">
-          <a
+        <a
             class="nav-link"
             href="{{route('logout')}}">
             <i class="bi bi-box-arrow-right"></i>
             <span>Logout</span>
-          </a>
+        </a>
         </li>
 
         <!-- End Dashboard Nav -->

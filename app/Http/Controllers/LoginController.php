@@ -37,12 +37,15 @@ class LoginController extends Controller
             session()->start();
             session()->put('logged','yes',true);
             session()->put('id_users',$users->id);
+            session()->put('admin_super',$users->id_grup == 1);
             session()->put('can_create', $credentials->can_create);
             session()->put('can_update', $credentials->can_update);
             session()->put('can_delete', $credentials->can_delete);
             session()->put('can_manage_user', $credentials->can_manage_user);
             if($HakAkses){
-                session()->put('hak_akses', $HakAkses['hak_akses']);
+                session()->put('hak_akses_pcnu', $HakAkses['hak_akses'] == $credentials->id_pcnu);
+                session()->put('hak_akses_mwcnu', $HakAkses['hak_akses'] == $credentials->id_mwcnu);
+                session()->put('hak_akses_rantingnu', $HakAkses['hak_akses'] == $credentials->id_rantingnu);
             }
             Alert::success('Login Berhasil');
             return redirect($HakAkses['url']);

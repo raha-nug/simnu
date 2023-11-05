@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PCNU;
+use App\Models\MWCNU;
 use App\Models\Indikator;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
@@ -87,10 +88,12 @@ class IndikatorController extends Controller
     public function process(Request $request){
         $rules = [
             'nama_indikator' => 'required',
+            'tingkat_indikator' => 'required',
         ];
 
         $message = [
-            'nama_indikator.required' => 'Nama Indikator Harus Diisi'
+            'nama_indikator.required' => 'Nama Indikator Harus Diisi',
+            'tingkat_indikator.required' => 'Tingkat Indikator Harus Diisi'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
@@ -183,30 +186,22 @@ class IndikatorController extends Controller
         }
     }
 
-    public function addReview(Request $request){
-        if($request->pcnu){
-            $id = $request->pcnu;
-            $id_pc = getRoute($id);
+    // add review PCNU
+    public function addReviewPcnu(Request $request){
+        $id = $request->pcnu;
+        $id_pc = getRoute($id);
 
-            $id_relasi_indikator = RelasiIndikator::query()->where('id_pcnu', $id_pc)->first();
-        }
+        $id_relasi_indikator = RelasiIndikator::query()->where('id_pcnu', $id_pc)->first();
+        $pcnu = PCNU::query()->where('id', $id_pc)->first() ?? new PCNU;
 
-        if($request->mwcnu) {
-            $id = $request->pcnu;
-            $id_mwc = getRoute($id);
-
-            $id_relasi_indikator = RelasiIndikator::query()->where('id_mwcnu', $id_mwc)->first();
-        }
-
-        $indikator = Indikator::get()->toArray();
+        $indikator = Indikator::get()->where('tingkat_indikator','PCNU')->toArray();
         $list = Arr::map($indikator, function(array $value){
             $uraian = ['nama_indikator' => $value['nama_indikator'], 'id' => $value['id']];
             $uraian['uraian_indikator'] =  UraianIndikator::where('id_indikator', $value['id'])->get();
             return collect($uraian);
         });
-        $pcnu = PCNU::query()->where('id', $id_pc)->first();
         $data = [
-            'pcnu_data' => $pcnu,
+            'pcnu_data' => $pcnu ?? new PCNU,
             'title'=> 'PCNU',
             'username'=>'John Doe',
             'from'=>'Jawa Barat',
@@ -218,6 +213,35 @@ class IndikatorController extends Controller
         ];
 
         return view('pages.add.add-review-pcnu', $data);
+    }
+
+    // add review mwcnu
+    public function addReviewMwcnu(Request $request){
+        $id = $request->mwc;
+        $id_mwc = getRoute($id);
+
+        $id_relasi_indikator = RelasiIndikator::query()->where('id_mwcnu', $id_mwc)->first();
+        $mwcnu = MWCNU::query()->where('id', $id_mwc)->first();
+
+        $indikator = Indikator::get()->where('tingkat_indikator','MWCNU')->toArray();
+        $list = Arr::map($indikator, function(array $value){
+            $uraian = ['nama_indikator' => $value['nama_indikator'], 'id' => $value['id']];
+            $uraian['uraian_indikator'] =  UraianIndikator::where('id_indikator', $value['id'])->get();
+            return collect($uraian);
+        });
+        $data = [
+            'mwc_data' => $mwcnu,
+            'title'=> 'MWCNU',
+            'username'=>'John Doe',
+            'from'=>'Jawa Barat',
+            'name'=>'PWNU Jawa Barat',
+            'list' => $list,
+            'relasi_indikator' => $id_relasi_indikator,
+            'method' => 'POST',
+            'action' => route('process-review'),
+        ];
+
+        return view('pages.add.add-review-mwc', $data);
     }
 
     public function processReview(Request $request){
@@ -253,6 +277,9 @@ class IndikatorController extends Controller
             }
             if($verifikasiTidakAda){
                 $tidakAda = count($verifikasiTidakAda);
+                $data['nilai_baik'] = 0;
+                $data['nilai_cukup'] = 0;
+                $data['nilai_kurang'] = 0;
             }
             if($validasiBaik){
                 $baik = count($validasiBaik);
@@ -285,6 +312,9 @@ class IndikatorController extends Controller
         }
         if($verifikasiTidakAda){
             $tidakAda = count($verifikasiTidakAda);
+            $data['nilai_baik'] = 0;
+            $data['nilai_cukup'] = 0;
+            $data['nilai_kurang'] = 0;
         }
         if($validasiBaik){
             $baik = count($validasiBaik);
@@ -299,7 +329,21 @@ class IndikatorController extends Controller
             $data['nilai_kurang'] = $kurang;
         }
         Alert::success('Review Berhasl Disimpan');
-        RelasiIndikator::create($data);
-        return redirect(route('pcnu'));
+        $new_data = RelasiIndikator::create($data);
+        return $this->checkRoute($new_data);
+    }
+
+    private function checkRoute($data)
+    {
+        switch ($data) {
+            case !empty($data->id_pwnu):
+                return redirect(route('pwnu'));
+            case !empty($data->id_pcnu):
+                return redirect(route('pcnu-detail') . "?pc=" . setRoute($data->id_pcnu));
+            case !empty($data->id_mwcnu):
+                return redirect(route('mwcnu') . "?mwc=" . setRoute($data->id_mwcnu));
+            default:
+                return redirect(route('no-found'));
+        }
     }
 }

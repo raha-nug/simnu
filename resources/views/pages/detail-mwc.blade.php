@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.master',$mwc_data)
 
 
 @section('title',$title)
@@ -30,7 +30,7 @@
 
 
         <li><a class="dropdown-item" href="{{ route('ranting-add') }}?mwc={{ setRoute($mwc_data->id) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        <li><a href="{{route('add-review-mwc')}}" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
+        <li><a href="{{route('add-review-mwcnu')}}?mwc={{setRoute($mwc_data->id)}}" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
 
       </ul>
     </div>

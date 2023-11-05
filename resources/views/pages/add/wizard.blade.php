@@ -59,15 +59,15 @@
                                             <label for="nikMustasyar" class="form-label">NIK</label>
                                             <input type="text" class="form-control" name="nikMustasyar" id="nikMustasyar">
                                         </div>
-                                        
+
                                         <div class="col-lg-4 gap-2 d-flex align-items-end">
-                                            
+
                                             <button class="btn btn-primary" id="addMustasyar" type="button"><i class="bi bi-check-circle"></i></button>
                                         </div>
                                     </div>
 
                                     <div class="row" id="mustasyarForm"></div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -93,13 +93,14 @@
                                             <label for="posisiPengurusSyuriah" class="form-label">Posisi Pengurus</label>
                                             <select class="form-select" id="posisiPengurusSyuriah" name="posisiPengurusSyuriah" >
                                                 <option></option>
-                                                <option value="Rais">Rais</option>
-                                                <option value="Katib">Katib</option>
+                                                @foreach ($jabatan as $value)
+                                                <option value="{{$value->nama_jabatan}}">{{$value->nama_jabatan}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-lg-3 gap-2 d-flex align-items-end">
-                                            
+
                                             <button class="btn btn-primary" id="addSyuriah" type="button"><i class="bi bi-check-circle"></i></button>
                                         </div>
                                     </div>
@@ -129,13 +130,14 @@
                                             <label for="posisiPengurusTanfidzyah" class="form-label">Posisi Pengurus</label>
                                             <select class="form-select" id="posisiPengurusTanfidzyah" name="posisiPengurusTanfidzyah" >
                                                 <option></option>
-                                                <option value="Ketua">Ketua</option>
-                                                <option value="Sekertaris">Sekretaris</option>
+                                                @foreach ($jabatan as $value)
+                                                <option value="{{$value->nama_jabatan}}">{{$value->nama_jabatan}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-lg-3 gap-2 d-flex align-items-end">
-                                            
+
                                             <button class="btn btn-primary" type="button" id="addTanfidzyah" ><i class="bi bi-check-circle"></i></button>
                                         </div>
                                     </div>
@@ -281,7 +283,7 @@ $(document).ready(function () {
         };
 
 
-    
+
     document.getElementById('addMustasyar').onclick = function () {
         // ajax request
         const url = document.getElementById("urlAddPengurus").value;
@@ -332,7 +334,7 @@ $(document).ready(function () {
     }
 
 
-    
+
 
     // MUSTASYAR
     const createMustasyar = (data,token) => {
@@ -373,7 +375,7 @@ $(document).ready(function () {
             "mt-lg-0",
             newIndex
         );
-        
+
 
         // Create a delete button for this set of elements
         const deleteButton = document.createElement("button");
@@ -411,7 +413,7 @@ $(document).ready(function () {
             }
             let responseApi = sendRequest(url,data,options);
         });
-        
+
         // clear form if complete
         document.getElementById("nikMustasyar").value = "";
         document.getElementById("namaMustasyar").value = "";
@@ -475,7 +477,7 @@ $(document).ready(function () {
 
         deleteButtonContainer.appendChild(deleteButton);
 
-        
+
         // Append the new elements to the form
         syuriahForm.appendChild(nama);
         syuriahForm.appendChild(nik);
@@ -565,7 +567,7 @@ $(document).ready(function () {
         deleteButton.innerHTML = '<i class="bi bi-x-circle"></i>';
         deleteButton.dataset.index = newIndex;
         deleteButton.dataset.pengurus = data.id;
-        
+
         deleteButtonContainer.appendChild(deleteButton);
 
         // Append the new elements to the form
@@ -647,7 +649,7 @@ $(document).ready(function () {
                         case "tanfidzyah":
                             createTanfidzyah(data,token)
                             break;
-                    
+
                         default:
                             break;
                     }
@@ -657,7 +659,7 @@ $(document).ready(function () {
             else
             {
                 console.log(obj)// Parse the response as JSON
-            } 
+            }
 
         })
         .catch(error => {
@@ -706,7 +708,7 @@ $(document).ready(function () {
             else
             {
                 console.log(obj)// Parse the response as JSON
-            } 
+            }
 
         })
         .catch(error => {

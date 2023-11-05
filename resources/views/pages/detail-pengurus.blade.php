@@ -24,12 +24,15 @@
 
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
               <div class="detail-pengurus">
-                <img src="{{Storage::url($anggota->img)}}" alt="Profile"  >
+                @if($anggota->img == null)
+                    <img src="{{asset('assets/img/profile-image.png')}}" alt="">
+                @else
+                    <img src="{{Storage::url($anggota->img)}}" alt="Profile">
+                @endif
               </div>
               <h5>{{$pengurus->nama}}</h5>
-              <h6 class="text-primary">{{$pengurus->jabatan}} {{$pengurus->jenis_pengurus}} {{$sk_data->nama_wilayah_kerja}}<i class="bi bi-bookmark-star-fill"></i></h6>
+              <h6 class="text-primary text-center">{{$pengurus->jabatan}} {{$pengurus->jenis_pengurus}} <br> {{$sk_data->nama_wilayah_kerja}}<i class="bi bi-bookmark-star-fill"></i></h6>
               <div class="social-links mt-2 d-flex gap-3">
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
@@ -104,8 +107,8 @@
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
                         <div class="pt-2">
-                          <input type="file" class="btn btn-primary btn-sm" name="img" title="Upload new profile image"><i class="bi bi-upload"></i>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove profile image"><i class="bi bi-trash"></i></a>
+                          <input type="file" class="btn btn-primary btn-sm" name="img" title="Upload new profile image">
+                          {{-- <a href="#" class="btn btn-danger btn-sm" title="Remove profile image"><i class="bi bi-trash"></i></a> --}}
                         </div>
                       </div>
                     </div>
@@ -151,12 +154,12 @@
                       </div>
                     </div>
 
-                    <div class="row mb-3">
+                    {{-- <div class="row mb-3">
                       <label for="whatsapp" class="col-md-4 col-lg-3 col-form-label">Whatsapp</label>
                       <div class="col-md-8 col-lg-9">
                         <input type="text" class="form-control" id="whatsapp" value="081111111">
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="row mb-3">
                       <label for="jabatan" class="col-md-4 col-lg-3 col-form-label">Jabatan</label>
                       <div class="col-md-8 col-lg-9">

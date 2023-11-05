@@ -11,6 +11,7 @@ class Indikator extends Model
     protected $table = 'indikator';
     protected $guarded = 'id';
     protected $fillable = [
-        'nama_indikator'
+        'nama_indikator',
+        'tingkat_indikator'
     ];
 }

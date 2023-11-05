@@ -16,15 +16,17 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pwnu')->nullable();
             $table->unsignedBigInteger('id_pcnu')->nullable();
             $table->unsignedBigInteger('id_mwcnu')->nullable();
+            $table->uuid('id_ranting')->nullable();
             $table->unsignedBigInteger('id_indikator')->nullable();
-            $table->decimal('nilai_kurang',12);
-            $table->decimal('nilai_cukup',12);
-            $table->decimal('nilai_baik',12);
+            $table->decimal('nilai_kurang',12)->nullable();
+            $table->decimal('nilai_cukup',12)->nullable();
+            $table->decimal('nilai_baik',12)->nullable();
             $table->timestamps();
 
             $table->foreign('id_pwnu')->references('id')->on('pwnu')->onDelete('cascade');
             $table->foreign('id_pcnu')->references('id')->on('pcnu')->onDelete('cascade');
             $table->foreign('id_mwcnu')->references('id')->on('mwcnu')->onDelete('cascade');
+            $table->foreign('id_ranting')->references('id')->on('ranting')->onDelete('cascade');
             $table->foreign('id_indikator')->references('id')->on('indikator')->onDelete('cascade');
         });
     }

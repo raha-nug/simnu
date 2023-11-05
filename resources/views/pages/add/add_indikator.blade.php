@@ -31,7 +31,14 @@
     </div>
     @else
     <div class="col-md-12 mt-2">
-      <label for="nama-banom" class="form-label">Nama Indikator</label>
+      <label for="tingkat_indikator">Tingkat Indikator</label>
+      <select name="tingkat_indikator" class="select2 form-select mt-2" id="">
+        <option value=""></option>
+        <option value="PCNU">PCNU</option>
+        <option value="MWCNU">MWCNU</option>
+        <option value="RANTINGNU">RANITNGNU</option>
+      </select>
+      <label for="nama-banom" class="form-label mt-2">Nama Indikator</label>
       <input type="text" name="nama_indikator" class="form-control">
     </div>
     @endif
