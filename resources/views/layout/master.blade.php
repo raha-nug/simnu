@@ -154,7 +154,7 @@
         @if (session()->get('hak_akses_pcnu'))
         <a
           class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
-          href="{{route('pcnu-detail')}}?page=10&pc={{setRoute($pc_data->id)}}">
+          href="{{route('pcnu-detail')}}?page=10&pc={{setRoute($pc_data->id ?? "")}}">
           <div class="icon-nav">
             <?xml version="1.0" ?>
             <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
@@ -186,7 +186,7 @@
         @elseif (session()->get('hak_akses_mwcnu'))
         <a
           class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
-          href="{{ route('mwcnu') }}?mwc={{setRoute($mwc_data->id)}}">
+          href="{{ route('mwcnu') }}?mwc={{setRoute($mwc_data->id ?? "")}}">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
@@ -218,7 +218,7 @@
         @elseif(session()->get('hak_akses_rantingnu'))
         <a
           class="nav-link {{ Request::is('*pcnu*') ? 'active':'' }}"
-          href="{{ route('ranting') }}?rantinf={{setRoute($ranting_data->id)}}">
+          href="{{ route('ranting') }}?rantinf={{setRoute($ranting_data->id ?? "")}}">
             <div class="icon-nav">
               <?xml version="1.0" ?>
               <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
