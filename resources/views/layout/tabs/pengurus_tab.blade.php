@@ -3,7 +3,7 @@
       <table class="table table-borderless table-hover datatable">
          <thead>
             <tr>
-               <th scope="col">No</th>
+               {{-- <th scope="col">No</th> --}}
                <th scope="col">Nama</th>
                <th scope="col">Pengurus</th>
                <th scope="col">Jabatan</th>
@@ -11,6 +11,14 @@
             </tr>
          </thead>
          <tbody>
+            @foreach ($pengurus as $value)
+            <tr>
+                <th scope="row"><a href="{{ route('detail_pengurus') }}?pengurus={{ setRoute($value->id) }}">{{ $value->nama }}</a></th>
+                <td>{{$value->jenis_pengurus ?? "-"}}</td>
+                <td>{{$value->jabatan}}</td>
+                <td>{{$value->mulai_jabatan}} - {{$value->akhir_jabatan}}</td>
+            </tr>
+            @endforeach
             {{-- <tr>
                <th scope="row">1</th>
                <td>KH. Asep Burhanudin</td>

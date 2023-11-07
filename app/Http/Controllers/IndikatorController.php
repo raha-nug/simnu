@@ -19,7 +19,7 @@ class IndikatorController extends Controller
         $indikator = Indikator::query()->get();
         $data = [
             'title'=> 'Indikator',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'indikator' => $indikator ?? new Indikator
         ];
@@ -57,7 +57,7 @@ class IndikatorController extends Controller
 
         $data = [
             'title'=> 'Uraian Indikator',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_ui' => $data_indikator,
             'method'=>'POST',
@@ -73,7 +73,7 @@ class IndikatorController extends Controller
     public function addIndikator($data_i=null){
         $data = [
             'title'=> 'Indikator',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'method'=>'POST',
             'action' => route('process_indikator')
@@ -161,7 +161,7 @@ class IndikatorController extends Controller
         $uraian = UraianIndikator::query()->where('id_indikator',$bb->id)->get();
         $data = [
             'title'=> 'Detail Banom Basis',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_i' => $bb,
             'data_uraian' => $uraian
@@ -203,7 +203,7 @@ class IndikatorController extends Controller
         $data = [
             'pcnu_data' => $pcnu ?? new PCNU,
             'title'=> 'PCNU',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'name'=>'PWNU Jawa Barat',
             'list' => $list,
@@ -232,7 +232,7 @@ class IndikatorController extends Controller
         $data = [
             'mwc_data' => $mwcnu,
             'title'=> 'MWCNU',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'name'=>'PWNU Jawa Barat',
             'list' => $list,

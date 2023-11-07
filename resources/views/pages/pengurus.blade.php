@@ -24,7 +24,7 @@
                 Daftar Pengurus
             </div>
             <div class="card-body">
-                <div class="d-flex justify-content-end align-items-center me-3 mt-3">
+                {{-- <div class="d-flex justify-content-end align-items-center me-3 mt-3">
                   <a class="btn btn-outline-primary me-2" href="" data-bs-toggle="dropdown">
                     <i class="bi bi-funnel-fill"></i>
                   </a>
@@ -48,7 +48,7 @@
                   <i class="bi bi-plus me-1"></i>
                   Tambah
                   </a>
-                </div>
+                </div> --}}
                 <div class="table-responsive ">
                     <table class="table table-borderless table-hover datatable">
                     <thead>

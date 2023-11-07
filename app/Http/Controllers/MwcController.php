@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PCNU;
 use App\Models\MWCNU;
 use App\Models\Ranting;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -25,17 +26,22 @@ class MwcController extends Controller
             ->where('mwcnu.id', $id)
             ->first();
 
-        $sk = SuratKeputusan::query()->where('id_mwcnu', $id)->get();
+        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+            ->join('MWCNU', 'surat_keputusan.id_mwcnu', '=', 'MWCNU.id')
+            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+            ->where('MWCNU.id', $id)
+            ->get();
 
         return view( 'pages.detail-mwc', [
             'title' => 'Detail MWC NU',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'sk' => $sk ?? new SuratKeputusan,
             'nomor' => $count = 1,
             'kota' => $this->wilayah->getSingleAddress($mwcnu->kota ?? ''),
             'kecamatan' => $this->wilayah->getSingleAddress($mwcnu->kecamatan ?? ''),
-            'mwc_data' => $mwcnu
+            'mwc_data' => $mwcnu,
+            'pengurus' => $pengurus ?? new Pengurus
         ]);
     }
 
@@ -56,7 +62,7 @@ class MwcController extends Controller
 
             $data = [
                 'title' => 'MWCNU',
-                'username' => 'John Doe',
+                'username' => session()->get('nama_user'),
                 'from' => 'Singaparna',
                 'name' => 'MWC Singaparna',
                 'kecamatan' => $this->wilayah->getAddress($pc_data->kota),
@@ -78,7 +84,7 @@ class MwcController extends Controller
 
         $data = [
             'title' => 'MWCNU',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'kecamatan' => $this->wilayah->getAddress($mwcnu->kota),

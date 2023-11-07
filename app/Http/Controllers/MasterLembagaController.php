@@ -14,7 +14,7 @@ class MasterLembagaController extends Controller
         $lembaga = MasterLembaga::query()->get();
         $data = [
             'title'=> 'Master Lembaga',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_ml' => $lembaga ?? new MasterLembaga
         ];
@@ -35,7 +35,7 @@ class MasterLembagaController extends Controller
     public function addMasterLembaga($data_ml=null){
         $data = [
             'title'=> 'Master Lembaga',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'method'=>'POST',
             'action' => route('process_master_lembaga')
@@ -88,7 +88,7 @@ class MasterLembagaController extends Controller
         $ml = MasterLembaga::query()->where('id', $id)->first();
         $data = [
             'title'=> 'Detail Banom Basis',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_ml' => $ml,
         ];

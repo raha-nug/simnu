@@ -18,7 +18,7 @@ class UserController extends Controller
         $data = [
             'count' => 1,
             'title'=> 'User',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'user' => $user
         ];
@@ -37,7 +37,7 @@ class UserController extends Controller
         $user_group = UserGroup::query()->get();
         $data = [
             'title'=> 'User Group',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'user_group'=>$user_group,
             'method' => 'POST',
@@ -112,7 +112,7 @@ class UserController extends Controller
                         ->first();
         $data = [
             'title'=> 'Detail User Group',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'user' => $user
         ];

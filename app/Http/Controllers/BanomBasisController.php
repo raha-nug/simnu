@@ -14,7 +14,7 @@ class BanomBasisController extends Controller
         $banom_basis = BanomBasis::query()->get();
         $data = [
             'title'=> 'Banom Basis',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'banom_basis' => $banom_basis ?? new BanomBasis
         ];
@@ -35,7 +35,7 @@ class BanomBasisController extends Controller
     public function addBanomBasis($data_bb=null){
         $data = [
             'title'=> 'Banom Basis',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'method'=>'POST',
             'action' => route('process_banom_basis')
@@ -88,7 +88,7 @@ class BanomBasisController extends Controller
         $bb = BanomBasis::query()->where('id', $id)->first();
         $data = [
             'title'=> 'Detail Banom Basis',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_bb' => $bb,
         ];

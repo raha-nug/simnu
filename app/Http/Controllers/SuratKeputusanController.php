@@ -7,11 +7,13 @@ use App\Models\PWNU;
 use App\Models\Banom;
 use App\Models\MWCNU;
 use App\Models\Lembaga;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
@@ -86,7 +88,7 @@ class SuratKeputusanController extends Controller
 
             $data = [
                 'title' => 'Tambah Surat Keputusan',
-                'username' => 'John Doe',
+                'username' => session()->get('nama_user'),
                 'from' => 'Jawa Barat',
                 'pw_data' => $pw_data ?? new PWNU,
                 'pc_data' => $pc_data ?? new PCNU,
@@ -107,7 +109,7 @@ class SuratKeputusanController extends Controller
 
         $data = [
             'title' => 'Update Surat Keputusan',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'sk' => $sk,
             'mwc_data' => $mwc_data ?? new MWCNU,
@@ -123,7 +125,7 @@ class SuratKeputusanController extends Controller
             'no_dokumen' => 'required|unique:surat_keputusan,no_dokumen',
             'tanggal_mulai' => 'required',
             'tanggal_berakhir' => 'required',
-            'file_sk' => 'required',
+            'file_sk' => 'required|mimes:pdf',
         ];
 
         $message = [
@@ -215,25 +217,21 @@ class SuratKeputusanController extends Controller
         $id_sk = $request->sk;
         $id = getRoute($id_sk);
         $sk_detail = SuratKeputusan::query()->where('id', $id)->first();
+        $pengurus = Pengurus::join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                            ->where('pengurus.id_sk', $id)->paginate(10);
         $data = [
             'title' => 'Detail Surat Keputusan',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
-            'sk' => $sk_detail
+            'sk' => $sk_detail,
+            'pengurus' => $pengurus
         ];
         return view('pages.detail-sk', $data);
     }
 
-    public function download(Request $request){
-        $id = $request->sk;
-        $id_sk = getRoute($id);
-        $sk = SuratKeputusan::query()->where('id', $id_sk)->first();
-
-        $data = [
-            'sk' => $sk
-        ];
-        $pdf = Pdf::loadView('components.sk', $data);
-        return $pdf->stream('surat_keputusan');
+    public function download($file_name){
+        $file = public_path('storage/') . $file_name;
+        return Response::download($file);
     }
 
     private function checkRoute($data)

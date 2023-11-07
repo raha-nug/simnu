@@ -26,7 +26,7 @@ class RantingController extends Controller
 
         return view('pages.detail-ranting', [
             'title' => 'Detail Ranting NU',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'kecamatan' => $this->wilayah->getSingleAddress($ranting->kecamatan ?? ''),
             'ranting_data' => $ranting
@@ -45,12 +45,12 @@ class RantingController extends Controller
             if (!$id)
                 return redirect('dashboard');
 
-                
+
                 $mwc_data = MWCNU::getRowData($id);
 
             $data = [
                 'title' => 'Ranting',
-                'username' => 'John Doe',
+                'username' => session()->get('nama_user'),
                 'from' => 'Singaparna',
                 'name' => 'MWC Singaparna',
                 'desa' => $this->wilayah->getAddress($mwc_data->kecamatan),
@@ -72,7 +72,7 @@ class RantingController extends Controller
 
         $data = [
             'title' => 'MWCNU',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'desa' => $this->wilayah->getAddress($ranting->kecamatan),

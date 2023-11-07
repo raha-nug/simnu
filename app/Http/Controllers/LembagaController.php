@@ -6,6 +6,7 @@ use App\Models\PCNU;
 use App\Models\PWNU;
 use App\Models\MWCNU;
 use App\Models\Lembaga;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\MasterLembaga;
 use App\Models\SuratKeputusan;
@@ -25,6 +26,11 @@ class LembagaController extends Controller
             ->where('id', $id)
             ->first();
         $sk = SuratKeputusan::query()->where('id_lembaga', $id)->get();
+        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+                            ->join('lembaga', 'surat_keputusan.id_lembaga', '=', 'lembaga.id')
+                            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                            ->where('lembaga.id', $id)
+                            ->get();
         $wilayah_kerja = ['url' => '#', 'nama' => '-'];
         if ($lembaga)
         {
@@ -50,11 +56,12 @@ class LembagaController extends Controller
 
         return view('pages.detail-lembaga', [
             'title' => 'Detail Lembaga',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'lembaga_data' => $lembaga,
             'wilayah_kerja' => $wilayah_kerja,
             'sk' => $sk ?? new SuratKeputusan,
+            'pengurus' => $pengurus ?? new Pengurus,
         ]);
     }
 
@@ -108,7 +115,7 @@ class LembagaController extends Controller
 
             $data = [
                 'title' => 'Lembaga',
-                'username' => 'John Doe',
+                'username' => session()->get('nama_user'),
                 'from' => 'Singaparna',
                 'name' => 'MWC Singaparna',
                 'master_data' => MasterLembaga::get(),
@@ -224,7 +231,7 @@ class LembagaController extends Controller
 
         $data = [
             'title' => 'Lembaga',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'master_data' => MasterLembaga::get(),
@@ -246,7 +253,7 @@ class LembagaController extends Controller
 
         $data = [
             'title' => 'Lembaga',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'master_data' => MasterLembaga::get(),
@@ -270,7 +277,7 @@ class LembagaController extends Controller
 
         $data = [
             'title' => 'Lembaga',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'master_data' => MasterLembaga::get(),

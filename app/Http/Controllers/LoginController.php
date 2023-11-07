@@ -37,6 +37,7 @@ class LoginController extends Controller
             session()->start();
             session()->put('logged','yes',true);
             session()->put('id_users',$users->id);
+            session()->put('nama_user', $users->nama);
             session()->put('admin_super',$users->id_grup == 1);
             session()->put('can_create', $credentials->can_create);
             session()->put('can_update', $credentials->can_update);

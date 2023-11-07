@@ -17,9 +17,39 @@ class PengurusController extends Controller
             redirect(route('not-found'));
         }
 
+        if(isset($request->type)) {
+            if($request->type == 'lembaga') {
+                $data = [
+                    'title' => 'Pengurus',
+                    'username' => session()->get('nama_user'),
+                    'from' => 'Singaparna',
+                    'name' => 'MWC Singaparna',
+                    'jabatan' => Jabatan::get(),
+                    'id_sk' => getRoute($request->id_sk)
+                ];
+
+                return view('pages.add.add-pengurus-lembaga', $data);
+            }
+        }
+
+        if(isset($request->type)) {
+            if($request->type == 'banom') {
+                $data = [
+                    'title' => 'Pengurus',
+                    'username' => session()->get('nama_user'),
+                    'from' => 'Singaparna',
+                    'name' => 'MWC Singaparna',
+                    'jabatan' => Jabatan::get(),
+                    'id_sk' => getRoute($request->id_sk)
+                ];
+
+                return view('pages.add.add-pengurus-banom', $data);
+            }
+        }
+
         $data = [
             'title' => 'Pengurus',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'jabatan' => Jabatan::get(),
@@ -27,6 +57,23 @@ class PengurusController extends Controller
         ];
 
         return view('pages.add.wizard', $data);
+    }
+
+    public function addpenguruslembaga(Request $request){
+        if(!isset($request->id_sk)){
+            return redirect(route('not-found'));
+        }
+
+        $data = [
+            'title' => 'Pengurus',
+            'username' => session()->get('nama_user'),
+            'from' => 'Singaparna',
+            'name' => 'MWC Singaparna',
+            'jabatan' => Jabatan::get(),
+            'id_sk' => getRoute($request->id_sk)
+        ];
+
+        return view('pages.add.add-pengurus-lembaga', $data);
     }
 
     public function process(Request $request)

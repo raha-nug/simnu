@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PCNU;
 use App\Models\MWCNU;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -18,7 +19,7 @@ class PcnuController extends Controller
         $pcnu_list = PCNU::getData($limit);
         $data = [
             'title' => 'PCNU',
-            'username' => 'John Doe',
+            'username' =>session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'name' => 'PCNU Jawa Barat',
             'list_pcnu' => $pcnu_list
@@ -54,16 +55,21 @@ class PcnuController extends Controller
         $pcnu = PCNU::query()->where('id', $id)
             ->first();
         // $mwc_list = MWCNU::getListByPcnu($id, $limit);
-        $sk = SuratKeputusan::query()->where('id_pcnu', $id)->get();
+        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+                            ->join('PCNU', 'surat_keputusan.id_pcnu', '=', 'PCNU.id')
+                            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                            ->where('PCNU.id', $id)->get();
+        // dd($pengurus);
         return view('pages.detail-pcnu', [
             'title' => 'Detail PCNU',
-            'username' => 'John Doe',
+            'username' =>session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'pc_data' => $pcnu,
             'nomor' => $count = 1,
             'list_mwc' => collect([]),
             'kota' => $this->wilayah->getSingleAddress($pcnu->kota ?? ''),
-            'sk' => $sk ?? new SuratKeputusan
+            'sk' => $sk ?? new SuratKeputusan,
+            'pengurus' => $pengurus ?? new Pengurus
         ]);
     }
 
@@ -101,7 +107,7 @@ class PcnuController extends Controller
     {
         $data = [
             'title' => 'PCNU',
-            'username' => 'John Doe',
+            'username' =>session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'name' => 'PCNU Jawa Barat',
             'kab_kota' => $this->wilayah->getAddress('32'),

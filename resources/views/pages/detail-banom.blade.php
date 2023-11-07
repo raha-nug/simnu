@@ -112,41 +112,14 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($pengurus as $value)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>KH. Asep Burhanudin</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2016-05-25</td>
+                    <th scope="row"><a href="{{ route('detail_pengurus') }}?pengurus={{ setRoute($value->id) }}">{{ $value->nama }}</a></th>
+                    <td>{{$value->jenis_pengurus}}</td>
+                    <td>{{$value->jabatan}}</td>
+                    <td>{{$value->mulai_jabatan}} - {{$value->akhir_jabatan}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Prof. Dr. KH. Fuad Wahab, MA.</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2014-12-05</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>KH. M. Nuh Addawami</td>
-                  <td>Syuriah</td>
-                  <td>Rais</td>
-                  <td>2011-08-12</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Dr. KH. Abun Bunyamin</td>
-                  <td>Syuriah</td>
-                  <td>Wakil Rais</td>
-                  <td>2012-06-11</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>KH. M. Usamah Manshur</td>
-                  <td>Syuriah</td>
-                  <td>Katib</td>
-                  <td>2011-04-19</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>

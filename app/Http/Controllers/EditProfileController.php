@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Validator;
 class EditProfileController extends Controller
 {
     public function index(){
-        $anggota = Anggota::query()->get();
+        $anggota = Anggota::query()->paginate(10);
         $data = [
             'anggota' => $anggota,
             'title'=> 'Pengurus',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'name'=>'PWNU Jawa Barat'
         ];
@@ -39,18 +39,24 @@ class EditProfileController extends Controller
                 WHEN surat_keputusan.id_pwnu IS NOT NULL THEN pwnu.nama
                 WHEN surat_keputusan.id_pcnu IS NOT NULL THEN pcnu.nama
                 WHEN surat_keputusan.id_mwcnu IS NOT NULL THEN mwcnu.nama
+                WHEN surat_keputusan.id_lembaga IS NOT NULL THEN lembaga.nama
+                WHEN surat_keputusan.id_banom IS NOT NULL THEN banom.nama
                 ELSE '-'
             END As nama_wilayah_kerja,
             CASE
                 WHEN surat_keputusan.id_pwnu IS NOT NULL THEN surat_keputusan.id_pwnu
                 WHEN surat_keputusan.id_pcnu IS NOT NULL THEN surat_keputusan.id_pcnu
                 WHEN surat_keputusan.id_mwcnu IS NOT NULL THEN surat_keputusan.id_mwcnu
+                WHEN surat_keputusan.id_lembaga IS NOT NULL THEN surat_keputusan.id_lembaga
+                WHEN surat_keputusan.id_banom IS NOT NULL THEN surat_keputusan.id_banom
                 ELSE '-'
             END As id_wilayah_kerja,
             CASE
                 WHEN surat_keputusan.id_pwnu IS NOT NULL THEN 'pwnu'
                 WHEN surat_keputusan.id_pcnu IS NOT NULL THEN 'pcnu'
                 WHEN surat_keputusan.id_mwcnu IS NOT NULL THEN 'mwcnu'
+                WHEN surat_keputusan.id_lembaga IS NOT NULL THEN 'lembaga'
+                WHEN surat_keputusan.id_banom IS NOT NULL THEN 'banom'
                 ELSE '-'
             END As wilayah_kerja,
             surat_keputusan.id
@@ -58,11 +64,13 @@ class EditProfileController extends Controller
         ->leftJoin('pwnu','pwnu.id','=','surat_keputusan.id_pwnu')
         ->leftJoin('pcnu','pcnu.id','=','surat_keputusan.id_pcnu')
         ->leftJoin('mwcnu','mwcnu.id','=','surat_keputusan.id_mwcnu')
+        ->leftJoin('lembaga','lembaga.id','=','surat_keputusan.id_lembaga')
+        ->leftJoin('banom','banom.id','=','surat_keputusan.id_banom')
         ->where('surat_keputusan.id', $pengurus->id_sk)
         ->first();
         $data = [
             'title'=> 'Detail Pengurus',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'name'=>'PWNU Jawa Barat',
             'anggota' => $anggota,

@@ -14,7 +14,7 @@ class JabatanController extends Controller
         $jp = Jabatan::query()->get();
         $data = [
             'title'=> 'Jabatan',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'jp' => $jp ?? new Jabatan
         ];
@@ -35,7 +35,7 @@ class JabatanController extends Controller
     public function addJabatan($data_j=null){
         $data = [
             'title'=> 'Jabatan',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'method'=>'POST',
             'action' => route('process_jabatan')
@@ -88,7 +88,7 @@ class JabatanController extends Controller
         $jp = Jabatan::query()->where('id', $id)->first();
         $data = [
             'title'=> 'Detail User Group',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_j' => $jp,
         ];

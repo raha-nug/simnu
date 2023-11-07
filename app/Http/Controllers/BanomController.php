@@ -6,6 +6,7 @@ use App\Models\PCNU;
 use App\Models\PWNU;
 use App\Models\Banom;
 use App\Models\MWCNU;
+use App\Models\Pengurus;
 use App\Models\BanomBasis;
 use App\Models\MasterBanom;
 use Illuminate\Http\Request;
@@ -26,6 +27,11 @@ class BanomController extends Controller
         $banom = Banom::query()
             ->where('id', $id)
             ->first();
+        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+            ->join('banom', 'surat_keputusan.id_banom', '=', 'banom.id')
+            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+            ->where('banom.id', $id)
+            ->get();
         if ($banom)
         {
             if ($banom->id_pwnu)
@@ -50,11 +56,12 @@ class BanomController extends Controller
         $sk = SuratKeputusan::query()->where('id_banom', $id)->get();
         return view('pages.detail-banom', [
             'title' => 'Detail Banom',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'banom_data' => $banom,
             'wilayah_kerja' => $wilayah_kerja,
             'sk' => $sk,
+            'pengurus' => $pengurus ?? new Pengurus,
             'number' => $number = 1
         ]);
     }
@@ -83,7 +90,7 @@ class BanomController extends Controller
 
             $data = [
                 'title' => 'Banom',
-                'username' => 'John Doe',
+                'username' => session()->get('nama_user'),
                 'from' => 'Singaparna',
                 'name' => 'MWC Singaparna',
                 'master_banom' => MasterBanom::get(),
@@ -202,7 +209,7 @@ class BanomController extends Controller
 
         $data = [
             'title' => 'Banom',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'master_banom' => MasterBanom::get(),
@@ -225,7 +232,7 @@ class BanomController extends Controller
 
         $data = [
             'title' => 'Banom',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'master_banom' => MasterBanom::get(),
@@ -250,7 +257,7 @@ class BanomController extends Controller
 
         $data = [
             'title' => 'Banom',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'master_banom' => MasterBanom::get(),

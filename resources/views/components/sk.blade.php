@@ -14,6 +14,6 @@
         }
     </style>
 <body>
-    <img src="{{public_path('storage/' . $sk->file_sk)}}" alt="">
+    <embed src="{{public_path('storage/' . $sk->file_sk)}}" alt="">
 </body>
 </html>

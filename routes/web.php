@@ -184,11 +184,12 @@ Route::prefix('sk')->group(function () {
     Route::get('/add_sk', [SuratKeputusanController::class, 'add_sk'])->name('add_sk');
     Route::post('/process', [SuratKeputusanController::class, 'process'])->name('sk_process');
     Route::get('/detail', [SuratKeputusanController::class, 'detail'])->name('sk_detail');
-    Route::get('/file', [SuratKeputusanController::class, 'download'])->name('download_sk');
+    Route::get('/file/{file_name}', [SuratKeputusanController::class, 'download'])->name('download_sk');
 });
 
 Route::prefix('pengurus')->group(function () {
     Route::get('/list', [PengurusController::class, 'listPengurus'])->name('pengurus-list');
+    Route::get('/add_pengurus_lembaga', [PengurusController::class, 'addpengururslembaga'])->name('add_pengurus_lembaga');
     Route::get('/add_pengurus', [PengurusController::class, 'index'])->name('add_pengurus');
     Route::post('/process', [PengurusController::class, 'process'])->name('pengurus_process');
     Route::post('/delete', [PengurusController::class, 'delete'])->name('del_pengurus');

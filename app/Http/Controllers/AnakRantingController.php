@@ -26,7 +26,7 @@ class AnakRantingController extends Controller
 
         return view('pages.detail-anak-ranting', [
             'title' => 'Detail Anak Ranting NU',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'anak_ranting_data' => $anak_ranting
         ]);
@@ -49,7 +49,7 @@ class AnakRantingController extends Controller
 
             $data = [
                 'title' => 'Anak Ranting',
-                'username' => 'John Doe',
+                'username' => session()->get('nama_user'),
                 'from' => 'Singaparna',
                 'name' => 'MWC Singaparna',
                 'ranting_data' => $ranting_data,
@@ -70,7 +70,7 @@ class AnakRantingController extends Controller
 
         $data = [
             'title' => 'MWCNU',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
             'anak_ranting_data' => $anak_ranting,

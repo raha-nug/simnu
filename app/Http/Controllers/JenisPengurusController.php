@@ -14,7 +14,7 @@ class JenisPengurusController extends Controller
         $jp = JenisPengurus::query()->get();
         $data = [
             'title'=> 'Jenis Pengurus',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'jp' => $jp ?? new JenisPengurus
         ];
@@ -35,7 +35,7 @@ class JenisPengurusController extends Controller
     public function addJenisPengurus($data_jp=null){
         $data = [
             'title'=> 'Jenis Pengurus',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'method'=>'POST',
             'action' => route('process_jenis_pengurus')
@@ -88,7 +88,7 @@ class JenisPengurusController extends Controller
         $jp = JenisPengurus::query()->where('id', $id)->first();
         $data = [
             'title'=> 'Detail User Group',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_jp' => $jp,
         ];

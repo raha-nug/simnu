@@ -21,7 +21,7 @@ class UserGroupController extends Controller
         $data = [
             'count' => 1,
             'title'=> 'User Group',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'user_group' => $user_group
         ];
@@ -46,7 +46,7 @@ class UserGroupController extends Controller
     public function addUserGroup($data_user_group=null){
         $data = [
             'title'=> 'User Group',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'kab_kota' => $this->wilayah->getAddress('32'),
             'method' => 'POST',
@@ -169,7 +169,7 @@ class UserGroupController extends Controller
             ->first();
         $data = [
             'title'=> 'Detail User Group',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'user_group' => $user_group
         ];

@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $data = [
             'title' => 'Dashboard',
-            'username' => 'John Doe',
+            'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
         ];
 

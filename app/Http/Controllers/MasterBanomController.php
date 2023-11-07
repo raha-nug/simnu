@@ -15,7 +15,7 @@ class MasterBanomController extends Controller
         $master_banom = MasterBanom::query()->get();
         $data = [
             'title'=> 'Master Banom',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'master_banom'=>$master_banom ?? new MasterBanom
         ];
@@ -40,7 +40,7 @@ class MasterBanomController extends Controller
         $banomBasis = BanomBasis::query()->get();
         $data = [
             'title'=> 'Master Banom',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'banom_basis' => $banomBasis,
             'method'=>'POST',
@@ -95,7 +95,7 @@ class MasterBanomController extends Controller
         $mb = MasterBanom::query()->where('id', $id)->first();
         $data = [
             'title'=> 'Detail Master Banom',
-            'username'=>'John Doe',
+            'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
             'data_mb' => $mb,
         ];
