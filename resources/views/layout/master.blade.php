@@ -344,14 +344,14 @@
         </li> --}}
         @if(session()->get('admin_super'))
         <li class="nav-heading">Datas</li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a
             class="nav-link {{ Request::is('search-data*') ? 'active':'' }}"
             href="search-data">
             <i class="bi bi-search"></i>
             <span>Cari Data</span>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('pengurus*') ? 'active':'' }}"
