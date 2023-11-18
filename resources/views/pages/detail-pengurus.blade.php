@@ -209,8 +209,8 @@
       <script>
         $(document).on('click', '#edit', function(o) {
             let id = $(this).attr('data-id');
-            console.log(id);
             getData(id);
+            console.log(id);
         })
 
         function getData(id){

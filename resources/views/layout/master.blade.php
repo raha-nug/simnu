@@ -401,12 +401,12 @@
                     <span>Member</span>
                 </a>
                 </li>
-                <li>
+                {{-- <li>
                 <a href="{{route('jenis_pengurus')}}" class="{{ Request::is('jenis-pengurus') ? 'active':'' }}">
 
                     <span>Jenis Pengurus</span>
                 </a>
-                </li>
+                </li> --}}
                 <li>
                 <a href="{{route('jabatan')}}" class="{{ Request::is('jabatan') ? 'active':'' }}">
 

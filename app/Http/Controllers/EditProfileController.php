@@ -84,13 +84,13 @@ class EditProfileController extends Controller
     public function getPengurus(Request $request) {
         $id = $request->id;
         $id_anggota = getRoute($id);
+        // dd($id_anggota);
         $anggota = Anggota::where('id', $id_anggota)
             ->first();
         if ($anggota)
             return response()->json($anggota,200);
         else
             return response()->json([], 404);
-
     }
 
     public function edit(Request $request){
@@ -98,10 +98,10 @@ class EditProfileController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'no_telp' => 'required',
-            'nik' => 'required',
-            'email' => 'required|unique:anggota,email',
+            'nik' => 'required|sometimes',
+            'email' => 'required|sometimes',
             'img' => 'required|max:2048',
-            'karta_nu' => 'required|unique:anggota,karta_nu'
+            'karta_nu' => 'required|sometimes'
         ];
 
         $message = [
@@ -112,12 +112,12 @@ class EditProfileController extends Controller
             // 'nik.unique' => 'Nik Sudah Terdaftar',
             // 'nik.max' => 'Jumlah NIK harus 16 Karakter',
             'email.required' => 'Email Harus Diisi',
-            'email.unique' => 'Email Sudah Terdaftar',
+            // 'email.unique' => 'Email Sudah Terdaftar',
             'email.email' => 'Format Penulisan Email Salah',
             'img.required' => 'Image Harus Diisi',
             'img.max' => 'Ukuran Gambar Maksimal 2MB',
             'karta_nu.required' => 'KartaNu Harus Diisi',
-            'karta_nu.unique' => 'KartaNu Sudah Terdaftar'
+            // 'karta_nu.unique' => 'KartaNu Sudah Terdaftar'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
@@ -136,8 +136,9 @@ class EditProfileController extends Controller
         }
         // dd($data);
         $id_anggota = $request->id;
-        $id = getRoute($id_anggota);
-        Anggota::query()->where('id', $id)->update($data);
+        // dd($id_anggota);
+        // $id = getRoute($id_anggota);
+        Anggota::query()->where('id', $id_anggota)->update($data);
         Alert::success('Data Berhasil DiUpadte');
         return redirect()->back();
     }
