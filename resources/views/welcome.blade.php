@@ -67,7 +67,7 @@
                   <li class="nav-item">
                     <a class="ud-menu-scroll" href="#contact">Kontak</a>
                   </li>
-                  
+
                 </ul>
               </div>
 
@@ -98,7 +98,7 @@
               <ul class="ud-hero-buttons">
                 <li>
                   <a
-                    href="/login"
+                    href="{{route('login')}}"
                     rel="nofollow noopener"
 
                     class="ud-main-btn ud-white-btn">
@@ -353,7 +353,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- ====== FAQ Start ====== -->
     <section id="faq" class="ud-faq">
       <div class="shape">
@@ -664,7 +664,7 @@
         },
       },
       autoplay: true,
-        
+
       } );
 
       splide.on( 'pagination:mounted', function ( data ) {
