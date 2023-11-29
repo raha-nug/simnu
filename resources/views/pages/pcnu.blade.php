@@ -67,7 +67,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                                     <li>
-                                        <a class="dropdown-item" href="git ">
+                                        <a class="dropdown-item" href="{{ route('pcnu-update',['id_pc' => setRoute($pc_data->id)]) }}">
                                             <i class="bi bi-pencil-square"></i>
                                             Edit
                                         </a>

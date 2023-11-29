@@ -67,20 +67,20 @@
               class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
                 <h6>@yield('username')</h6>
-                <span>@yield('from')</span>
+                {{-- <span>@yield('from')</span> --}}
               </li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
 
-              <li>
+              {{-- <li>
                 <a
                   class="dropdown-item d-flex align-items-center"
                   href="users-profile.html">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
-              </li>
+              </li> --}}
               <li>
                 <hr class="dropdown-divider" />
               </li>
@@ -395,12 +395,12 @@
                     <span>User Group</span>
                 </a>
                 </li>
-                <li>
+                {{-- <li>
                 <a href="member">
 
                     <span>Member</span>
                 </a>
-                </li>
+                </li> --}}
                 {{-- <li>
                 <a href="{{route('jenis_pengurus')}}" class="{{ Request::is('jenis-pengurus') ? 'active':'' }}">
 

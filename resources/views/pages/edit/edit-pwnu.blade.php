@@ -14,30 +14,44 @@
 @endsection
 
 @section('content')
-<x-form method="POST" action="/admin/pwnu">
+<x-form :$method :$action>
+    @csrf
   <x-slot:title>
     Edit PWNU
   </x-slot:title>
   <div class="row">
      <div class="col-md-12 mt-2">
     <label for="no-sk" class="form-label">Nama</label>
-    <input type="text" class="form-control" id="no-sk" required value="PWNU Jawa Barat">
+    <input type="text" class="form-control" name="nama" id="no-sk" readonly value="{{$pw_data->nama}}">
+    <input type="hidden" class="form-control" name="id" id="no-sk" value="{{$pw_data->id}}">
   </div>
   <div class="col-md-12 mt-2">
     <label for="tgl-mulai" class="form-label">Alamat</label>
-    <input type="text" class="form-control" id="tgl-mulai" required value="Jl. Terusan Galunggung No. 9 Kel. Lingkar Selatan Kec. Lengkong Kota Bandung 40263">
+    <input type="text" class="form-control" id="tgl-mulai" name="alamat" value="{{$pw_data->alamat}}">
   </div>
   <div class="col-md-12 mt-2">
     <label for="telepon" class="form-label">Telepon</label>
-    <input type="text" class="form-control" id="telepon" required value="0227315915">
+    <input type="text" class="form-control" id="telepon" name="telp" value="{{$pw_data->telp}}">
   </div>
   <div class="col-md-12 mt-2">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" required value="admin@nujabar.or.id">
+    <input type="email" class="form-control" id="email" name="email" value="{{$pw_data->email}}">
   </div>
   <div class="col-md-12 mt-2">
     <label for="website" class="form-label">Website</label>
-    <input type="text" class="form-control" id="website" required value="https://jabar.nu.or.id">
+    <input type="text" class="form-control" id="website" name="website" value="{{$pw_data->website}}">
+  </div>
+  <div class="col-md-12 mt-2">
+    <label for="website" class="form-label">Lattitude</label>
+    <input type="text" class="form-control" id="website" name="lat" value="{{$pw_data->lat}}">
+  </div>
+  <div class="col-md-12 mt-2">
+    <label for="website" class="form-label">Longitude</label>
+    <input type="text" class="form-control" id="website" name="long" value="{{$pw_data->long}}">
+  </div>
+  <div class="col-md-12 mt-2">
+    <label for="website" class="form-label">Provinsi</label>
+    <input type="text" class="form-control" id="website" name="provinsi" readonly value="{{$provinsi->nama}}">
   </div>
 
   </div>

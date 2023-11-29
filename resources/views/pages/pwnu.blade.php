@@ -24,7 +24,7 @@
       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
 
-        <li><a class="dropdown-item" href="edit-pwnu"><i class="bi bi-pencil-square"></i>Edit</a></li>
+        <li><a class="dropdown-item" href="{{route('pwnu-add')}}?id={{setRoute($pw_detail->id)}}"><i class="bi bi-pencil-square"></i>Edit</a></li>
 
       </ul>
     </div>
@@ -71,6 +71,22 @@
         </div>
         <div class="col-lg-9">
           <dd>{{ $pw_detail->website ?? 'https://jabar.nu.or.id' }}</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Lattitude :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{$pw_detail->lat ?? '-'}}</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Longitude :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{$pw_detail->long ?? '-'}}</dd>
         </div>
       </div>
       <div class="row">

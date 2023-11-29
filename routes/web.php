@@ -44,6 +44,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/get-kecamatan/{kode}', [UserGroupController::class, 'getKecamatan']);
 
 Route::get('/pwnu', [PwnuController::class, 'index'])->name('pwnu');
+Route::get('/edit', [PwnuController::class, 'getPwnu'])->name('pwnu-add');
+Route::post('/process', [PwnuController::class, 'process'])->name('pwnu-process');
 
 Route::prefix('pcnu')->group(function () {
     Route::get('/', [PcnuController::class, 'index'])->name('pcnu');
