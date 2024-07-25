@@ -32,7 +32,7 @@
         <thead>
           <tr class="text-center">
             <th>No</th>
-            <th>Uraian Kerja</th>
+            <th>Program Kerja</th>
             <th>Verifikasi</th>
             <th>Validasi</th>
           </tr>

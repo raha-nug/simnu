@@ -23,10 +23,10 @@
       </a>
       <ul
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-        
+
 
         <li><a class="dropdown-item" href="edit-user-group"><i class="bi bi-pencil-square"></i>Edit</a></li>
-        
+
       </ul>
     </div>
     <div class="card-header">Data Jabatan </div>
@@ -37,10 +37,18 @@
           <dt class="text-lg-end text-sm-start">Nama Jabatan:</dt>
         </div>
         <div class="col-lg-9">
-          <dd>Rais</dd>
+          <dd>{{$data_j->nama_jabatan}}</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Tipe Jabatan:</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{$data_j->tipe}}</dd>
         </div>
       </div>
     </div>
   </div>
-    
+
 @endsection

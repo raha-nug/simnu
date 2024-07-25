@@ -46,11 +46,11 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>27</h6>
+                          <h6>{{$jml_pc}}</h6>
                           <span class="text-muted small pt-2 ps-1">PCNU</span>
                         </div>
                         <div>
-                          <h6>591</h6>
+                          <h6>{{$jml_mwc}}</h6>
                           <span class="text-muted small pt-2 ps-1">MWCNU</span>
                         </div>
                     </div>
@@ -97,11 +97,11 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>2152</h6>
+                          <h6>{{$jml_ranting}}</h6>
                           <span class="text-muted small pt-2 ps-1">Ranting</span>
                         </div>
                         <div>
-                          <h6>760</h6>
+                          <h6>{{$jml_anak_ranting}}</h6>
                           <span class="text-muted small pt-2 ps-1">Anak Ranting</span>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
             <div class="col-xxl-4 col-md-4">
               <div class="card info-card ">
                 <div class="card-body">
-                  <h5 class="card-title mb-3">Jumlah <span>| Banom & Lembaga</span></h5>
+                  <h5 class="card-title mb-3">Jumlah <span>| Lembaga & Banom</span></h5>
 
                   <div class="d-flex align-items-center gap-4">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -122,12 +122,12 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>48848</h6>
-                          <span class="text-muted small pt-2 ps-1">Banom</span>
+                          <h6>{{$jml_lembaga}}</h6>
+                          <span class="text-muted small pt-2 ps-1">Lembaga</span>
                         </div>
                         <div>
-                          <h6>355</h6>
-                          <span class="text-muted small pt-2 ps-1">Lembaga</span>
+                          <h6>{{$jml_banom}}</h6>
+                          <span class="text-muted small pt-2 ps-1">Banom</span>
                         </div>
                     </div>
                   </div>
@@ -193,7 +193,7 @@
             <div class="col-xxl-4 col-md-4">
               <div class="card info-card ">
                 <div class="card-body">
-                  <h5 class="card-title mb-3">Jumlah Pengurus <span>| Banom & Lembaga</span></h5>
+                  <h5 class="card-title mb-3">Jumlah Pengurus <span>| Lembaga & Banom</span></h5>
 
                   <div class="d-flex align-items-center gap-4">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -202,11 +202,11 @@
                     <div class="d-flex gap-4">
                         <div>
                           <h6>3029</h6>
-                          <span class="text-muted small pt-2 ps-1">Banom</span>
+                          <span class="text-muted small pt-2 ps-1">Lembaga</span>
                         </div>
                         <div>
                           <h6>2814</h6>
-                          <span class="text-muted small pt-2 ps-1">Lembaga</span>
+                          <span class="text-muted small pt-2 ps-1">Banom</span>
                         </div>
                     </div>
                   </div>

@@ -11,6 +11,6 @@ class Jabatan extends Model
     protected $table = 'jabatan';
     protected $guarded = 'id';
     protected $fillable = [
-        'nama_jabatan'
+        'nama_jabatan', 'tipe'
     ];
 }

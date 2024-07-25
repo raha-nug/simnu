@@ -28,12 +28,30 @@
       <input type="text" class="form-control" name="nama_jabatan" value="{{$data_j->nama_jabatan}}" id="nama">
       <input type="hidden" name="id" value="{{ $data_j->id }}">
     </div>
+    <div class="col-md-12">
+      <label for="nama" class="form-label">Tipe Jabatan</label>
+      <select name="tipe" class="form-select" id="">
+        <option value="Syuriyah">Syuriyah</option>
+        <option value="Tanfidziyah">Tanfidziyah</option>
+        <option value="Lembaga">Lembaga</option>
+        <option value="Banom">Banom</option>
+      </select>
+    </div>
     @else
     <div class="col-md-12">
         <label for="nama" class="form-label">Nama Jabatan</label>
         <input type="text" class="form-control" name="nama_jabatan" id="nama">
+    </div>
+    <div class="col-md-12">
+        <label for="nama" class="form-label">Tipe Jabatan</label>
+        <select name="tipe" class="form-select" id="">
+          <option value="Syuriyah">Syuriyah</option>
+          <option value="Tanfidzyiah">Tanfidzyiah</option>
+          <option value="Lembaga">Lembaga</option>
+          <option value="Banom">Banom</option>
+        </select>
       </div>
-      @endif
+    @endif
 </x-form>
 
 @endsection

@@ -54,15 +54,15 @@
                                             <label for="nikMustasyar" class="form-label">NIK</label>
                                             <input type="text" class="form-control" name="nikMustasyar" id="nikMustasyar">
                                         </div>
-                                        
+
                                         <div class="col-lg-4 gap-2 d-flex align-items-end">
-                                            
+
                                             <button class="btn btn-primary" id="addMustasyar" type="button"><i class="bi bi-check-circle"></i></button>
                                         </div>
                                     </div>
 
                                     <div class="row" id="mustasyarForm"></div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                             aria-labelledby="step2-tab"
                         >
                             <div class="card-body">
-                                <h5 class="card-title">Tambah Syuriah</h5>
+                                <h5 class="card-title">Tambah Syuriyah</h5>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -92,9 +92,9 @@
                                                 <option value="">Katib</option>
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-lg-3 gap-2 d-flex align-items-end">
-                                            
+
                                             <button class="btn btn-primary" id="addSyuriah" type="button"><i class="bi bi-check-circle"></i></button>
                                         </div>
                                     </div>
@@ -109,7 +109,7 @@
                             aria-labelledby="step3-tab"
                         >
                             <div class="card-body">
-                                <h5 class="card-title">Tambah Tanfidzyah</h5>
+                                <h5 class="card-title">Tambah Tanfidziyah</h5>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -128,9 +128,9 @@
                                                 <option value="">Sekretaris</option>
                                             </select>
                                         </div>
-                                        
+
                                         <div class="col-lg-3 gap-2 d-flex align-items-end">
-                                            
+
                                             <button class="btn btn-primary" type="button" id="addTanfidzyah" ><i class="bi bi-check-circle"></i></button>
                                         </div>
                                     </div>
@@ -309,7 +309,7 @@ $(document).ready(function () {
     }
 
 
-    
+
 
     // MUSTASYAR
     const createMustasyar = () => {
@@ -397,7 +397,7 @@ $(document).ready(function () {
                 if(deleteClass.length > 1){
                     deleteClass[deleteClass.length] - 1
                     element.remove();
-                }  
+                }
             });
             deleteClass.length == 1 ? createMustasyar() : null
         });
@@ -405,7 +405,7 @@ $(document).ready(function () {
 
 
         const idSaveButton = document.querySelector(` button.save.btn.btn-primary.${newIndex}`);
-        
+
         idSaveButton.addEventListener("click", function () {
             const namaMustasyar = document.getElementById(`namaMustasyar-${newIndex}`);
             const nikMustasyar = document.getElementById(`nikMustasyar-${newIndex}`);
@@ -542,7 +542,7 @@ $(document).ready(function () {
 
 
         const idSaveButton = document.querySelector(` button.save.btn.btn-primary.${newIndex}`);
-        
+
         idSaveButton.addEventListener("click", function () {
             const namaSyuriah = document.getElementById(`namaSyuriah-${newIndex}`);
             const nikSyuriah = document.getElementById(`nikSyuriah-${newIndex}`);
@@ -550,7 +550,7 @@ $(document).ready(function () {
             if(this.innerHTML === '<i class="bi bi-three-dots-vertical"></i>'){
                 namaSyuriah.hasAttribute('readonly') ? namaSyuriah.removeAttribute('readonly') : namaSyuriah.setAttribute('readonly','readonly')
                 nikSyuriah.hasAttribute('readonly') ? nikSyuriah.removeAttribute('readonly') : nikSyuriah.setAttribute('readonly','readonly')
-                
+
                 posisiPengurusSyuriah.hasAttribute('disabled') ? posisiPengurusSyuriah.removeAttribute('disabled') : posisiPengurusSyuriah.setAttribute('disabled','disabled')
 
                 if(!namaSyuriah.hasAttribute('readonly')){
@@ -681,7 +681,7 @@ $(document).ready(function () {
 
 
         const idSaveButton = document.querySelector(` button.save.btn.btn-primary.${newIndex}`);
-        
+
         idSaveButton.addEventListener("click", function () {
             const namaTanfidzyah = document.getElementById(`namaTanfidzyah-${newIndex}`);
             const nikTanfidzyah = document.getElementById(`nikTanfidzyah-${newIndex}`);
@@ -689,7 +689,7 @@ $(document).ready(function () {
             if(this.innerHTML === '<i class="bi bi-three-dots-vertical"></i>'){
                 namaTanfidzyah.hasAttribute('readonly') ? namaTanfidzyah.removeAttribute('readonly') : namaTanfidzyah.setAttribute('readonly','readonly')
                 nikTanfidzyah.hasAttribute('readonly') ? nikTanfidzyah.removeAttribute('readonly') : nikTanfidzyah.setAttribute('readonly','readonly')
-                
+
                 posisiPengurusTanfidzyah.hasAttribute('disabled') ? posisiPengurusTanfidzyah.removeAttribute('disabled') : posisiPengurusTanfidzyah.setAttribute('disabled','disabled')
 
                 if(!namaTanfidzyah.hasAttribute('readonly')){

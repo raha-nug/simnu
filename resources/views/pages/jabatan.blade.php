@@ -31,7 +31,8 @@
                 <table class="table table-borderless table-hover datatable">
                 <thead>
                     <tr>
-                    <th scope="col">Nama</th>
+                    <th scope="col">Nama Jabatan</th>
+                    <th scope="col">Tipe Jabatan</th>
                     <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                     @foreach ($jp as $value)
                     <tr>
                         <td><a href="{{route('detail_jabatan', ['id' => setRoute($value->id)])}}">{{$value->nama_jabatan}}</a></td>
+                        <td>{{$value->tipe}}</a></td>
                         <td>
 
                             <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">

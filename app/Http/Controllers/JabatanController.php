@@ -50,10 +50,12 @@ class JabatanController extends Controller
     public function process(Request $request){
         $rules = [
             'nama_jabatan' => 'required',
+            'tipe' => 'required',
         ];
 
         $message = [
-            'nama_jabatan.required' => 'Nama Jabatan Pengurus Harus Diisi'
+            'nama_jabatan.required' => 'Nama Jabatan Pengurus Harus Diisi',
+            'tipe.required' => 'Tipe Jabatan Pengurus Harus Diisi'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);

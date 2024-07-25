@@ -93,7 +93,7 @@
                                             <label for="posisiPengurusSyuriah" class="form-label">Posisi Pengurus</label>
                                             <select class="form-select" id="posisiPengurusSyuriah" name="posisiPengurusSyuriah" >
                                                 <option></option>
-                                                @foreach ($jabatan as $value)
+                                                @foreach ($jabatan_syuriyah as $value)
                                                 <option value="{{$value->nama_jabatan}}">{{$value->nama_jabatan}}</option>
                                                 @endforeach
                                             </select>
@@ -130,7 +130,7 @@
                                             <label for="posisiPengurusTanfidzyah" class="form-label">Posisi Pengurus</label>
                                             <select class="form-select" id="posisiPengurusTanfidzyah" name="posisiPengurusTanfidzyah" >
                                                 <option></option>
-                                                @foreach ($jabatan as $value)
+                                                @foreach ($jabatan_tanfidziyah as $value)
                                                 <option value="{{$value->nama_jabatan}}">{{$value->nama_jabatan}}</option>
                                                 @endforeach
                                             </select>

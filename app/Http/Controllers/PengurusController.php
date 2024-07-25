@@ -24,7 +24,7 @@ class PengurusController extends Controller
                     'username' => session()->get('nama_user'),
                     'from' => 'Singaparna',
                     'name' => 'MWC Singaparna',
-                    'jabatan' => Jabatan::get(),
+                    'jabatan' => Jabatan::query()->where('tipe', 'Lembaga')->get(),
                     'id_sk' => getRoute($request->id_sk)
                 ];
 
@@ -39,7 +39,7 @@ class PengurusController extends Controller
                     'username' => session()->get('nama_user'),
                     'from' => 'Singaparna',
                     'name' => 'MWC Singaparna',
-                    'jabatan' => Jabatan::get(),
+                    'jabatan' => Jabatan::query()->where('tipe', 'Banom')->get(),
                     'id_sk' => getRoute($request->id_sk)
                 ];
 
@@ -52,7 +52,8 @@ class PengurusController extends Controller
             'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
-            'jabatan' => Jabatan::get(),
+            'jabatan_syuriyah' => Jabatan::query()->where('tipe','Syuriyah')->get(),
+            'jabatan_tanfidziyah' => Jabatan::query()->where('tipe','Tanfidziyah')->get(),
             'id_sk' => getRoute($request->id_sk)
         ];
 
@@ -69,7 +70,7 @@ class PengurusController extends Controller
             'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'name' => 'MWC Singaparna',
-            'jabatan' => Jabatan::get(),
+            'jabatan' => Jabatan::query()->where('tipe', 'Lembaga')->get(),
             'id_sk' => getRoute($request->id_sk)
         ];
 
