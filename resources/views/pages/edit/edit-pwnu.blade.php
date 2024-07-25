@@ -51,7 +51,7 @@
   </div>
   <div class="col-md-12 mt-2">
     <label for="website" class="form-label">Provinsi</label>
-    <input type="text" class="form-control" id="website" name="provinsi" readonly value="{{$provinsi->nama}}">
+    <input type="text" class="form-control" id="website" name="provinsi" readonly value="{{$pw_data->provinsi}}">
   </div>
 
   </div>

@@ -42,7 +42,6 @@ class PwnuController extends Controller
 
         $pcnu = PWNU::query()->where('id', $id)
             ->first();
-
         return $this->addPwnu($pcnu);
     }
 
@@ -60,6 +59,7 @@ class PwnuController extends Controller
         if ($pw_data)
             $data['pw_data'] = $pw_data;
             $data['provinsi'] = $this->wilayah->getSingleAddress($pw_data->provinsi ?? '');
+
 
         return view('pages.edit.edit-pwnu', $data);
     }
@@ -94,7 +94,7 @@ class PwnuController extends Controller
         if ($validated->fails()) {
             $error = implode(", ", array_map('implode', array_values($validated->errors()->messages())));
             Alert::error('Oops!', $error);
-            return redirect(route('pwnu-add'));
+            return redirect()->back();
         }
 
         $data = $validated->validate();
