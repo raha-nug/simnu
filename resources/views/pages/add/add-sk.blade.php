@@ -65,7 +65,7 @@
    </div>
    <div class="col-md-12 mt-2">
      <label for="file-sk" class="form-label">File SK</label>
-     <input type="file" class="form-control" id="file_sk" name="file_sk" required>
+     <input type="file" class="form-control" id="file_sk" accept="pdf" name="file_sk" required>
    </div>
   @endif
 </x-form>

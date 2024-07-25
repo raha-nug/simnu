@@ -82,8 +82,6 @@
                             </td>
                         </tr>
                         @endforeach
-
-                        {{ $list_pcnu->links() }}
                     </tbody>
                 </table>
             </div>

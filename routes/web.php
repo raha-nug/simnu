@@ -9,6 +9,7 @@ use App\Http\Controllers\PwnuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BanomController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\RantingController;
@@ -34,6 +35,8 @@ use App\Http\Controllers\SuratKeputusanController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/import', [ImportController::class, 'import']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::any('/Login', [LoginController::class, 'Login'])->name('login');

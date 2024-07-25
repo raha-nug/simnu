@@ -337,7 +337,7 @@
                 <li class="splide__slide" data-splide-interval="2000">
                   <a href="{{ $item['link'] }}">
                     <div class="card">
-                      <img src="{{ url('/') }}/assets/img/tubnail.png" class="card-img-top " alt="...">
+                      <img src="{{ $item['image'] }}" class="card-img-top " alt="...">
                       <div class="card-body">
                         <a href="{{ $item['link'] }}">
                           <p class="d-inline-block text-truncate mt-3 mb-4 fw-bold" style="max-width: 280px;">{{ $item['title'] }}</p>

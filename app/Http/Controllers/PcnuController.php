@@ -15,8 +15,8 @@ class PcnuController extends Controller
     public function index(Request $request)
     {
 
-        $limit = $request->page ?? 10;
-        $pcnu_list = PCNU::getData($limit);
+        // $limit = $request->page ?? 10;
+        $pcnu_list = PCNU::getData();
         $data = [
             'title' => 'PCNU',
             'username' =>session()->get('nama_user'),

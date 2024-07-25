@@ -29,7 +29,7 @@ class PCNU extends Model
         'kota'
     ];
 
-    public static function getData($paginate)
+    public static function getData()
     {
         $query = self::query()
             ->select(['pcnu.id', 'pcnu.nama', 'pcnu.alamat', 'relasi_indikator.nilai_kurang',
@@ -38,7 +38,7 @@ class PCNU extends Model
             ->leftJoin('mwcnu', 'pcnu.id', '=', 'mwcnu.id_pcnu')
             ->leftJoin('relasi_indikator', 'pcnu.id', '=', 'relasi_indikator.id_pcnu')
             ->groupBy(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
-            ->paginate($paginate);
+            ->get();
         // ->get();
 
         return $query;

@@ -92,7 +92,7 @@
           <dt class="text-lg-end text-sm-start">Kecamatan :</dt>
         </div>
         <div class="col-lg-9">
-          <dd>{{ $kecamatan->nama }}</dd>
+          <dd>{{ $kecamatan->nama ?? '' }}</dd>
         </div>
       </div>
       <div class="row">
