@@ -27,6 +27,8 @@ return new class extends Migration
             $table->foreign('id_pwnu')->references('id')->on('pwnu')->onDelete('cascade');
             $table->foreign('id_pcnu')->references('id')->on('pcnu')->onDelete('cascade');
             $table->foreign('id_mwcnu')->references('id')->on('mwcnu')->onDelete('cascade');
+            $table->foreign('id_lembaga')->references('id')->on('lembaga')->onDelete('cascade');
+            $table->foreign('id_banom')->references('id')->on('banom')->onDelete('cascade');
         });
     }
 

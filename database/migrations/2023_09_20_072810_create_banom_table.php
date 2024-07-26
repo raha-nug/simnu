@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('banom', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->unsignedBigInteger('id_pwnu')->nullable();
             $table->unsignedBigInteger('id_pcnu')->nullable();
             $table->unsignedBigInteger('id_mwcnu')->nullable();

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lembaga', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->unsignedBigInteger('id_pwnu');
             $table->unsignedBigInteger('id_pcnu');
             $table->unsignedBigInteger('id_mwcnu');
