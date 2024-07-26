@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class SuratKeputusanController extends Controller
@@ -217,14 +218,21 @@ class SuratKeputusanController extends Controller
         $id_sk = $request->sk;
         $id = getRoute($id_sk);
         $sk_detail = SuratKeputusan::query()->where('id', $id)->first();
-        $pengurus = Pengurus::join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                            ->where('pengurus.id_sk', $id)->paginate(10);
+        if($request->ajax()){
+            $pengurus = Pengurus::join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                                ->where('pengurus.id_sk', $id)->get();
+            return DataTables::of($pengurus)
+            ->addIndexColumn()
+            ->editColumn('id', function($pengurus) {
+                return setRoute(strval($pengurus->id));
+            })
+            ->make(true);
+        }
         $data = [
             'title' => 'Detail Surat Keputusan',
             'username' => session()->get('nama_user'),
             'from' => 'Singaparna',
             'sk' => $sk_detail,
-            'pengurus' => $pengurus
         ];
         return view('pages.detail-sk', $data);
     }

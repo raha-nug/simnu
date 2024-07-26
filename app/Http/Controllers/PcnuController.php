@@ -8,6 +8,7 @@ use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class PcnuController extends Controller
@@ -53,13 +54,14 @@ class PcnuController extends Controller
             return redirect('pcnu');
 
         $pcnu = PCNU::query()->where('id', $id)
-            ->first();
+        ->first();
         // $mwc_list = MWCNU::getListByPcnu($id, $limit);
+
         $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
                             ->join('PCNU', 'surat_keputusan.id_pcnu', '=', 'PCNU.id')
                             ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
                             ->where('PCNU.id', $id)->get();
-        // dd($pengurus);
+
         return view('pages.detail-pcnu', [
             'title' => 'Detail PCNU',
             'username' =>session()->get('nama_user'),
