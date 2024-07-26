@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 
 class PCNU extends Model
 {
@@ -32,14 +33,20 @@ class PCNU extends Model
     public static function getData()
     {
         $query = self::query()
-            ->select(['pcnu.id', 'pcnu.nama', 'pcnu.alamat', 'relasi_indikator.nilai_kurang',
-                       'relasi_indikator.nilai_cukup', 'relasi_indikator.nilai_baik'])
-            ->selectRaw('COUNT(mwcnu.id) as jumlah_mwc')
-            ->leftJoin('mwcnu', 'pcnu.id', '=', 'mwcnu.id_pcnu')
-            ->leftJoin('relasi_indikator', 'pcnu.id', '=', 'relasi_indikator.id_pcnu')
-            ->groupBy(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
-            ->get();
-        // ->get();
+        ->select([
+            'pcnu.id', 
+            'pcnu.nama', 
+            'pcnu.alamat', 
+            'relasi_indikator.nilai_kurang',
+            'relasi_indikator.nilai_cukup', 
+            'relasi_indikator.nilai_baik',
+            DB::raw('COUNT(mwcnu.id) as jumlah_mwc'),
+            DB::raw('(SELECT COUNT(*) FROM wilayah w WHERE LEFT(w.kode, 5) = pcnu.kota AND LENGTH(w.kode) = 8) as actual_mwc')
+        ])
+        ->leftJoin('mwcnu', 'pcnu.id', '=', 'mwcnu.id_pcnu')
+        ->leftJoin('relasi_indikator', 'pcnu.id', '=', 'relasi_indikator.id_pcnu')
+        ->groupBy(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
+        ->get();
 
         return $query;
     }

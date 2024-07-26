@@ -220,7 +220,7 @@
         {
           mData: "jumlah",
           mRender: function(data, type, row) {
-            return row.jumlah;
+            return `${row.jumlah}/${row.actual_ranting}`;
           },
           "orderable": false
         },

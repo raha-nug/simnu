@@ -26,6 +26,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('id_pwnu')->references('id')->on('pwnu')->onDelete('cascade');
+            $table->foreign('provinsi')->references('kode')->on('wilayah')->onDelete('cascade');
+            $table->foreign('kota')->references('kode')->on('wilayah')->onDelete('cascade');
         });
     }
 

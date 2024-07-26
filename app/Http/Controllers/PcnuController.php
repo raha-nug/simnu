@@ -77,32 +77,9 @@ class PcnuController extends Controller
 
     public function getmwcByPcnu(Request $request)
     {
-        $limit = $request->length ?? 10;
-        $start = $request->start ?? 0;
-
-        if (!isset($request->pc))
-        {
-            return response()->json((object)[
-                'success' => 0,
-                'data' => collect([])
-            ]);
+        if($request->ajax()){
+            return MWCNU::getListByPcnu($request->pc);  
         }
-
-        $id = $request->pc;
-        if (!$id)
-        {
-            return response()->json((object)[
-                'success' => 0,
-                'data' => collect([])
-            ]);
-        }
-
-        $mwc_list = MWCNU::getListByPcnu($id, $limit, $start,$request->search['value']);
-        // dd(mapSetRoute($mwc_list));
-        return response()->json((object)[
-            'success' => 1,
-            'data' => mapSetRoute($mwc_list)
-        ]);
     }
 
     public function addPcnu($pc_data=null)

@@ -60,7 +60,7 @@
                                @endif
                             </td>
                             <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->jumlah_mwc }}</td>
+                            <td>{{ sprintf('%s/%s',$item->jumlah_mwc,$item->actual_mwc) }}</td>
                             <td>
                                 <button type="button" class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
                                     <i class="bi bi-three-dots-vertical"></i>
