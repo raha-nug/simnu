@@ -24,6 +24,8 @@ class SuratKeputusan extends Model
         'id_mwcnu',
         'id_banom',
         'id_lembaga',
+        'id_ranting',
+        'id_anak_ranting',
         'no_dokumen',
         'tanggal_mulai',
         'tanggal_berakhir',

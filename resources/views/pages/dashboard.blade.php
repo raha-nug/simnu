@@ -9,6 +9,30 @@
     @include('sweetalert::alert')
         <div class="col-lg-12">
           <div class="row">
+            <!-- Sales Card -->
+            <div class="d-flex justify-content-center">
+              <div class="col-xxl-6 col-md-6">
+                <div class="card info-card sales-card">
+                  <div class="card-body">
+                    <h5 class="card-title mb-3">Jumlah Pengurus PWNU</h5>
+  
+                    <div class="d-flex align-items-center gap-4">
+                      <div class="card-grand-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people" style="font-size: 3.75rem;"></i>
+                      </div>
+                      <div class="d-flex gap-4">
+                          <div>
+                            <h1 class="m-0">{{ $pengurus_pwnu }}</h1>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                </div>
+              </div><!-- End Sales Card -->
+            </div>
+          </div>
+          <div class="row">
 
             <!-- Sales Card -->
             <div class="col-xxl-4 col-md-4">
@@ -102,7 +126,7 @@
                         </div>
                         <div>
                           <h6>{{$jml_anak_ranting}}</h6>
-                          <span class="text-muted small pt-2 ps-1">Anak Ranting</span>
+                          <span class="text-muted pt-2 ps-1" style="font-size: 0.78em;">Anak Ranting</span>
                         </div>
                     </div>
                   </div>
@@ -122,11 +146,11 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>{{$jml_lembaga}}</h6>
+                          <h6>{{$total_lembaga}}</h6>
                           <span class="text-muted small pt-2 ps-1">Lembaga</span>
                         </div>
                         <div>
-                          <h6>{{$jml_banom}}</h6>
+                          <h6>{{$total_banom}}</h6>
                           <span class="text-muted small pt-2 ps-1">Banom</span>
                         </div>
                     </div>
@@ -138,7 +162,6 @@
 
           </div>
           <div class="row">
-
             <!-- Sales Card -->
             <div class="col-xxl-4 col-md-4">
               <div class="card info-card sales-card">
@@ -151,11 +174,11 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>0</h6>
+                          <h6>{{ $pengurus_pcnu }}</h6>
                           <span class="text-muted small pt-2 ps-1">PCNU</span>
                         </div>
                         <div>
-                          <h6>0</h6>
+                          <h6>{{ $pengurus_mwcnu }}</h6>
                           <span class="text-muted small pt-2 ps-1">MWCNU</span>
                         </div>
                     </div>
@@ -176,12 +199,12 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>0</h6>
+                          <h6>{{ $pengurus_ranting }}</h6>
                           <span class="text-muted small pt-2 ps-1">Ranting</span>
                         </div>
                         <div>
-                          <h6>0</h6>
-                          <span class="text-muted small pt-2 ps-1">Anak Ranting</span>
+                          <h6>{{ $pengurus_anak_ranting }}</h6>
+                          <span class="text-muted pt-2 ps-1" style="font-size: 0.78em;">Anak Ranting</span>
                         </div>
                     </div>
                   </div>
