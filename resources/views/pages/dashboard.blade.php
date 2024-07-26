@@ -151,11 +151,11 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>2047</h6>
+                          <h6>0</h6>
                           <span class="text-muted small pt-2 ps-1">PCNU</span>
                         </div>
                         <div>
-                          <h6>9720</h6>
+                          <h6>0</h6>
                           <span class="text-muted small pt-2 ps-1">MWCNU</span>
                         </div>
                     </div>
@@ -176,11 +176,11 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>16004</h6>
+                          <h6>0</h6>
                           <span class="text-muted small pt-2 ps-1">Ranting</span>
                         </div>
                         <div>
-                          <h6>4799</h6>
+                          <h6>0</h6>
                           <span class="text-muted small pt-2 ps-1">Anak Ranting</span>
                         </div>
                     </div>
@@ -201,11 +201,11 @@
                     </div>
                     <div class="d-flex gap-4">
                         <div>
-                          <h6>3029</h6>
+                          <h6>0</h6>
                           <span class="text-muted small pt-2 ps-1">Lembaga</span>
                         </div>
                         <div>
-                          <h6>2814</h6>
+                          <h6>0</h6>
                           <span class="text-muted small pt-2 ps-1">Banom</span>
                         </div>
                     </div>

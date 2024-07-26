@@ -14,14 +14,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $jml_pc = count(PCNU::all());
-        $jml_mwc = count(MWCNU::all());
-        $jml_ranting = count(Ranting::all());
-        $jml_anak_ranting = count(AnakRanting::all());
-        $jml_banom = count(Banom::all());
-        $jml_lembaga = count(Lembaga::all());
-        $jml_banom_pw = count(Banom::select('*')->where('id_pwnu',1)->get());
-        $jml_lembaga_pw = count(Lembaga::select('*')->where('id_pwnu',1)->get());
+        $jml_pc = PCNU::count();
+        $jml_mwc = MWCNU::count();
+        $jml_ranting = Ranting::count();
+        $jml_anak_ranting = AnakRanting::count();
+        $jml_banom = Banom::count();
+        $jml_lembaga = Lembaga::count();
+        $jml_banom_pw = Banom::select('*')->where('id_pwnu',1)->count();
+        $jml_lembaga_pw = Lembaga::select('*')->where('id_pwnu',1)->count();
         $data = [
             'title' => 'Dashboard',
             'username' => session()->get('nama_user'),
