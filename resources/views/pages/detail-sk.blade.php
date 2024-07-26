@@ -122,7 +122,7 @@
                         className: "my-column",
                         mData: "nama",
                         mRender: function(data, type, row) {
-                            return `<a href="{{ route('detail_pengurus') }}?pengurus={{ setRoute(${row.nik})}}">${row.nama}</a>`;
+                            return `<a href="{{ route('detail_pengurus') }}?pengurus=${row.id}">${row.nama}</a>`;
                         }
                     },
                     {

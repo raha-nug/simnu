@@ -1,6 +1,6 @@
 <div class="tab-pane fade show active mt-3" id="bordered-justified-pengurus" role="tabpanel" aria-labelledby="pengurus-tab">
    <div class="table-responsive">
-      <table class="table table-borderless table-hover datatable">
+      <table class="table table-borderless table-hover" id="pengurusTable">
          <thead>
             <tr>
                {{-- <th scope="col">No</th> --}}
@@ -11,14 +11,14 @@
             </tr>
          </thead>
          <tbody>
-            @foreach ($pengurus as $value)
+            {{-- @foreach ($pengurus as $value)
             <tr>
                 <th scope="row"><a href="{{ route('detail_pengurus') }}?pengurus={{ setRoute($value->id) }}">{{ $value->nama }}</a></th>
                 <td>{{$value->jenis_pengurus ?? "-"}}</td>
                 <td>{{$value->jabatan}}</td>
                 <td>{{$value->mulai_jabatan}} - {{$value->akhir_jabatan}}</td>
             </tr>
-            @endforeach
+            @endforeach --}}
          </tbody>
       </table>
    </div>

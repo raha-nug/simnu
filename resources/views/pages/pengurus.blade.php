@@ -50,7 +50,7 @@
                   </a>
                 </div> --}}
                 <div class="table-responsive ">
-                    <table class="table table-borderless table-hover datatable">
+                    <table class="table table-borderless table-hover" id="pengurusTable">
                     <thead>
                         <tr>
                         <th scope="col">Nama</th>
@@ -88,164 +88,11 @@
                             </td>
                         </tr>
                         @endforeach
-                        {{-- <tr>
-                            <th scope="row"><a href="detail-pengurus">H. Asep Saepudin Abdillah</a></th>
-                            <td>081111111</td>
-                            <td>contoh@email.com</td>
-                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="detail-pengurus">H. Ahmad Husen Jali, S.Ag</a></th>
-                            <td>081111111</td>
-                            <td>contoh@email.com</td>
-                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="detail-pengurus">H. Ahmad Dasuki</a></th>
-                            <td>081111111</td>
-                            <td>contoh@email.com</td>
-                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row"><a href="detail-pengurus">Drs. H. Daddy Syarif, MM.</a></th>
-                            <td>081111111</td>
-                            <td>contoh@email.com</td>
-                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="detail-pengurus">KH. M. Nuh Addawami</a></th>
-                            <td>081111111</td>
-                            <td>contoh@email.com</td>
-                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="detail-pengurus">KH. M. Usamah Manshur</a></th>
-                            <td>081111111</td>
-                            <td>contoh@email.com</td>
-                            <td>Dusun Kosbar RT 002 RW 005 Desa Sukatani Kec. Cilamaya Wetan Kab. Karawang</td>
-                            <td>
-                                <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
-                                <i class="bi bi-three-dots-vertical"></i>
-                                </a>
-                                <ul
-                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-
-                                <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-pencil-square"></i>
-                                    Edit
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">
-                                    <i class="bi bi-trash"></i>
-                                    Hapus
-                                    </a>
-                                </li>
-                                </ul>
-                            </td>
-                        </tr> --}}
-
                     </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-    <script>
     </script>
 @endsection

@@ -223,8 +223,8 @@ class SuratKeputusanController extends Controller
                                 ->where('pengurus.id_sk', $id)->get();
             return DataTables::of($pengurus)
             ->addIndexColumn()
-            ->editColumn('id', function($pengurus) {
-                return setRoute(strval($pengurus->id));
+            ->editColumn('id', function($row) {
+                return setRoute(strval($row->id));
             })
             ->make(true);
         }

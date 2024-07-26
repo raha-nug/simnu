@@ -153,7 +153,59 @@
     lembagaTable();
     BanomTable();
     SkTable();
+    pengurusTable();
   })
+
+  const pengurusTable = () => {
+    $("#pengurusTable").DataTable({
+            responsive:!0,
+            language:{
+                paginate:{
+                    previous:"<i class='ri-arrow-left-s-line'>",
+                    next:"<i class='ri-arrow-right-s-line'>"
+                }
+            },
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('/') }}/pcnu/detail?page=10&pc={{setRoute($pc_data->id)}}",
+            columns: [
+                    {
+                        className: "my-column",
+                        mData: "nama",
+                        mRender: function(data, type, row) {
+                            return `<a href="{{ route('detail_pengurus') }}?pengurus=${row.id}">${row.nama}</a>`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "jenis_pengurus",
+                        mRender: function(data, type, row) {
+                            return `${row.jenis_pengurus}`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "jabatan",
+                        mRender: function(data, type, row) {
+                            return `${row.jabatan}`;
+
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "periode",
+                        mRender: function(data, type, row) {
+                            return `${row.mulai_jabatan} - ${row.akhir_jabatan}`;
+
+                        }
+                    },
+
+                ],
+            drawCallback:function() {
+                $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+            }
+        });
+  }
 
   const mwcTable = () => {
     $("#mwcTable").DataTable({

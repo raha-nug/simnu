@@ -56,11 +56,18 @@ class PcnuController extends Controller
         $pcnu = PCNU::query()->where('id', $id)
         ->first();
         // $mwc_list = MWCNU::getListByPcnu($id, $limit);
-
-        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
-                            ->join('PCNU', 'surat_keputusan.id_pcnu', '=', 'PCNU.id')
-                            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                            ->where('PCNU.id', $id)->get();
+        if($request->ajax()){
+            $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+                                ->join('PCNU', 'surat_keputusan.id_pcnu', '=', 'PCNU.id')
+                                ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                                ->where('PCNU.id', $id)->get();
+            return DataTables::of($pengurus)
+            ->addIndexColumn()
+            ->editColumn('id', function($row) {
+                return setRoute(strval($row->id));
+            })
+            ->make(true);
+        }
 
         return view('pages.detail-pcnu', [
             'title' => 'Detail PCNU',
