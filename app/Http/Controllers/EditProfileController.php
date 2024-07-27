@@ -2,25 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PCNU;
+use App\Models\PWNU;
+use App\Models\MWCNU;
 use App\Models\Anggota;
+use App\Models\Ranting;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class EditProfileController extends Controller
 {
-    public function index(){
-        $anggota = Anggota::query()->paginate(10);
+    public function index(Request $request){
+        $pwnu = PWNU::select('*')->distinct()->get();
+        $pcnu = PCNU::select('*')->distinct()->get();
+        $mwcnu = MWCNU::select('*')->distinct()->get();
+        $ranting = Ranting::select('*')->distinct()->get();
+        if($request->ajax()){
+            $query = Anggota::query();
+            if($request->has('pwnu_id') && $request->pwnu_id != null || $request->pwnu_id != ''){
+                $query->select(['pengurus.nama','anggota.id','anggota.no_telp','anggota.email','anggota.nik','anggota.alamat','pengurus.id_sk','surat_keputusan.id_pcnu'])
+                        ->join('pengurus', 'pengurus.nik', 'anggota.nik')
+                        ->join('surat_keputusan', 'surat_keputusan.id', 'pengurus.id_sk')
+                        ->join('PWNU', 'PWNU.id', 'surat_keputusan.id_pwnu')
+                        ->where('PWNU.id', $request->pwnu_id);
+            }
+            if($request->has('pcnu_id') && $request->pcnu_id != null || $request->pcnu_id != ''){
+                $query->select(['pengurus.nama','anggota.id','anggota.no_telp','anggota.email','anggota.nik','anggota.alamat','pengurus.id_sk','surat_keputusan.id_pcnu'])
+                        ->join('pengurus', 'pengurus.nik', 'anggota.nik')
+                        ->join('surat_keputusan', 'surat_keputusan.id', 'pengurus.id_sk')
+                        ->join('PCNU', 'PCNU.id', 'surat_keputusan.id_pcnu')
+                        ->where('PCNU.id', $request->pcnu_id);
+            }
+            if($request->has('mwcnu_id') && $request->mwcnu_id != null || $request->mwcnu_id != ''){
+                $query->select(['pengurus.nama','anggota.id','anggota.no_telp','anggota.email','anggota.nik','anggota.alamat','pengurus.id_sk','surat_keputusan.id_pcnu'])
+                        ->join('pengurus', 'pengurus.nik', 'anggota.nik')
+                        ->join('surat_keputusan', 'surat_keputusan.id', 'pengurus.id_sk')
+                        ->join('MWCNU', 'MWCNU.id', 'surat_keputusan.id_pcnu')
+                        ->where('MWCNU.id', $request->mwcnu_id);
+            }
+
+            $pengurus = $query->get();
+            return DataTables::of($pengurus)
+            ->addIndexColumn()
+            ->editColumn('id', function($row) {
+                return setRoute(strval($row->id));
+            })
+            ->make(true);
+        }
+
         $data = [
-            'anggota' => $anggota,
             'title'=> 'Pengurus',
             'username'=>session()->get('nama_user'),
             'from'=>'Jawa Barat',
-            'name'=>'PWNU Jawa Barat'
+            'name'=>'PWNU Jawa Barat',
+            'pwnu' => $pwnu,
+            'pcnu' => $pcnu,
+            'mwcnu' => $mwcnu,
+            'ranting' => $ranting ?? new Ranting,
         ];
 
         return view('pages.pengurus', $data);

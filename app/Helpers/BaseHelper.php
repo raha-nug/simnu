@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Crypt;
 
@@ -20,14 +21,15 @@ if (!function_exists('getRoute')) {
 if (!function_exists('mapSetRoute')) {
    function mapSetRoute(Collection $collection): Collection
    {
+      Carbon::setlocale('id');
       $result = collect([]);
       foreach ($collection as $item) {
          $val = [
             "id" => setRoute($item->id),
             "nama" => $item->nama,
             'no_dokumen' => $item->no_dokumen,
-            'tanggal_mulai' => $item->tanggal_mulai,
-            'tanggal_berakhir' => $item->tanggal_berakhir,
+            'tanggal_mulai' => Carbon::parse($item->tanggal_mulai)->translatedFormat('d F Y'),
+            'tanggal_berakhir' => Carbon::parse($item->tanggal_berakhir)->translatedFormat('d F Y'),
             "alamat" =>  $item->nama,
             "jumlah" =>  $item->jumlah,
             "nilai_baik" => $item->nilai_baik,
@@ -36,8 +38,8 @@ if (!function_exists('mapSetRoute')) {
             "nama" => $item->nama,
             "jabatan" => $item->jabatan,
             "pengurus" => $item->jenis_pengurus,
-            "mulai_jabatan" => $item->mulai_jabatan,
-            "akhir_jabatan" => $item->akhir_jabatan,
+            "mulai_jabatan" => Carbon::parse($item->mulai_jabatan)->translatedFormat('d F Y'),
+            "akhir_jabatan" => Carbon::parse($item->akhir_jabatan)->translatedFormat('d F Y'),
          ];
          $result->push($val);
       }

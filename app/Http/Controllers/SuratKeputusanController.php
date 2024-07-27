@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\PCNU;
 use App\Models\PWNU;
 use App\Models\Banom;
@@ -223,8 +224,16 @@ class SuratKeputusanController extends Controller
                                 ->where('pengurus.id_sk', $id)->get();
             return DataTables::of($pengurus)
             ->addIndexColumn()
-            ->editColumn('id', function($pengurus) {
-                return setRoute(strval($pengurus->id));
+            ->editColumn('id', function($row) {
+                return setRoute(strval($row->id));
+            })
+            ->editColumn('mulai_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->mulai_jabatan)->translatedFormat('d F Y');
+            })
+            ->editColumn('akhir_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->akhir_jabatan)->translatedFormat('d F Y');
             })
             ->make(true);
         }
