@@ -46,7 +46,7 @@
         <label for="nama" class="form-label">Tipe Jabatan</label>
         <select name="tipe" class="form-select" id="">
           <option value="Syuriyah">Syuriyah</option>
-          <option value="Tanfidzyiah">Tanfidzyiah</option>
+          <option value="Tanfidzyiah">Tanfidziyah</option>
           <option value="Lembaga">Lembaga</option>
           <option value="Banom">Banom</option>
         </select>

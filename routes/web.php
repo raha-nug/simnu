@@ -203,6 +203,7 @@ Route::prefix('pengurus')->group(function () {
 
 Route::prefix('anggota')->group(function () {
     Route::get('/', [EditProfileController::class, 'index'])->name('pengurus');
+    Route::get('/filter', [EditProfileController::class, 'filterData'])->name('pengurusFilter');
     Route::get('/detail', [EditProfileController::class, 'detail'])->name('detail_pengurus');
     Route::get('/getPengurus', [EditProfileController::class, 'getPengurus'])->name('getPengurus');
     Route::post('/update', [EditProfileController::class, 'edit'])->name('edit');

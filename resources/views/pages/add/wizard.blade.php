@@ -78,7 +78,7 @@
                             aria-labelledby="step2-tab"
                         >
                             <div class="card-body">
-                                <h5 class="card-title">Tambah Syuriah</h5>
+                                <h5 class="card-title">Tambah Syuriyah</h5>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-3">
@@ -115,7 +115,7 @@
                             aria-labelledby="step3-tab"
                         >
                             <div class="card-body">
-                                <h5 class="card-title">Tambah Tanfidzyah</h5>
+                                <h5 class="card-title">Tambah Tanfidziyah</h5>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-lg-3">

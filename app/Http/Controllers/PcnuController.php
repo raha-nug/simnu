@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\PCNU;
 use App\Models\MWCNU;
 use App\Models\Pengurus;
@@ -65,6 +66,14 @@ class PcnuController extends Controller
             ->addIndexColumn()
             ->editColumn('id', function($row) {
                 return setRoute(strval($row->id));
+            })
+            ->editColumn('mulai_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->mulai_jabatan)->translatedFormat('d F Y');
+            })
+            ->editColumn('akhir_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->akhir_jabatan)->translatedFormat('d F Y');
             })
             ->make(true);
         }
