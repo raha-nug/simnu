@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AnakRanting;
+use App\Models\Pengurus;
 use App\Models\Ranting;
+use App\Models\SuratKeputusan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -22,13 +24,20 @@ class AnakRantingController extends Controller
             ->where('anak_ranting.id', $id)
             ->leftJoin('ranting', 'id_ranting', '=', 'ranting.id')
             ->first();
-        dd($anak_ranting);
 
+        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+            ->join('anak_ranting', 'surat_keputusan.id_anak_ranting', '=', 'anak_ranting.id')
+            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+            ->where('anak_ranting.id', $id)
+            ->get();
+        $sk = SuratKeputusan::query()->where('id_anak_ranting', $id)->get();
         return view('pages.detail-anak-ranting', [
             'title' => 'Detail Anak Ranting NU',
             'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
-            'anak_ranting_data' => $anak_ranting
+            'anak_ranting_data' => $anak_ranting,
+            'sk' => $sk,
+            'pengurus' => $pengurus
         ]);
     }
 
