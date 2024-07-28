@@ -64,6 +64,13 @@
         <input type="hidden" name="id_mwcnu" value="{{ $mwcnu_data->id }}">
     </div>
     @endisset
+    @isset($ranting_data)
+    <div class="col-md-12">
+        <label for="wil_kerja">Wilayah kerja</label>
+        <input type="text" class="form-control" value="{{ $ranting_data->nama }}" id="wilKerja" readonly>
+        <input type="hidden" name="id_ranting" value="{{ $ranting_data->id }}">
+    </div>
+    @endisset
     @endif
 </x-form>
 @endsection

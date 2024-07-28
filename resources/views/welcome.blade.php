@@ -110,7 +110,7 @@
           </div>
           <div class="col-lg-6">
             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-              <img src="assets/img/hero/image.png" style="margin-bottom: 0;" alt="hero-image" />
+              <img src="assets/img/hero/hero.png" style="margin-bottom: 0;" alt="hero-image" />
               <img
                 src="assets/img/hero/dotted-shape.svg"
                 alt="shape"

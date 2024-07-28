@@ -36,12 +36,12 @@ class MWCNU extends Model
     public static function getListByPcnu($id_pc)
     {
         $model = self::query()->select([
-            'mwcnu.id', 
-            'mwcnu.nama', 
+            'mwcnu.id',
+            'mwcnu.nama',
             'mwcnu.alamat',
-            'relasi_indikator.nilai_baik', 
-            'relasi_indikator.nilai_cukup', 
-            'relasi_indikator.nilai_kurang', 
+            'relasi_indikator.nilai_baik',
+            'relasi_indikator.nilai_cukup',
+            'relasi_indikator.nilai_kurang',
             DB::raw('COUNT(ranting.id) as jumlah'),
             DB::raw('(SELECT COUNT(*) FROM wilayah w WHERE LEFT(w.kode, 8) = mwcnu.kecamatan AND LENGTH(w.kode) = 13) as actual_ranting')
         ])
@@ -58,6 +58,32 @@ class MWCNU extends Model
         // ->addColumn('column_name', function($row) {
         // })
         ->make(true);
+    }
+
+    public static function detailMwcnu($id){
+        $query = self::query()
+        ->select([
+            'mwcnu.id_pcnu',
+            'mwcnu.id',
+            'mwcnu.nama',
+            'mwcnu.alamat',
+            'mwcnu.telp',
+            'mwcnu.email',
+            'mwcnu.website',
+            'mwcnu.lat',
+            'mwcnu.long',
+            'mwcnu.provinsi',
+            'mwcnu.kota',
+            'mwcnu.kecamatan',
+            DB::raw('COUNT(ranting.id) as jumlah'),
+            DB::raw('(SELECT COUNT(*) FROM wilayah w WHERE LEFT(w.kode, 8) = mwcnu.kecamatan AND LENGTH(w.kode) = 13) as actual_ranting')
+        ])
+        ->leftJoin('ranting', 'mwcnu.id', '=', 'ranting.id_mwcnu')
+        ->groupBy(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat'])
+        ->where('mwcnu.id', $id)
+        ->first();
+
+        return $query;
     }
 
     public static function getRowData($id)

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PCNU;
+use App\Models\Banom;
 use App\Models\MWCNU;
+use App\Models\Lembaga;
 use App\Models\Ranting;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
@@ -32,10 +34,22 @@ class MwcController extends Controller
             ->where('MWCNU.id', $id)
             ->get();
 
+        $jml_lembaga = Lembaga::query()->where('id_mwcnu', $id)->count();
+        $jml_banom = Banom::query()->where('id_mwcnu', $id)->count();
+        $jml_pengurus = Pengurus::query()->leftJoin('surat_keputusan','surat_keputusan.id', 'pengurus.id_sk')
+                                            ->leftJoin('mwcnu','mwcnu.id','surat_keputusan.id_mwcnu')
+                                            ->where('mwcnu.id',$id)
+                                            ->count();
+        $jml_ranting = MWCNU::detailMwcnu($id);
+
         return view( 'pages.detail-mwc', [
             'title' => 'Detail MWC NU',
             'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
+            'jml_lembaga' => $jml_lembaga,
+            'jml_banom' => $jml_banom,
+            'jml_pengurus' => $jml_pengurus,
+            'jml_ranting' => $jml_ranting,
             'sk' => $sk ?? new SuratKeputusan,
             'nomor' => $count = 1,
             'kota' => $this->wilayah->getSingleAddress($mwcnu->kota ?? ''),
@@ -172,7 +186,7 @@ class MwcController extends Controller
     }
 
     public function getRantingByMwc(Request $request)
-    {   
+    {
         if($request->ajax())
         {
             return Ranting::getListByMwcnu($request->mwc);

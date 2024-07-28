@@ -11,7 +11,6 @@
             <tr>
                <th scope="col">Nama Anak Ranting</th>
                <th scope="col">Alamat </th>
-               <th scope="col">Kelengkapan Dokumen</th>
                <th scope="col">Aksi</th>
             </tr>
          </thead>

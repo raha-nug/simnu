@@ -308,7 +308,7 @@ $(document).ready(function () {
             nama: document.getElementById("namaSyuriah").value,
             id_sk: document.getElementById("idSk").value,
             jabatan: document.getElementById("posisiPengurusSyuriah").value,
-            jenis_pengurus: 'Syuriah'
+            jenis_pengurus: 'Syuriyah'
         }
         const options = {
             formType:"syuriah",
@@ -324,7 +324,7 @@ $(document).ready(function () {
             nama: document.getElementById("namaTanfidzyah").value,
             id_sk: document.getElementById("idSk").value,
             jabatan: document.getElementById("posisiPengurusTanfidzyah").value,
-            jenis_pengurus: 'Tanfidzyah'
+            jenis_pengurus: 'Tanfidziyah'
         }
         const options = {
             formType:"tanfidzyah",

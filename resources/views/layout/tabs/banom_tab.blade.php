@@ -6,6 +6,8 @@
         <a class="btn btn-primary" href="{{route('Banom-add')}}?pc={{setRoute($pc_data->id)}}">
     @elseif($mwc_data->id ?? null)
         <a class="btn btn-primary" href="{{route('Banom-add')}}?mwc={{setRoute($mwc_data->id)}}">
+    @elseif($ranting_data->id ?? null)
+        <a class="btn btn-primary" href="{{route('Banom-add')}}?ranting={{setRoute($ranting_data->id)}}">
     @endif
         <i class="bi bi-plus me-1"></i>
             Tambah

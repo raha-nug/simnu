@@ -57,7 +57,7 @@ class Ranting extends Model
     public static function getRowData($id)
     {
         return self::query()
-            ->select(['id', 'kota', 'kecamatan','desa'])
+            ->select(['id', 'kota', 'kecamatan','desa', 'nama'])
             ->where('id', $id)
             ->first();
     }

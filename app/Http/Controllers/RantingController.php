@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Banom;
 use App\Models\MWCNU;
 use App\Models\Ranting;
 use App\Models\Pengurus;
@@ -29,34 +30,58 @@ class RantingController extends Controller
             ->first();
 
         if($request->ajax()){
-            $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+            if($request->tipe == 'pengurus'){
+                $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
                                 ->join('ranting', 'surat_keputusan.id_ranting', '=', 'ranting.id')
                                 ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                                ->where('ranting.id', $id)
-                                ->where('tanggal_berakhir', '>', date('Y-m-d'))
-                                ->get();
-            return DataTables::of($pengurus)
-            ->addIndexColumn()
-            ->editColumn('id', function($row) {
-                return setRoute(strval($row->id));
-            })
-            ->editColumn('mulai_jabatan', function($row) {
-                Carbon::setlocale('id');
-                return Carbon::parse($row->mulai_jabatan)->translatedFormat('d F Y');
-            })
-            ->editColumn('akhir_jabatan', function($row) {
-                Carbon::setlocale('id');
-                return Carbon::parse($row->akhir_jabatan)->translatedFormat('d F Y');
-            })
-            ->make(true);
+                                ->where('ranting.id', $id)->get();
+                return DataTables::of($pengurus)
+                ->addIndexColumn()
+                ->editColumn('id', function($row) {
+                    return setRoute(strval($row->id));
+                })
+                ->editColumn('mulai_jabatan', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->mulai_jabatan)->translatedFormat('d F Y');
+                })
+                ->editColumn('akhir_jabatan', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->akhir_jabatan)->translatedFormat('d F Y');
+                })
+                ->make(true);
+            }
+            if($request->tipe == 'sk'){
+                $sk = SuratKeputusan::query()->where('id_ranting', $id)->get();
+                return DataTables::of($sk)
+                ->addIndexColumn()
+                ->editColumn('id', function($row) {
+                    return setRoute(strval($row->id));
+                })
+                ->editColumn('tanggal_mulai', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->tanggal_mulai)->translatedFormat('d F Y');
+                })
+                ->editColumn('tanggal_berakhir', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->tanggal_berakhir)->translatedFormat('d F Y');
+                })
+                ->make(true);
+            }
+            if($request->tipe == 'banom'){
+                $banom = Banom::query()->where('id_ranting', $id)->get();
+                return DataTables::of($banom)
+                ->addIndexColumn()
+                ->editColumn('id', function($row) {
+                    return setRoute(strval($row->id));
+                })
+                ->make(true);
+            }
         }
-        $sk = SuratKeputusan::query()->where('id_ranting', $id)->get();
 
         return view('pages.detail-ranting', [
             'title' => 'Detail Ranting NU',
             'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
-            'sk' => $sk,
             'number' => $number = 1,
             'kecamatan' => $this->wilayah->getSingleAddress($ranting->kecamatan ?? ''),
             'ranting_data' => $ranting

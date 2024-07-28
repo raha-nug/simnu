@@ -114,65 +114,118 @@
 
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
-        <div class="tab-pane fade show active mt-3" id="bordered-justified-pengurus" role="tabpanel" aria-labelledby="pengurus-tab">
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Pengurus</th>
-                  <th scope="col">Jabatan</th>
-                  <th scope="col">Periode</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($pengurus as $value)
-                <tr>
-                    <th scope="row"><a href="{{ route('detail_pengurus') }}?pengurus={{ setRoute($value->id) }}">{{ $value->nama }}</a></th>
-                    <td>{{$value->jenis_pengurus}}</td>
-                    <td>{{$value->jabatan}}</td>
-                    <td>{{$value->mulai_jabatan}} - {{$value->akhir_jabatan}}</td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade mt-3" id="bordered-justified-kepengurusan" role="tabpanel" aria-labelledby="kepengurusan-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <div class="d-flex justify-content-end me-3 btn-sm">
-              <a class="btn btn-primary" href="{{route('add_sk')}}?anakranting={{setRoute($anak_ranting_data->id)}}">
-                <i class="bi bi-plus me-1"></i>
-                Tambah
-              </a>
-            </div>
-          </div>
-
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">No Surat</th>
-                  <th scope="col">Masa Jabatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($sk as $key => $value)
-                <tr>
-                  <th scope="row">{{$key+1}}</th>
-                  <td><a href="{{route('sk_detail')}}?sk={{setRoute($value->id)}}">{{$value->no_dokumen}}</a></td>
-                  <td>{{$value->tanggal_mulai}} - {{$value->tanggal_berakhir}}</td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-        </div>
+        @include('layout.tabs.pengurus_tab')
+        @include('layout.tabs.kepengurusan_tab')
       </div>
     </div>
   </div>
 </div>
 
+@endsection
+@section('js-page')
+<script>
+    $(document).ready(function() {
+        pengurusTable();
+        SkTable();
+    });
+    const pengurusTable = () => {
+    $("#pengurusTable").DataTable({
+            responsive:!0,
+            language:{
+                paginate:{
+                    previous:"<i class='ri-arrow-left-s-line'>",
+                    next:"<i class='ri-arrow-right-s-line'>"
+                }
+            },
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('/') }}/anak-ranting/detail?anakranting={{setRoute($anak_ranting_data->id)}}&tipe=pengurus",
+            columns: [
+                    {
+                        className: "my-column",
+                        mData: "nama",
+                        mRender: function(data, type, row) {
+                            return `<a href="{{ route('detail_pengurus') }}?pengurus=${row.id}">${row.nama}</a>`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "jenis_pengurus",
+                        mRender: function(data, type, row) {
+                            return `${row.jenis_pengurus}`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "jabatan",
+                        mRender: function(data, type, row) {
+                            return `${row.jabatan}`;
+
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "periode",
+                        mRender: function(data, type, row) {
+                            return `${row.mulai_jabatan} - ${row.akhir_jabatan}`;
+
+                        }
+                    },
+
+                ],
+            drawCallback:function() {
+                $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+            }
+        });
+  }
+  const SkTable = () => {
+    $("#SkTable").DataTable({
+            responsive:!0,
+            language:{
+                paginate:{
+                    previous:"<i class='ri-arrow-left-s-line'>",
+                    next:"<i class='ri-arrow-right-s-line'>"
+                }
+            },
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('/') }}/anak-ranting/detail?anakranting={{setRoute($anak_ranting_data->id)}}&tipe=sk",
+            columns: [
+                    {
+                        className: "my-column",
+                        mData: "no",
+                        mRender: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "no_dokumen",
+                        mRender: function(data, type, row) {
+                            return `<a href="{{ route('sk_detail') }}?sk=${row.id}">${row.no_dokumen}</a>`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "masa_jabatan",
+                        mRender: function(data, type, row) {
+                            return `${row.tanggal_mulai} - ${row.tanggal_berakhir}`;
+                        }
+                    },
+                    // {
+                    //     className: "my-column",
+                    //     mData: "periode",
+                    //     mRender: function(data, type, row) {
+                    //         return `${row.mulai_jabatan} - ${row.akhir_jabatan}`;
+
+                    //     }
+                    // },
+
+                ],
+            drawCallback:function() {
+                $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+            }
+        });
+  }
+</script>
 @endsection
