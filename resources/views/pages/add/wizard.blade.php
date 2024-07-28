@@ -185,6 +185,7 @@
 @endsection
 
 @section('js-page')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 $(document).ready(function () {
     const progresNow = document.querySelector(".progress-bar");
@@ -241,6 +242,7 @@ $(document).ready(function () {
 </script>
 <script>
     let index = 0;
+    let userNikOnSk = [];
     document.addEventListener('DOMContentLoaded', function() {
         const url = document.getElementById("urlGetPengurus").value;
         const data = {
@@ -298,7 +300,7 @@ $(document).ready(function () {
             formType:"mustasyar",
             eventType:"add",
         }
-        let responseApi = sendRequest(url,data,options);
+        validateHandler(url,data,options);
     }
     document.getElementById('addSyuriah').onclick = function () {
         // ajax request
@@ -314,7 +316,7 @@ $(document).ready(function () {
             formType:"syuriah",
             eventType:"add",
         }
-        let responseApi = sendRequest(url,data,options);
+        validateHandler(url,data,options);
     }
     document.getElementById('addTanfidzyah').onclick = function () {
         // ajax request
@@ -330,7 +332,7 @@ $(document).ready(function () {
             formType:"tanfidzyah",
             eventType:"add",
         }
-        let responseApi = sendRequest(url,data,options);
+        validateHandler(url,data,options);
     }
 
 
@@ -384,6 +386,7 @@ $(document).ready(function () {
         deleteButton.innerHTML = '<i class="bi bi-x-circle"></i>';
         deleteButton.dataset.index = newIndex;
         deleteButton.dataset.pengurus = data.id;
+        deleteButton.dataset.nik = data.nik;
 
 
         deleteButtonContainer.appendChild(deleteButton);
@@ -396,6 +399,7 @@ $(document).ready(function () {
 
         // Add an event listener to the delete button
         deleteButton.addEventListener("click", function () {
+            RemoveArrValue(userNikOnSk,this.dataset.nik);
             const dataIndex = this.dataset.index;
             const id_pengurus = this.dataset.pengurus;
             const elementsToDelete = document.querySelectorAll(
@@ -474,6 +478,7 @@ $(document).ready(function () {
         deleteButton.innerHTML = '<i class="bi bi-x-circle"></i>';
         deleteButton.dataset.index = newIndex;
         deleteButton.dataset.pengurus = data.id;
+        deleteButton.dataset.nik = data.nik;
 
         deleteButtonContainer.appendChild(deleteButton);
 
@@ -487,6 +492,7 @@ $(document).ready(function () {
 
         // Add an event listener to the delete button
         deleteButtonContainer.addEventListener("click", function () {
+            RemoveArrValue(userNikOnSk,this.dataset.nik);
             const dataIndex = this.dataset.index;
             const id_pengurus = this.dataset.pengurus;
             const elementsToDelete = document.querySelectorAll(
@@ -567,6 +573,7 @@ $(document).ready(function () {
         deleteButton.innerHTML = '<i class="bi bi-x-circle"></i>';
         deleteButton.dataset.index = newIndex;
         deleteButton.dataset.pengurus = data.id;
+        deleteButton.dataset.nik = data.nik;
 
         deleteButtonContainer.appendChild(deleteButton);
 
@@ -578,6 +585,7 @@ $(document).ready(function () {
 
         // Add an event listener to the delete button
         deleteButtonContainer.addEventListener("click", function () {
+            RemoveArrValue(userNikOnSk,this.dataset.nik);
             const dataIndex = this.dataset.index;
             const id_pengurus = this.dataset.pengurus;
             const elementsToDelete = document.querySelectorAll(
@@ -603,7 +611,16 @@ $(document).ready(function () {
 
     };
 
-
+    const validateHandler = (url,data,options) => {
+        if(options.eventType === 'add' && userNikOnSk.includes(data.nik))
+        {
+            swal("Perhatian!", `Nomor NIK ${data.nik} sudah didaftarkan sebagai pengurus`, "warning");
+        }
+        else {
+            let responseApi = sendRequest(url,data,options);
+        }
+    }
+    
     const sendRequest = async (url,data,options) => {
         // Create a configuration object for the request
         const csrfToken = document.querySelector('input[name="_token"]').value;
@@ -690,6 +707,8 @@ $(document).ready(function () {
             {
                 const data = obj.data;
                 data.map(function (item) {
+                    userNikOnSk.push(item.nik);
+
                     switch (formType.toLowerCase()) {
                         case "mustasyar":
                             createMustasyar(item,"{{ csrf_token() }}")
@@ -716,6 +735,13 @@ $(document).ready(function () {
             console.error('There was a problem with the fetch operation:', error);
             return {success:false};
         });
+    }
+
+    const RemoveArrValue = (arr,keyword) => {
+        let index = arr.indexOf(keyword);
+        if (index !== -1) {
+            arr.splice(index, 1);
+        }
     }
 </script>
 @endsection
