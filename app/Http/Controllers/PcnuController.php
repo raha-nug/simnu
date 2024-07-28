@@ -44,8 +44,6 @@ class PcnuController extends Controller
 
     public function detailPcnu(Request $request)
     {
-        $limit = $request->page ?? 10;
-
         if(!isset($request->pc))
             return redirect(route('not-found'));
 
@@ -56,12 +54,13 @@ class PcnuController extends Controller
 
         $pcnu = PCNU::query()->where('id', $id)
         ->first();
-        // $mwc_list = MWCNU::getListByPcnu($id, $limit);
         if($request->ajax()){
             $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
                                 ->join('PCNU', 'surat_keputusan.id_pcnu', '=', 'PCNU.id')
                                 ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                                ->where('PCNU.id', $id)->get();
+                                ->where('PCNU.id', $id)
+                                ->where('tanggal_berakhir', '>', date('Y-m-d'))
+                                ->get();
             return DataTables::of($pengurus)
             ->addIndexColumn()
             ->editColumn('id', function($row) {
@@ -87,7 +86,7 @@ class PcnuController extends Controller
             'list_mwc' => collect([]),
             'kota' => $this->wilayah->getSingleAddress($pcnu->kota ?? ''),
             'sk' => $sk ?? new SuratKeputusan,
-            'pengurus' => $pengurus ?? new Pengurus
+            // 'pengurus' => $pengurus ?? new Pengurus
         ]);
     }
 

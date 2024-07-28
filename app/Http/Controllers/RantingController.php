@@ -32,7 +32,9 @@ class RantingController extends Controller
             $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
                                 ->join('ranting', 'surat_keputusan.id_ranting', '=', 'ranting.id')
                                 ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                                ->where('ranting.id', $id)->get();
+                                ->where('ranting.id', $id)
+                                ->where('tanggal_berakhir', '>', date('Y-m-d'))
+                                ->get();
             return DataTables::of($pengurus)
             ->addIndexColumn()
             ->editColumn('id', function($row) {

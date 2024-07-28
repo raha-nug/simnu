@@ -22,6 +22,7 @@ class PwnuController extends Controller
                                 ->join('PWNU', 'surat_keputusan.id_pwnu', '=', 'PWNU.id')
                                 ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
                                 ->where('PWNU.id', $pw_detail->id)
+                                ->where('tanggal_berakhir', '>', date('Y-m-d'))
                                 ->get();
             return DataTables::of($pengurus)
             ->addIndexColumn()
