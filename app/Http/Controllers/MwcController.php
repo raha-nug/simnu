@@ -101,11 +101,11 @@ class MwcController extends Controller
         $rules = [
             'nama' => 'required',
             'alamat' => 'required|regex:/^[A-Za-z0-9.,\s\n\-]+$/',
-            'telp' => 'sometimes|nullable|regex:/^[0-9]+$/',
-            'lat' => 'sometimes|nullable|regex:/^[0-9.\-]+$/',
-            'long' => 'sometimes|nullable|regex:/^[0-9.\-]+$/',
-            'website' => 'sometimes|nullable|regex:/^[A-Za-z0-9.,\s\n\/:\-]+$/',
-            'email' => 'sometimes|nullable|email',
+            'telp' => 'nullable|regex:/^[0-9]+$/',
+            'lat' => 'nullable|regex:/^[0-9.\-]+$/',
+            'long' => 'nullable|regex:/^[0-9.\-]+$/',
+            'website' => 'nullable|regex:/^[^<>]*$/',
+            'email' => 'nullable|email',
             'kota' => 'required',
             'kecamatan' => 'required',
             'id_pcnu' => 'required'

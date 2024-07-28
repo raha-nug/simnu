@@ -120,11 +120,11 @@ class PcnuController extends Controller
     {
         $rules = [
             'nama' => 'required',
-            'alamat' => 'required|regex:/^[A-Za-z0-9.,\s\n\-]+$/',
-            'telp' => 'sometimes|nullable|regex:/^[0-9]+$/',
-            'lat' => 'sometimes|nullable|regex:/^[0-9.\-]+$/',
-            'long' => 'sometimes|nullable|regex:/^[0-9.\-]+$/',
-            'website' => 'sometimes|nullable|regex:/^[A-Za-z0-9.,\s\n\/:\-]+$/',
+            'alamat' => 'required|regex:/^[^<>]*$/',
+            'telp' => 'nullable|regex:/^[0-9]+$/',
+            'lat' => 'nullable|regex:/^[0-9.\-]+$/',
+            'long' => 'nullable|regex:/^[0-9.\-]+$/',
+            'website' => 'nullable|regex:/^[^<>]*$/',
             'email' => 'required|email',
             'kota' => 'required'
         ];
