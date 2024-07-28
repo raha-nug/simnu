@@ -156,16 +156,14 @@ class PengurusController extends Controller
 
         $list = Pengurus::where('id_sk', $request->id_sk)
             ->where('jenis_pengurus', $request->jenis_pengurus)
-            ->get();
-        $data = [
-            'pengurus' => $list
-        ];
-        return view('pages.detail-sk', $data);
-        // return response()->json((object)
-        //     [
-        //      'success' => 1,
-        //      'data' => mapSetRoute($list)
-        // ]);
+            ->get(['id','nik','nama']);
+
+        // return view('pages.detail-sk', $data);
+        return response()->json((object)
+            [
+             'success' => 1,
+             'data' => $list
+        ]);
     }
 
 }

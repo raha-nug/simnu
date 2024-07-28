@@ -692,13 +692,13 @@ $(document).ready(function () {
                 data.map(function (item) {
                     switch (formType.toLowerCase()) {
                         case "mustasyar":
-                            createMustasyar(item,"")
+                            createMustasyar(item,"{{ csrf_token() }}")
                             break;
                         case "syuriah":
-                            createSyuriah(item,"")
+                            createSyuriah(item,"{{ csrf_token() }}")
                             break;
                         case "tanfidzyah":
-                            createTanfidzyah(item,"")
+                            createTanfidzyah(item,"{{ csrf_token() }}")
                             break;
                         default:
                             break;
