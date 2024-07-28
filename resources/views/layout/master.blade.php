@@ -43,7 +43,7 @@
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
       <div class="d-flex align-items-center justify-content-between">
-        <a href="" class="logo d-flex align-items-center">
+        <a href="{{ url('/') }}/dashboard" class="logo d-flex align-items-center">
           <img src="{{ url('/') }}/assets/img/logo.svg" class="ms-lg-4" alt="" />
           <span class="d-none d-lg-block">SIM NU JABAR</span>
         </a>
@@ -113,7 +113,7 @@
         <li class="nav-item">
           <a
             class="nav-link {{ Request::is('*dashboard*') ? 'active':'' }}"
-            href="dashboard">
+            href="{{ url('/') }}/dashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
