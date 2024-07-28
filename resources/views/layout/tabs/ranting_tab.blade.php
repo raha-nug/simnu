@@ -11,7 +11,7 @@
             <tr>
                <th scope="col">Nama Ranting</th>
                <th scope="col">Alamat Ranting</th>
-               <th scope="col">Kelengkapan Dokumen</th>
+               {{-- <th scope="col">Kelengkapan Dokumen</th> --}}
                <th scope="col">Jumlah Anak Ranting</th>
                <th scope="col">Aksi</th>
             </tr>

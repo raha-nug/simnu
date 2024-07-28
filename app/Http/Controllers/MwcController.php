@@ -172,30 +172,10 @@ class MwcController extends Controller
     }
 
     public function getRantingByMwc(Request $request)
-    {
-        $limit = $request->length ?? 10;
-        $start = $request->start ?? 0;
-
-        if (!isset($request->mwc)) {
-            return response()->json((object)[
-                'success' => 0,
-                'data' => collect([])
-            ]);
+    {   
+        if($request->ajax())
+        {
+            return Ranting::getListByMwcnu($request->mwc);
         }
-
-        $id = $request->mwc;
-        if (!$id) {
-            return response()->json((object)[
-                'success' => 0,
-                'data' => collect([])
-            ]);
-        }
-
-        $ranting_list = Ranting::getListByMwcnu($id, $limit, $start, $request->search['value']);
-        // dd(mapSetRoute($ranting_list));
-        return response()->json((object)[
-            'success' => 1,
-            'data' => mapSetRoute($ranting_list)
-        ]);
     }
 }

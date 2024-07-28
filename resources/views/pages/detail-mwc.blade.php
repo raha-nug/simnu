@@ -237,13 +237,7 @@
           },
           "orderable": false
         },
-        // {
-        //   mData: "",
-        //   mRender: function(data, type, row) {
-        //     return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
-        //   },
-        //   "orderable": false
-        // },
+
         {
           mData: "jumlah",
           mRender: function(data, type, row) {
