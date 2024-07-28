@@ -32,7 +32,7 @@
             <nav class="navbar navbar-expand-lg">
               <a class="navbar-brand d-flex align-items-center gap-4" href="index.html">
                 <img src="assets/img/logo/logo.svg" alt="Logo" />
-                <h3 class="nav-brand-text">SIM NU</h3>
+                <h3 class="nav-brand-text">SIM NU JABAR</h3>
               </a>
               <button class="navbar-toggler">
                 <span class="toggler-icon"></span>
@@ -110,7 +110,7 @@
           </div>
           <div class="col-lg-6">
             <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-              <img src="assets/img/hero/hero-image.png" alt="hero-image" />
+              <img src="assets/img/hero/image.png" style="margin-bottom: 0;" alt="hero-image" />
               <img
                 src="assets/img/hero/dotted-shape.svg"
                 alt="shape"
