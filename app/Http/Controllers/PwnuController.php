@@ -2,24 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\PWNU;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
 
 class PwnuController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $pw_detail = PWNU::query()->where('id', 1)->first();
         $sk = SuratKeputusan::query()->where('id_pwnu', $pw_detail->id)->get();
-        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
-                            ->join('PWNU', 'surat_keputusan.id_pwnu', '=', 'PWNU.id')
-                            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                            ->where('PWNU.id', $pw_detail->id)
-                            ->get();
+        if($request->ajax()){
+            $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+                                ->join('PWNU', 'surat_keputusan.id_pwnu', '=', 'PWNU.id')
+                                ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                                ->where('PWNU.id', $pw_detail->id)
+                                ->get();
+            return DataTables::of($pengurus)
+            ->addIndexColumn()
+            ->editColumn('id', function($row) {
+                return setRoute(strval($row->id));
+            })
+            ->editColumn('mulai_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->mulai_jabatan)->translatedFormat('d F Y');
+            })
+            ->editColumn('akhir_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->akhir_jabatan)->translatedFormat('d F Y');
+            })
+            ->make(true);
+        }
         $data = [
             'title' => 'PWNU',
             'pw_detail' => $pw_detail,
@@ -27,7 +45,7 @@ class PwnuController extends Controller
             'from' => 'Jawa Barat',
             'nomor' => $count = 1,
             'sk' => $sk,
-            'pengurus' => $pengurus ?? new Pengurus,
+            // 'pengurus' => $pengurus ?? new Pengurus,
             'name' => 'PWNU Jawa Barat'
         ];
         return view('pages.pwnu', $data);
