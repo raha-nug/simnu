@@ -52,6 +52,9 @@ class MWCNU extends Model
 
         return DataTables::eloquent($model)
         ->addIndexColumn()
+        ->editColumn('id', function($row) {
+            return setRoute(strval($row->id));
+        })
         // ->addColumn('column_name', function($row) {
         // })
         ->make(true);
