@@ -220,7 +220,7 @@ class SuratKeputusanController extends Controller
         } else {
             $data['id_anak_ranting'] = null;
         }
-        
+
         if($request->id_anak_ranting) {
             $data['id_anak_ranting'] = $request->id_anak_ranting;
         } else {

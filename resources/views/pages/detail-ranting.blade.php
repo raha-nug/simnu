@@ -120,6 +120,11 @@
           </button>
         </li>
         <li class="nav-item flex-fill" role="presentation">
+            <button class="nav-link w-100" id="banom-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-banom" type="button" role="tab" aria-controls="banom" aria-selected="false">
+              Banom
+            </button>
+          </li>
+        <li class="nav-item flex-fill" role="presentation">
           <button class="nav-link w-100" id="anak-ranting-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-anak-ranting" type="button" role="tab" aria-controls="anak-ranting" aria-selected="false">
             Anak Ranting
           </button>
@@ -128,35 +133,8 @@
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
         @include('layout.tabs.pengurus_tab')
-        <div class="tab-pane fade mt-3" id="bordered-justified-kepengurusan" role="tabpanel" aria-labelledby="kepengurusan-tab">
-          <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="{{route('add_sk')}}?ranting={{setRoute($ranting_data->id)}}">
-              <i class="bi bi-plus me-1"></i>
-              Tambah
-            </a>
-          </div>
-
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">No Surat</th>
-                  <th scope="col">Masa Jabatan</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($sk as $value)
-                <tr>
-                    <th scope="row">{{$number++}}</th>
-                    <td><a href="{{route('sk_detail')}}?sk={{setRoute($value->id)}}">{{$value->no_dokumen}}</a></td>
-                    <td>{{$value->tanggal_mulai}} - {{$value->tanggal_berakhir}}</td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-        </div>
+        @include('layout.tabs.kepengurusan_tab')
+        @include('layout.tabs.banom_tab')
         @include('layout.tabs.anak_ranting_tab')
       </div>
     </div>
@@ -168,6 +146,8 @@
   $(document).ready(function() {
     anakrantingTable();
     pengurusTable();
+    SkTable();
+    BanomTable();
   })
 
   const pengurusTable = () => {
@@ -181,7 +161,7 @@
             },
             processing: true,
             serverSide: true,
-            ajax: "{{ url('/') }}/ranting/detail?ranting={{setRoute($ranting_data->id)}}",
+            ajax: "{{ url('/') }}/ranting/detail?ranting={{setRoute($ranting_data->id)}}&tipe=pengurus",
             columns: [
                     {
                         className: "my-column",
@@ -213,6 +193,118 @@
 
                         }
                     },
+
+                ],
+            drawCallback:function() {
+                $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+            }
+        });
+  }
+  const SkTable = () => {
+    $("#SkTable").DataTable({
+            responsive:!0,
+            language:{
+                paginate:{
+                    previous:"<i class='ri-arrow-left-s-line'>",
+                    next:"<i class='ri-arrow-right-s-line'>"
+                }
+            },
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('/') }}/ranting/detail?ranting={{setRoute($ranting_data->id)}}&tipe=sk",
+            columns: [
+                    {
+                        className: "my-column",
+                        mData: "no",
+                        mRender: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "no_dokumen",
+                        mRender: function(data, type, row) {
+                            return `<a href="{{ route('sk_detail') }}?sk=${row.id}">${row.no_dokumen}</a>`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "masa_jabatan",
+                        mRender: function(data, type, row) {
+                            return `${row.tanggal_mulai} - ${row.tanggal_berakhir}`;
+                        }
+                    },
+                    // {
+                    //     className: "my-column",
+                    //     mData: "periode",
+                    //     mRender: function(data, type, row) {
+                    //         return `${row.mulai_jabatan} - ${row.akhir_jabatan}`;
+
+                    //     }
+                    // },
+
+                ],
+            drawCallback:function() {
+                $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+            }
+        });
+  }
+  const BanomTable = () => {
+    $("#BanomTable").DataTable({
+            responsive:!0,
+            language:{
+                paginate:{
+                    previous:"<i class='ri-arrow-left-s-line'>",
+                    next:"<i class='ri-arrow-right-s-line'>"
+                }
+            },
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('/') }}/ranting/detail?ranting={{setRoute($ranting_data->id)}}&tipe=banom",
+            columns: [
+                    {
+                        className: "my-column",
+                        mData: "no",
+                        mRender: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "nama_banom",
+                        mRender: function(data, type, row) {
+                            return `<a href="{{ route('Banom') }}?banom=${row.id}">${row.nama}</a>`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "aksi",
+                        mRender: function(data, type, row) {
+                            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                    <li><a class="dropdown-item" href="{{ route('Banom-add') }}?banom=${row.id}">
+                                            <i class="bi bi-pencil-square"></i>
+                                            Edit
+                                        </a>
+                                    </li>
+                                    <li><a class="dropdown-item text-danger" href="{{ route('Banom-delete') }}?banom=${row.id}">
+                                            <i class="bi bi-trash"></i>
+                                            Hapus
+                                        </a>
+                                    </li>
+                                    </ul>`;
+                        }
+                    },
+                    // {
+                    //     className: "my-column",
+                    //     mData: "periode",
+                    //     mRender: function(data, type, row) {
+                    //         return `${row.mulai_jabatan} - ${row.akhir_jabatan}`;
+
+                    //     }
+                    // },
 
                 ],
             drawCallback:function() {
@@ -266,13 +358,13 @@
           },
           "orderable": false
         },
-        {
-          mData: "",
-          mRender: function(data, type, row) {
-            return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
-          },
-          "orderable": false
-        },
+        // {
+        //   mData: "",
+        //   mRender: function(data, type, row) {
+        //     return `<span class="badge bg-warning"><i class="bi bi-info-circle me-1"></i> Belum Lengkap </span>`;
+        //   },
+        //   "orderable": false
+        // },
         // {
         //   mData: "jumlah",
         //   mRender: function(data, type, row) {

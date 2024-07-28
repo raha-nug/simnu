@@ -34,11 +34,11 @@ class PCNU extends Model
     {
         $query = self::query()
         ->select([
-            'pcnu.id', 
-            'pcnu.nama', 
-            'pcnu.alamat', 
+            'pcnu.id',
+            'pcnu.nama',
+            'pcnu.alamat',
             'relasi_indikator.nilai_kurang',
-            'relasi_indikator.nilai_cukup', 
+            'relasi_indikator.nilai_cukup',
             'relasi_indikator.nilai_baik',
             DB::raw('COUNT(mwcnu.id) as jumlah_mwc'),
             DB::raw('(SELECT COUNT(*) FROM wilayah w WHERE LEFT(w.kode, 5) = pcnu.kota AND LENGTH(w.kode) = 8) as actual_mwc')
@@ -47,6 +47,31 @@ class PCNU extends Model
         ->leftJoin('relasi_indikator', 'pcnu.id', '=', 'relasi_indikator.id_pcnu')
         ->groupBy(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
         ->get();
+
+        return $query;
+    }
+
+    public static function detailPcnu($id){
+        $query = self::query()
+        ->select([
+            'pcnu.id_pwnu',
+            'pcnu.id',
+            'pcnu.nama',
+            'pcnu.alamat',
+            'pcnu.telp',
+            'pcnu.email',
+            'pcnu.website',
+            'pcnu.lat',
+            'pcnu.long',
+            'pcnu.provinsi',
+            'pcnu.kota',
+            DB::raw('COUNT(mwcnu.id) as jumlah_mwc'),
+            DB::raw('(SELECT COUNT(*) FROM wilayah w WHERE LEFT(w.kode, 5) = pcnu.kota AND LENGTH(w.kode) = 8) as actual_mwc')
+        ])
+        ->leftJoin('mwcnu', 'pcnu.id', '=', 'mwcnu.id_pcnu')
+        ->groupBy(['pcnu.id', 'pcnu.nama', 'pcnu.alamat'])
+        ->where('pcnu.id', $id)
+        ->first();
 
         return $query;
     }

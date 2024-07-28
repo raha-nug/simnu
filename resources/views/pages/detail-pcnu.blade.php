@@ -102,6 +102,38 @@
           <dd>{{ $pc_data->long ?? "" }}</dd>
         </div>
       </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Jumlah MWC :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{ $pc_data->jumlah_mwc ?? "" }}/{{$pc_data->actual_mwc}}</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Jumlah Lembaga :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{ $jml_lembaga ?? "" }}</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Jumlah Banom :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{ $jml_banom?? "" }}</dd>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <dt class="text-lg-end text-sm-start">Jumlah Pengurus :</dt>
+        </div>
+        <div class="col-lg-9">
+          <dd>{{ $jml_pengurus ?? "" }}</dd>
+        </div>
+      </div>
 
     </div>
   </div>

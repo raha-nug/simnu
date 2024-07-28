@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\PCNU;
+use App\Models\Banom;
 use App\Models\MWCNU;
+use App\Models\Lembaga;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
@@ -54,6 +56,14 @@ class PcnuController extends Controller
 
         $pcnu = PCNU::query()->where('id', $id)
         ->first();
+        $jml_lembaga = Lembaga::query()->where('id_pcnu', $id)->count();
+        $jml_banom = Banom::query()->where('id_pcnu', $id)->count();
+        $jml_pengurus = Pengurus::query()->leftJoin('surat_keputusan','surat_keputusan.id', 'pengurus.id_sk')
+                                         ->leftJoin('pcnu','pcnu.id','surat_keputusan.id_pcnu')
+                                         ->where('pcnu.id',$id)
+                                         ->count();
+        $pcnu = PCNU::detailPcnu($id);
+
         if($request->ajax()){
             $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
                                 ->join('PCNU', 'surat_keputusan.id_pcnu', '=', 'PCNU.id')
@@ -82,6 +92,9 @@ class PcnuController extends Controller
             'username' =>session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'pc_data' => $pcnu,
+            'jml_lembaga' => $jml_lembaga,
+            'jml_banom' => $jml_banom,
+            'jml_pengurus' => $jml_pengurus,
             'nomor' => $count = 1,
             'list_mwc' => collect([]),
             'kota' => $this->wilayah->getSingleAddress($pcnu->kota ?? ''),
@@ -93,7 +106,7 @@ class PcnuController extends Controller
     public function getmwcByPcnu(Request $request)
     {
         if($request->ajax()){
-            return MWCNU::getListByPcnu($request->pc);  
+            return MWCNU::getListByPcnu($request->pc);
         }
     }
 

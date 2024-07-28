@@ -22,6 +22,7 @@ class Banom extends Model
         'id_pwnu',
         'id_pcnu',
         'id_mwcnu',
+        'id_ranting',
         'nama',
         'alamat',
         'telp',
@@ -33,7 +34,7 @@ class Banom extends Model
     public static function getReferenceData($id)
     {
         return self::query()
-            ->select(['id_pwnu', 'id_pcnu', 'id_mwcnu'])
+            ->select(['id_pwnu', 'id_pcnu', 'id_mwcnu', 'id_ranting '])
             ->where('id', $id)
             ->first();
     }
@@ -50,6 +51,9 @@ class Banom extends Model
                 break;
             case !empty($options['id_mwcnu']):
                 $query->where('id_mwcnu', $options['id_mwcnu']);
+                break;
+            case !empty($options['id_ranting']):
+                $query->where('id_ranting', $options['id_ranting']);
                 break;
 
             default:

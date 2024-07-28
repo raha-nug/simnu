@@ -32,6 +32,8 @@
           <li><a class="dropdown-item" href="{{route('add_pengurus')}}?id_sk={{setRoute($sk->id)}}&type=banom"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
           @elseif ($sk->id_ranting)
           <li><a class="dropdown-item" href="{{route('add_pengurus')}}?id_sk={{setRoute($sk->id)}}&type=ranting"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
+          @elseif ($sk->id_anak_ranting)
+          <li><a class="dropdown-item" href="{{route('add_pengurus')}}?id_sk={{setRoute($sk->id)}}&type=anak_ranting"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
           @else
           <li><a class="dropdown-item" href="{{route('add_pengurus')}}?id_sk={{setRoute($sk->id)}}"><i class="bi bi-person-lines-fill"></i>Edit Pengurus</a></li>
         @endif

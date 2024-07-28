@@ -6,6 +6,7 @@ use App\Models\PCNU;
 use App\Models\PWNU;
 use App\Models\Banom;
 use App\Models\MWCNU;
+use App\Models\Ranting;
 use App\Models\Pengurus;
 use App\Models\BanomBasis;
 use App\Models\MasterBanom;
@@ -52,6 +53,12 @@ class BanomController extends Controller
                 $wilayah_kerja['url'] = route('mwcnu') . "?mwc=" . setRoute($banom->id_mwcnu);
                 $wilayah_kerja['nama'] = $mwc->nama;
             }
+            elseif ($banom->id_ranting)
+            {
+                $mwc = Ranting::where('id', $banom->id_ranting)->first();
+                $wilayah_kerja['url'] = route('ranting') . "?ranting=" . setRoute($banom->id_ranting);
+                $wilayah_kerja['nama'] = $ranting->nama;
+            }
         }
         $sk = SuratKeputusan::query()->where('id_banom', $id)->get();
         return view('pages.detail-banom', [
@@ -75,6 +82,8 @@ class BanomController extends Controller
                 return $this->addBanomPcnu($request->pc);
             elseif (isset($request->mwc))
                 return $this->addBanomMwcnu($request->mwc);
+            elseif (isset($request->ranting))
+                return $this->addBanomRanting($request->ranting);
             else
                 return redirect('not-found');
         }
@@ -114,6 +123,7 @@ class BanomController extends Controller
             'id_pwnu' => 'sometimes|nullable',
             'id_pcnu' => 'sometimes|nullable',
             'id_mwcnu' => 'sometimes|nullable',
+            'id_ranting' => 'sometimes|nullable',
             // 'master_banom_id' => 'required',
             // 'master_banom_basis_id' => 'required',
             // 'kota' => 'required',
@@ -270,6 +280,29 @@ class BanomController extends Controller
 
         return view('pages.add.add-banom', $data);
     }
+    private function addBanomRanting($ranting_id)
+    {
+        $id = getRoute($ranting_id);
+        if (!$id)
+            return redirect('dashboard');
+
+        $ranting_data = Ranting::getRowData($id);
+        // dd($ranting_data);
+        $data = [
+            'title' => 'Banom',
+            'username' => session()->get('nama_user'),
+            'from' => 'Singaparna',
+            'name' => 'MWC Singaparna',
+            'master_banom' => MasterBanom::get(),
+            'master_banom_basis' => BanomBasis::get(),
+            'desa' => $this->wilayah->getAddress($ranting_data->kota),
+            'ranting_data' => $ranting_data,
+            'method' => 'POST',
+            'action' => route('Banom-process')
+        ];
+
+        return view('pages.add.add-banom', $data);
+    }
 
     private function checkRoute($data)
     {
@@ -280,6 +313,8 @@ class BanomController extends Controller
                 return redirect(route('pcnu-detail') . "?pc=" . setRoute($data->id_pcnu));
             case !empty($data->id_mwcnu):
                 return redirect(route('mwcnu') . "?mwc=" . setRoute($data->id_mwcnu));
+            case !empty($data->id_ranting):
+                return redirect(route('ranting') . "?ranting=" . setRoute($data->id_ranting));
             default:
                 return redirect(route('no-found'));
         }

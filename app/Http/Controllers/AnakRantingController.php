@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AnakRanting;
-use App\Models\Pengurus;
+use Carbon\Carbon;
 use App\Models\Ranting;
-use App\Models\SuratKeputusan;
+use App\Models\Pengurus;
+use App\Models\AnakRanting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class AnakRantingController extends Controller
 {
@@ -25,19 +27,51 @@ class AnakRantingController extends Controller
             ->leftJoin('ranting', 'id_ranting', '=', 'ranting.id')
             ->first();
 
-        $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
-            ->join('anak_ranting', 'surat_keputusan.id_anak_ranting', '=', 'anak_ranting.id')
-            ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-            ->where('anak_ranting.id', $id)
-            ->get();
-        $sk = SuratKeputusan::query()->where('id_anak_ranting', $id)->get();
+        if($request->ajax()){
+            if($request->tipe == 'pengurus'){
+                $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+                        ->join('anak_ranting', 'surat_keputusan.id_anak_ranting', '=', 'anak_ranting.id')
+                        ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                        ->where('anak_ranting.id', $id)
+                        ->get();
+                return DataTables::of($pengurus)
+                ->addIndexColumn()
+                ->editColumn('id', function($row) {
+                    return setRoute(strval($row->id));
+                })
+                ->editColumn('mulai_jabatan', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->mulai_jabatan)->translatedFormat('d F Y');
+                })
+                ->editColumn('akhir_jabatan', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->akhir_jabatan)->translatedFormat('d F Y');
+                })
+                ->make(true);
+            }
+            if($request->tipe == 'sk'){
+                $sk = SuratKeputusan::query()->where('id_anak_ranting', $id)->get();
+                return DataTables::of($sk)
+                ->addIndexColumn()
+                ->editColumn('id', function($row) {
+                    return setRoute(strval($row->id));
+                })
+                ->editColumn('tanggal_mulai', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->tanggal_mulai)->translatedFormat('d F Y');
+                })
+                ->editColumn('tanggal_berakhir', function($row) {
+                    Carbon::setlocale('id');
+                    return Carbon::parse($row->tanggal_berakhir)->translatedFormat('d F Y');
+                })
+                ->make(true);
+            }
+        }
         return view('pages.detail-anak-ranting', [
             'title' => 'Detail Anak Ranting NU',
             'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
             'anak_ranting_data' => $anak_ranting,
-            'sk' => $sk,
-            'pengurus' => $pengurus
         ]);
     }
 

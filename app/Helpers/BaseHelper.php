@@ -30,7 +30,7 @@ if (!function_exists('mapSetRoute')) {
             'no_dokumen' => $item->no_dokumen,
             'tanggal_mulai' => Carbon::parse($item->tanggal_mulai)->translatedFormat('d F Y'),
             'tanggal_berakhir' => Carbon::parse($item->tanggal_berakhir)->translatedFormat('d F Y'),
-            "alamat" =>  $item->nama,
+            "alamat" =>  $item->alamat,
             "jumlah" =>  $item->jumlah,
             "nilai_baik" => $item->nilai_baik,
             "nilai_cukup" => $item->nilai_cukup,
