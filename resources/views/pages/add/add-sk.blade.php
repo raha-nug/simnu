@@ -54,6 +54,7 @@
      <input type="hidden" id="id_pwnu" name="id_pwnu" value="{{$pw_data->id}}">
      <input type="hidden" id="id_banom" name="id_banom" value="{{$banom_data->id}}">
      <input type="hidden" id="id_lembaga" name="id_lembaga" value="{{$lembaga_data->id}}">
+     <input type="hidden" id="id_ranting" name="id_ranting" value="{{$ranting_data->id}}">
     </div>
    <div class="col-md-6 mt-2">
      <label for="tgl-mulai" class="form-label">Tanggal Mulai</label>

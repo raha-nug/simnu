@@ -127,61 +127,10 @@
 
       </ul>
       <div class="tab-content pt-2" id="borderedTabJustifiedContent">
-        <div class="tab-pane fade show active mt-3" id="bordered-justified-pengurus" role="tabpanel" aria-labelledby="pengurus-tab">
-          <div class="table-responsive">
-            <table class="table table-borderless table-hover datatable">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Pengurus</th>
-                  <th scope="col">Jabatan</th>
-                  <th scope="col">Periode</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>KH. Asep Burhanudin</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2016-05-25</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Prof. Dr. KH. Fuad Wahab, MA.</td>
-                  <td>Mustasyar</td>
-                  <td>-</td>
-                  <td>2014-12-05</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>KH. M. Nuh Addawami</td>
-                  <td>Syuriah</td>
-                  <td>Rais</td>
-                  <td>2011-08-12</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Dr. KH. Abun Bunyamin</td>
-                  <td>Syuriah</td>
-                  <td>Wakil Rais</td>
-                  <td>2012-06-11</td>
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>KH. M. Usamah Manshur</td>
-                  <td>Syuriah</td>
-                  <td>Katib</td>
-                  <td>2011-04-19</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        @include('layout.tabs.pengurus_tab')
         <div class="tab-pane fade mt-3" id="bordered-justified-kepengurusan" role="tabpanel" aria-labelledby="kepengurusan-tab">
           <div class="d-flex justify-content-end me-3 btn-sm">
-            <a class="btn btn-primary" href="/admin/add-sk">
+            <a class="btn btn-primary" href="{{route('add_sk')}}?ranting={{setRoute($ranting_data->id)}}">
               <i class="bi bi-plus me-1"></i>
               Tambah
             </a>
@@ -197,16 +146,13 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach ($sk as $value)
                 <tr>
-                  <th scope="row">1</th>
-                  <td><a href="#">112/A.II.04/11/2016</a></td>
-                  <td>04 Nov 2016 - 04 Nov 2021</td>
+                    <th scope="row">{{$number++}}</th>
+                    <td><a href="{{route('sk_detail')}}?sk={{setRoute($value->id)}}">{{$value->no_dokumen}}</a></td>
+                    <td>{{$value->tanggal_mulai}} - {{$value->tanggal_berakhir}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td><a href="">790/A.II.04/11/2021</a></td>
-                  <td>24 Nov 2021 - 24 Nov 2026</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
@@ -221,7 +167,59 @@
 <script>
   $(document).ready(function() {
     anakrantingTable();
+    pengurusTable();
   })
+
+  const pengurusTable = () => {
+    $("#pengurusTable").DataTable({
+            responsive:!0,
+            language:{
+                paginate:{
+                    previous:"<i class='ri-arrow-left-s-line'>",
+                    next:"<i class='ri-arrow-right-s-line'>"
+                }
+            },
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('/') }}/ranting/detail?ranting={{setRoute($ranting_data->id)}}",
+            columns: [
+                    {
+                        className: "my-column",
+                        mData: "nama",
+                        mRender: function(data, type, row) {
+                            return `<a href="{{ route('detail_pengurus') }}?pengurus=${row.id}">${row.nama}</a>`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "jenis_pengurus",
+                        mRender: function(data, type, row) {
+                            return `${row.jenis_pengurus}`;
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "jabatan",
+                        mRender: function(data, type, row) {
+                            return `${row.jabatan}`;
+
+                        }
+                    },
+                    {
+                        className: "my-column",
+                        mData: "periode",
+                        mRender: function(data, type, row) {
+                            return `${row.mulai_jabatan} - ${row.akhir_jabatan}`;
+
+                        }
+                    },
+
+                ],
+            drawCallback:function() {
+                $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+            }
+        });
+  }
 
   const anakrantingTable = () => {
     $("#anakrantingTable").DataTable({

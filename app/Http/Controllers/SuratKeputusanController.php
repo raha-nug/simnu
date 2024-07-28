@@ -8,6 +8,7 @@ use App\Models\PWNU;
 use App\Models\Banom;
 use App\Models\MWCNU;
 use App\Models\Lembaga;
+use App\Models\Ranting;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
@@ -88,6 +89,19 @@ class SuratKeputusanController extends Controller
                 $lembaga_data = Lembaga::getRowData($id);
             }
 
+            if($request->ranting){
+                if(!isset($request->ranting)){
+                    return redirect(route('not-found'));
+                }
+                $id_ranting = $request->ranting;
+                $id = getRoute($id_ranting);
+
+                if(!$id)
+                    return redirect()->route('not-found');
+
+                $ranting_data = Ranting::getRowData($id);
+            }
+
             $data = [
                 'title' => 'Tambah Surat Keputusan',
                 'username' => session()->get('nama_user'),
@@ -97,6 +111,7 @@ class SuratKeputusanController extends Controller
                 'mwc_data' => $mwc_data ?? new MWCNU,
                 'banom_data' => $banom_data ?? new Banom,
                 'lembaga_data' => $lembaga_data ?? new Lembaga,
+                'ranting_data' => $ranting_data ?? new Ranting,
                 'method' => 'POST',
                 'action' => route('sk_process')
             ];
@@ -179,6 +194,16 @@ class SuratKeputusanController extends Controller
             $data['id_banom'] = $request->id_banom;
         } else {
             $data['id_banom'] = null;
+        }
+        if($request->id_ranting) {
+            $data['id_ranting'] = $request->id_ranting;
+        } else {
+            $data['id_ranting'] = null;
+        }
+        if($request->id_anak_ranting) {
+            $data['id_anak_ranting'] = $request->id_anak_ranting;
+        } else {
+            $data['id_anak_ranting'] = null;
         }
         if (isset($request->id)) {
             $is_updated = SuratKeputusan::where('id', $request->id)->update($data);
@@ -264,6 +289,8 @@ class SuratKeputusanController extends Controller
                 return redirect(route('lembaga') . "?lembaga=" . setRoute($data->id_lembaga));
             case !empty($data->id_banom):
                 return redirect(route('Banom') . "?banom=" . setRoute($data->id_banom));
+            case !empty($data->id_ranting):
+                return redirect(route('ranting') . "?ranting=" . setRoute($data->id_ranting));
             default:
                 return redirect(route('no-found'));
         }

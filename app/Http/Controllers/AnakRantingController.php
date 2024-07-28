@@ -22,7 +22,6 @@ class AnakRantingController extends Controller
             ->where('anak_ranting.id', $id)
             ->leftJoin('ranting', 'id_ranting', '=', 'ranting.id')
             ->first();
-        dd($anak_ranting);
 
         return view('pages.detail-anak-ranting', [
             'title' => 'Detail Anak Ranting NU',
