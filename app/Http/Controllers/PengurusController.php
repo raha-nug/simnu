@@ -47,6 +47,21 @@ class PengurusController extends Controller
             }
         }
 
+        if(isset($request->type)) {
+            if($request->type == 'ranting') {
+                $data = [
+                    'title' => 'Pengurus',
+                    'username' => session()->get('nama_user'),
+                    'from' => 'Singaparna',
+                    'name' => 'MWC Singaparna',
+                    'jabatan' => Jabatan::query()->where('tipe', 'Banom')->get(),
+                    'id_sk' => getRoute($request->id_sk)
+                ];
+
+                return view('pages.add.add-pengurus-ranting', $data);
+            }
+        }
+
         $data = [
             'title' => 'Pengurus',
             'username' => session()->get('nama_user'),

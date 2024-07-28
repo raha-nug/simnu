@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AnakRanting;
+use Carbon\Carbon;
 use App\Models\MWCNU;
 use App\Models\Ranting;
+use App\Models\Pengurus;
+use App\Models\AnakRanting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\SuratKeputusan;
 use RealRashid\SweetAlert\Facades\Alert;
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class RantingController extends Controller
 {
@@ -24,10 +28,34 @@ class RantingController extends Controller
             ->where('ranting.id', $id)
             ->first();
 
+        if($request->ajax()){
+            $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+                                ->join('ranting', 'surat_keputusan.id_ranting', '=', 'ranting.id')
+                                ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
+                                ->where('ranting.id', $id)->get();
+            return DataTables::of($pengurus)
+            ->addIndexColumn()
+            ->editColumn('id', function($row) {
+                return setRoute(strval($row->id));
+            })
+            ->editColumn('mulai_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->mulai_jabatan)->translatedFormat('d F Y');
+            })
+            ->editColumn('akhir_jabatan', function($row) {
+                Carbon::setlocale('id');
+                return Carbon::parse($row->akhir_jabatan)->translatedFormat('d F Y');
+            })
+            ->make(true);
+        }
+        $sk = SuratKeputusan::query()->where('id_ranting', $id)->get();
+
         return view('pages.detail-ranting', [
             'title' => 'Detail Ranting NU',
             'username' => session()->get('nama_user'),
             'from' => 'Jawa Barat',
+            'sk' => $sk,
+            'number' => $number = 1,
             'kecamatan' => $this->wilayah->getSingleAddress($ranting->kecamatan ?? ''),
             'ranting_data' => $ranting
         ]);
