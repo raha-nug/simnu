@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('anak_ranting', function (Blueprint $table) {
-            $table->string('website');
-            $table->string('lat');
-            $table->string('long');
+            $table->string('website')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
         });
     }
 
