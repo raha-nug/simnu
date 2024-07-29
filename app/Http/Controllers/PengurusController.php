@@ -173,7 +173,7 @@ class PengurusController extends Controller
 
         $list = Pengurus::where('id_sk', $request->id_sk)
             ->where('jenis_pengurus', $request->jenis_pengurus)
-            ->get(['id','nik','nama']);
+            ->get(['id','nik','nama','jabatan']);
 
         // return view('pages.detail-sk', $data);
         return response()->json((object)

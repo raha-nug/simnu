@@ -250,8 +250,8 @@ $(document).ready(function () {
         }
 
         listRequest(url+`?id_sk=${data.id_sk}&jenis_pengurus=Mustasyar`,'mustasyar');
-        listRequest(url+`?id_sk=${data.id_sk}&jenis_pengurus=Syuriah`,'syuriah');
-        listRequest(url+`?id_sk=${data.id_sk}&jenis_pengurus=Tanfidzyah`,'tanfidzyah');
+        listRequest(url+`?id_sk=${data.id_sk}&jenis_pengurus=Syuriyah`,'syuriah');
+        listRequest(url+`?id_sk=${data.id_sk}&jenis_pengurus=Tanfidziyah`,'tanfidzyah');
     });
 
     // Create new elements for the pengurus form
