@@ -124,11 +124,15 @@ class PcnuController extends Controller
             'name' => 'PCNU Jawa Barat',
             'kab_kota' => $this->wilayah->getAddress('32'),
             'method' => 'POST',
-            'action' => route('pcnu-process')
+            'action' => route('pcnu-process'),
+            'halaman' => "Tambah PCNU"
         ];
 
         if ($pc_data)
+        {
             $data['pc_data'] = $pc_data;
+            $data['halaman'] = "Edit PCNU";
+        }
 
         return view('pages.add.add-pcnu', $data);
     }

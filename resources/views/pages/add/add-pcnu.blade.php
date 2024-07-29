@@ -20,7 +20,7 @@
 <x-form :$action :$method>
   @csrf
   <x-slot:title>
-    Tambah PCNU
+    {{ $halaman ?? "Tambah PCNU" }}
   </x-slot:title>
   @if(isset($pc_data))
     <div class="col-md-12 mt-2">
