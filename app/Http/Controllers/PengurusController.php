@@ -112,7 +112,7 @@ class PengurusController extends Controller
     public function process(Request $request)
     {
         $rules = [
-            'nik' => 'required|regex:/^[0-9]+$/',
+            'nik' => 'nullable|sometimes|regex:/^[0-9\-]+$/',
             'nama' => 'required|regex:/^[A-Za-z0-9.,\s\n\-]+$/',
             'jabatan' => 'required',
             'id_sk' => 'required',
@@ -120,7 +120,6 @@ class PengurusController extends Controller
         ];
 
         $message = [
-            'nik.required' => 'Nomor NIK Harus diisi',
             'nik.regex' => 'Nomor NIK tidak benar',
             'nama.required' => 'Nama Harus diisi',
             'nama.regex' => 'Format nama tidak benar',
@@ -141,7 +140,7 @@ class PengurusController extends Controller
         if($new_data)
         {
             $is_exist = Anggota::where('nik', $data['nik'])->first();
-            if(!$is_exist) {
+            if(!$is_exist || $data['nik'] == '-') {
                 Anggota::create(['nik' => $data['nik'], 'nama' => $data['nama']]);
             }
         }
