@@ -16,6 +16,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        if(session()->get('hak_akses_pcnu') || session()->get('hak_akses_mwcnu') || session()->get('hak_akses_rantingnu'))
+        {
+            $auth = new LoginController();
+            return $auth->getCredential(session()->get('id_users'));
+        }
+
         $data = [
             'title' => 'Dashboard',
             'username' => session()->get('nama_user'),

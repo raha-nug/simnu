@@ -19,7 +19,12 @@ class PcnuController extends Controller
     public function index(Request $request)
     {
 
-        // $limit = $request->page ?? 10;
+        if(session()->get('hak_akses_pcnu') || session()->get('hak_akses_mwcnu') || session()->get('hak_akses_rantingnu'))
+        {
+            $auth = new LoginController();
+            return $auth->getCredential(session()->get('id_users'));
+        }
+
         $pcnu_list = PCNU::getData();
         $data = [
             'title' => 'PCNU',

@@ -17,6 +17,12 @@ class MwcController extends Controller
 {
     public function index(Request $request)
     {
+        if(session()->get('hak_akses_pcnu') || session()->get('hak_akses_mwcnu') || session()->get('hak_akses_rantingnu'))
+        {
+            $auth = new LoginController();
+            return $auth->getCredential(session()->get('id_users'));
+        }
+
         $id_mwc = $request->mwc;
         $id = getRoute($id_mwc);
         if (!$id)

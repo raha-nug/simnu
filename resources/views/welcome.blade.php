@@ -32,7 +32,7 @@
             <nav class="navbar navbar-expand-lg">
               <a class="navbar-brand d-flex align-items-center gap-4" href="index.html">
                 <img src="assets/img/logo/logo.svg" alt="Logo" />
-                <h3 class="nav-brand-text">SIM NU JABAR</h3>
+                <h5 class="nav-brand-text">SIM NU JABAR</h5>
               </a>
               <button class="navbar-toggler">
                 <span class="toggler-icon"></span>

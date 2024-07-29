@@ -19,7 +19,6 @@ class LoginController extends Controller
         $password = $request->input('password');
 
         $users = Users::query()->where('email', $email)->first();
-        // dd($users);
         if(empty($users)){
             Alert::error('Email Tidak Ditemukan');
             return redirect()->back();
@@ -57,7 +56,7 @@ class LoginController extends Controller
         return redirect(route('login'));
     }
 
-    protected function checkAkses($credentials) {
+    public function checkAkses($credentials) {
         if($credentials->id_pwnu){
             return ['hak_akses' => $credentials->id_pwnu, 'url' => route('dashboard')];
         } elseif($credentials->id_pcnu) {
@@ -69,5 +68,15 @@ class LoginController extends Controller
         } else {
             return redirect(route('dashboard'));
         }
+    }
+
+    public function getCredential($user_id)
+    {
+        $users = Users::query()->where('id', $user_id)->first();
+        $credentials = UserGroup::join('table_user_credentials', 'table_user_groups.id', '=', 'table_user_credentials.id_grup')
+                                ->where('table_user_groups.id', $users->id_grup)
+                                ->first();
+        $HakAkses = $this->checkAkses($credentials);
+        return redirect($HakAkses['url']);
     }
 }
