@@ -210,16 +210,17 @@
                     },
                     {
                         className: "my-column",
-                        mData: "jenis_pengurus",
+                        mData: "pengurus",
                         mRender: function(data, type, row) {
-                            return `${row.jenis_pengurus}`;
+                            return `${row.pengurus}`;
                         }
                     },
                     {
                         className: "my-column",
                         mData: "jabatan",
                         mRender: function(data, type, row) {
-                            return `${row.jabatan}`;
+                          let jabatan = row.pengurus == 'Mustasyar' ? '' : row.jabatan;
+                            return jabatan;
 
                         }
                     },

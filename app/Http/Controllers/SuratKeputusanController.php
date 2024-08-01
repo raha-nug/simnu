@@ -266,8 +266,12 @@ class SuratKeputusanController extends Controller
         $id = getRoute($id_sk);
         $sk_detail = SuratKeputusan::query()->where('id', $id)->first();
         if($request->ajax()){
-            $pengurus = Pengurus::join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                                ->where('pengurus.id_sk', $id)->get();
+            $pengurus = Pengurus::query()
+                        ->select(['anggota.id as id','anggota.nama as nama', 'pengurus.jenis_pengurus as pengurus','pengurus.jabatan as jabatan', 'mulai_jabatan', 'akhir_jabatan'])
+                        ->join('anggota', 'pengurus.id_anggota', '=', 'anggota.id')
+                        ->where('pengurus.id_sk', $id)
+                        ->groupBy(['id','nama','pengurus','jabatan','mulai_jabatan','akhir_jabatan'])
+                        ->get(); 
             return DataTables::of($pengurus)
             ->addIndexColumn()
             ->editColumn('id', function($row) {

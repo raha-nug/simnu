@@ -396,28 +396,6 @@ $(document).ready(function () {
         mustasyarForm.appendChild(nik);
         mustasyarForm.appendChild(deleteButtonContainer);
 
-
-        // Add an event listener to the delete button
-        deleteButton.addEventListener("click", function () {
-            RemoveArrValue(userNikOnSk,this.dataset.nik);
-            const dataIndex = this.dataset.index;
-            const id_pengurus = this.dataset.pengurus;
-            const elementsToDelete = document.querySelectorAll(
-                `.${dataIndex}`
-            );
-            // ajax request
-            const url = document.getElementById("urlDelPengurus").value;
-            const data = {
-                id: id_pengurus
-            }
-            const options = {
-                formType:"mustasyar",
-                eventType:"delete",
-                elementsToDelete:elementsToDelete
-            }
-            let responseApi = sendRequest(url,data,options);
-        });
-
         // clear form if complete
         document.getElementById("nikMustasyar").value = "";
         document.getElementById("namaMustasyar").value = "";
@@ -488,28 +466,6 @@ $(document).ready(function () {
         syuriahForm.appendChild(nik);
         syuriahForm.appendChild(posisiPengurus);
         syuriahForm.appendChild(deleteButtonContainer);
-
-
-        // Add an event listener to the delete button
-        deleteButtonContainer.addEventListener("click", function () {
-            RemoveArrValue(userNikOnSk,this.dataset.nik);
-            const dataIndex = this.dataset.index;
-            const id_pengurus = this.dataset.pengurus;
-            const elementsToDelete = document.querySelectorAll(
-                `.${dataIndex}`
-            );
-            // ajax request
-            const url = document.getElementById("urlDelPengurus").value;
-            const data = {
-                id: id_pengurus
-            }
-            const options = {
-                formType:"syuriah",
-                eventType:"delete",
-                elementsToDelete:elementsToDelete
-            }
-            let responseApi = sendRequest(url,data,options);
-        });
 
         // clear form
         document.getElementById("nikSyuriah").value = "";
@@ -583,27 +539,6 @@ $(document).ready(function () {
         TanfidzyahForm.appendChild(posisiPengurus);
         TanfidzyahForm.appendChild(deleteButtonContainer);
 
-        // Add an event listener to the delete button
-        deleteButtonContainer.addEventListener("click", function () {
-            RemoveArrValue(userNikOnSk,this.dataset.nik);
-            const dataIndex = this.dataset.index;
-            const id_pengurus = this.dataset.pengurus;
-            const elementsToDelete = document.querySelectorAll(
-                `.${dataIndex}`
-            );
-            // ajax request
-            const url = document.getElementById("urlDelPengurus").value;
-            const data = {
-                id: id_pengurus
-            }
-            const options = {
-                formType:"tanfidzyah",
-                eventType:"delete",
-                elementsToDelete:elementsToDelete
-            }
-            let responseApi = sendRequest(url,data,options);
-        });
-
         // clear form
         document.getElementById("nikTanfidzyah").value = "";
         document.getElementById("namaTanfidzyah").value = "";
@@ -612,7 +547,7 @@ $(document).ready(function () {
     };
 
     const validateHandler = (url,data,options) => {
-        if(options.eventType === 'add' && userNikOnSk.includes(data.nik))
+        if(options.eventType === 'add' && userNikOnSk.includes(data.nik) && data.nik !== '-')
         {
             swal("Perhatian!", `Nomor NIK ${data.nik} sudah didaftarkan sebagai pengurus`, "warning");
         }
@@ -628,7 +563,7 @@ $(document).ready(function () {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', // Set the content type to JSON
-            'X-CSRF-TOKEN': csrfToken,
+            'X-CSRF-TOKEN': "{{ csrf_token() }}",
         },
         body: JSON.stringify(data), // Convert the data object to a JSON string
         };
@@ -675,7 +610,7 @@ $(document).ready(function () {
             }
             else
             {
-                console.log(obj)// Parse the response as JSON
+                swal("Perhatian!", msg , "warning");
             }
 
         })
@@ -743,5 +678,26 @@ $(document).ready(function () {
             arr.splice(index, 1);
         }
     }
+
+
+    //fixing delete button
+    $(document).on('click','.delete', function () {
+        // ajax request
+        const id_pengurus = $(this).attr("data-pengurus");
+        const url = document.getElementById("urlDelPengurus").value;
+        const elementsToDelete = document.querySelectorAll(
+            `.${$(this).attr("data-index")}`
+        );
+        const data = {
+            id: id_pengurus
+        }
+        const options = {
+            formType:"syuriah",
+            eventType:"delete",
+            elementsToDelete:elementsToDelete
+        }
+        
+        let responseApi = sendRequest(url,data,options);
+    })
 </script>
 @endsection

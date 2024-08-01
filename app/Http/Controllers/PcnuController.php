@@ -70,12 +70,16 @@ class PcnuController extends Controller
         $pcnu = PCNU::detailPcnu($id);
 
         if($request->ajax()){
-            $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
-                                ->join('PCNU', 'surat_keputusan.id_pcnu', '=', 'PCNU.id')
-                                ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                                ->where('PCNU.id', $id)
-                                ->where('tanggal_berakhir', '>', date('Y-m-d'))
-                                ->get();
+            $pengurus = Pengurus::query()
+                        ->select(['anggota.id as id','anggota.nama as nama', 'pengurus.jenis_pengurus as pengurus','pengurus.jabatan as jabatan', 'mulai_jabatan', 'akhir_jabatan'])
+                        ->join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
+                        ->join('pcnu', 'surat_keputusan.id_pcnu', '=', 'pcnu.id')
+                        ->join('anggota', 'pengurus.id_anggota', '=', 'anggota.id')
+                        ->where('pcnu.id', $id)
+                        ->where('tanggal_berakhir', '>', date('Y-m-d'))
+                        ->groupBy(['id','nama','pengurus','jabatan','mulai_jabatan','akhir_jabatan'])
+                        ->get();
+                        
             return DataTables::of($pengurus)
             ->addIndexColumn()
             ->editColumn('id', function($row) {
