@@ -71,6 +71,34 @@
         <input type="hidden" name="id_ranting" value="{{ $ranting_data->id }}">
     </div>
     @endisset
+    @else
+    <div class="col-md-12">
+      <label for="no-sk" class="form-label">Nama Banom</label>
+      <input type="hidden" name="nama" id="nama_banom" value="{{ $banom_data->nama }}">
+      <input type="hidden" name="id" value="{{ $banom_data->id }}">
+      <input type="hidden" name="master_id" value="{{ $banom_data->master_id }}">
+      <select class="form-select" id="banom" required>
+        <option></option>
+        @foreach($master_banom_basis as $item)
+          @if ($item->id == $banom_data->master_id)
+            <option value="{{ $item->id }}" data-nama="{{ $item->nama_banom }}" selected>{{ $item->nama_banom }}</option>
+          @else
+            <option value="{{ $item->id }}" data-nama="{{ $item->nama_banom }}">{{ $item->nama_banom }}</option>
+          @endif
+        @endforeach
+      </select>
+    </div>
+    <div class="col-md-12">
+      <label for="wil_kerja">Wilayah kerja</label>
+      <input type="text" class="form-control" value="{{ $lembaga_data->nama_wilayah_kerja }}" id="wilKerja" readonly>
+      @if($lembaga_data->wilayah_kerja == 'pwnu')
+        <input type="hidden" name="id_pwnu" value="{{ $lembaga_data->id_wilayah_kerja }}">
+      @elseif($lembaga_data->wilayah_kerja == 'pcnu')
+        <input type="hidden" name="id_pcnu" value="{{ $lembaga_data->id_wilayah_kerja }}">
+      @elseif($lembaga_data->wilayah_kerja == 'mwcnu')
+        <input type="hidden" name="id_mwcnu" value="{{ $lembaga_data->id_wilayah_kerja }}">
+      @endif
+    </div>
     @endif
 </x-form>
 @endsection

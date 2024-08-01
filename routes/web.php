@@ -99,6 +99,9 @@ Route::prefix('user')->group(function () {
     Route::post('processUser', [UserController::class, 'process'])->name('process-user');
     Route::get('detail', [UserController::class, 'detail'])->name('detail-user');
     Route::get('/delete/{id_user}', [UserController::class, 'delete'])->name('delete-user');
+    Route::get('/profile', [UserController::class, 'myProfile'])->name('profile');
+    Route::post('/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
+    Route::post('/editPassword', [UserController::class, 'editPassword'])->name('editPassword');
 });
 
 Route::prefix('jenis-pengurus')->group(function () {
@@ -189,6 +192,7 @@ Route::prefix('sk')->group(function () {
     Route::get('/add_sk', [SuratKeputusanController::class, 'add_sk'])->name('add_sk');
     Route::post('/process', [SuratKeputusanController::class, 'process'])->name('sk_process');
     Route::get('/detail', [SuratKeputusanController::class, 'detail'])->name('sk_detail');
+    Route::get('/delete', [SuratKeputusanController::class, 'deleteSk'])->name('deleteSk');
     Route::get('/file/{file_name}', [SuratKeputusanController::class, 'download'])->name('download_sk');
 });
 

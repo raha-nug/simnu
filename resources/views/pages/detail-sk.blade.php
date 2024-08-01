@@ -153,6 +153,31 @@
 
                         }
                     },
+                    {
+                        className: "my-column",
+                        mData: "aksi",
+                        mRender: function(data, type, row) {
+                            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <ul
+                                class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                                <li><a class="dropdown-item" id="edit" data-syarat=${row.id} href="{{route('detail_pengurus')}}?pengurus=${row.id}">
+                                    <i class="bi bi-pencil-square"></i>
+                                    Edit
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="{{route('delete')}}?id_anggota=${row.id}">
+                                    <i class="bi bi-trash"></i>
+                                    Hapus
+                                    </a>
+                                </li>
+                                </ul>`;
+
+                        }
+
+                    }
 
                 ],
             drawCallback:function() {

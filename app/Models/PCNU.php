@@ -27,7 +27,8 @@ class PCNU extends Model
         'lat',
         'long',
         'provinsi',
-        'kota'
+        'kota',
+        'foto_pengurus'
     ];
 
     public static function getData()
@@ -65,6 +66,7 @@ class PCNU extends Model
             'pcnu.long',
             'pcnu.provinsi',
             'pcnu.kota',
+            'pcnu.foto_pengurus',
             DB::raw('COUNT(mwcnu.id) as jumlah_mwc'),
             DB::raw('(SELECT COUNT(*) FROM wilayah w WHERE LEFT(w.kode, 5) = pcnu.kota AND LENGTH(w.kode) = 8) as actual_mwc')
         ])

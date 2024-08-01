@@ -6,6 +6,7 @@ use App\Models\Users;
 use App\Models\UserGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
@@ -52,17 +53,20 @@ class UserController extends Controller
         $rules = [
             'nama' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required',
+            'password' => 'required|unique:users,password',
             'user_group' => 'required',
+            'no_telp' => 'nullable',
+            'foto' => 'nullable|max:2048',
         ];
 
         $message = [
-            'nama.required' => 'Nama Harus Diisi',
             'email.required' => 'Email Harus Diisi',
             'email.unique' => 'Email Sudah Terdaftar',
+            'password.unique' => 'Password Sudah Terdaftar',
             'email.email' => 'Format Penulisan Email Salah',
             'password.required' => 'Password Harus Diisi',
             'user_group.required' => 'User Groups Harus Diisi',
+            'foto.max' => 'Foto Harus Berukuran 2MB'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
@@ -81,6 +85,13 @@ class UserController extends Controller
         if (isset($request->id)) {
             unset($data['user_group']);
             $data['id_grup'] = $user_group->id;
+            if($request->file('foto')){
+                $file_img = $request->file('foto');
+                $file_img_name = $file_img->getClientOriginalName();
+                $file_img_path = Storage::disk('public')->putFileAs($file_img, $file_img_name);
+                $data['foto'] = $file_img_path;
+            }
+            dd($data);
             $is_updated = Users::where('id', $request->id)->update($data);
             if (!$is_updated)
             {
@@ -130,5 +141,100 @@ class UserController extends Controller
             Alert::success('Data Gagal Dihapus Dihapus');
             return redirect()->back();
         }
+    }
+
+    public function editProfile(Request $request){
+        $rules = [
+            'nama' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'no_telp' => 'nullable',
+            'foto' => 'nullable|max:2048',
+        ];
+
+        $message = [
+            'email.required' => 'Email Harus Diisi',
+            'email.unique' => 'Email Sudah Terdaftar',
+            'email.email' => 'Format Penulisan Email Salah',
+            'foto.max' => 'Foto Harus Berukuran 2MB'
+        ];
+
+        $validated = Validator::make($request->all(), $rules, $message);
+        if($validated->fails()){
+            $error = implode(", ", array_map('implode', array_values($validated->errors()->messages())));
+            Alert::error('Oops!', $error);
+            return redirect()->back();
+        }
+
+        $data = $validated->validate();
+        if (isset($request->id)) {
+            if($request->file('foto')){
+                $file_img = $request->file('foto');
+                $file_img_name = $file_img->getClientOriginalName();
+                $file_img_path = Storage::disk('public')->putFileAs($file_img, $file_img_name);
+                $data['foto'] = $file_img_path;
+            }
+            $is_updated = Users::where('id', $request->id)->update($data);
+            if (!$is_updated)
+            {
+                Alert::error('Oops! , Gagal melakukan update');
+                return redirect()->back(400);
+            }
+            Alert::success('Data Berhasil Diupdate');
+            return redirect(route('profile') . '?id_user=' . setRoute($request->id));
+        }
+        Alert::error('Id Tidak Ditemukan');
+        return redirect()->back();
+    }
+
+    public function editPassword(Request $request){
+        $rules = [
+            'password' => 'required|unique:users,password|confirmed',
+            'current_password' => 'required'
+        ];
+
+        $message = [
+            'current_password.required' => 'Password Sebelumnya Harus Diisi',
+            'password.required' => 'Password Harus Diisi',
+            'password.unique' => 'Password Sudah Terdaftar',
+        ];
+
+        $validated = Validator::make($request->all(), $rules, $message);
+        if($validated->fails()){
+            $error = implode(", ", array_map('implode', array_values($validated->errors()->messages())));
+            Alert::error('Oops!', $error);
+            return redirect()->back();
+        }
+        $data = $validated->validate();
+        $users = Users::query()->where('id', $request->id)->first();
+        if(!Hash::check($request->current_password, $users->password)){
+            Alert::error('Oops!','Password Lama Salah');
+            return redirect()->back();
+        }
+        if (isset($request->id)) {
+            $data['password'] = Hash::make($request->password);
+            $is_updated = Users::where('id', $request->id)->update(['password' => $data['password']]);
+            if (!$is_updated)
+            {
+                Alert::error('Oops! , Gagal melakukan update');
+                return redirect()->back(400);
+            }
+            Alert::success('Data Berhasil Diupdate');
+            return redirect(route('profile') . '?id_user=' . setRoute($request->id));
+        }
+        Alert::error('Id Tidak Ditemukan');
+        return redirect()->back();
+
+    }
+
+    public function Myprofile(Request $request){
+        $id = getRoute($request->id_user);
+        $profile = Users::query()->select(['*'])->where('id', $id)->first();
+        $data = [
+            'profile' => $profile,
+            'title'=> 'Profile Saya',
+            'username'=>session()->get('nama_user'),
+            'from'=>'Jawa Barat',
+        ];
+        return view('pages.detail-profile', $data);
     }
 }

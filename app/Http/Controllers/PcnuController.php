@@ -10,6 +10,7 @@ use App\Models\Lembaga;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
@@ -151,7 +152,8 @@ class PcnuController extends Controller
             'long' => 'nullable|regex:/^[0-9.\-]+$/',
             'website' => 'nullable|regex:/^[^<>]*$/',
             'email' => 'required|email',
-            'kota' => 'required'
+            'kota' => 'required',
+            'foto_pengurus' => 'nullable|max:2048',
         ];
 
         $message = [
@@ -164,7 +166,8 @@ class PcnuController extends Controller
             'website.regex' => 'Penulisan Url website tidak benar',
             'email.required' => 'Email Harus diisi',
             'email.email' => 'Email Tidak valid',
-            'kota.required' => 'Kota Harus diisi'
+            'kota.required' => 'Kota Harus diisi',
+            'foto_pengurus.max' => 'Ukuran Foto Harus 2MB'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
@@ -178,14 +181,20 @@ class PcnuController extends Controller
         $data['id_pwnu'] = 1;
         $data['provinsi'] = "32";
         if (isset($request->id)) {
+            if($request->file('foto_pengurus')){
+                $file_img = $request->file('foto_pengurus');
+                $file_img_name = $file_img->getClientOriginalName();
+                $file_img_path = Storage::disk('public')->putFileAs($file_img, $file_img_name);
+                $data['foto_pengurus'] = $file_img_path;
+            }
             $is_updated = PCNU::where('id', $request->id)->update($data);
             if (!$is_updated)
             {
                 Alert::error('Oops! , Gagal melakukan update');
                 return redirect()->back(400);
             }
-            Alert::success('Data Berhasil Disimpan');
-            return redirect(route('pcnu'));
+            Alert::success('Data Berhasil DiUpdate');
+            return redirect(route('pcnu-detail') . "?page=10&pc=" . setRoute($request->id));
         }
         PCNU::create($data);
         Alert::success('Data Berhasil Disimpan');

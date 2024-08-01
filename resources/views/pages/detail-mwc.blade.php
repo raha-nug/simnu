@@ -29,121 +29,137 @@
         class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
 
 
-        <li><a class="dropdown-item" href="{{ route('ranting-add') }}?mwc={{ setRoute($mwc_data->id) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
+        <li><a class="dropdown-item" href="{{ route('mwcnu-add') }}?mwc={{ setRoute($mwc_data->id) }}"><i class="bi bi-pencil-square"></i>Edit</a></li>
         <li><a href="{{route('add-review-mwcnu')}}?mwc={{setRoute($mwc_data->id)}}" class="dropdown-item"><i class="bi bi-list-check"></i>Review</a></li>
 
       </ul>
     </div>
     <div class="card-header">Detail MWC NU</div>
     <div class="card-body">
-      <h5 class="card-title">Informasi Umum</h5>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Nama :</dt>
+    <div class="row">
+        <div class="col-lg-8">
+        <h5 class="card-title">Informasi Umum</h5>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Nama :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $mwc_data->nama }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Alamat :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>
+                    {{ $mwc_data->alamat }}
+                </dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Telepon :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $mwc_data->telp ?? '-' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Email :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $mwc_data->email ?? '-' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Website :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $mwc_data->website ?? '-' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">NU Kota/Kab :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd><a href="{{ route('pcnu-detail') }}?pc={{ setRoute($mwc_data->id_pcnu) }}">{{ $mwc_data->pc_nama }}</a></dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Kecamatan :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $kecamatan->nama ?? '' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Latitude :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $mwc_data->lat ?? '-' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Longitude :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $mwc_data->long ?? '-' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml Ranting :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $jml_ranting->jumlah ?? '-' }}/{{$jml_ranting->actual_ranting}}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml Lembaga :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $jml_lembaga ?? '-' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml Banom :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $jml_banom ?? '-' }}</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml Pengurus :</dt>
+                </div>
+                <div class="col-lg-6">
+                <dd>{{ $jml_pengurus ?? '-' }}</dd>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-9">
-          <dd>{{ $mwc_data->nama }}</dd>
+        <div class="col-lg-4" style="margin-top: 50px; margin-left: -30px;">
+            <div class="card bg-blue-200"style="overflow: hidden;">
+              <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                <div class="detail-pengurus">
+                    @if($mwc_data->foto_pengurus == null)
+                        <img src="{{asset('assets/img/profile-image.png')}}" alt="">
+                    @else
+                        <img src="{{Storage::url($mwc_data->foto_pengurus)}}" alt="Profile" style="object-fit: cover;">
+                    @endif
+                </div>
+              </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Alamat :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>
-            {{ $mwc_data->alamat }}
-          </dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Telepon :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $mwc_data->telp ?? '-' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Email :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $mwc_data->email ?? '-' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Website :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $mwc_data->website ?? '-' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">NU Kota/Kab :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd><a href="{{ route('pcnu-detail') }}?pc={{ setRoute($mwc_data->id_pcnu) }}">{{ $mwc_data->pc_nama }}</a></dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Kecamatan :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $kecamatan->nama ?? '' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Latitude :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $mwc_data->lat ?? '-' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Longitude :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $mwc_data->long ?? '-' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah Ranting :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $jml_ranting->jumlah ?? '-' }}/{{$jml_ranting->actual_ranting}}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah Lembaga :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $jml_lembaga ?? '-' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah Banom :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $jml_banom ?? '-' }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah Pengurus :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $jml_pengurus ?? '-' }}</dd>
-        </div>
-      </div>
-
+    </div>
     </div>
   </div>
   <div class="card">
@@ -435,7 +451,7 @@
               <i class="bi bi-three-dots-vertical"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <li><a class="dropdown-item" href="{{ route('Banom-add') }}?Banom=${row.id}">
+              <li><a class="dropdown-item" href="{{ route('Banom-add') }}?banom=${row.id}">
                     <i class="bi bi-pencil-square"></i>
                     Edit
                   </a>
@@ -509,6 +525,23 @@
           },
           "orderable": false
         },
+        {
+          mData: "masa_jabatan",
+          mRender: function(data, type, row) {
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                    class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li><a class="dropdown-item text-danger" href="{{route('deleteSk')}}?id_sk=${row.id}">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                    </li>
+                    </ul>`;
+          },
+          "orderable": false
+        },
       ],
       "tabIndex": 1,
       "drawCallback": function(settings) {
@@ -517,6 +550,6 @@
     });
   }
 
-  
+
 </script>
 @endsection

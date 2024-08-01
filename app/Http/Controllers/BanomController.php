@@ -103,11 +103,11 @@ class BanomController extends Controller
                 'from' => 'Singaparna',
                 'name' => 'MWC Singaparna',
                 'master_banom' => MasterBanom::get(),
-                'banom_base' => BanomBasis::get(),
+                'master_banom_basis' => BanomBasis::get(),
                 'kota' => $this->wilayah->getAddress('32'),
-                'lembaga_data' => $lembaga_data,
+                'banom_data' => $lembaga_data,
                 'method' => 'POST',
-                'action' => route('lembaga-process')
+                'action' => route('Banom-process')
             ];
 
             return view('pages.add.add-banom', $data);

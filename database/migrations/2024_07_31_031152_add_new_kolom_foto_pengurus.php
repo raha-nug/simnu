@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('pengurus', function (Blueprint $table) {
-            $table->string('nik')->nullable()->change();
+        Schema::table('mwcnu', function (Blueprint $table) {
+            $table->string('foto_pengurus',255)->nullable();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pengurus', function (Blueprint $table) {
-            $table->dropColumn('nik');
+        Schema::table('mwcnu', function (Blueprint $table) {
+            $table->string('foto_pengurus',255)->nullable();
         });
     }
 };

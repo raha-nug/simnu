@@ -59,10 +59,17 @@
               href="#"
               data-bs-toggle="dropdown">
               <span class="d-none d-md-block px-2">@yield('username')</span>
+              @if(session()->get('foto') == null)
               <img
                 src="{{ url('/') }}/assets/img/profile-image.png"
                 alt="Profile"
                 class="rounded-circle me-3 ms-3" />
+                @else
+                <img
+                  src="{{Storage::url(session()->get('foto'))}}"
+                  alt="Profile"
+                  class="rounded-circle me-3 ms-3" />
+              @endif
             </a>
             <!-- End Profile Iamge Icon -->
 
@@ -76,18 +83,18 @@
                 <hr class="dropdown-divider" />
               </li>
 
-              {{-- <li>
-                <a
-                  class="dropdown-item d-flex align-items-center"
-                  href="users-profile.html">
-                  <i class="bi bi-person"></i>
-                  <span>My Profile</span>
-                </a>
-              </li> --}}
               <li>
                 <hr class="dropdown-divider" />
               </li>
 
+              <li>
+                <a
+                  class="dropdown-item d-flex align-items-center"
+                  href="{{route('profile')}}?id_user={{setRoute(session()->get('id_users'))}}">
+                  <i class="bi bi-person"></i>
+                  <span>Profile Saya</span>
+                </a>
+              </li>
               <li>
                 <a
                   class="dropdown-item d-flex align-items-center"

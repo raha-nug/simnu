@@ -36,6 +36,7 @@ class LoginController extends Controller
             session()->start();
             session()->put('logged','yes',true);
             session()->put('id_users',$users->id);
+            session()->put('foto',$users->foto);
             session()->put('nama_user', $users->nama);
             session()->put('admin_super',$users->email == 'admin@gmail.com');
             session()->put('can_create', $credentials->can_create);

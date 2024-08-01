@@ -33,7 +33,7 @@
         @foreach($kecamatan as $item)
           @if($item->kode == $mwc_data->kecamatan)
             <option value="{{ $item->kode }}" selected >{{ $item->nama }}</option>
-          @else 
+          @else
             <option value="{{ $item->kode }}">{{ $item->nama }}</option>
           @endif
         @endforeach
@@ -70,6 +70,15 @@
       <label for="longitude" class="form-label">Longitude</label>
       <input type="text" class="form-control" name="long" value="{{ $mwc_data->long ?? '' }}">
     </div>
+    <div class="col-md-6 mt-2">
+        <label for="profileImage" class="form-label">Foto Pengurus</label>
+        <div class="col-md-8 col-lg-12">
+          <div class="pt-2">
+            <input type="file" class="btn btn-primary btn-sm" name="foto_pengurus" title="Upload new profile image">
+            {{-- <a href="#" class="btn btn-danger btn-sm" title="Remove profile image"><i class="bi bi-trash"></i></a> --}}
+          </div>
+        </div>
+      </div>
   @else
     <div class="col-md-12 mt-2">
       <label for="kabkot" class="form-label">Kecamatan</label>
@@ -111,6 +120,15 @@
       <label for="longitude" class="form-label">Longitude</label>
       <input type="text" class="form-control" name="long">
     </div>
+    <div class="col-md-6 mt-2">
+        <label for="profileImage" class="form-label">Foto Pengurus</label>
+        <div class="col-md-8 col-lg-12">
+          <div class="pt-2">
+            <input type="file" class="btn btn-primary btn-sm" name="foto_pengurus" title="Upload new profile image">
+            {{-- <a href="#" class="btn btn-danger btn-sm" title="Remove profile image"><i class="bi bi-trash"></i></a> --}}
+          </div>
+        </div>
+      </div>
   @endif
   </x-form>
 @endsection

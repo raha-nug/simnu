@@ -35,106 +35,122 @@
     </div>
     <div class="card-header">Detail PCNU</div>
     <div class="card-body">
-      <h5 class="card-title">Informasi Umum</h5>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Nama :</dt>
+    <div class="row">
+        <div class="col-lg-8">
+            <h5 class="card-title">Informasi Umum</h5>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Nama :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $pc_data->nama ?? "" }}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Alamat :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>
+                  {{ $pc_data->alamat ?? "" }}
+                </dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Telepon :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $pc_data->telp ?? ""}}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Email :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $pc_data->email ?? "" }}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Website :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $pc_data->website ?? "" }}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Kota/Kab :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $kota->nama ?? ""}}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Latitude :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{$pc_data->lat ?? ""}}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Longitude :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $pc_data->long ?? "" }}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml MWC :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $pc_data->jumlah_mwc ?? "" }}/{{$pc_data->actual_mwc}}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml Lembaga :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $jml_lembaga ?? "" }}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml Banom :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $jml_banom?? "" }}</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-3">
+                <dt class="text-lg-end text-sm-start">Jml Pengurus :</dt>
+              </div>
+              <div class="col-lg-6">
+                <dd>{{ $jml_pengurus ?? "" }}</dd>
+              </div>
+            </div>
         </div>
-        <div class="col-lg-9">
-          <dd>{{ $pc_data->nama ?? "" }}</dd>
+        <div class="col-lg-4" style="margin-top: 50px; margin-left: -30px;">
+            <div class="card bg-blue-200"style="overflow: hidden;">
+              <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                <div class="detail-pengurus">
+                    @if($pc_data->foto_pengurus == null)
+                        <img src="{{asset('assets/img/profile-image.png')}}" alt="">
+                    @else
+                        <img src="{{Storage::url($pc_data->foto_pengurus)}}" alt="Profile" style="object-fit: cover;">
+                    @endif
+                </div>
+              </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Alamat :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>
-            {{ $pc_data->alamat ?? "" }}
-          </dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Telepon :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $pc_data->telp ?? ""}}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Email :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $pc_data->email ?? "" }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Website :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $pc_data->website ?? "" }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Kota/Kab :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $kota->nama ?? ""}}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Latitude :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{$pc_data->lat ?? ""}}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Longitude :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $pc_data->long ?? "" }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah MWC :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $pc_data->jumlah_mwc ?? "" }}/{{$pc_data->actual_mwc}}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah Lembaga :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $jml_lembaga ?? "" }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah Banom :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $jml_banom?? "" }}</dd>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <dt class="text-lg-end text-sm-start">Jumlah Pengurus :</dt>
-        </div>
-        <div class="col-lg-9">
-          <dd>{{ $jml_pengurus ?? "" }}</dd>
-        </div>
-      </div>
-
+    </div>
     </div>
   </div>
   <div class="card">
@@ -538,6 +554,23 @@
           mData: "masa_jabatan",
           mRender: function(data, type, row) {
             return row.tanggal_mulai + ' - ' + row.tanggal_berakhir;
+          },
+          "orderable": false
+        },
+        {
+          mData: "aksi",
+          mRender: function(data, type, row) {
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                    class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li><a class="dropdown-item text-danger" href="{{route('deleteSk')}}?id_sk=${row.id}">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                    </li>
+                    </ul>`;
           },
           "orderable": false
         },

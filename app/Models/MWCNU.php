@@ -29,7 +29,8 @@ class MWCNU extends Model
         'long',
         'provinsi',
         'kota',
-        'kecamatan'
+        'kecamatan',
+        'foto_pengurus'
     ];
 
 
@@ -75,6 +76,7 @@ class MWCNU extends Model
             'mwcnu.provinsi',
             'mwcnu.kota',
             'mwcnu.kecamatan',
+            'mwcnu.foto_pengurus',
             DB::raw('COUNT(ranting.id) as jumlah'),
             DB::raw('(SELECT COUNT(*) FROM wilayah w WHERE LEFT(w.kode, 8) = mwcnu.kecamatan AND LENGTH(w.kode) = 13) as actual_ranting')
         ])

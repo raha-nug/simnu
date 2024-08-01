@@ -296,6 +296,19 @@ class SuratKeputusanController extends Controller
         return view('pages.detail-sk', $data);
     }
 
+    public function deleteSk(Request $request){
+        $id = $request->id_sk;
+        $id_sk = getRoute($id);
+        $is_deleted = SuratKeputusan::query()->where('id', $id_sk)->delete();
+        if($is_deleted){
+            Alert::success('Data Berhasil DiHapus');
+            return redirect()->back();
+        } else {
+            Alert::success('Data Gagal Dihapus');
+            return redirect()->back();
+        }
+    }
+
     public function download($file_name){
         $file = public_path('storage/') . $file_name;
         return Response::download($file);

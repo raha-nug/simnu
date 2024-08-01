@@ -10,6 +10,7 @@ use App\Models\Ranting;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use App\Models\SuratKeputusan;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,6 +18,11 @@ class MwcController extends Controller
 {
     public function index(Request $request)
     {
+        // if(session()->get('hak_akses_pcnu') || session()->get('hak_akses_mwcnu') || session()->get('hak_akses_rantingnu'))
+        // {
+        //     $auth = new LoginController();
+        //     return $auth->getCredential(session()->get('id_users'));
+        // }
 
         $id_mwc = $request->mwc;
         $id = getRoute($id_mwc);
@@ -24,7 +30,7 @@ class MwcController extends Controller
             return redirect('dashboard');
 
         $mwcnu = MWCNU::query()
-            ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat','id_pcnu', 'mwcnu.telp', 'mwcnu.email', 'mwcnu.website','kecamatan', 'pcnu.nama as pc_nama'])
+            ->select(['mwcnu.id', 'mwcnu.nama', 'mwcnu.alamat','id_pcnu', 'mwcnu.lat', 'mwcnu.long', 'mwcnu.foto_pengurus', 'mwcnu.telp', 'mwcnu.email', 'mwcnu.website','kecamatan', 'pcnu.nama as pc_nama'])
             ->leftJoin('pcnu', 'id_pcnu', '=', 'pcnu.id')
             ->where('mwcnu.id', $id)
             ->first();
@@ -123,7 +129,8 @@ class MwcController extends Controller
             'email' => 'nullable|email',
             'kota' => 'required',
             'kecamatan' => 'required',
-            'id_pcnu' => 'required'
+            'id_pcnu' => 'required',
+            'foto_pengurus' => 'nullable|max:2048'
         ];
 
         $message = [
@@ -137,7 +144,8 @@ class MwcController extends Controller
             'email.email' => 'Email Tidak valid',
             'kota.required' => 'Kota Harus diisi',
             'kecamatan.required' => 'Kecamatan Harus diisi',
-            'id_pcnu.required' => 'PCNU tidak ditemukan'
+            'id_pcnu.required' => 'PCNU tidak ditemukan',
+            'foto_pengurus.max' => 'Ukuran Foto Harus 2MB'
         ];
 
         $validated = Validator::make($request->all(), $rules, $message);
@@ -150,13 +158,19 @@ class MwcController extends Controller
         $data = $validated->validate();
         $data['provinsi'] = "32";
         if (isset($request->id)) {
+            if($request->file('foto_pengurus')){
+                $file_img = $request->file('foto_pengurus');
+                $file_img_name = $file_img->getClientOriginalName();
+                $file_img_path = Storage::disk('public')->putFileAs($file_img, $file_img_name);
+                $data['foto_pengurus'] = $file_img_path;
+            }
             $is_updated = MWCNU::where('id', $request->id)->update($data);
             if (!$is_updated) {
                 Alert::error('Oops! , Gagal melakukan update');
                 return redirect()->back();
             }
             Alert::success('Data Berhasil Disimpan');
-            return redirect(route('pcnu-detail') . "?pc=" . setRoute($request->id_pcnu));
+            return redirect(route('mwcnu') . "?mwc=" . setRoute($request->id));
         }
         MWCNU::create($data);
         Alert::success('Data Berhasil Disimpan');

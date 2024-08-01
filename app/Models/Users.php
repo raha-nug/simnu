@@ -24,7 +24,9 @@ class Users extends Model
         'kecamatan',
         'desa',
         'is_whatsapp',
-        'id_grup'
+        'id_grup',
+        'foto',
+        'current_password'
     ];
 
     protected static function boot(){
