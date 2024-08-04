@@ -179,6 +179,7 @@ class UserController extends Controller
                 Alert::error('Oops! , Gagal melakukan update');
                 return redirect()->back(400);
             }
+            session()->put('foto', $data['foto']);
             Alert::success('Data Berhasil Diupdate');
             return redirect(route('profile') . '?id_user=' . setRoute($request->id));
         }
