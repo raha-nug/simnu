@@ -36,7 +36,7 @@
     @isset($pwnu_data)
     <div class="col-md-12">
       <label for="wil_kerja">Wilayah kerja</label>
-      <input type="text" class="form-control" value="{{ $pwnu_data->provinsi }}" id="wilKerja" readonly>
+      <input type="text" class="form-control" value="{{ $pwnu_data->nama }}" id="wilKerja" readonly>
       <input type="hidden" name="id_pwnu" value="{{ $pwnu_data->id }}">
     </div>
     @endisset

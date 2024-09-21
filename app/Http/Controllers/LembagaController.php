@@ -226,7 +226,7 @@ class LembagaController extends Controller
             return redirect('dashboard');
 
 
-        $pwnu_data = PWNU::select(['id','provinsi'])->where('id',$id)->first();
+        $pwnu_data = PWNU::select(['id','provinsi','nama'])->where('id',$id)->first();
 
         $data = [
             'title' => 'Lembaga',
