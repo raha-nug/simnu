@@ -36,9 +36,9 @@ class MwcController extends Controller
             ->first();
 
         $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
-            ->join('MWCNU', 'surat_keputusan.id_mwcnu', '=', 'MWCNU.id')
+            ->join('mwcnu', 'surat_keputusan.id_mwcnu', '=', 'mwcnu.id')
             ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-            ->where('MWCNU.id', $id)
+            ->where('mwcnu.id', $id)
             ->get();
 
         $jml_lembaga = Lembaga::query()->where('id_mwcnu', $id)->count();

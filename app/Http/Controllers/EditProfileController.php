@@ -78,18 +78,18 @@ class EditProfileController extends Controller
 
             // Filter by PWNU, PCNU, and MWCNU if the respective ID is provided
             if($request->filled('pwnu_id')) {
-                $query->join('PWNU', 'PWNU.id', '=', 'surat_keputusan.id_pwnu')
-                    ->where('PWNU.id', $request->pwnu_id);
+                $query->join('pwnu', 'pwnu.id', '=', 'surat_keputusan.id_pwnu')
+                    ->where('pwnu.id', $request->pwnu_id);
             }
 
             if($request->filled('pcnu_id')) {
-                $query->join('PCNU', 'PCNU.id', '=', 'surat_keputusan.id_pcnu')
-                    ->where('PCNU.id', $request->pcnu_id);
+                $query->join('pcnu', 'pcnu.id', '=', 'surat_keputusan.id_pcnu')
+                    ->where('pcnu.id', $request->pcnu_id);
             }
 
             if($request->filled('mwcnu_id')) {
-                $query->join('MWCNU', 'MWCNU.id', '=', 'surat_keputusan.id_pcnu')
-                    ->where('MWCNU.id', $request->mwcnu_id);
+                $query->join('mwcnu', 'mwcnu.id', '=', 'surat_keputusan.id_pcnu')
+                    ->where('mwcnu.id', $request->mwcnu_id);
             }
 
             // Get the filtered data
