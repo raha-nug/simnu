@@ -194,7 +194,7 @@ class LembagaController extends Controller
 
         if ($is_deleted) {
             Alert::success('Data Berhasil Dihapus');
-            $this->checkRoute($route_data);
+            return $this->checkRoute($route_data);
         } else {
             Alert::error('Data Gagal Dihapus');
             return redirect()->back();
