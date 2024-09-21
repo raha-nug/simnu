@@ -157,7 +157,7 @@
                 }
             },
             lengthMenu: [[10, 25, 50, 100], [10, 25, 50, 100]], // Menampilkan opsi 10, 25, 50, 100 data
-            pageLength: 10 // Default 10 data per halaman
+            pageLength: 10, // Default 10 data per halaman
             processing: true,
             serverSide: true,
             ajax: {

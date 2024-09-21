@@ -73,7 +73,7 @@ class EditProfileController extends Controller
                         'pengurus.id_sk',
                         'pengurus.id_anggota'
                     ])
-                    ->join('pengurus', 'pengurus.nik', '=', 'anggota.nik')
+                    ->join('pengurus', 'pengurus.id_anggota', '=', 'anggota.id')
                     ->join('surat_keputusan', 'surat_keputusan.id', '=', 'pengurus.id_sk');
 
             // Filter by PWNU, PCNU, and MWCNU if the respective ID is provided
