@@ -175,7 +175,8 @@
                         className: "my-column",
                         mData: "jabatan",
                         mRender: function(data, type, row) {
-                            return `${row.jabatan}`;
+                            let jabatan = row.jenis_pengurus == 'Mustasyar' ? '' : row.jabatan;
+                            return jabatan;
 
                         }
                     },
@@ -393,6 +394,23 @@
           mData: "masa_jabatan",
           mRender: function(data, type, row) {
             return row.tanggal_mulai + ' - ' + row.tanggal_berakhir;
+          },
+          "orderable": false
+        },
+        {
+          mData: "aksi",
+          mRender: function(data, type, row) {
+            return `<a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-three-dots-vertical"></i>
+                    </a>
+                    <ul
+                    class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li><a class="dropdown-item text-danger" href="{{route('deleteSk')}}?id_sk=${row.id}">
+                        <i class="bi bi-trash"></i>
+                        Hapus
+                        </a>
+                    </li>
+                    </ul>`;
           },
           "orderable": false
         },

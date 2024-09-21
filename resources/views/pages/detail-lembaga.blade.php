@@ -112,6 +112,7 @@
                   <th scope="col">#</th>
                   <th scope="col">No Surat</th>
                   <th scope="col">Masa Jabatan</th>
+                  <th scope="col">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -120,6 +121,19 @@
                   <th scope="row">1</th>
                   <td><a href="{{route('sk_detail')}}?sk={{setRoute($value->id)}}">{{$value->no_dokumen}}</a></td>
                   <td>{{$value->tanggal_mulai}} - {{$value->tanggal_berakhir}}</td>
+                  <td>
+                    <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-three-dots-vertical"></i>
+                        </a>
+                        <ul
+                        class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                        <li><a class="dropdown-item text-danger" href="{{route('deleteSk')}}?id_sk={{setRoute($value->id)}}">
+                            <i class="bi bi-trash"></i>
+                            Hapus
+                            </a>
+                        </li>
+                        </ul>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>

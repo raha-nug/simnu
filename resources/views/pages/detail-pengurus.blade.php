@@ -35,8 +35,12 @@
               @if($sk_data->id_lembaga || $sk_data->id_banom)
               <h6 class="text-primary text-center">{{$pengurus->jabatan}} <br> {{$sk_data->nama_wilayah_kerja}}<i class="bi bi-bookmark-star-fill"></i></h6>
               @else
-              <h6 class="text-primary text-center">{{$pengurus->jabatan}} {{$pengurus->jenis_pengurus}} <br> {{$sk_data->nama_wilayah_kerja}}<i class="bi bi-bookmark-star-fill"></i></h6>
-              @endif
+                @if($pengurus->jenis_pengurus == 'Mustasyar')
+                <h6 class="text-primary text-center">{{$pengurus->jenis_pengurus}} <br> {{$sk_data->nama_wilayah_kerja}}<i class="bi bi-bookmark-star-fill"></i></h6>
+                @else
+                <h6 class="text-primary text-center">{{$pengurus->jabatan}} {{$pengurus->jenis_pengurus}} <br> {{$sk_data->nama_wilayah_kerja}}<i class="bi bi-bookmark-star-fill"></i></h6>
+                @endif
+            @endif
               <div class="social-links mt-2 d-flex gap-3">
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>

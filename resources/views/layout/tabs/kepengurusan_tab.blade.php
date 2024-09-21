@@ -23,6 +23,7 @@
                <th scope="col">No</th>
                <th scope="col">No Surat</th>
                <th scope="col">Masa Jabatan</th>
+               <th scope="col">Aksi</th>
             </tr>
          </thead>
          <tbody>

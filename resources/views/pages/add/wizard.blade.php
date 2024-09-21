@@ -555,7 +555,7 @@ $(document).ready(function () {
             let responseApi = sendRequest(url,data,options);
         }
     }
-    
+
     const sendRequest = async (url,data,options) => {
         // Create a configuration object for the request
         const csrfToken = document.querySelector('input[name="_token"]').value;
@@ -696,7 +696,7 @@ $(document).ready(function () {
             eventType:"delete",
             elementsToDelete:elementsToDelete
         }
-        
+
         let responseApi = sendRequest(url,data,options);
     })
 </script>

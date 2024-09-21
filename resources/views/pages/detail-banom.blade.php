@@ -109,6 +109,7 @@
                   <th scope="col">Pengurus</th>
                   <th scope="col">Jabatan</th>
                   <th scope="col">Periode</th>
+                  <th scope="col">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -118,6 +119,19 @@
                     <td>{{$value->jenis_pengurus}}</td>
                     <td>{{$value->jabatan}}</td>
                     <td>{{$value->mulai_jabatan}} - {{$value->akhir_jabatan}}</td>
+                    <td>
+                        <a class="btn btn-outline-primary icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-three-dots-vertical"></i>
+                            </a>
+                            <ul
+                            class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                            <li><a class="dropdown-item text-danger" href="{{route('deleteSk')}}?id_sk={{setRoute($value->id)}}">
+                                <i class="bi bi-trash"></i>
+                                Hapus
+                                </a>
+                            </li>
+                            </ul>
+                      </td>
                 </tr>
                 @endforeach
               </tbody>

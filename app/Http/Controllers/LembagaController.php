@@ -112,7 +112,6 @@ class LembagaController extends Controller
             ->leftJoin('mwcnu','mwcnu.id','=','lembaga.id_mwcnu')
             ->where('lembaga.id', $id)
             ->first();
-
             $data = [
                 'title' => 'Lembaga',
                 'username' => session()->get('nama_user'),
@@ -238,7 +237,7 @@ class LembagaController extends Controller
             'kota' => $this->wilayah->getAddress('32'),
             'pwnu_data' => $pwnu_data,
             'method' => 'POST',
-            'action' => route('ranting-process')
+            'action' => route('lembaga-process')
         ];
 
         return view('pages.add.add-lembaga', $data);

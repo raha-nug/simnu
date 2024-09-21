@@ -19,11 +19,11 @@ class PwnuController extends Controller
         $sk = SuratKeputusan::query()->where('id_pwnu', $pw_detail->id)->get();
         if($request->ajax()){
             $pengurus = Pengurus::join('surat_keputusan', 'pengurus.id_sk', '=', 'surat_keputusan.id')
-                                ->join('PWNU', 'surat_keputusan.id_pwnu', '=', 'PWNU.id')
-                                ->join('anggota', 'pengurus.nik', '=', 'anggota.nik')
-                                ->where('PWNU.id', $pw_detail->id)
-                                ->where('tanggal_berakhir', '>', date('Y-m-d'))
+                                ->join('pwnu', 'surat_keputusan.id_pwnu', '=', 'pwnu.id')
+                                ->join('anggota', 'pengurus.id_anggota', '=', 'anggota.id')
+                                ->where('pwnu.id', $pw_detail->id)
                                 ->get();
+            // dd($pengurus);
             return DataTables::of($pengurus)
             ->addIndexColumn()
             ->editColumn('id', function($row) {
@@ -46,7 +46,7 @@ class PwnuController extends Controller
             'from' => 'Jawa Barat',
             'nomor' => $count = 1,
             'sk' => $sk,
-            // 'pengurus' => $pengurus ?? new Pengurus,
+            'pengurus' => $pengurus ?? new Pengurus,
             'name' => 'PWNU Jawa Barat'
         ];
         return view('pages.pwnu', $data);

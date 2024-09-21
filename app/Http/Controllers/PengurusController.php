@@ -145,7 +145,7 @@ class PengurusController extends Controller
 
             $data = Pengurus::setValue($pengurus_data, $is_exist->id);
             $new_data = Pengurus::create($data);
-            
+
             return response()->json(['success' => 1, 'msg' => 'Data Berhasil Disimpan', 'data' => $new_data , 'token' => csrf_token()]);
         } catch (\Throwable $th) {
             dd($th->getMessage(),$th->getLine());
